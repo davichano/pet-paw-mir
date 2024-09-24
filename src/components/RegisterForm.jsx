@@ -1,5 +1,6 @@
 //import { useTranslation } from "react-i18next"
 import { useState } from "react"
+import '../assets/css/RegisterForm.css'
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const RegisterForm = () => {
         //Aqui va la logica para enviar los datos al servidor       
     }       
     return (
-        <form onSubmit={handleSubmit} className=""> 
+        <form onSubmit={handleSubmit} className="register-form"> 
             <input type="text" name="firstname" placeholder="First Name" onChange={handleChange} />
             <input type="text" name="lastname" placeholder="Last Name" onChange={handleChange} />
             <input type="file" name="profilePicture" onChange={(e) => setFormData({ ...formData, profilePicture: e.target.files[0] })} />
@@ -38,6 +39,7 @@ const RegisterForm = () => {
             <input type="email" name="email" placeholder="Email" onChange={handleChange} />
             <input type="password" name="password" placeholder="Password" onChange={handleChange} />
             <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
+            <button type="submir">Registrarse</button>
         </form>
     )
 }

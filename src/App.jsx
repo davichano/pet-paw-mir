@@ -14,7 +14,7 @@ function App() {
                 <LanguageSwitcher />
                 <MainRouter></MainRouter>
             </div>
-          </PetContext.Provider>
+          </PetContext.Provider> 
         </I18nextProvider>
        </div>
     </>
