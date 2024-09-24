@@ -1,21 +1,36 @@
 
+body{
+  background-color: white;
+  color: #564434;
+}
 .register-form {
     display: flex;
     flex-direction: column;
     width: 300px;
     margin: 0 auto;
+    border: 2px solid #564434;
+    border-radius: 5px;
+    padding: 10px;
   }
-  
+  .register-form__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
   .register-form input {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: #F5E1DC;
   }
-  
+  .register-form input::placeholder {
+    color: #564434;
+  }
+
   .register-form button {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #DA6274;
     color: white;
     border: none;
     border-radius: 5px;
@@ -25,8 +40,26 @@
     color: red;
     margin-bottom: 10px;
   }
-  
+
   .success {
     color: green;
     margin-bottom: 10px;
+  }
+  .register-form__google-button {
+    background-color: #fff;
+    color: #564434;
+    /*border: none;*/
+    border-radius: 5px;
+    border: 1px solid #564434;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 324px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-top: 10px;
   }

@@ -1,5 +1,20 @@
 {
   "chooseLanguage": "Escoger idioma",
   "helloWorld": "Hola Mundo Pet Paw está en desarrollo",
-  "comingSoon": "Pronto más información"
+  "comingSoon": "Pronto más información",
+  "name": "Nombre",
+  "lastName": "Apellidos ",
+  "profilePicture": "Imagen de perfil",
+  "age": "Edad",
+  "country": "País",
+  "address": "Dirección",
+  "contactNumber": "Número de contacto",
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "confirmPassword": "Confirmar contraseña",
+  "toRegister": "Registrarse",
+  "register": "Registro",
+  "registerWithGoogle": "Registrarse con Google",
+  "errorConfirmPassword": "Las contraseñas no coinciden",
+  "selectCountry": "Seleccionar un país"
 }
