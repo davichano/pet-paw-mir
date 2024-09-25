@@ -19,7 +19,7 @@ export function ModalFormulario() {
 
         onClose={() => setOpenModal(false)}
       >
-        <Modal.Header className="bg-[#F5E1DC] text-white flex justify-center">¿A quien debo buscar?</Modal.Header>
+        <Modal.Header className="bg-[#F5E1DC]"><p className="text-[#DA6274] items-center">¿A quien debo buscar?</p></Modal.Header>
         <Modal.Body className="bg-[#F5E1DC]">
           <div className="space-y-4 p-2">
             <FormField
