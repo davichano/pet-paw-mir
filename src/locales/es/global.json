@@ -29,6 +29,7 @@
   "dayAndTimeLabel": "Día y hora",
   "markLocationButton": "Marcar Ubicación",
   "functionButton": "Realizar la publicacion",
-  "titleFormPublish": "¿A quién debo buscar?"
+  "titleFormPublish": "¿A quién debo buscar?",
+  "selectPhotoButton": "Subir foto"
 
 }

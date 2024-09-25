@@ -85,7 +85,7 @@ export function ModalFormulario() {
             <FormField
                 label={t("dayAndTimeLabel")}
                 id="dia-hora"
-                type="text"  // O usa 'datetime-local' para entrada de fecha y hora
+                type="datetime-local"
                 placeholder={t("dayAndTimePlaceholder")}
               />
               <FormField
@@ -104,7 +104,7 @@ export function ModalFormulario() {
                   placeholder={t("contactPlaceholder")}
                 />
                 <div className="flex justify-center ">
-                  <Button className="bg-[#A7C7E7] text-black flex items-center justify-center">{t("markLocationButton")}</Button>
+                  <Button className="bg-[#ff7074] text-black flex items-center justify-center">{t("markLocationButton")}</Button>
                 </div>
             </div>
 
@@ -119,7 +119,20 @@ export function ModalFormulario() {
                   </div>
                 )}
               </div>
-              <input type="file" onChange={handleFotoChange} className="mt-2" />
+              <div className="flex justify-center mt-4">
+                  <label
+                    htmlFor="file-input"
+                    className="px-4 py-2 bg-[#ff4850] text-white rounded cursor-pointer text-center"
+                  >
+                    {t("selectPhotoButton")}
+                  </label>
+              </div>
+              <input
+                id="file-input"
+                type="file"
+                onChange={handleFotoChange}
+                style={{ display: 'none' }}
+                />
             </div>
 
             <FormField
@@ -131,8 +144,8 @@ export function ModalFormulario() {
           </div>
         </Modal.Body>
         <Modal.Footer className="flex justify-center gap-8 bg-[#F5E1DC]">
-          <Button onClick={() => setOpenModal(false)} className="bg-[#14AE5C] text-black">{t("BotonPublicar")}</Button>
-          <Button onClick={() => setOpenModal(false)} className="bg-[#FF859B] text-black">
+          <Button onClick={() => setOpenModal(false)} className="bg-[#ffaca4] text-black">{t("BotonPublicar")}</Button>
+          <Button onClick={() => setOpenModal(false)} className="bg-[#df1811] text-white">
             {t("BotonDenegar")}
           </Button>
         </Modal.Footer>

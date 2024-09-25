@@ -30,5 +30,6 @@
   "dayAndTimePlaceholder": "dd/mm/yyyy",
   "markLocationButton": "Mark Location",
   "functionButton": "Make the publication",
-  "titleFormPublish": "Who should I search for?"
+  "titleFormPublish": "Who should I search for?",
+  "selectPhotoButton": "Upload photo"
 }
