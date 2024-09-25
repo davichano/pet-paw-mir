@@ -28,13 +28,20 @@ body{
     color: #564434;
   }
 
-  .register-form button {
+  .register-form .submit-button {
     padding: 10px;
     background-color: #DA6274;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .register-form select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #F5E1DC;
   }
   .error {
     color: red;
@@ -58,8 +65,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 324px;
-    padding-right: 20px;
-    padding-left: 20px;
     margin-top: 10px;
+    padding: 0;
   }
