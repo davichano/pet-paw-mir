@@ -16,5 +16,6 @@
   "register": "Register",
   "registerWithGoogle": "Register with Google",
   "errorConfirmPassword": "Passwords do not match",
-  "selectCountry": "Select a country"
+  "selectCountry": "Select a country",
+  "hi":"Hi"
 }
