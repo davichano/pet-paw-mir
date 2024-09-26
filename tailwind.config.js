@@ -1,5 +1,3 @@
-
-
 /** @type {import('tailwindcss').Config} */
 import flowbite from "flowbite-react/tailwind";
 
@@ -8,7 +6,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [flowbite.plugin(),
-
-  ],
+  plugins: [flowbite.plugin()],
 };

@@ -2,6 +2,9 @@
   "chooseLanguage": "Escoger idioma",
   "helloWorld": "Hola Mundo Pet Paw está en desarrollo",
   "comingSoon": "Pronto más información",
+  "hi":"Hola",
+  "search":"Buscar",
+  "writeHere":"Escribir aquí",
   "nameLabel": "Nombres",
   "namePlaceholder": "Mario",
   "animalTypeLabel": "Tipo de Animal",
@@ -31,5 +34,4 @@
   "functionButton": "Realizar la publicacion",
   "titleFormPublish": "¿A quién debo buscar?",
   "selectPhotoButton": "Subir foto"
-
 }
