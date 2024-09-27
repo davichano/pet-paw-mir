@@ -33,5 +33,15 @@
   "markLocationButton": "Marcar Ubicación",
   "functionButton": "Realizar la publicacion",
   "titleFormPublish": "¿A quién debo buscar?",
-  "selectPhotoButton": "Subir foto"
+  "selectPhotoButton": "Subir foto",
+  "agePet": "Edad",
+  "sizePet": "Tamaño",
+  "locatePet": "Ubicación",
+  "genderPet": "Género",
+  "sharePet": "Compartir",
+  "commentPet": "Comentario",
+  "descriptionPet": "Descripción",
+  "contactPet": "Contacto",
+  "datePet": "Fecha y hora desaparecido",
+  "longTime": "años"
 }
