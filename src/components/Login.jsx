@@ -26,10 +26,10 @@ const Login = () => {
   };
   return(
     <>
-      <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">
+      <div className="h-screen bg-custom-50 flex flex-col items-center justify-center">
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
 
-          <h2 className="register__title text-custom-50 p-4 font-semibold text-3xl">
+          <h2 className="register__title text-custom-250 p-4 font-semibold text-3xl p-8">
             Inicia sesión
           </h2>
           <form
@@ -59,17 +59,23 @@ const Login = () => {
               className="register__button bg-custom-250 w-full p-2 mb-4 mt-4 border-2 border-custom-250 rounded-xl text-custom-50 shadow-lg shadow-custom-300"
               type="submit"
             >
-              Ingresar
+              Iniciar sesión
             </button>
           </form>
-          <div className="register__footer flex mt-auto text-custom-50">
+          <div className="register__footer flex text-custom-50">
             <p>
-              ¿No tienes una cuenta?
-              <a href="/signup" className="pl-1 text-custom-300 font-semibold">
-                REGISTRATE
+
+              <a href="/todo" className="pl-1 text-custom-300 font-semibold">
+                ¿Olvidaste tu contraseña?
               </a>
             </p>
           </div>
+          <button onClick={()=>{
+            navigate('/signup');
+          }} className="register-form__google-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto">
+
+            Crear nueva cuenta
+          </button>
         </div>
       </div>
     </>
