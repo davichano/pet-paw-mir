@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import CloseButton from "./CloseButton";
 
 const SignUpStep2 = ({ nextStep, handleChange, values }) => {
   const [error, setError] = useState("");
@@ -25,9 +26,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
     <>
       <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
-          <div className="w-full flex justify-end">
-            <p className="register__close text-custom-50">X</p>
-          </div>
+        <CloseButton/>
           <h2 className="register__title text-custom-50 p-4 font-semibold text-3xl">
             Crea tu perfil
           </h2>

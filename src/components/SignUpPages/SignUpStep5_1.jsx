@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import CloseButton from "./CloseButton";
 
 const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
   const handleClick = () => {
@@ -11,9 +12,7 @@ const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
           <div className="w-full flex justify-end">
             <p className="register__close text-custom-50">X</p>
           </div>
-          <h2 className="register__title text-custom-50 p-4 font-semibold text-3xl">
-            Crea tu perfil
-          </h2>
+          <CloseButton/>
           <p className="register__subtitle text-custom-50 p-4 font-normal text-base pl-0">
             Ingresa tu correo electrónico
           </p>
