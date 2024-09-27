@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher"
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Login = () => {
     <>
       <div className="h-screen bg-custom-50 flex flex-col items-center justify-center">
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
-
+          <LanguageSwitcher/>
           <h2 className="register__title text-custom-250 p-4 font-semibold text-3xl p-8">
             Inicia sesión
           </h2>
