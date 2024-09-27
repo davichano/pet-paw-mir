@@ -12,10 +12,10 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="App bg-pink-50">
         <I18nextProvider i18n={i18n}>
           <PetContext.Provider value={{current_user}}>
-            <div className="flex flex-col h-screen justify-between">
+            <div>
                 <Header/>
                 <MainRouter></MainRouter>
                 <Footer/>
