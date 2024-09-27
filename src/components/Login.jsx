@@ -72,10 +72,15 @@ const Login = () => {
           </div>
           <button onClick={()=>{
             navigate('/signup');
-          }} className="register-form__google-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto">
+          }} className="login__register-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto">
 
             Crear nueva cuenta
           </button>
+          <div className="login__footer flex mt-8 text-custom-200 font-bold">
+            <p>
+              Pet Paws
+            </p>
+          </div>
         </div>
       </div>
     </>
