@@ -15,7 +15,7 @@ const SignUpStep5_2 = ({ nextStep, handleChange, values }) => {
       setError("El número de celular debe ser un número peruano válido (debe comenzar con 9 y tener 9 dígitos).");
       return;
     }
-    nextStep();
+    nextStep(7);
   };
   return (
     <>

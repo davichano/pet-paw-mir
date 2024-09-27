@@ -19,7 +19,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
       setError("La contraseña debe tener al menos 8 caracteres, una letra, un número y un símbolo.");
       return;
     }
-    nextStep();
+    nextStep(5);
   };
   return (
     <>

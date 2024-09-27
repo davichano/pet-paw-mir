@@ -20,7 +20,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
             className="register__form flex flex-col items-center w-full"
             onSubmit={(e) => {
               e.preventDefault();
-              nextStep();
+              nextStep(4);
             }}
           >
 

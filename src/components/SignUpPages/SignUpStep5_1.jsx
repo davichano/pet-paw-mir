@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 
 const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
+  const handleClick = () => {
+    nextStep(6);
+  }
   return (
     <>
       <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">
@@ -18,7 +21,7 @@ const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
             className="register__form flex flex-col items-center w-full"
             onSubmit={(e) => {
               e.preventDefault();
-              nextStep();
+              nextStep(7);
             }}
           >
             <input
@@ -38,7 +41,10 @@ const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
               Siguiente
             </button>
           </form>
+          <button onClick={handleClick} className="register-form__google-button bg-custom-200 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-50 shadow-md shadow-custom-50">
 
+            Registrarse con número de celular
+          </button>
           <div className="register__footer flex mt-auto text-custom-50">
             <p>
               ¿Ya tienes una cuenta?
