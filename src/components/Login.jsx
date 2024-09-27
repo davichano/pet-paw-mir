@@ -22,7 +22,7 @@ const Login = () => {
     }
     console.log(formData);
     // Navegar a la siguiente página si la validación es exitosa
-    navigate('/next-page');
+    navigate('/description');
   };
   return(
     <>
