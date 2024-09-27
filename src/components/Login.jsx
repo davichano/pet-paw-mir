@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher"
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
   const [formData, setFormData] = useState({
     userName: "",
     password: "",
   });
+  const { t } = useTranslation();
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -18,7 +20,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validatePassword(formData.password)) {
-      setError("La contraseña debe tener al menos 8 caracteres.");
+      setError(t("incorrectLogin"));
       return;
     }
     console.log(formData);
@@ -31,7 +33,7 @@ const Login = () => {
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
           <LanguageSwitcher/>
           <h2 className="register__title text-custom-250 p-4 font-semibold text-3xl p-8">
-            Inicia sesión
+            {t('loginTitle')}
           </h2>
           <form
             className="register__form flex flex-col items-center w-full"
@@ -44,7 +46,7 @@ const Login = () => {
               value={formData.userName}
               onChange={handleChange}
               required
-              placeholder="Usuario o correo electrónico"
+              placeholder={t("loginAccount")}
             />
             <input
               type="password"
@@ -53,21 +55,21 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              placeholder="Contraseña"
+              placeholder={t("password")}
             />
-            {error && <p className="error text-custom-50">{error}</p>}
+            {error && <p className="error text-custom-250">{error}</p>}
             <button
               className="register__button bg-custom-250 w-full p-2 mb-4 mt-4 border-2 border-custom-250 rounded-xl text-custom-50 shadow-lg shadow-custom-300"
               type="submit"
             >
-              Iniciar sesión
+              {t("login")}
             </button>
           </form>
           <div className="register__footer flex text-custom-50">
             <p>
 
               <a href="/todo" className="pl-1 text-custom-300 font-semibold">
-                ¿Olvidaste tu contraseña?
+                {t("forgotPassword")}
               </a>
             </p>
           </div>
@@ -75,7 +77,7 @@ const Login = () => {
             navigate('/signup');
           }} className="login__register-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto">
 
-            Crear nueva cuenta
+            {t("createAccount")}
           </button>
           <div className="login__footer flex mt-8 text-custom-200 font-bold">
             <p>

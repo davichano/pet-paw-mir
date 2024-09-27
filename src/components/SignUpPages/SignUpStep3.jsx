@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import CloseButton from "./CloseButton";
+import { useTranslation } from 'react-i18next'
 
 const SignUpStep2 = ({ nextStep, handleChange, values }) => {
+  const { t } = useTranslation();
   return (
     <>
 
@@ -10,11 +12,11 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
         <CloseButton/>
           <h2 className="register__title text-custom-50 p-4 font-semibold text-3xl">
-            Crea tu perfil
+            {t("createProfile")}
           </h2>
           <p className="register__subtitle text-custom-50 p-4 font-normal text-base pl-0">
-            Ingresa con el género con el que te identificas
-          </p>
+            {t( "enterGender")}
+            </p>
           <form
             className="register__form flex flex-col items-center w-full"
             onSubmit={(e) => {
@@ -24,7 +26,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
           >
 
             <label className="border-2 border-2 bg-custom-50 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250 flex items-center justify-between">
-              <span className="register__input">Mujer</span>
+              <span className="register__input">{t("woman")}</span>
               <input
                 type="radio"
                 name="gender"
@@ -35,7 +37,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
               />
             </label>
             <label className="border-2 border-2 bg-custom-50 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250 flex items-center justify-between">
-              <span className="register__input">Hombre</span>
+              <span className="register__input">{t("man")}</span>
               <input
                 type="radio"
                 name="gender"
@@ -46,7 +48,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
               />
             </label>
             <label className="border-2 border-2 bg-custom-50 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250 flex items-center justify-between">
-              <span className="register__input">Otro</span>
+              <span className="register__input">{t("other")}</span>
               <input
                 type="radio"
                 name="gender"
