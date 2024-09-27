@@ -1,6 +1,7 @@
 
 body{
-  background-color: white;
+  background-color: #FF797D;
+
   color: #564434;
 }
 .register-form {
@@ -8,24 +9,32 @@ body{
     flex-direction: column;
     width: 300px;
     margin: 0 auto;
-    border: 2px solid #564434;
+    /*border: 2px solid #564434;*/
     border-radius: 5px;
     padding: 10px;
   }
   .register-form__title {
     font-size: 24px;
     margin-bottom: 20px;
+font-size: 27px;
+font-weight: 600;
+line-height: 32.68px;
+text-align: center;
+color: #F5F6F9;
+
 }
 
   .register-form input {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #FF585D;
     background-color: #F5E1DC;
+    color: #FF585D;
   }
   .register-form input::placeholder {
-    color: #564434;
+    color: #FF585D;
+    font-weight: 400;
   }
 
   .register-form .submit-button {
@@ -42,6 +51,7 @@ body{
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #F5E1DC;
+    color: #FF585D;
   }
   .error {
     color: red;
