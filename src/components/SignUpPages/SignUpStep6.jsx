@@ -1,8 +1,25 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-const SignUpStep6 = ({ nextStep }) => {
+const SignUpStep6 = () => {
   const [code, setCode] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const validateCode = (code) => {
+    const codePattern = /^\d{6}$/;
+    return codePattern.test(code);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateCode(code)) {
+      setError("El código debe ser de 6 dígitos.");
+      return;
+    }
+    navigate('/login');
+  };
 
   return (
     <>
@@ -19,10 +36,7 @@ const SignUpStep6 = ({ nextStep }) => {
           </p>
           <form
             className="register__form flex flex-col items-center w-full"
-            onSubmit={(e) => {
-              e.preventDefault();
-              nextStep();
-            }}
+            onSubmit={handleSubmit}
           >
             <input
               type="text"
@@ -35,7 +49,7 @@ const SignUpStep6 = ({ nextStep }) => {
               required
               placeholder="Código de confirmación"
             />
-
+            {error && <p className="error text-custom-50">{error}</p>}
             <button
               className="register__button bg-custom-250 w-full p-2 mb-4 mt-4 border-2 border-custom-250 rounded-xl text-custom-50 shadow-lg shadow-custom-300"
               type="submit"

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
-const SignUpStep1 = ({ nextStep, handleChange, values }) => {
+const SignUpStep1 = ({ nextStep, handleChange, values}) => {
+
   return (
 
       <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">

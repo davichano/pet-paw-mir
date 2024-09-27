@@ -32,6 +32,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
                 value="Mujer"
                 checked={values.gender === "Mujer"}
                 onChange={handleChange}
+                required
               />
             </label>
             <label className="border-2 border-2 bg-custom-50 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250 flex items-center justify-between">
@@ -42,6 +43,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
                 value="Hombre"
                 checked={values.gender === "Hombre"}
                 onChange={handleChange}
+                required
               />
             </label>
             <label className="border-2 border-2 bg-custom-50 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250 flex items-center justify-between">
@@ -52,6 +54,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
                 value="Otro"
                 checked={values.gender === "Otro"}
                 onChange={handleChange}
+                required
               />
             </label>
 

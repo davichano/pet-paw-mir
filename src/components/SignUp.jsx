@@ -25,6 +25,9 @@ const SignUp = () => {
   const nextStep = () => {
     setStep(step + 1);
   };
+  const gotoStep = (step) => {
+    setStep(step);
+  }
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -33,6 +36,7 @@ const SignUp = () => {
             nextStep={nextStep}
             handleChange={handleChange}
             values={formData}
+            onGotoStep={gotoStep}
           />
         );
       case 2:

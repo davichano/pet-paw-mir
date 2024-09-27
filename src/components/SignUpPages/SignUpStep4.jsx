@@ -1,6 +1,26 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const SignUpStep2 = ({ nextStep, handleChange, values }) => {
+  const [error, setError] = useState("");
+
+  const validatePassword = (password) => {
+    const minLength = /.{8,}/;
+    const hasLetter = /[a-zA-Z]/;
+    const hasNumber = /[0-9]/;
+    const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/;
+
+    return minLength.test(password) && hasLetter.test(password) && hasNumber.test(password) && hasSymbol.test(password);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validatePassword(values.password)) {
+      setError("La contraseña debe tener al menos 8 caracteres, una letra, un número y un símbolo.");
+      return;
+    }
+    nextStep();
+  };
   return (
     <>
       <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">
@@ -16,10 +36,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
           </p>
           <form
             className="register__form flex flex-col items-center w-full"
-            onSubmit={(e) => {
-              e.preventDefault();
-              nextStep();
-            }}
+            onSubmit={handleSubmit}
           >
             <input
               className="register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
@@ -39,6 +56,7 @@ const SignUpStep2 = ({ nextStep, handleChange, values }) => {
               required
               placeholder="Contraseña"
             />
+            {error && <p className="error text-custom-50">{error}</p>}
 
             <button
               className="register__button bg-custom-250 w-full p-2 mb-4 mt-4 border-2 border-custom-250 rounded-xl text-custom-50 shadow-lg shadow-custom-300"
