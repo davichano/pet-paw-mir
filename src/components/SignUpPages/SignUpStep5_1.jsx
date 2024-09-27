@@ -3,41 +3,6 @@ import PropTypes from "prop-types";
 const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
   return (
     <>
-      {" "}
-      <div>
-        <p className="register__subtitle">Ingresa tu correo electrónico </p>
-        <form
-          className="register__form flex-col"
-          onSubmit={(e) => {
-            e.preventDefault();
-            nextStep();
-          }}
-        >
-          <input
-            type="email"
-            className="register__input"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            required
-          />
-          <div className="register__button">
-            <button type="submit">Siguiente</button>
-          </div>
-        </form>
-        <button
-          className="register__button-numerPhone"
-          onClick={() => {
-            nextStep();
-          }}
-        >
-          Registrarse con número celular
-        </button>
-        <div className="register__footer">
-          <p>¿Ya tienes una cuenta?</p>
-          <a href="/login">Inicia sesión</a>
-        </div>
-      </div>
       <div className="h-screen bg-custom-200 flex flex-col items-center justify-center">
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
           <div className="w-full flex justify-end">
@@ -57,30 +22,13 @@ const SignUpStep5_1 = ({ nextStep, handleChange, values }) => {
             }}
           >
             <input
+              className="register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
               type="email"
-              className="register__input"
               name="email"
               value={values.email}
               onChange={handleChange}
               required
-            />
-            <input
-              className="register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
-              type="text"
-              name="userName"
-              value={values.userName}
-              onChange={handleChange}
-              required
-              placeholder="Nombre de usuario"
-            />
-            <input
-              className="register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
-              type="password"
-              name="password"
-              value={values.password}
-              onChange={handleChange}
-              required
-              placeholder="Contraseña"
+              placeholder="Correo electrónico"
             />
 
             <button
