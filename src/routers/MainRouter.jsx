@@ -20,7 +20,6 @@ export const MainRouter=()=>{
         <Route path="/feed" element={<Feed></Feed>}/>
         <Route path="/description" element={<DetailsPublication></DetailsPublication>}/>
         <Route path="/user/:id" element={<UserProfile></UserProfile>}/>
-        <Route path="/" element={<Home></Home>}/>
         <Route path="/register" element={<RegisterForm/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
