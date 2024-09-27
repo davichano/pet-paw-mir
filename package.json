@@ -11,11 +11,15 @@
     "prettier": "prettier --write --ignore-unknown",
     "preview": "vite preview",
     "prepare": "husky",
-    "create-hook": "husky add .husky/pre-commit \"npm test\""
+    "create-hook": "husky add .husky/pre-commit \"npm test\"",
+    "api": "json-server --watch db.json --routes apiRoutes.json --port 8080"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "flowbite-react": "^0.10.1",
     "i18next": "^23.15.1",
+    "postcss": "^8.4.47",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.2",
@@ -36,9 +40,10 @@
     "globals": "^15.9.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+    "json-server": "0.17.4",
+    "postcss": "^8.4.47"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
