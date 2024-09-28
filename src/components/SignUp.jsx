@@ -22,8 +22,8 @@ const SignUp = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const nextStep = () => {
-    setStep(step + 1);
+  const nextStep = (number) => {
+    setStep(number);
   };
   const renderStep = () => {
     switch (step) {
