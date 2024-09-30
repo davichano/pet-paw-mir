@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 
+
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -68,7 +69,10 @@ const Login = () => {
         </Button>
         <div className="login__footer flex mt-8 text-custom-200 font-bold">
           <p>Pet Paws</p>
+
         </div>
+
+
       </div>
     </div>
   );
