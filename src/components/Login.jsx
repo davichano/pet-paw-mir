@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import  Button from "./ui/Button";
+import Input from "./ui/Input";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +85,12 @@ const Login = () => {
           <div className="login__footer flex mt-8 text-custom-200 font-bold">
             <p>Pet Paws</p>
           </div>
+          <Button onClick={()=>console.log("action")}>Primary Button</Button>
+          <Button className="btn-secondary" onClick={()=>console.log("action")}>Secondary Button</Button>
+          <Input placeholder ="Input de prueba"/>
         </div>
+
+
       </div>
     </>
   );

@@ -21,6 +21,10 @@ export default {
         odin: ["Odin Rounded", "sans-serif"],
         sofia: ["Sofia Pro", "sans-serif"],
       },
+      boxShadow: {
+        "3xl": "-3px 3px 0px 1px rgba(255,65,70,1)",
+        "4xl": "-3px 3px 0px 1px rgba(255,121,125,1)",
+      },
     },
   },
   plugins: [flowbite.plugin()],
