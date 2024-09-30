@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LanguageSwitcher from "./LanguageSwitcher"
-import { useTranslation } from 'react-i18next'
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,15 +25,15 @@ const Login = () => {
     }
     console.log(formData);
     // Navegar a la siguiente página si la validación es exitosa
-    navigate('/description');
+    navigate("/description");
   };
-  return(
+  return (
     <>
       <div className="h-screen bg-custom-50 flex flex-col items-center justify-center">
         <div className="register w-full max-w-md p-6 flex flex-col items-center relative h-full">
-          <LanguageSwitcher/>
+          <LanguageSwitcher />
           <h2 className="register__title text-custom-250 p-4 font-semibold text-3xl p-8">
-            {t('loginTitle')}
+            {t("loginTitle")}
           </h2>
           <form
             className="register__form flex flex-col items-center w-full"
@@ -41,7 +41,7 @@ const Login = () => {
           >
             <input
               type="text"
-              className="register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
+              className="font-sofia register__input border-2 border-custom-250 p-2 w-full mb-4 rounded-xl placeholder-custom-250 font-normal text-base text-custom-250"
               name="userName"
               value={formData.userName}
               onChange={handleChange}
@@ -67,27 +67,26 @@ const Login = () => {
           </form>
           <div className="register__footer flex text-custom-50">
             <p>
-
               <a href="/todo" className="pl-1 text-custom-300 font-semibold">
                 {t("forgotPassword")}
               </a>
             </p>
           </div>
-          <button onClick={()=>{
-            navigate('/signup');
-          }} className="login__register-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto">
-
+          <button
+            onClick={() => {
+              navigate("/signup");
+            }}
+            className="login__register-button bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-50 rounded-xl text-custom-300 font-semibold shadow-md shadow-custom-50 mt-auto"
+          >
             {t("createAccount")}
           </button>
           <div className="login__footer flex mt-8 text-custom-200 font-bold">
-            <p>
-              Pet Paws
-            </p>
+            <p>Pet Paws</p>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Login;
