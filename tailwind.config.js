@@ -7,13 +7,19 @@ export default {
     extend: {
       colors: {
         custom: {
-          50: '#FFF4F5',
-          100: '#FFE4E2',
-          150: '#FFB0A9',
-          200: '#FF797D',
-          250: '#FF585D',
-          300: '#FF4146',
+          50: "#FFFFFF",
+          100: "#FFE4E2",
+          150: "#FFB0A9",
+          200: "#FF797D",
+          250: "#FF585D",
+          300: "#D9534F",
+          350: "#FF4146",
+          400: "#C9302C",
         },
+      },
+      fontFamily: {
+        odin: ["Odin Rounded", "sans-serif"],
+        sofia: ["Sofia Pro", "sans-serif"],
       },
     },
   },
