@@ -127,3 +127,19 @@
   font-weight: 900;
   font-style: italic;
 }
+@layer components {
+  .btn-primary {
+    @apply bg-custom-250 w-full p-2 mb-4 mt-4 border-2 border-custom-250 rounded-xl text-custom-50 shadow-3xl;
+  }
+  .btn-secondary {
+    @apply bg-custom-150 w-full p-2 mb-4 mt-4 border-2 border-custom-200 rounded-xl text-custom-350 shadow-4xl;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-700 text-white;
+  }
+}
+
+body {
+  @apply font-sofia;
+}
