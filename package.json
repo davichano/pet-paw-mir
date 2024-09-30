@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ./src",
-    "prettier": "prettier --write --ignore-unknown",
+    "prettier": "prettier --write --ignore-unknown .",
     "preview": "vite preview",
     "prepare": "husky",
     "create-hook": "husky add .husky/pre-commit \"npm test\"",
