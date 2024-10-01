@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import Button from "./ui/Button";
-import Input from "./ui/Input";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
