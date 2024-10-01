@@ -104,5 +104,7 @@
   "nextButton": "Next step",
   "previousButton": "Previous step",
   "submitButton": "Submit",
-  "submitPhoto": "Submit Photo"
+  "submitPhoto": "Submit Photo",
+  "usernameRequired": "Username is required",
+  "passwordRequired": "Password is required"
 }

@@ -104,5 +104,7 @@
   "nextButton": "Siguiente",
   "previousButton": "Anterior",
   "submitButton": "Enviar",
-  "submitPhoto": "Subir foto"
+  "submitPhoto": "Subir foto",
+  "usernameRequired": "Usuario es requerido",
+  "passwordRequired": "Contraseña es requerida"
 }
