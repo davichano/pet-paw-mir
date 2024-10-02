@@ -18,17 +18,12 @@ const DetailsPublication = () =>{
 
   return (
     <div className="flex place-content-evenly items-center">
-    <div className="w-full max-w-4xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="w-full max-w-4xl h-full">
       <PetDescription
           description={post.pet_description}
           name={post.name || "Desconocido"}
           imageUrl={post.pictures?.[0]?.url}
       />
-
-
-
-      </div>
     </div>
   </div>
   );
