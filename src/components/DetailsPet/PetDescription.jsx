@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Modal } from 'flowbite-react';
 import Comentario from './Comentario';
 import InputConIconos from './InputWithIcon';
+import PetInfo from './PetInfo';
 
 const PetDescription = ({ name, description, imageUrl}) => {
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ const PetDescription = ({ name, description, imageUrl}) => {
 
       {/* Contenedor de la imagen */}
       <div className="w-full flex items-center justify-center my-10">
-        <div className="w-full max-w-[90%] md:max-w-auto h-40 flex items-center justify-center bg-[#ffaca4]">
+        <div className="w-full max-w-[90%] md:max-w-auto h-auto flex items-center justify-center bg-[#ffaca4]">
           <img
             src={imageUrl}
             alt="Pet"
@@ -67,9 +68,15 @@ const PetDescription = ({ name, description, imageUrl}) => {
         <button className="flex items-center bg-transparent text-pink-500">
           <img src="/src/assets/img/Icons/comment.svg" alt="comment" className="w-8 h-8 mr-2" />
         </button>
-        <button className="flex items-center bg-transparent text-pink-500">
-          <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-8 h-8 mr-2" />
-        </button>
+        <PetInfo
+          name={name}
+          size="Mediano"
+          age="2 años"
+          location="Madrid"
+          dateLost="01/09/2024"
+          gender="Macho"
+          imageUrl={imageUrl}
+        />
         <button className="flex items-center bg-transparent text-pink-500">
           <img src="/src/assets/img/Icons/location.svg" alt="location" className="w-8 h-8 mr-2" />
         </button>
@@ -120,7 +127,7 @@ const PetDescription = ({ name, description, imageUrl}) => {
 
           </div>
         </Modal.Body>
-        
+
   </Modal>
 
     </>
