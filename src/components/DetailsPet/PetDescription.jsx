@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { Modal } from 'flowbite-react';
-import Comentario from './Comentario';
-import InputConIconos from './InputWithIcon';
-import CardPostPet from './CardPostPet';
 
-const PetDescription = ({ name, description, imageUrl}) => {
+import CardPostPet from './CardPostPet';
+import SectionCommets from './SectionCommets';
+
+const PetDescription = ({ id, name, description, imageUrl}) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -29,24 +29,7 @@ const PetDescription = ({ name, description, imageUrl}) => {
             handleModalToggle={handleModalToggle}
       />
 
-    {/* Segunda Columna: Caja de Comentarios */}
-    <div className="px-4">
-      <Comentario
-        avatar="/src/assets/img/Icons/avatar_placeholder.svg"
-        nombre="Nombre"
-        tiempo="50 min"
-        texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      />
-      <Comentario
-        avatar="/src/assets/img/Icons/avatar_placeholder.svg"
-        nombre="Nombre"
-        tiempo="50 min"
-        texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      />
-       <hr className="border-solid border-1 border-[#FF797D]" />
-       <br />
-      <InputConIconos />
-    </div>
+      <SectionCommets postId={id} />
 
     </div>
   </div>
@@ -77,6 +60,7 @@ const PetDescription = ({ name, description, imageUrl}) => {
 };
 
 PetDescription.propTypes = {
+  id: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string
