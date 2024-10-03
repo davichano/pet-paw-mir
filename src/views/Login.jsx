@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { loginUser } from "../services/users";
 
 
 
@@ -24,8 +25,19 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+
+      const result = await loginUser(data.username, data.password)
+      if (result.length > 0) {
+        localStorage.setItem('user', JSON.stringify(result[0]));
+        navigate('/feed');
+      } else {
+        alert(t('loginError'));
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      alert(t('loginError'));     }
   });
   return (
     <div className="h-screen bg-custom-50 flex flex-col items-center justify-center">

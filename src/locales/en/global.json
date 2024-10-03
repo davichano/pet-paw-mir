@@ -106,5 +106,6 @@
   "submitButton": "Submit",
   "submitPhoto": "Submit Photo",
   "usernameRequired": "Username is required",
-  "passwordRequired": "Password is required"
+  "passwordRequired": "Password is required",
+  "loginSuccess": "Login successful"
 }
