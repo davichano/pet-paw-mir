@@ -17,6 +17,10 @@ const SignUp = () => {
   );
 };
 
+const validateCode = (value) => {
+  return value === '123456'
+}
+
 const SignUpForm = () => {
   const { step, nextStep } = useContext(StepContext);
   const navigate = useNavigate();
@@ -26,7 +30,30 @@ const SignUpForm = () => {
     mode: 'onTouched',
   });
 
+  const { setValue, setError, clearErrors } = methods;
+
   const onSubmit = (data) => {
+    if (step === 5){
+      //logica para enviar codigo de verificacion desde el correo
+      nextStep(7);
+    } else
+    if (step === 6){
+      //logica para enviar codigo desde el telefono
+      nextStep(7);
+    } else
+    if (step === 7){
+      if (validateCode(data.code)){
+        clearErrors('code');
+        navigate('/login');
+      } else {
+        setError('code', {
+          type: 'manual',
+          message: 'Código incorrecto',
+        });
+        alert('Código incorrecto');
+        setValue('code', '');
+      }
+    } else
     if (step < steps.length) {
       nextStep();
     } else {
