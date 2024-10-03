@@ -11,7 +11,7 @@ export async function fetchUser(id) {
 }
 
 export async function loginUser (username, password) {
-  const response = await fetch(`http://localhost:8080/users?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+  const response = await fetch(`${BASE_URL}users?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
 
   // Verificamos si la respuesta es exitosa
   if (!response.ok) {
