@@ -107,5 +107,7 @@
   "submitPhoto": "Subir foto",
   "usernameRequired": "Usuario es requerido",
   "passwordRequired": "Contraseña es requerida",
-  "loginSuccess": "Inicio de sesión exitoso"
+  "loginSuccess": "Inicio de sesión exitoso",
+  "followLabel": "Seguir",
+  "petInfoTitle": "Datos Mascota"
 }

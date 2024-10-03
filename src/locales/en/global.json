@@ -107,5 +107,7 @@
   "submitPhoto": "Submit Photo",
   "usernameRequired": "Username is required",
   "passwordRequired": "Password is required",
-  "loginSuccess": "Login successful"
+  "loginSuccess": "Login successful",
+  "followLabel": "Follow",
+  "petInfoTitle": "Pet data"
 }
