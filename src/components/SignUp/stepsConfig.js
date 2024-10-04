@@ -61,8 +61,8 @@ export const steps = [
     subtitleKey: 'enterUsernameAndPass',
     fields: [
       {
-        name: 'userName',
-        labelKey: 'userName',
+        name: 'username',
+        labelKey: 'username',
         type: 'text',
         validation: Yup.string().required('El nombre de usuario es obligatorio'),
       },

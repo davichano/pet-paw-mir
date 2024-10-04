@@ -1,13 +1,15 @@
 // SignUp.jsx
-import { useForm, FormProvider } from 'react-hook-form';
-import { StepProvider } from '../components/SignUp/StepContext';
-import { useContext } from 'react';
-import { steps } from '../components/SignUp/stepsConfig';
-import { StepContext } from '../components/SignUp/StepContext';
-import { getValidationSchema } from '../components/SignUp/validationSchema';
-import { yupResolver } from '@hookform/resolvers/yup';
-import FormStep from '../components/SignUp/FormStep';
-import { useNavigate } from 'react-router-dom';
+import { useForm, FormProvider } from "react-hook-form";
+import { StepProvider } from "../components/SignUp/StepContext";
+import { useContext } from "react";
+import { steps } from "../components/SignUp/stepsConfig";
+import { StepContext } from "../components/SignUp/StepContext";
+import { getValidationSchema } from "../components/SignUp/validationSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import FormStep from "../components/SignUp/FormStep";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { createUser } from "../services/users";
 
 const SignUp = () => {
   return (
@@ -18,55 +20,74 @@ const SignUp = () => {
 };
 
 const validateCode = (value) => {
-  return value === '123456'
-}
+  return value === "123456";
+};
 
 const SignUpForm = () => {
+  const { t } = useTranslation();
+
   const { step, nextStep } = useContext(StepContext);
   const navigate = useNavigate();
 
   const methods = useForm({
     resolver: yupResolver(getValidationSchema(step)),
-    mode: 'onTouched',
+    mode: "onTouched",
   });
 
-  const { setValue, setError, clearErrors } = methods;
+  const { setValue, setError, clearErrors, getValues } = methods;
 
-  const onSubmit = (data) => {
-    if (step === 5){
+  const onSubmit = async (data) => {
+    if (step === 5) {
       //logica para enviar codigo de verificacion desde el correo
       nextStep(7);
-    } else
-    if (step === 6){
+    } else if (step === 6) {
       //logica para enviar codigo desde el telefono
       nextStep(7);
-    } else
-    if (step === 7){
-      if (validateCode(data.code)){
-        clearErrors('code');
-        navigate('/login');
+    } else if (step === 7) {
+      if (validateCode(data.code)) {
+        try {
+          const allData = getValues();
+          const userData = Object.entries(allData).reduce(
+            (acc, [key, value]) => {
+              if (key !== "code") {
+                acc[key] = value;
+              }
+              return acc;
+            },
+            {}
+          );
+
+          // Llamamos a createUser para crear el nuevo usuario
+          await createUser(userData);
+          clearErrors("code");
+          alert(t("signupSuccess"));
+          navigate("/login");
+        } catch (error) {
+          console.error("Error al crear el usuario:", error);
+          alert("Error al crear el usuario. Por favor, intenta nuevamente.");
+        }
       } else {
-        setError('code', {
-          type: 'manual',
-          message: 'Código incorrecto',
+        setError("code", {
+          type: "manual",
+          message: "Código incorrecto",
         });
-        alert('Código incorrecto');
-        setValue('code', '');
+        alert("Código incorrecto");
+        setValue("code", "");
       }
-    } else
-    if (step < steps.length) {
+    } else if (step < steps.length) {
       nextStep();
     } else {
       // Envío final del formulario
-      console.log('Datos del formulario:', data);
+      console.log("Datos del formulario:", data);
       // Navegar a otra página
-      navigate('/login');
+      navigate("/login");
     }
   };
 
   const onAlternativeClick = () => {
     // Manejar la navegación alternativa (ej. cambiar entre email y número de teléfono)
-    const alternativeStep = steps.find((s) => s.id === step).alternative.nextStep;
+    const alternativeStep = steps.find((s) => s.id === step).alternative
+      .nextStep;
     nextStep(alternativeStep);
   };
 

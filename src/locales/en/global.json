@@ -109,5 +109,6 @@
   "passwordRequired": "Password is required",
   "loginSuccess": "Login successful",
   "followLabel": "Follow",
-  "petInfoTitle": "Pet data"
+  "petInfoTitle": "Pet data",
+  "signupSuccess": "Registration successful"
 }

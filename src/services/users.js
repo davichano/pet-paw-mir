@@ -13,13 +13,27 @@ export async function fetchUser(id) {
 export async function loginUser (username, password) {
   const response = await fetch(`${BASE_URL}users?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
 
-  // Verificamos si la respuesta es exitosa
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
 
-  // Convertimos la respuesta a JSON
   const users = await response.json();
 
   return users;
+}
+
+export async function createUser (user) {
+  const response = await fetch(`${BASE_URL}users`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  return response.json();
 }

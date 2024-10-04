@@ -109,5 +109,6 @@
   "passwordRequired": "Contraseña es requerida",
   "loginSuccess": "Inicio de sesión exitoso",
   "followLabel": "Seguir",
-  "petInfoTitle": "Datos Mascota"
+  "petInfoTitle": "Datos Mascota",
+  "signupSuccess": "Registro exitoso"
 }
