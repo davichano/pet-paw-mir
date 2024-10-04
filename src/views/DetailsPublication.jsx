@@ -20,6 +20,7 @@ const DetailsPublication = () =>{
     <div className="flex place-content-evenly items-center">
     <div className="w-full max-w-4xl h-full">
       <PetDescription
+          id={id}
           description={post.pet_description}
           name={post.name || "Desconocido"}
           imageUrl={post.pictures?.[0]?.url}
