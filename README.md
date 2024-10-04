@@ -7,20 +7,20 @@ Pet Paw es una aplicación web moderna dedicada a la adopción de mascotas y a l
 Para garantizar una experiencia de usuario atractiva y accesible, hemos seleccionado una paleta de colores cálida y amigable, así como dos tipografías que destacan por su enfoque suave y moderno.
 
 **Fuentes**
--**Odin Rounded**: Una fuente con puntas redondeadas que evoca cercanía y simpatía, ideal para hacer que los usuarios se sientan cómodos navegando en la aplicación.
--**Sofia Pro**: Una tipografía versátil con una estructura redondeada que mantiene un equilibrio entre modernidad y simplicidad, proporcionando legibilidad y un diseño limpio.
+**Odin Rounded**: Una fuente con puntas redondeadas que evoca cercanía y simpatía, ideal para hacer que los usuarios se sientan cómodos navegando en la aplicación.
+**Sofia Pro**: Una tipografía versátil con una estructura redondeada que mantiene un equilibrio entre modernidad y simplicidad, proporcionando legibilidad y un diseño limpio.
 
 **Esquema de colores**
 El esquema de colores se basa en un contraste por brillo que garantiza tanto accesibilidad como una estética visualmente coherente y atractiva. Los tonos cálidos y suaves ayudan a transmitir una sensación de cuidado y conexión emocional con las mascotas:
 
--#FFFFFF
--#FFE4E2
--#FFB0A9
--#FF797D
--#FF585D
--#D9534F
--#FF4146
--#C9302C
+#FFFFFF
+#FFE4E2
+#FFB0A9
+#FF797D
+#FF585D
+#D9534F
+#FF4146
+#C9302C
 
 ### Mockups
 La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para diseño mobile y desktop.
