@@ -111,6 +111,7 @@
   "followLabel": "Follow",
   "petInfoTitle": "Pet data",
   "signupSuccess": "Registration successful",
+  "signupError": "Error registering",
   "profile": "Profile",
   "report": "Report",
   "block": "Block",

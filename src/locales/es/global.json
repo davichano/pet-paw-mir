@@ -111,6 +111,7 @@
   "followLabel": "Seguir",
   "petInfoTitle": "Datos Mascota",
   "signupSuccess": "Registro exitoso",
+  "signupError": "Error al registrarse",
   "profile": "Perfil",
   "report": "Reportar",
   "block": "Bloquear",
