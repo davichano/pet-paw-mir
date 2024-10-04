@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGetUser } from '../../hooks/useGetUser';
 import { useGetUserPosts } from '../../hooks/useGetUserPosts';
 import { Link, useParams } from 'react-router-dom';
-import { Modal } from 'flowbite-react'; // Importa el componente Modal de Flowbite-React
+import { Modal } from 'flowbite-react';
 
 function Profile() {
   const { t } = useTranslation();

@@ -112,5 +112,11 @@
   "picture": "Picture",
   "save": "Save",
   "follow": "Follow",
-  "saveError": "Error saving"
+  "saveError": "Error saving",
+  "lastname": "Lastname",
+  "username": "Username",
+  "birthdate": "Birthdate",
+  "saving": "Saving...",
+  "errorUpdatingUser": "Error updating user.",
+  "goBack": "Go back"
 }

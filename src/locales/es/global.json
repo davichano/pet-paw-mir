@@ -112,5 +112,11 @@
   "picture": "Foto",
   "save": "Guardar",
   "follow": "Seguir",
-  "saveError": "Error al guardar"
+  "saveError": "Error al guardar",
+  "lastname": "Apellido",
+  "username": "Nombre de usuario",
+  "birthdate": "Fecha de nacimiento",
+  "saving": "Guardando...",
+  "errorUpdatingUser": "Error al actualizar el usuario.",
+  "goBack": "Volver"
 }
