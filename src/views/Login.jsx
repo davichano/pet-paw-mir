@@ -32,11 +32,11 @@ const Login = () => {
         toast.success(t("loginSuccess"));
         navigate("/feed");
       } else {
-        toast.error(t("loginError e"));
+        toast.error(t("loginError"));
       }
     } catch (error) {
       console.error(error);
-      toast.error(t("loginError c"));
+      toast.error(t("loginError"));
     }
   });
   return (
