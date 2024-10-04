@@ -2,9 +2,28 @@
 
 Pet Paw es una aplicación web moderna dedicada a la adopción de mascotas y a la búsqueda de animales perdidos. Conectamos rescatistas, albergues y personas que buscan adoptar o han perdido a sus animales de compañía, facilitando la difusión de casos y creando una comunidad enfocada en darles a los animales un hogar. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.
 
-## Mockups
+#UI Design
+### Definición de colores y fuentes
+Para garantizar una experiencia de usuario atractiva y accesible, hemos seleccionado una paleta de colores cálida y amigable, así como dos tipografías que destacan por su enfoque suave y moderno.
 
-La aplicación se basa en los siguiente MockUps realizados en figma, tanto para diseño mobile y desktop.
+**Fuentes**
+-**Odin Rounded**: Una fuente con puntas redondeadas que evoca cercanía y simpatía, ideal para hacer que los usuarios se sientan cómodos navegando en la aplicación.
+-**Sofia Pro**: Una tipografía versátil con una estructura redondeada que mantiene un equilibrio entre modernidad y simplicidad, proporcionando legibilidad y un diseño limpio.
+
+**Esquema de colores**
+El esquema de colores se basa en un contraste por brillo que garantiza tanto accesibilidad como una estética visualmente coherente y atractiva. Los tonos cálidos y suaves ayudan a transmitir una sensación de cuidado y conexión emocional con las mascotas:
+
+-#FFFFFF
+-#FFE4E2
+-#FFB0A9
+-#FF797D
+-#FF585D
+-#D9534F
+-#FF4146
+-#C9302C
+
+### Mockups
+La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para diseño mobile y desktop.
 
 - Figma - [Pet Paw mockups](https://www.figma.com/design/QdrT1X1tpDvgPlli9pRl2J/Pet-Paws?node-id=0-1&node-type=canvas&t=wXHANSG2u6jNZMI5-0)
 
