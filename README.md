@@ -1,6 +1,6 @@
-# Pet Paw
+# Pet Paw 🐾
 
-Pet Paw es una aplicación web moderna diseñada para facilitar la interacción entre los usuarios y sus mascotas. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.
+Pet Paw es una aplicación web moderna dedicada a la adopción de mascotas y a la búsqueda de animales perdidos. Conectamos rescatistas, albergues y personas que buscan adoptar o han perdido a sus animales de compañía, facilitando la difusión de casos y creando una comunidad enfocada en darles a los animales un hogar. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.
 
 ## Mockups
 
