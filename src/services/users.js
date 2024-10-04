@@ -10,29 +10,39 @@ export async function fetchUser(id) {
   return response.json();
 }
 
-export async function loginUser (username, password) {
-  const response = await fetch(`${BASE_URL}users?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+export async function loginUser(username, password) {
+  const url = new URL(`${BASE_URL}users`);
+  url.search = new URLSearchParams({
+    username: encodeURIComponent(username),
+    password: encodeURIComponent(password),
+  });
+
+  const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error(`Network response was not ok: ${response.statusText}`);
   }
 
   const users = await response.json();
 
+  if (!Array.isArray(users)) {
+    throw new Error("Invalid response format");
+  }
+
   return users;
 }
 
-export async function createUser (user) {
+export async function createUser(user) {
   const response = await fetch(`${BASE_URL}users`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
   });
 
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error("Network response was not ok");
   }
 
   return response.json();
