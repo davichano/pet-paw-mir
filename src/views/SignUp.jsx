@@ -10,6 +10,7 @@ import FormStep from "../components/SignUp/FormStep";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { createUser } from "../services/users";
+import { toast } from "sonner";
 
 const SignUp = () => {
   return (
@@ -34,7 +35,7 @@ const SignUpForm = () => {
     mode: "onTouched",
   });
 
-  const { setValue, setError, clearErrors, getValues } = methods;
+  const { getValues } = methods;
 
   const onSubmit = async (data) => {
     if (step === 5) {
@@ -59,20 +60,16 @@ const SignUpForm = () => {
 
           // Llamamos a createUser para crear el nuevo usuario
           await createUser(userData);
-          clearErrors("code");
-          alert(t("signupSuccess"));
+          toast.error(t("signupSuccess"));
           navigate("/login");
         } catch (error) {
           console.error("Error al crear el usuario:", error);
-          alert("Error al crear el usuario. Por favor, intenta nuevamente.");
+          toast.error(
+            "Error al crear el usuario. Por favor, intenta nuevamente."
+          );
         }
       } else {
-        setError("code", {
-          type: "manual",
-          message: "Código incorrecto",
-        });
-        alert("Código incorrecto");
-        setValue("code", "");
+        toast.error("Código incorrecto");
       }
     } else if (step < steps.length) {
       nextStep();
