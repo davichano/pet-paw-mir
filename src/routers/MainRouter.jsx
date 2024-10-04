@@ -7,8 +7,8 @@ import UserProfile from '../views/users/Profile';
 import UserEditProfile from '../views/users/EditProfile';
 import RegisterForm from '../components/RegisterForm';
 import Header from '../components/template/Header.jsx'
-import  SignUp  from '../components/SignUp.jsx';
-import Login from '../components/Login.jsx';
+import  SignUp  from '../views/SignUp.jsx';
+import Login from '../views/Login.jsx';
 
 export const MainRouter=()=>{
   const location = useLocation();
@@ -19,7 +19,7 @@ export const MainRouter=()=>{
       <Routes>
         <Route path="/" element={<Home></Home>}/>,
         <Route path="/feed" element={<Feed></Feed>}/>
-        <Route path="/description" element={<DetailsPublication></DetailsPublication>}/>
+        <Route path="/pet/:id" element={<DetailsPublication></DetailsPublication>}/>
         <Route path="/user/:id" element={<UserProfile></UserProfile>}/>
         <Route path="/user/edit/:id" element={<UserEditProfile></UserEditProfile>}/>
         <Route path="/register" element={<RegisterForm/>}/>
