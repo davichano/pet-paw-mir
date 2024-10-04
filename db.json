@@ -85,5 +85,14 @@
         }
       ]
     }
+  ],
+  "comments": [
+    {
+      "post_id": "1",
+      "user_id": 1,
+      "text": "Hola",
+      "timestamp": "2024-10-04T22:52:30.118Z",
+      "id": 1
+    }
   ]
 }
