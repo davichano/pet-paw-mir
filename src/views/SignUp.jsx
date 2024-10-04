@@ -45,6 +45,8 @@ const SignUpForm = () => {
       //logica para enviar codigo desde el telefono
       nextStep(7);
     } else if (step === 7) {
+      if(!data.email) data.email = ""
+      if(!data.phoneNumber) data.phoneNumber = ""
       if (validateCode(data.code)) {
         try {
           const allData = getValues();
@@ -60,7 +62,7 @@ const SignUpForm = () => {
 
           // Llamamos a createUser para crear el nuevo usuario
           await createUser(userData);
-          toast.error(t("signupSuccess"));
+          toast.success(t("signupSuccess"));
           navigate("/login");
         } catch (error) {
           console.error(error);
@@ -69,7 +71,7 @@ const SignUpForm = () => {
           );
         }
       } else {
-        toast.error("Código incorrecto");
+        toast.error(t("errorCode"));
       }
     } else if (step < steps.length) {
       nextStep();
