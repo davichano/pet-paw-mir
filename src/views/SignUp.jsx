@@ -63,9 +63,9 @@ const SignUpForm = () => {
           toast.error(t("signupSuccess"));
           navigate("/login");
         } catch (error) {
-          console.error("Error al crear el usuario:", error);
+          console.error(error);
           toast.error(
-            "Error al crear el usuario. Por favor, intenta nuevamente."
+            t("signupError")
           );
         }
       } else {
@@ -74,9 +74,6 @@ const SignUpForm = () => {
     } else if (step < steps.length) {
       nextStep();
     } else {
-      // Envío final del formulario
-      console.log("Datos del formulario:", data);
-      // Navegar a otra página
       navigate("/login");
     }
   };

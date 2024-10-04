@@ -35,9 +35,8 @@ const Login = () => {
         toast.error(t("loginError"));
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error);
-      alert(t("loginError"));
-      toast("aonner test");
+      console.error(error);
+      toast.error(t("loginError"));
     }
   });
   return (
