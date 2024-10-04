@@ -100,5 +100,17 @@
   "confirmationCode": "confirmation code",
   "enterNumberPhone": "Enter your phone number",
   "numberPhone": "Phone number",
-  "errorPhoneNumber": "It is not a valid cell phone number"
+  "errorPhoneNumber": "It is not a valid cell phone number",
+  "profile": "Profile",
+  "report": "Report",
+  "block": "Block",
+  "edit": "Edit",
+  "change": "Change",
+  "description": "Description",
+  "gender": "Gender",
+  "personalInformation": "Personal Information",
+  "picture": "Picture",
+  "save": "Save",
+  "follow": "Follow",
+  "saveError": "Error saving"
 }

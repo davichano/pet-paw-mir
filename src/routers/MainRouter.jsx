@@ -4,6 +4,7 @@ import Home from '../views/Home';
 import Feed from '../views/Feed';
 import DetailsPublication from '../views/DetailsPublication';
 import UserProfile from '../views/users/Profile';
+import UserEditProfile from '../views/users/EditProfile';
 import RegisterForm from '../components/RegisterForm';
 import Header from '../components/template/Header.jsx'
 import  SignUp  from '../components/SignUp.jsx';
@@ -20,6 +21,7 @@ export const MainRouter=()=>{
         <Route path="/feed" element={<Feed></Feed>}/>
         <Route path="/description" element={<DetailsPublication></DetailsPublication>}/>
         <Route path="/user/:id" element={<UserProfile></UserProfile>}/>
+        <Route path="/user/edit/:id" element={<UserEditProfile></UserEditProfile>}/>
         <Route path="/register" element={<RegisterForm/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
