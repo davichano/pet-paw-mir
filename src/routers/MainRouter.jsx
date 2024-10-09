@@ -10,6 +10,7 @@ import Login from "../views/Login.jsx";
 import { Toaster } from "sonner";
 import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
+import NewPostTag from "../views/NewPostTag.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ export const MainRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/post" element={<NewPostPet/>} />
         <Route path="/post/state" element={<NewPostState/>}/>
+        <Route path="/post/tag" element={<NewPostTag/>}/>
       </Routes>
     </>
   );

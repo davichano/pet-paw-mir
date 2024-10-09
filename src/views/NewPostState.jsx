@@ -15,7 +15,7 @@ const NewPostState = () => {
 
   return (
     <div className="max-w-[375px] mx-auto p-4">
-      <p className="text-left text-[#FF797D] mb-4">¿Cuál es el estado actual?</p>
+      <p className="text- text-[#FF797D] mb-4">¿Cuál es el estado actual?</p>
 
       <StateOption
         label="Perdido"
