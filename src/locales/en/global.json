@@ -146,5 +146,7 @@
   "emailOrPhoneInvalid": "Email or phone number is invalid",
   "send": "Send",
   "cantChangePassword": "Can't change your password?",
-  "enterNewPassword": "Enter your new password"
+  "enterNewPassword": "Enter your new password",
+  "verificationCodeSent": "Verification code sent",
+  "userNotExists": "User does not exist"
 }

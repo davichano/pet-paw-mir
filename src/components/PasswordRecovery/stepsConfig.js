@@ -14,12 +14,12 @@ export const steps = [
         validation: Yup.string()
           .test(
             "email-or-phone",
-            "Debe ser un correo electrónico válido o un número de teléfono que comience con 9",
+            "emailOrPhoneInvalid",
             (value) =>
               Yup.string().email().isValidSync(value) ||
               /^[9][0-9]{8}$/.test(value)
           )
-          .required("Este campo es obligatorio"),
+          .required("emailOrPhoneRequired"),
       },
     ],
   },

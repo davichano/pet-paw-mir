@@ -8,7 +8,6 @@ import Header from "../components/template/Header.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
-import PasswordReset from "../views/passwordRecovery/PasswordReset.jsx";
 import { Toaster } from "sonner";
 
 export const MainRouter = () => {
@@ -27,7 +26,6 @@ export const MainRouter = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/passwordrecovery" element={<PasswordRecovery />} />
-        <Route path="/passwordreset" element={<PasswordReset />} />
       </Routes>
     </>
   );

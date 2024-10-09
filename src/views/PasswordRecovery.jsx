@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormStep from "../components/PasswordRecovery/FormStep";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { createUser } from "../services/users";
+import { getUserByEmail, patchUser } from "../services/users";
 import { toast } from "sonner";
 
 const SignUp = () => {
@@ -26,7 +26,6 @@ const validateCode = (value) => {
 
 const SignUpForm = () => {
   const { t } = useTranslation();
-
   const { step, nextStep } = useContext(StepContext);
   const navigate = useNavigate();
 
@@ -35,48 +34,43 @@ const SignUpForm = () => {
     mode: "onTouched",
   });
 
-  const { getValues, setValue } = methods;
+  const { setValue } = methods;
 
   const onSubmit = async (data) => {
-    if (step === 2) {
-      //retornar usuario registrado
-      //si no existe mostrar error de no existencia
-      //si existe enviar codigo de verificacion
-      nextStep(3);
-    } else if (step === 3) {
-      //verificar codigo de verificacion
-      //si es correcto enviar a la siguiente pantalla
-      //si es incorrecto mostrar error
-      if (!data.email) data.email = "";
-      if (!data.phoneNumber) data.phoneNumber = "";
+    if (step === 1) {
+      try {
+        console.log(data.email);
+        const result = await getUserByEmail(data.email);
+        console.log(result.length);
+        console.log(result);
+        if (result.length > 0) {
+          toast.error(t("verificationCodeSent"));
+          nextStep(2);
+        } else {
+          toast.error(t("userNotExists"));
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error(t("serverError"));
+      }
+    } else if (step === 2) {
       if (validateCode(data.code)) {
         try {
-          const allData = getValues();
-          const userData = Object.entries(allData).reduce(
-            (acc, [key, value]) => {
-              if (key !== "code") {
-                acc[key] = value;
-              }
-              return acc;
-            },
-            {}
-          );
-
-          // Llamamos a createUser para crear el nuevo usuario
-          await createUser(userData);
-          toast.success(t("signupSuccess"));
-          navigate("/login");
+          nextStep(3);
         } catch (error) {
           console.error(error);
-          toast.error(t("signupError"));
+          toast.error(t("recoverCodeError"));
         }
       } else {
         setValue("code", "");
         toast.error(t("errorCode"));
       }
-    } else if (step < steps.length) {
-      nextStep();
-    } else {
+    } else if (step === 3) {
+      const result = await getUserByEmail(data.email);
+      await patchUser(result[0].id, {
+        password: data.password,
+      });
+      toast.error(t("passwordChanged"));
       navigate("/login");
     }
   };
