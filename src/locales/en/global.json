@@ -139,5 +139,11 @@
   "emailRequired": "Email is required",
   "emailError": "The email is not valid",
   "phoneNumberRequired": "Phone number is required",
-  "codeRequired": "Code is required"
+  "codeRequired": "Code is required",
+  "passwordRecoveryText": "Enter your email or phone number and we will send you a link to reset your password.",
+  "emailOrPhone": "Email or phone number",
+  "emailOrPhoneRequired": "Email or phone number is required",
+  "emailOrPhoneInvalid": "Email or phone number is invalid",
+  "send": "Send",
+  "cantChangePassword": "Can't change your password?"
 }
