@@ -7,7 +7,7 @@ import UserEditProfile from "../views/users/EditProfile";
 import Header from "../components/template/Header.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
-import PasswordRecovery from "../views/passwordRecovery/PasswordRecovery.jsx";
+import PasswordRecovery from "../views/PasswordRecovery.jsx";
 import PasswordReset from "../views/passwordRecovery/PasswordReset.jsx";
 import { Toaster } from "sonner";
 

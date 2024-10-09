@@ -145,5 +145,6 @@
   "emailOrPhoneRequired": "Email or phone number is required",
   "emailOrPhoneInvalid": "Email or phone number is invalid",
   "send": "Send",
-  "cantChangePassword": "Can't change your password?"
+  "cantChangePassword": "Can't change your password?",
+  "enterNewPassword": "Enter your new password"
 }
