@@ -30,13 +30,13 @@ const Login = () => {
       if (result.length > 0) {
         localStorage.setItem("user", JSON.stringify(result[0]));
         toast.success(t("loginSuccess"));
-        navigate("/feed");
+        navigate("/pet/1");
       } else {
-        toast.error(t("loginError e"));
+        toast.error(t("loginError"));
       }
     } catch (error) {
       console.error(error);
-      toast.error(t("loginError c"));
+      toast.error(t("loginError"));
     }
   });
   return (
