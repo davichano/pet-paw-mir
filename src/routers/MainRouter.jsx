@@ -7,6 +7,7 @@ import UserEditProfile from "../views/users/EditProfile";
 import Header from "../components/template/Header.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
+import PasswordRecovery from "../views/PasswordRecovery.jsx";
 import { Toaster } from "sonner";
 import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
@@ -32,6 +33,7 @@ export const MainRouter = () => {
         <Route path="/post/state" element={<NewPostState/>}/>
         <Route path="/post/tag" element={<NewPostTag/>}/>
         <Route path="/post/info" element={<NewPostAddInfo/>}/>
+        <Route path="/passwordrecovery" element={<PasswordRecovery />} />
       </Routes>
     </>
   );

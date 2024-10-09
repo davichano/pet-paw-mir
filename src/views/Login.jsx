@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LanguageSwitcher from "../components/ui/LanguageSwitcher";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -30,13 +30,13 @@ const Login = () => {
       if (result.length > 0) {
         localStorage.setItem("user", JSON.stringify(result[0]));
         toast.success(t("loginSuccess"));
-        navigate("/feed");
+        navigate("/pet/1");
       } else {
-        toast.error(t("loginError e"));
+        toast.error(t("loginError"));
       }
     } catch (error) {
       console.error(error);
-      toast.error(t("loginError c"));
+      toast.error(t("loginError"));
     }
   });
   return (
@@ -68,9 +68,9 @@ const Login = () => {
         </form>
         <div className="register__footer flex text-custom-50">
           <p>
-            <a href="/todo" className="pl-1 text-custom-300">
+            <Link to="/passwordrecovery" className="pl-1 text-custom-300">
               {t("forgotPassword")}
-            </a>
+            </Link>
           </p>
         </div>
 
