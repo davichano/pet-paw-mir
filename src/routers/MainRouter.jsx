@@ -8,6 +8,7 @@ import Header from "../components/template/Header.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import { Toaster } from "sonner";
+import NewPostPet from "../views/NewPostPet.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ export const MainRouter = () => {
         <Route path="/user/edit/:id" element={<UserEditProfile />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/post" element={<NewPostPet/>} />
       </Routes>
     </>
   );
