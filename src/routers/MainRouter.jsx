@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
 import NewPostTag from "../views/NewPostTag.jsx";
+import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ export const MainRouter = () => {
         <Route path="/post" element={<NewPostPet/>} />
         <Route path="/post/state" element={<NewPostState/>}/>
         <Route path="/post/tag" element={<NewPostTag/>}/>
+        <Route path="/post/info" element={<NewPostAddInfo/>}/>
       </Routes>
     </>
   );
