@@ -9,6 +9,10 @@ import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
 import { Toaster } from "sonner";
+import NewPostPet from "../views/NewPostPet.jsx";
+import NewPostState from "../views/NewPostState.jsx";
+import NewPostTag from "../views/NewPostTag.jsx";
+import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -25,6 +29,10 @@ export const MainRouter = () => {
         <Route path="/user/edit/:id" element={<UserEditProfile />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/post" element={<NewPostPet/>} />
+        <Route path="/post/state" element={<NewPostState/>}/>
+        <Route path="/post/tag" element={<NewPostTag/>}/>
+        <Route path="/post/info" element={<NewPostAddInfo/>}/>
         <Route path="/passwordrecovery" element={<PasswordRecovery />} />
       </Routes>
     </>

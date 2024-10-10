@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <div className="App bg-white">
+      <div className="App bg-white min-h-screen pb-[70px]">
         <I18nextProvider i18n={i18n}>
           <PetContext.Provider value={{current_user}}>
             <div>
