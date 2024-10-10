@@ -13,6 +13,7 @@ import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
 import NewPostTag from "../views/NewPostTag.jsx";
 import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
+import NewPostMap from "../views/NewPostMap.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ export const MainRouter = () => {
         <Route path="/post/tag" element={<NewPostTag/>}/>
         <Route path="/post/info" element={<NewPostAddInfo/>}/>
         <Route path="/passwordrecovery" element={<PasswordRecovery />} />
+        <Route path="/post/map" element={<NewPostMap/>}/>
       </Routes>
     </>
   );
