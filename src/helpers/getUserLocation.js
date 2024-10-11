@@ -2,9 +2,9 @@ export const getUserLocation = () => {
     return new Promise((resolve, reject) => {
         // Opciones para mejorar la precisión
         const options = {
-            enableHighAccuracy: true, // Habilita alta precisión
-            timeout: 5000, // Tiempo máximo para obtener la ubicación en milisegundos
-            maximumAge: 0 // No usar una ubicación en caché
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0 
         };
 
         navigator.geolocation.getCurrentPosition(

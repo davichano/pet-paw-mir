@@ -38,7 +38,7 @@ const NewPostMap = () => {
 
   return (
     <div>
-      <div ref={mapContainer} style={{ width: '100%', height: '400px' }} />
+      <div ref={mapContainer} className="w-full h-screen"/>
     </div>
   );
 };
