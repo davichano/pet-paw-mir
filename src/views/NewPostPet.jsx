@@ -11,13 +11,13 @@ const NewPostPet = () => {
       {/* Contenedor para la vista en dispositivos grandes */}
       <div className="flex flex-col md:flex-row justify-between">
         {/* Columna Izquierda - Imagen y Descripción */}
-        <div className="md:w-4/5 p-4">
+        <div className="md:w-4/5 p-4 flex flex-col ">
           <ImageUploader />
           <DescriptionBox/>
 
         </div>
 
-      <div className="md:w-1/2 p-4 space-y-4">
+      <div className="md:w-1/2 p-4 space-y-4 flex flex-col">
         <ActionButton
           text="Agregar información"
           icon="/src/assets/img/Icons/info.svg"

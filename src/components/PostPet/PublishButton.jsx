@@ -12,15 +12,15 @@ const PublishButton = () => {
 
       setPetData({
         id: null,
-        name: '',
+        name: 'Anonimo',
         pet_type: '',
         pet_gender: '',
         pet_description: '',
         pet_size: '',
         pet_age: '',
         date_lost: '',
-        reward: '',
-        user_id: null,
+        reward: '70',
+        user_id: 1,
         pictures: []
       });
 

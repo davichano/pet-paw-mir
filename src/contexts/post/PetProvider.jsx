@@ -10,8 +10,8 @@ export const PetProvider = ({ children }) => {
     const savedData = localStorage.getItem('petData');
     return savedData ?
     JSON.parse(savedData) : {
-      id: 5,
-      name: '',
+      id: '',
+      name: 'anonimo',
       pet_type: '',
       pet_gender: '',
       pet_description: '',

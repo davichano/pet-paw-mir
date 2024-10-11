@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePetData } from '../../contexts/post/PetProvider';
 
 const ImageUploader = () => {
@@ -24,13 +24,21 @@ const ImageUploader = () => {
       const data = await res.json();
       setUploading(false);
       console.log(data.secure_url);
-      return data.secure_url; // Retorna la URL de la imagen subida
+      return data.secure_url;
     } catch (error) {
         setUploading(false);
         console.error('Error al subir la imagen a Cloudinary:', error);
         return null;
     }
   };
+
+  // Cargar la imagen desde petData si existe
+  useEffect(() => {
+    if (petData.pictures.length > 0) {
+      // Muestra la última imagen subida en el contexto petData
+      setImagePreview(petData.pictures[petData.pictures.length - 1].url);
+    }
+  }, [petData]);
 
 
   const handleImageUpload = async (e) => {
@@ -51,6 +59,8 @@ const ImageUploader = () => {
         setPetData(updatedPetData);
         localStorage.setItem('petData', JSON.stringify(updatedPetData)); // Guardar en localStorage también
       }
+
+
     }
   };
 

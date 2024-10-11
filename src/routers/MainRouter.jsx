@@ -25,6 +25,8 @@ export const MainRouter = () => {
     <>
       <Toaster richColors expand={true} />
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/feed" element={<Feed />} />
@@ -41,7 +43,7 @@ export const MainRouter = () => {
           <Route path="/post/info" element={<PetProvider><NewPostAddInfo /></PetProvider>} />
           <Route path="/post/map" element={<PetProvider><NewPostMap /></PetProvider>} />
         </Routes>
-      {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
+      {!hideHeaderRoutes.includes(location.pathname) && <Footer/>}
     </>
   );
 };

@@ -56,7 +56,6 @@ const NewPostAddInfo = () => {
               value={petData.date_lost}
               onChange={(e) => handleChange('date_lost', e.target.value)}
         />
-
         <ContinueButton text="Continuar" onClick={handleSubmit} />
       </form>
     </div>
