@@ -5,7 +5,9 @@ import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
 
 const NewPostAddInfo = () => {
+
   const { petData, setPetData } = usePetData();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

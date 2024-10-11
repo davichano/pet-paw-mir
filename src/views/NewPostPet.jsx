@@ -3,9 +3,6 @@ import DescriptionBox from "../components/PostPet/DescriptionBox";
 import ActionButton from "../components/PostPet/ActionButton";
 import PublishButton from "../components/PostPet/PublishButton";
 
-
-
-
 const NewPostPet = () => {
 
   return (
@@ -17,6 +14,7 @@ const NewPostPet = () => {
         <div className="md:w-4/5 p-4">
           <ImageUploader />
           <DescriptionBox/>
+
         </div>
 
       <div className="md:w-1/2 p-4 space-y-4">
@@ -51,6 +49,5 @@ const NewPostPet = () => {
     </div>
   );
 };
-
 
 export default NewPostPet;

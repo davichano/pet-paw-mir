@@ -47,8 +47,8 @@ const ImageUploader = () => {
           />
         </label>
       )}
+
     </div>
   );
 };
-
 export default ImageUploader;
