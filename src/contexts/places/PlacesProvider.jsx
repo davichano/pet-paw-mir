@@ -1,41 +1,44 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from 'react';
+import  PlacesContext  from './PlacesContext';
+import  PlacesReducer  from './PlacesReducer';
+import { getUserLocation }  from '../../helpers/getUserLocation'
+import PropTypes from 'prop-types';
 
-// Estado inicial del componente
+
+
 const INITIAL_STATE = {
-  isLoading: true,
-  userLocation: undefined,
+    isLoading: true,
+    userLocation: undefined,
+    isLoadingPlaces: false,
+    places: [],
 };
 
-// Componente PlacesProvider
-const PlacesProvider = () => {
+const PlacesProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(PlacesReducer, INITIAL_STATE);
 
-  const [state, setState] = useState(INITIAL_STATE);
+    // Obtener la ubicación del usuario
+    useEffect(() => {
+        getUserLocation()
+            .then(lngLat => dispatch({ type: 'setUserLocation', payload: lngLat }))
+            .catch(() => {
+                console.error("Error al obtener la ubicación del usuario");
+                dispatch({ type: 'setUserLocation', payload: null }); // En caso de error
+            });
+    }, []);
 
+    return (
+        <PlacesContext.Provider value={{ ...state }}>
+            {children}
+        </PlacesContext.Provider>
+    );
+};
 
-  useEffect(() => {
-
-    setTimeout(() => {
-      setState({
-        isLoading: false,
-        userLocation: [51.5074, -0.1278],
-      });
-    }, 2000);
-  }, []);
-
-  if (state.isLoading) {
-    return <div>Loading...</div>;
-  }
-
- 
-  return (
-    <div>
-      <h1>User Location</h1>
-      <p>
-        Latitude: {state.userLocation ? state.userLocation[0] : "N/A"} <br />
-        Longitude: {state.userLocation ? state.userLocation[1] : "N/A"}
-      </p>
-    </div>
-  );
+// Definición de PropTypes
+PlacesProvider.propTypes = {
+  children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+  ]).isRequired
 };
 
 export default PlacesProvider;
