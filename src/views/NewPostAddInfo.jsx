@@ -8,14 +8,10 @@ const NewPostAddInfo = () => {
 
   const { petData, setPetData } = usePetData();
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     console.log(petData);
   };
 
-  // Función para actualizar los datos del contexto
   const handleChange = (key, value) => {
     setPetData({
       ...petData,
@@ -57,10 +53,11 @@ const NewPostAddInfo = () => {
         <FormField
               label="Fecha aproximada de desaparición o aparición"
               type="datetime-local"
-              value={petData.date_lost} // Usamos el valor del contexto
+              value={petData.date_lost}
               onChange={(e) => handleChange('date_lost', e.target.value)}
         />
-        <ContinueButton text="Continuar" />
+
+        <ContinueButton text="Continuar" onClick={handleSubmit} />
       </form>
     </div>
   );

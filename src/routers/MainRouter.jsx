@@ -35,12 +35,11 @@ export const MainRouter = () => {
         <Route path="/login" element={<Login />} />
 
         <Route path="/passwordrecovery" element={<PasswordRecovery />} />
-         {/* Aquí aplicamos PetProvider directamente en cada ruta */}
-         <Route path="/post" element={<PetProvider><NewPostPet /></PetProvider>} />
-        <Route path="/post/state" element={<PetProvider><NewPostState /></PetProvider>} />
-        <Route path="/post/tag" element={<PetProvider><NewPostTag /></PetProvider>} />
-        <Route path="/post/info" element={<PetProvider><NewPostAddInfo /></PetProvider>} />
-        <Route path="/post/map" element={<PetProvider><NewPostMap /></PetProvider>} />
+          <Route path="/post" element={<PetProvider><NewPostPet /></PetProvider>} />
+          <Route path="/post/state" element={<PetProvider><NewPostState /></PetProvider>} />
+          <Route path="/post/tag" element={<PetProvider><NewPostTag /></PetProvider>} />
+          <Route path="/post/info" element={<PetProvider><NewPostAddInfo /></PetProvider>} />
+          <Route path="/post/map" element={<PetProvider><NewPostMap /></PetProvider>} />
         </Routes>
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </>
