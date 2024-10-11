@@ -5,6 +5,7 @@ import DetailsPublication from "../views/DetailsPublication";
 import UserProfile from "../views/users/Profile";
 import UserEditProfile from "../views/users/EditProfile";
 import Header from "../components/template/Header.jsx";
+import Footer from "../components/template/Footer.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
@@ -16,7 +17,7 @@ import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
-  const hideHeaderRoutes = ["/register", "/signup", "/login"];
+  const hideHeaderRoutes = ["/register", "/signup", "/login", "/passwordrecovery"];
   return (
     <>
       <Toaster richColors expand={true} />
@@ -35,6 +36,7 @@ export const MainRouter = () => {
         <Route path="/post/info" element={<NewPostAddInfo/>}/>
         <Route path="/passwordrecovery" element={<PasswordRecovery />} />
       </Routes>
+      {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </>
   );
 };
