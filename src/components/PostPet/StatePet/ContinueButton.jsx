@@ -6,7 +6,7 @@ const ContinueButton = ({ onClick }) => {
       className="bg-[#FF797D] text-white py-3 px-8 rounded-lg mt-4 w-full"
       onClick={onClick}
     >
-      Continuar
+      Guardar
     </button>
   );
 };

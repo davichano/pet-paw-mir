@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { usePetData } from '../contexts/post/PetProvider';
 import FormSelect from '../components/PostPet/AddInfo/FormSelect';
 import FormField from '../components/FormField';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
 
 const NewPostAddInfo = () => {
-  const [species, setSpecies] = useState('');
-  const [gender, setGender] = useState('');
-  const [age, setAge] = useState('');
-  const [size, setSize] = useState('');
-  const [date] = useState('');
+  const { petData, setPetData } = usePetData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ species, gender, age, size, date });
+    console.log(petData);
+  };
+
+  // Función para actualizar los datos del contexto
+  const handleChange = (key, value) => {
+    setPetData({
+      ...petData,
+      [key]: value,
+    });
   };
 
   return (
@@ -22,38 +26,38 @@ const NewPostAddInfo = () => {
       <form className="bg-white p-6 w-full max-w-md" onSubmit={handleSubmit}>
         <FormSelect
           label="Especie"
-          value={species}
-          onChange={(e) => setSpecies(e.target.value)}
+          value={petData.pet_type} // Usamos el valor del contexto
+          onChange={(e) => handleChange('pet_type', e.target.value)}
           options={['Perro', 'Gato']}
         />
 
         <FormSelect
           label="Sexo"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
+          value={petData.pet_gender} // Usamos el valor del contexto
+          onChange={(e) => handleChange('pet_gender', e.target.value)}
           options={['Macho', 'Hembra']}
         />
 
         <FormSelect
           label="Edad aproximada"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          value={petData.pet_age} // Usamos el valor del contexto
+          onChange={(e) => handleChange('pet_age', e.target.value)}
           options={['Cachorro', 'Adulto', 'Anciano']}
         />
 
         <FormSelect
           label="Tamaño"
-          value={size}
-          onChange={(e) => setSize(e.target.value)}
+          value={petData.pet_size} // Usamos el valor del contexto
+          onChange={(e) => handleChange('pet_size', e.target.value)}
           options={['Pequeño', 'Mediano', 'Grande']}
         />
 
         <FormField
               label="Fecha aproximada de desaparición o aparición"
               type="datetime-local"
-
+              value={petData.date_lost} // Usamos el valor del contexto
+              onChange={(e) => handleChange('date_lost', e.target.value)}
         />
-
         <ContinueButton text="Continuar" />
       </form>
     </div>
