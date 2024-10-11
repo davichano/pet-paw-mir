@@ -6,7 +6,6 @@ import i18n from './i18n.jsx'
 
 import { useCurrentUser } from './hooks/useCurrentUser.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import Footer from './components/template/Footer.jsx';
 
 function App() {
   const current_user=useCurrentUser();
@@ -19,7 +18,6 @@ function App() {
             <div>
                 <BrowserRouter>
                   <MainRouter/>
-                  <Footer></Footer>
                 </BrowserRouter>
             </div>
           </PetContext.Provider>

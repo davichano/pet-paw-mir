@@ -5,6 +5,7 @@ import DetailsPublication from "../views/DetailsPublication";
 import UserProfile from "../views/users/Profile";
 import UserEditProfile from "../views/users/EditProfile";
 import Header from "../components/template/Header.jsx";
+import Footer from "../components/template/Footer.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
@@ -19,7 +20,7 @@ import { PetProvider } from "../contexts/post/PetProvider";
 
 export const MainRouter = () => {
   const location = useLocation();
-  const hideHeaderRoutes = ["/register", "/signup", "/login"];
+  const hideHeaderRoutes = ["/register", "/signup", "/login", "/passwordrecovery"];
   return (
     <>
       <Toaster richColors expand={true} />
@@ -44,6 +45,7 @@ export const MainRouter = () => {
         <Route path="/post/info" element={<PetProvider><NewPostAddInfo /></PetProvider>} />
         <Route path="/post/map" element={<PetProvider><NewPostMap /></PetProvider>} />
         </Routes>
+      {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </>
   );
 };
