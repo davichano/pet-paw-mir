@@ -25,7 +25,6 @@ export const PetProvider = ({ children }) => {
 
   });
 
-  // Guardar los datos en localStorage cada vez que cambian
   useEffect(() => {
     localStorage.setItem('petData', JSON.stringify(petData));
   }, [petData]);
