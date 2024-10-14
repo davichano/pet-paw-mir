@@ -4,6 +4,7 @@ import FormField from "./FormField";
 import { useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import CloseButton from "../ui/CloseButton";
+import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import PropTypes from "prop-types";
 import Header from "../ui/Header";
@@ -59,9 +60,9 @@ const FormStep = ({ stepData, onSubmit, onAlternativeClick }) => {
           <div className="flex mt-auto text-custom-50 md:text-custom-250">
             <p>
               {t("haveAccount")}
-              <a href="/login" className="pl-1 text-custom-300 font-semibold">
+              <Link to="/login" className="pl-1 text-custom-300 font-semibold">
                 {t("login")}
-              </a>
+              </Link>
             </p>
           </div>
         </div>
