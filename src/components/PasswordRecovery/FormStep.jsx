@@ -57,7 +57,7 @@ const FormStep = ({ stepData, onSubmit }) => {
           <Link to="/todo" className="text-custom-250">
             {t("cantChangePassword")}
           </Link>
-          <div className="flex items-center w-full my-4">
+          <div className="flex items-center w-full my-4 md:hidden">
             <div className="flex-grow border-t-2 border-custom-250"></div>
             <span className="mx-2 text-custom-250">{t("or")}</span>
             <div className="flex-grow border-t-2 border-custom-250"></div>
@@ -66,7 +66,7 @@ const FormStep = ({ stepData, onSubmit }) => {
             onClick={() => {
               navigate("/signup");
             }}
-            className="btn-secondary"
+            className="btn-secondary md:hidden"
           >
             {t("createAccount")}
           </Button>

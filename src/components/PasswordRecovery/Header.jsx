@@ -21,7 +21,7 @@ const Header = () => {
             </svg>
             <h1 className="ml-2 h-1 font-bold text-white text-xl">Pet Paw</h1>
           </a>
-          <div className="ml-auto w-52">
+          <div className="ml-auto w-60">
             <Button
               className="btn-secondary bg-custom-50 border-custom-150 font-semibold shadow-5xl"
               onClick={() => navigate("/login")}
@@ -29,7 +29,7 @@ const Header = () => {
               {t("login")}
             </Button>
           </div>
-          <div className="ml-2 w-52">
+          <div className="ml-2 w-60">
             <Button
               className="btn-secondary bg-custom-150 border-custom-50 font-semibold shadow-6xl"
               onClick={() => navigate("/signup")}
