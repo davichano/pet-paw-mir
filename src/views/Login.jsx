@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import { useTranslation } from "react-i18next";
@@ -24,6 +25,17 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [isMediumScreen, setIsMediumScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMediumScreen(window.innerWidth >= 768); // 'md' breakpoint de Tailwind
+    };
+
+    handleResize(); // Ejecutar al montar el componente
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -44,8 +56,8 @@ const Login = () => {
     <div>
       <Header />
       <div
-        className="h-full bg-custom-50 flex items-center justify-center"
-        style={{ height: "calc(100vh - 90px)" }}
+        className="h-screen bg-custom-50 flex items-center justify-center"
+        style={isMediumScreen ? { height: "calc(100vh - 90px)" } : {}}
       >
         <div className="w-full h-full max-w-4xl p-6 flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Nueva columna izquierda */}
