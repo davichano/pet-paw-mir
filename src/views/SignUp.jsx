@@ -45,8 +45,8 @@ const SignUpForm = () => {
       //logica para enviar codigo desde el telefono
       nextStep(7);
     } else if (step === 7) {
-      if(!data.email) data.email = ""
-      if(!data.phoneNumber) data.phoneNumber = ""
+      if (!data.email) data.email = "";
+      if (!data.phoneNumber) data.phoneNumber = "";
       if (validateCode(data.code)) {
         try {
           const allData = getValues();
@@ -66,9 +66,7 @@ const SignUpForm = () => {
           navigate("/login");
         } catch (error) {
           console.error(error);
-          toast.error(
-            t("signupError")
-          );
+          toast.error(t("signupError"));
         }
       } else {
         setValue("code", "");
