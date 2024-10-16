@@ -78,6 +78,7 @@
   "login": "LOGIN",
   "forgotPassword": "Forgot your password?",
   "createAccount": "Create an account",
+  "iHaveAccount": "I have an account",
   "incorrectLogin": "Incorrect user or password",
   "createProfile": "Create Profile",
   "enterFullName": "Enter your first and last name",
@@ -148,5 +149,7 @@
   "cantChangePassword": "Can't change your password?",
   "enterNewPassword": "Enter your new password",
   "verificationCodeSent": "Verification code sent",
-  "userNotExists": "User does not exist"
+  "userNotExists": "User does not exist",
+  "landing.title": "Help change lives!",
+  "landing.subtitle": "Find your pet or help find someone else's"
 }
