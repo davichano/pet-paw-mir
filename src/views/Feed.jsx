@@ -1,24 +1,30 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { useNavigate } from "react-router-dom";
 import ModalFormulario from '../components/PublicForm';
 import { useTranslation } from 'react-i18next';
 
 const Feed = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
+  const { t } = useTranslation();
   const [showFilters, setShowFilters] = useState(false);
   const [searchParams, setSearchParams] = useState({
     name: '',
     pet_type: '',
     pet_gender: ''
   });
-  const { t } = useTranslation();
 
   const [selectedPost, setSelectedPost] = useState(null); // Para manejar el post seleccionado
 
   const toggleModal = () => setModalOpen(!isModalOpen);
+  // const navigate = useNavigate();
+
+  // const handleRedirect = () => {
+  //   navigate("/post");
+  // }
 
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
@@ -140,4 +146,6 @@ const Feed = () => {
   );
 };
 
+
 export default Feed;
+
