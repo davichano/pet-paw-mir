@@ -1,9 +1,13 @@
 const BASE_URL = "http://localhost:8080/";
 
-export async function fetchPosts() {
-  const response = await fetch(`${BASE_URL}posts`);
-  return response.json();
-}
+export const fetchPosts = async (searchParams = {}) => {
+  const filteredParams = Object.fromEntries(
+    Object.entries(searchParams).filter(([, value]) => value !== "")
+  );
+  const query = new URLSearchParams(filteredParams).toString();
+  const response = await fetch(`${BASE_URL}posts?${query}`);
+  return await response.json();
+};
 
 export async function fetchPost(id) {
   const response = await fetch(`${BASE_URL}posts/${id}`);

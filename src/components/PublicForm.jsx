@@ -1,15 +1,13 @@
-
-
-import { Button, Modal } from "flowbite-react";
-import { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import {Button, Modal} from "flowbite-react";
+import {useState} from "react";
+import {useTranslation} from 'react-i18next';
 import FormField from "./FormField";
 
 export function ModalFormulario() {
 
   const [openModal, setOpenModal] = useState(false);
   const [step, setStep] = useState(1);
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -37,21 +35,21 @@ export function ModalFormulario() {
   };
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    const {id, value} = e.target;
+    setFormData({...formData, [id]: value});
   };
 
 
   const handleFotoChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setFormData({ ...formData, foto: URL.createObjectURL(file) }); // Crear una URL temporal para la imagen
+      setFormData({...formData, foto: URL.createObjectURL(file)}); // Crear una URL temporal para la imagen
     }
   };
 
   const handleSubmit = () => {
     event.preventDefault();
-     // Crear el objeto con los datos mapeados a la estructura correcta
+    // Crear el objeto con los datos mapeados a la estructura correcta
     const dataToSend = {
       id: 4,  // Asigna un ID si es necesario
       name: formData.name,
@@ -78,17 +76,17 @@ export function ModalFormulario() {
       },
       body: JSON.stringify(dataToSend),
     })
-    .then(response => response.json())
-    .then(() => {
-      setOpenModal(false);
-    })
-    .catch(error => {
-      console.error('Error al enviar el formulario:', error);
-    });
+      .then(response => response.json())
+      .then(() => {
+        setOpenModal(false);
+      })
+      .catch(error => {
+        console.error('Error al enviar el formulario:', error);
+      });
   };
 
   const renderStep = () => {
-    switch(step) {
+    switch (step) {
       case 1:
         return (
           <div>
@@ -113,8 +111,8 @@ export function ModalFormulario() {
               id="genero"
               type="radio"
               options={[
-                { label: t("genderOptionsLabel1"), value: "macho" },
-                { label: t("genderOptionsLabel2"), value: "hembra" },
+                {label: t("genderOptionsLabel1"), value: "macho"},
+                {label: t("genderOptionsLabel2"), value: "hembra"},
               ]}
               value={formData.genero}
               onChange={handleChange}
@@ -176,16 +174,16 @@ export function ModalFormulario() {
                 id="file-input"
                 type="file"
                 onChange={handleFotoChange}
-                style={{ display: 'none' }} // Ocultamos el input original
+                style={{display: 'none'}} // Ocultamos el input original
               />
 
 
               <div className="w-64 h-64 mt-4 bg-[#fca5a5] flex items-center justify-center">
                 {formData.foto ? (
-                  <img src={formData.foto} alt="Preview" className="object-cover w-full h-full" />
+                  <img src={formData.foto} alt="Preview" className="object-cover w-full h-full"/>
                 ) : (
 
-                  <img src="/src/assets/img/petDog.png" alt="Default Preview" className="w-32 h-32 object-cover" />
+                  <img src="/src/assets/img/petDog.png" alt="Default Preview" className="w-32 h-32 object-cover"/>
                 )}
               </div>
               <br></br>
@@ -216,9 +214,9 @@ export function ModalFormulario() {
       <div className="snap-center">
         <div className="w-40">
         </div>
-        <Button className="bg-[#fca5a5] text-black" onClick={() => setOpenModal(true)}>
-        {t("functionButton")}
-      </Button>
+        <Button className="bg-custom-250 text-white h-full w-full rounded-xl" onClick={() => setOpenModal(true)}>
+          {t("functionButton")}
+        </Button>
       </div>
 
       <Modal
@@ -226,25 +224,26 @@ export function ModalFormulario() {
 
         onClose={() => setOpenModal(false)}
       >
-        <Modal.Header className="bg-[#F5E1DC]"><p className="text-[#DA6274] items-center">{t("titleFormPublish")}</p></Modal.Header>
+        <Modal.Header className="bg-[#F5E1DC]"><p className="text-[#DA6274] items-center">{t("titleFormPublish")}</p>
+        </Modal.Header>
         <Modal.Body className="bg-[#F5E1DC]">
-        {renderStep()}
+          {renderStep()}
         </Modal.Body>
         <Modal.Footer className="flex justify-center gap-8 bg-[#F5E1DC]">
           {step > 1 && (
-              <Button className="bg-gray-300" onClick={handlePrevStep}>
-                {t("previousButton")}
-              </Button>
-            )}
-            {step < 3 ? (
-              <Button className="bg-blue-500" onClick={handleNextStep}>
-                {t("nextButton")}
-              </Button>
-            ) : (
-              <Button className="bg-green-500" onClick={handleSubmit}>
-                {t("submitButton")}
-              </Button>
-            )}
+            <Button className="bg-gray-300" onClick={handlePrevStep}>
+              {t("previousButton")}
+            </Button>
+          )}
+          {step < 3 ? (
+            <Button className="bg-blue-500" onClick={handleNextStep}>
+              {t("nextButton")}
+            </Button>
+          ) : (
+            <Button className="bg-green-500" onClick={handleSubmit}>
+              {t("submitButton")}
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>
