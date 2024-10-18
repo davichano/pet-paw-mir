@@ -51,7 +51,7 @@ export async function createPost(postData) {
 
 export async function updatePost(id, postData) {
   const response = await fetch(`${BASE_URL}posts/${id}`, {
-    method: 'PATCH',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },

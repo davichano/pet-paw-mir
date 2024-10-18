@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
-
-import { fetchPosts } from '../services/posts';
+import {useEffect, useState} from 'react';
+import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import ModalFormulario from '../components/PublicForm';
 import { useTranslation } from 'react-i18next';
-import { Button } from "flowbite-react"; // Asegúrate de importar Button desde flowbite
-import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -16,6 +14,9 @@ const Feed = () => {
     pet_type: '',
     pet_gender: ''
   });
+  const { t } = useTranslation();
+
+  const [selectedPost, setSelectedPost] = useState(null); // Para manejar el post seleccionado
 
   const toggleModal = () => setModalOpen(!isModalOpen);
   const navigate = useNavigate(); // Inicializar useNavigate
@@ -34,7 +35,7 @@ const Feed = () => {
   }, []);
 
   const handleSearch = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setSearchParams((prev) => ({
       ...prev,
       [name]: value
@@ -49,6 +50,11 @@ const Feed = () => {
     setShowFilters(!showFilters);
   };
 
+  const handleEditClick = (post) => {
+    setSelectedPost(post); // Selecciona el post para editar
+    setModalOpen(true); // Abre el modal
+  };
+
   return (
     <>
       <div className="flex justify-center items-center h-20 space-x-2 px-5">
@@ -61,7 +67,15 @@ const Feed = () => {
           </button>
         </div>
         <div className="w-1/2">
-          <PublicForm show={isModalOpen} onClose={toggleModal}/>
+          <button
+            className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
+            onClick={() => {
+              setSelectedPost(null);
+              setModalOpen(true);
+            }}
+          >
+            Crear Post
+          </button>
         </div>
       </div>
       <div className="mx-10">
@@ -93,22 +107,40 @@ const Feed = () => {
             />
           </div>
         )}
-
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {posts.map((post) => (
-          <Link to={`/pet/${post.id}`} key={post.id}>
-            <CardPostPet
-              name={post.name}
-              description={post.pet_description}
-              imageUrl={post.pictures?.[0]?.url}
-              t={(key) => key}
-              handleModalToggle={toggleModal}
-            />
-          </Link>
+          <div key={post.id} className="relative">
+            <Link to={`/pet/${post.id}`}>
+              <CardPostPet
+                name={post.name}
+                description={post.pet_description}
+                imageUrl={post.pictures?.[0]?.url}
+                handleModalToggle={toggleModal}
+                t={t}/>
+            </Link>
+
+            <button
+              className="absolute top-2 right-2 bg-custom-250 text-white px-4 py-1 rounded"
+              onClick={() => handleEditClick(post)}
+            >
+              Editar
+            </button>
+          </div>
         ))}
       </div>
+
+      {isModalOpen && (
+        <ModalFormulario
+          post={selectedPost}
+          onClose={() => {
+            setModalOpen(false);
+            setSelectedPost(null);
+            loadPosts();
+          }}
+        />
+      )}
     </>
   );
 };
