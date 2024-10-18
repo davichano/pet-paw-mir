@@ -26,7 +26,7 @@ const NewPostAddInfo = () => {
           label="Nombre"
           type="text"
           value={petData.pet_name} // Usamos el valor del contexto
-          onChange={(e) => handleChange('pet_name', e.target.value)}
+          onChange={(e) => handleChange('name', e.target.value)}
           placeholder='Nombre de la mascota'
         />
         <FormSelect
