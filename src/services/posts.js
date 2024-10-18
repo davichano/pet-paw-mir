@@ -2,12 +2,12 @@ const BASE_URL = "http://localhost:3000/";
 import {formatPostData} from '../helpers/formatPostData';
 
 export async function fetchPosts() {
-  const response = await fetch(`http://localhost:3000/api/posts`);
+  const response = await fetch(`${BASE_URL}api/posts`);
   return response.json();
 }
 
 export async function fetchPost(id) {
-  const response = await fetch(`http://localhost:3000/api/posts/${id}`);
+  const response = await fetch(`${BASE_URL}api/posts/${id}`);
   return response.json();
 }
 

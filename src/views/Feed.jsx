@@ -23,7 +23,6 @@ const Feed = () => {
   useEffect(() => {
     const loadPosts = async () => {
       const postsData = await fetchPosts();
-      console.log(postsData[0]);
       setPosts(postsData);
     };
     loadPosts();
