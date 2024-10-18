@@ -43,7 +43,7 @@ const Login = () => {
       if (result.length > 0) {
         localStorage.setItem("user", JSON.stringify(result[0]));
         toast.success(t("loginSuccess"));
-        navigate("/pet/1");
+        navigate("/feed");
       } else {
         toast.error(t("loginError"));
       }
