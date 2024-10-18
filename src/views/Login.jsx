@@ -46,7 +46,6 @@ const Login = () => {
 
         localStorage.setItem("user", JSON.stringify(profile));
 
-
         toast.success(t("loginSuccess"));
         navigate("/feed");
       } else {
