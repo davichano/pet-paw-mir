@@ -11,9 +11,15 @@ export async function fetchPost(id) {
   return response.json();
 }
 
-export async function fetchPostsByUser(id) {
-  const response = await fetch(`http://localhost:8080/users/${id}/posts`);
+export async function fetchPostsByUser() {
+//  const response = await fetch(`http://localhost:8080/users/${id}/posts`);
+  const response = await fetch(`http://localhost:3000/api/posts/myposts`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
   return response.json();
+
 }
 
 
