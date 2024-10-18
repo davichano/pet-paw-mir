@@ -44,7 +44,8 @@ const Feed = () => {
           <CardPostPet
             name={post.name}
             description={post.description}
-            imageUrl={post.pictures?.[0]?.url}
+            //imageUrl={post.pictures?.[0]?.url}
+            imageUrl={post.picture}
             t={(key) => key}
             handleModalToggle={toggleModal}
           />

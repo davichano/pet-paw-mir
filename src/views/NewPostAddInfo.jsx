@@ -26,7 +26,7 @@ const NewPostAddInfo = () => {
           label="Especie"
           value={petData.pet_type} // Usamos el valor del contexto
           onChange={(e) => handleChange('pet_type', e.target.value)}
-          options={['Perro', 'Gato']}
+          options={['Perro', 'Gato', 'Pájaro', 'Conejo', 'Otro']}
         />
 
         <FormSelect
@@ -40,7 +40,7 @@ const NewPostAddInfo = () => {
           label="Edad aproximada"
           value={petData.pet_age} // Usamos el valor del contexto
           onChange={(e) => handleChange('pet_age', e.target.value)}
-          options={['Cachorro', 'Adulto', 'Anciano']}
+          options={['Cachorro', 'Joven', 'Adulto', 'Anciano']}
         />
 
         <FormSelect
