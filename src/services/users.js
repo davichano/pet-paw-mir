@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://pet-paw-mir-backend-production.up.railway.app";
 
 export async function fetchUsers() {
   const response = await fetch(`${BASE_URL}/api/users/`);
