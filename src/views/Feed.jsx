@@ -23,6 +23,7 @@ const Feed = () => {
   useEffect(() => {
     const loadPosts = async () => {
       const postsData = await fetchPosts();
+      console.log(postsData[0]);
       setPosts(postsData);
     };
     loadPosts();
@@ -44,7 +45,8 @@ const Feed = () => {
           <CardPostPet
             name={post.name}
             description={post.description}
-            imageUrl={post.pictures?.[0]?.url}
+            //imageUrl={post.pictures?.[0]?.url}
+            imageUrl={post.picture}
             t={(key) => key}
             handleModalToggle={toggleModal}
           />
