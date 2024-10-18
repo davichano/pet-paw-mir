@@ -97,3 +97,20 @@ export async function getUserByEmail(email) {
 
   return matchingUsers;
 }
+
+export const activateAccount = async (token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/local/activate/${token}`, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al activar la cuenta");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error en activateAccount:", error);
+    throw error;
+  }
+};
