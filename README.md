@@ -2,27 +2,32 @@
 
 Pet Paw es una aplicación web moderna dedicada a la adopción de mascotas y a la búsqueda de animales perdidos. Conectamos rescatistas, albergues y personas que buscan adoptar o han perdido a sus animales de compañía, facilitando la difusión de casos y creando una comunidad enfocada en darles a los animales un hogar. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.
 
-#UI Design
+## UI Design
+
 ### Definición de colores y fuentes
+
 Para garantizar una experiencia de usuario atractiva y accesible, hemos seleccionado una paleta de colores cálida y amigable, así como dos tipografías que destacan por su enfoque suave y moderno.
 
 **Fuentes**
-**Odin Rounded**: Una fuente con puntas redondeadas que evoca cercanía y simpatía, ideal para hacer que los usuarios se sientan cómodos navegando en la aplicación.
-**Sofia Pro**: Una tipografía versátil con una estructura redondeada que mantiene un equilibrio entre modernidad y simplicidad, proporcionando legibilidad y un diseño limpio.
+
+- **Odin Rounded**: Una fuente con puntas redondeadas que evoca cercanía y simpatía, ideal para hacer que los usuarios se sientan cómodos navegando en la aplicación.
+- **Sofia Pro**: Una tipografía versátil con una estructura redondeada que mantiene un equilibrio entre modernidad y simplicidad, proporcionando legibilidad y un diseño limpio.
 
 **Esquema de colores**
+
 El esquema de colores se basa en un contraste por brillo que garantiza tanto accesibilidad como una estética visualmente coherente y atractiva. Los tonos cálidos y suaves ayudan a transmitir una sensación de cuidado y conexión emocional con las mascotas:
 
-#FFFFFF
-#FFE4E2
-#FFB0A9
-#FF797D
-#FF585D
-#D9534F
-#FF4146
-#C9302C
+`#FFFFFF`
+`#FFE4E2`
+`#FFB0A9`
+`#FF797D`
+`#FF585D`
+`#D9534F`
+`#FF4146`
+`#C9302C`
 
 ### Mockups
+
 La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para diseño mobile y desktop.
 
 - Figma - [Pet Paw mockups](https://www.figma.com/design/QdrT1X1tpDvgPlli9pRl2J/Pet-Paws?node-id=0-1&node-type=canvas&t=wXHANSG2u6jNZMI5-0)
@@ -36,7 +41,7 @@ La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para 
 - **Interfaz de Usuario Moderna**: Estilizada con Tailwind CSS para una apariencia limpia y moderna.
 - **Desarrollo Rápido**: Configurado con Vite para un entorno de desarrollo rápido y eficiente.
 
-### Configuración y Scripts
+## Configuración y Scripts
 
 - **Configuración de Linter y Formateo**:
   - `.editorconfig`, `.gitignore`, `.husky/`, `.lintstagedrc`, `commitlint.config.js`, `eslint.config.js`, `postcss.config.js`, `tailwind.config.js`, `vite.config.js`
@@ -66,29 +71,31 @@ La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para 
 ## Instalación
 
 1. Clona el repositorio:
-   ```sh
-   git clone https://github.com/tu-usuario/pet-paw.git
-   ```
+    ```sh
+    git clone https://github.com/tu-usuario/pet-paw.git
+    ```
 
 2. Navega al directorio del proyecto:
-  ```sh
-   cd pet-paw
-   ```
+    ```sh
+    cd pet-paw
+    ```
 3. Instala las dependencias:
-  ```sh
+    ```sh
     npm install
-  ```
+    ```
 4. Inicia el servidor de desarrollo:
-  ```sh
+    ```sh
     npm run dev
-  ```
+    ```
 5. Inicia el servidor json-server
-  ```
+    ```
     npm run apí
-  ```
+    ```
 
 ## Validación de Usuarios
+
 La validación de usuarios es clave para garantizar la seguridad y confianza en la plataforma:
+
 - **Resgistro simulado**: Los usuarios pueden crear una cuenta a través de un proceso simulado de registro, lo que asegura una experiencia fluida y sencilla.
 - **Inicio de Sesión Simulado**: El inicio de sesión es rápido y simple, permitiendo a los usuarios volver a sus cuentas para gestionar sus publicaciones.
 - **Código de Verificación Simulado**: Se simula la verificación del usuario a través de un código enviado a su correo o número de teléfono, mejorando la seguridad de las cuentas.
@@ -113,21 +120,37 @@ A continuación, se listan las principales historias de usuario que han sido des
 
 ## Próximamente
 
+A corto plazo:
 - **Verificación de Usuarios Real**: Implementaremos la validación completa de usuarios utilizando correos electrónicos y códigos SMS reales.
 - **Gestión de Perfiles de Mascotas**: Ampliaremos las opciones para que los usuarios gestionen más detalles sobre sus mascotas.
-
 - **Notificaciones en Tiempo Real**: Las notificaciones sobre avistamientos y mensajes de otros usuarios serán parte de una actualización futura.
 
-Con Pet Paw, estamos construyendo una comunidad segura y rápida para ayudar a las personas a reencontrarse con sus mascotas o encontrar nuevos hogares para ellas.
+A largo plazo:
+
+- **Colocar insignias distintivas en usuarios**: Facilitando la busqueda de albergues, santuarios, temporales y rescatistas.
+- **Agregar directorio de veterinarias**: Facilitar a los usuarios la búsqueda de veterinarias recomendadas a través de MapBox con información detallada sobre ubicación y horarios.
+- **Promoción de la adopción de gatos adultos, con FIV+ o leucemia**: Implementar filtros específicos para buscar gatos adultos, con FIV+ o leucemia. Además, que las secciones de adopción destaquen este tipo de públicaciones para aumentar la visibilidad y cantidad de adopción de estos casos.
+
+Con **Pet Paws**, estamos construyendo una comunidad segura y rápida para ayudar a las personas a reencontrarse con sus mascotas perdidas o encontrar hogares para animales en situación de abandono.
 
 ## Autores
 
-- GitHub - [Noelia Garcia](https://github.com/NoeliaGAP)
+- GitHub - [Noelia Garcia Pacara](https://github.com/NoeliaGAP)
 - GitHub - [William Lupaca Ticona](https://github.com/PunoBootcamper)
 - Github - [Augusto Perales Guevara](https://github.com/AEperalesguevara)
 - GitHub - [David Paredes Abanto](https://github.com/davidchano)
 
 
-## Agradecimientos
+## Contribuciones
 
-Gracias al curso de Make It Real por proporcionar el apoyo para realizar este proyecto y por brindarnos los recursos útiles que nos guian a lo largo del proceso.
+1. Realiza un fork del repositorio.
+2. Crea una nueva rama para tu feature: `git checkout -b feature/nueva-feature`.
+3. Realiza tus cambios y confirma tus commits: `git commit -m 'Añadida nueva-feature'`.
+4. Envía tus cambios: `git push origin feature/nueva-feature`.
+5. Abre un Pull Request.
+
+> [!NOTE]
+> Nuestro proyecto busca mejorar la calidad de vida de otras especies. Invitamos a todos a colaborar de forma altruista para alcanzar este objetivo.
+
+> [!IMPORTANT]
+>Si eres desarrollador y compartes nuestra pasión por los animales y la tecnología, ¡te invitamos a colaborar! Tu código puede ayudar a mejorar la experiencia de usuario y a expandir nuestro alcance. A cambio, tu nombre se incluirá en la lista de contribuidores del proyecto.

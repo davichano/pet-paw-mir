@@ -11,34 +11,35 @@ const NewPostPet = () => {
       {/* Contenedor para la vista en dispositivos grandes */}
       <div className="flex flex-col md:flex-row justify-between">
         {/* Columna Izquierda - Imagen y Descripción */}
-        <div className="md:w-4/5 p-4">
+        <div className="md:w-4/5 p-4 flex flex-col ">
           <ImageUploader />
-          <DescriptionBox />
+          <DescriptionBox/>
+
         </div>
 
-      <div className="md:w-1/2 p-4 space-y-4">
+      <div className="md:w-1/2 p-4 space-y-4 flex flex-col">
         <ActionButton
           text="Agregar información"
           icon="/src/assets/img/Icons/info.svg"
-          redirectTo="/informacion"
+          redirectTo="/post/info"
         />
 
         <ActionButton
           text="Agregar ubicación"
           icon="/src/assets/img/Icons/location_pink.svg"
-          redirectTo="/ubicacion"
+          redirectTo="/post/map"
         />
 
         <ActionButton
           text="Agregar estado"
           icon={"/src/assets/img/Icons/logo.svg"}
-          redirectTo="/estado"
+          redirectTo="/post/state"
         />
 
         <ActionButton
           text="Agregar etiquetas"
           icon={"/src/assets/img/Icons/Tags.svg"}
-          redirectTo="/etiquetas"
+          redirectTo="/post/tag"
         />
         <PublishButton />
 
