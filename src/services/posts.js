@@ -36,3 +36,18 @@ export async function createPost(postData) {
   return response.json(); // Retornar la respuesta del servidor
 }
 
+export async function updatePost(id, postData) {
+  const response = await fetch(`${BASE_URL}posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(postData),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error al actualizar el post');
+  }
+
+  return response.json();
+}

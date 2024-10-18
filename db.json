@@ -9,27 +9,27 @@
       "address": "1234 Main St",
       "username": "jdoe",
       "password": "123456",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero."
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+      "gender": ""
     }
   ],
   "posts": [
     {
-      "id": 1,
-      "name": "Pet Name 1",
+      "name": "Pet Name 1 Editado",
       "pet_type": "Dog",
       "pet_gender": "male",
       "pet_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
       "pet_size": "small",
       "pet_age": "young",
-      "date_lost": "2022-12-01",
-      "reward": "$100",
+      "date_lost": "2024-10-17",
+      "reward": "$undefined",
       "user_id": 1,
       "pictures": [
         {
-          "id": 1,
           "url": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?cs=srgb&dl=pexels-wildlittlethingsphoto-2253275.jpg&fm=jpg"
         }
-      ]
+      ],
+      "id": 1
     },
     {
       "id": 2,
@@ -102,6 +102,74 @@
           "url": "https://res.cloudinary.com/dwkizli4g/image/upload/v1728685152/jzzki82jyoym3lgycykg.jpg"
         }
       ]
+    },
+    {
+      "name": "Perrito",
+      "pet_type": "Dog",
+      "pet_gender": "female",
+      "pet_description": "No description provided.",
+      "pet_size": "small",
+      "pet_age": "adult",
+      "date_lost": "2024-10-14",
+      "reward": "$undefined",
+      "user_id": 1,
+      "pictures": [
+        {
+          "url": "blob:http://localhost:5173/00785841-a1c6-4cf9-9afe-e79a4f1195d7"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "name": "",
+      "pet_type": "",
+      "pet_gender": "female",
+      "pet_description": "No description provided.",
+      "pet_size": "",
+      "pet_age": "young",
+      "date_lost": "",
+      "reward": "$undefined",
+      "user_id": 1,
+      "pictures": [
+        {
+          "url": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?cs=srgb&dl=pexels-pixabay-617278.jpg&fm=jpg"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "name": "MArio",
+      "pet_type": "dog",
+      "pet_gender": "female",
+      "pet_description": "No description provided.",
+      "pet_size": "smaill",
+      "pet_age": "adult",
+      "date_lost": "2024-10-08",
+      "reward": "$undefined",
+      "user_id": 1,
+      "pictures": [
+        {
+          "url": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?cs=srgb&dl=pexels-pixabay-617278.jpg&fm=jpg"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "name": "petcito",
+      "pet_type": "dog",
+      "pet_gender": "female",
+      "pet_description": "No description provided.",
+      "pet_size": "3",
+      "pet_age": "adult",
+      "date_lost": "2024-10-18",
+      "reward": "$undefined",
+      "user_id": 1,
+      "pictures": [
+        {
+          "url": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?cs=srgb&dl=pexels-pixabay-617278.jpg&fm=jpg"
+        }
+      ],
+      "id": 9
     }
   ],
   "comments": [
