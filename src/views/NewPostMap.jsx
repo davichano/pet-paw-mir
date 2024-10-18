@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import PlacesProvider from "../contexts/places/PlacesProvider";
 import PlacesContext from "../contexts/places/PlacesContext";
 import { usePetData } from '../contexts/post/PetProvider';
+import { useNavigate } from 'react-router-dom';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FicmllbDI5LXMiLCJhIjoiY20yMnZvYnExMDJwNzJqcTV3d3J3cmUxdSJ9.fA3z9inzGxKvS2GC_rH20g';
 
@@ -11,6 +12,7 @@ const NewPostMap = () => {
   const { petData, setPetData } = usePetData();
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
+  const navigate = useNavigate();
   const [markerLocation, setMarkerLocation] = useState(userLocation); // Almacena la ubicación actual del marcador
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const NewPostMap = () => {
       mapRef.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: petData.location || userLocation, 
+        center: petData.location ? [petData.location.lng, petData.location.lat] : userLocation,
         zoom: 14,
       });
 
@@ -48,14 +50,15 @@ const NewPostMap = () => {
       ...petData,
       location: { lng: markerLocation[0], lat: markerLocation[1] },
     });
-    alert("Ubicación guardada correctamente"+ petData);
+    alert("Ubicación guardada correctamente"+ petData.location.lng);
+    navigate('/post');
   };
 
   return (
     <div>
       <div ref={mapContainer} className="w-full h-screen" />
       {markerLocation && (
-        <div className="absolute bottom-10 left-10 bg-white p-2 rounded">
+        <div className="absolute bottom-20 left-10 bg-white p-2 rounded">
           <p>Latitud: {markerLocation[1]}</p>
           <p>Longitud: {markerLocation[0]}</p>
           <button
