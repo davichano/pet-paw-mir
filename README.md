@@ -1,4 +1,4 @@
-# <div style="text-align: center"><img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> Pet Paw <img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> </div>
+# <div align="center"><img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> Pet Paw <img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> </div>
 
 <img src="src/assets/img/readme/images/banner/bannerl.png" alt="Pet Paws Banner">
 
@@ -21,17 +21,20 @@
 Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modernas para garantizar su escalabilidad, eficiencia y una experiencia de usuario optimizada. A continuación, se listan las principales herramientas y tecnologías empleadas:
 
 ### Frontend
-
+<div>
 <img src="src/assets/img/readme/images/icons/typescript.png" alt="Typescript Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/tailwind.png" alt="Tailwind Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/mapbox.png" alt="MapBox Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/reactjs.png" alt="Reactjs Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/vue.png" alt="Vue Icon" width="60" style="margin: 0 7.5px"/>
+</div>
 
 ### Backend
 
+<div>
 <img src="src/assets/img/readme/images/icons/nodejs.png" alt="Node Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/socketio.png" alt="Socket.IO Icon" width="60" style="margin: 0 7.5px"/>
+</div>
 
 ### Base de Datos
 
@@ -39,9 +42,11 @@ Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modern
 
 ### Cloud & Hosting
 
+<div>
 <img src="src/assets/img/readme/images/icons/vercel.svg" alt="Vercel Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/netlify.svg" alt="Netlify Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/heroku.png" alt="Heroku Icon" width="40" style="margin: 0 7.5px"/>
+</div>
 
 ### Media & Archivos
 
@@ -66,6 +71,7 @@ Para garantizar una experiencia de usuario atractiva y accesible, hemos seleccio
 
 El esquema de colores se basa en un contraste por brillo que garantiza tanto accesibilidad como una estética visualmente coherente y atractiva. Los tonos cálidos y suaves ayudan a transmitir una sensación de cuidado y conexión emocional con las mascotas:
 
+<div>
 <img src="src/assets/img/readme/images/colors/FFFFFF.png" alt="FFFFFF Color" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/colors/FFE4E2.png" alt="FFE4E2 Color" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/colors/FFB0A9.png" alt="FFB0A9 Color" width="60" style="margin: 0 7.5px"/>
@@ -75,7 +81,7 @@ El esquema de colores se basa en un contraste por brillo que garantiza tanto acc
 <img src="src/assets/img/readme/images/colors/FF252F.png" alt="FF252F Color" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/colors/D9534F.png" alt="D9534F Color" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/colors/C9302C.png" alt="C9302C Color" width="60" style="margin: 0 7.5px"/>
-
+</div>
 
 `#FFFFFF`
 `#FFE4E2`
@@ -90,15 +96,19 @@ El esquema de colores se basa en un contraste por brillo que garantiza tanto acc
 ### WireFrames
 Se utilizo programas como **Paint** y **SketchBook** para la realización de los wireframes.
 
+<div>
 <img src="src/assets/img/readme/screenshots/wireframe-mobile.png" alt="ScreenShot WireFrame Mobile" height="300" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/screenshots/wireframe-desktop.png" alt="ScreenShot WireFrame Desktop" height="300" style="margin: 0 7.5px"/>
+</div>
 
 ### Mockups
 
 La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para diseño mobile y desktop.
 
+<div>
 <img src="src/assets/img/readme/screenshots/mockup-mobile.png" alt="MockUp Mobile" height="300" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/screenshots/mockup-desktop.png" alt="MockUp Desktop" height="300" style="margin: 0 7.5px"/>
+</div>
 
 - Encuentra todos los MockUps en Figma:
 
@@ -109,6 +119,7 @@ La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para 
 ### Iconos, Ilustraciones y Animaciones
 Para la creación de los elementos visuales y animaciones utilizados en la plataforma, se han empleado las siguientes herramientas:
 
+<div>
 <img src="src/assets/img/readme/images/icons/design/paint.png" alt="Paint Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/design/figma.png" alt="Figma Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/design/adobeillustrator.png" alt="Adobe IllustratorIcon" width="60" style="margin: 0 7.5px"/>
@@ -116,6 +127,7 @@ Para la creación de los elementos visuales y animaciones utilizados en la plata
 <img src="src/assets/img/readme/images/icons/design/svgator.png" alt="SVGator Icon" width="60" style="margin: 0 7.5px, border-radius: 50px"/>
 <img src="src/assets/img/readme/images/icons/design/lottiefiles.png" alt="LottieFiles Icon" width="60" style="margin: 0 7.5px"/>
 <img src="src/assets/img/readme/images/icons/design/createjs.png" alt="CreateJS Icon" width="55" style="margin: 0 7.5px"/>
+</div>
 
 ## Características Principales
 
