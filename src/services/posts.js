@@ -12,7 +12,7 @@ export async function fetchPost(id) {
 }
 
 export async function fetchPostsByUser() {
-  const response = await fetch(`${BASE_URL}myposts`, {
+  const response = await fetch(`${BASE_URL}posts/myposts`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     },
