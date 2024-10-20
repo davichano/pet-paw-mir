@@ -22,6 +22,13 @@ const NewPostAddInfo = () => {
   return (
     <div className="min-h-screen flex items-start justify-center">
       <form className="bg-white p-6 w-full max-w-md" onSubmit={handleSubmit}>
+        <FormField
+          label="Nombre"
+          type="text"
+          value={petData.pet_name} // Usamos el valor del contexto
+          onChange={(e) => handleChange('name', e.target.value)}
+          placeholder='Nombre de la mascota'
+        />
         <FormSelect
           label="Especie"
           value={petData.pet_type} // Usamos el valor del contexto
