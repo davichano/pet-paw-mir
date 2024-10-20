@@ -1,19 +1,18 @@
-const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "http://localhost:3000/api/";
 import {formatPostData} from '../helpers/formatPostData';
 
 export async function fetchPosts() {
-  const response = await fetch(`${BASE_URL}api/posts`);
+  const response = await fetch(`${BASE_URL}posts`);
   return response.json();
 }
 
 export async function fetchPost(id) {
-  const response = await fetch(`${BASE_URL}api/posts/${id}`);
+  const response = await fetch(`${BASE_URL}posts/${id}`);
   return response.json();
 }
 
 export async function fetchPostsByUser() {
-//  const response = await fetch(`http://localhost:8080/users/${id}/posts`);
-  const response = await fetch(`http://localhost:3000/api/posts/myposts`, {
+  const response = await fetch(`${BASE_URL}myposts`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     },
@@ -29,7 +28,7 @@ export async function createPost(postData) {
 
   const postDataFormatted = formatPostData(postData);
 
-  const response = await fetch(`${BASE_URL}api/posts`, {
+  const response = await fetch(`${BASE_URL}posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,3 +45,18 @@ export async function createPost(postData) {
   return response.json(); // Retornar la respuesta del servidor
 }
 
+export async function updatePost(id, postData) {
+  const response = await fetch(`${BASE_URL}posts/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(postData),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error al actualizar el post');
+  }
+
+  return response.json();
+}
