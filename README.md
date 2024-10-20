@@ -9,9 +9,11 @@
 <a href="https://www.facebook.com/PetPawsApp" style="margin-right: 15">
   <img src="src/assets/img/readme//images/icon-svg/facebook.svg" alt="Facebook Icon" width="60" />
 </a>
+&nbsp;
 <a href="https://www.instagram.com/petpawsapp" style="margin-right: 15">
   <img src="src/assets/img/readme//images/icon-svg/instagram.svg" alt="Instagram Icon" width="60" />
 </a>
+&nbsp;
 <a href="#">
   <img src="src/assets/img/readme//images/icon-svg/discord.svg" alt="Discord Icon" width="60"/>
 </a>
