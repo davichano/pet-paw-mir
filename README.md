@@ -1,6 +1,55 @@
-# Pet Paw 🐾
+# <div style="text-align: center"><img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> Pet Paw <img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> </div>
 
-Pet Paw es una aplicación web moderna dedicada a la adopción de mascotas y a la búsqueda de animales perdidos. Conectamos rescatistas, albergues y personas que buscan adoptar o han perdido a sus animales de compañía, facilitando la difusión de casos y creando una comunidad enfocada en darles a los animales un hogar. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.
+<img src="src/assets/img/readme/images/banner/bannerl.png" alt="Pet Paws Banner">
+
+<p style="text-align: justify;"><b>Pet Paws</b> es una aplicación web moderna dedicada a la adopción de mascotas y a la búsqueda de animales perdidos. Conectamos rescatistas, albergues y personas que buscan adoptar o han perdido a sus animales de compañía, facilitando la difusión de casos y creando una comunidad enfocada en darles a los animales un hogar. Permite la gestión de perfiles de mascotas, publicaciones relacionadas con ellas, y la autenticación de usuarios. Utiliza tecnologías modernas como React, Tailwind CSS, y Vite para ofrecer una experiencia de usuario rápida y eficiente.</p>
+
+**Puedes encontrarnos:**
+<div>
+<a href="https://www.facebook.com/PetPawsApp" style="margin-right: 15">
+  <img src="src/assets/img/readme//images/icon-svg/facebook.svg" alt="Facebook Icon" width="60" />
+</a>
+<a href="https://www.instagram.com/petpawsapp" style="margin-right: 15">
+  <img src="src/assets/img/readme//images/icon-svg/instagram.svg" alt="Instagram Icon" width="60" />
+</a>
+<a href="#">
+  <img src="src/assets/img/readme//images/icon-svg/discord.svg" alt="Discord Icon" width="60"/>
+</a>
+</div>
+
+## Tecnologías Utilizadas
+Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modernas para garantizar su escalabilidad, eficiencia y una experiencia de usuario optimizada. A continuación, se listan las principales herramientas y tecnologías empleadas:
+
+### Frontend
+
+<img src="src/assets/img/readme/images/icons/typescript.png" alt="Typescript Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/tailwind.png" alt="Tailwind Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/mapbox.png" alt="MapBox Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/reactjs.png" alt="Reactjs Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/vue.png" alt="Vue Icon" width="60" style="margin: 0 7.5px"/>
+
+### Backend
+
+<img src="src/assets/img/readme/images/icons/nodejs.png" alt="Node Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/socketio.png" alt="Socket.IO Icon" width="60" style="margin: 0 7.5px"/>
+
+### Base de Datos
+
+<img src="src/assets/img/readme/images/icons/postgresql.png" alt="PostgreSQL Icon" width="60" style="margin: 0 7.5px"/>
+
+### Cloud & Hosting
+
+<img src="src/assets/img/readme/images/icons/vercel.svg" alt="Vercel Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/netlify.svg" alt="Netlify Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/heroku.png" alt="Heroku Icon" width="40" style="margin: 0 7.5px"/>
+
+### Media & Archivos
+
+<img src="src/assets/img/readme/images/icons/cloudinary.png" alt="Cloudinary Icon" width="60" style="margin: 0 7.5px"/>
+
+### Testing
+
+<img src="src/assets/img/readme/images/icons/cypress.png" alt="Cloudinary Icon" width="60" style="margin: 0 7.5px"/>
 
 ## UI Design
 
@@ -17,20 +66,56 @@ Para garantizar una experiencia de usuario atractiva y accesible, hemos seleccio
 
 El esquema de colores se basa en un contraste por brillo que garantiza tanto accesibilidad como una estética visualmente coherente y atractiva. Los tonos cálidos y suaves ayudan a transmitir una sensación de cuidado y conexión emocional con las mascotas:
 
+<img src="src/assets/img/readme/images/colors/FFFFFF.png" alt="FFFFFF Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FFE4E2.png" alt="FFE4E2 Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FFB0A9.png" alt="FFB0A9 Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FF797D.png" alt="FF797D Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FF585D.png" alt="FF585D Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FF353A.png" alt="FF353A Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/FF252F.png" alt="FF252F Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/D9534F.png" alt="D9534F Color" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/colors/C9302C.png" alt="C9302C Color" width="60" style="margin: 0 7.5px"/>
+
+
 `#FFFFFF`
 `#FFE4E2`
 `#FFB0A9`
 `#FF797D`
 `#FF585D`
+`FF353A`
+`FF252F`
 `#D9534F`
-`#FF4146`
 `#C9302C`
+
+### WireFrames
+Se utilizo programas como **Paint** y **SketchBook** para la realización de los wireframes.
+
+<img src="src/assets/img/readme/screenshots/wireframe-mobile.png" alt="ScreenShot WireFrame Mobile" height="300" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/screenshots/wireframe-desktop.png" alt="ScreenShot WireFrame Desktop" height="300" style="margin: 0 7.5px"/>
 
 ### Mockups
 
 La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para diseño mobile y desktop.
 
-- Figma - [Pet Paw mockups](https://www.figma.com/design/QdrT1X1tpDvgPlli9pRl2J/Pet-Paws?node-id=0-1&node-type=canvas&t=wXHANSG2u6jNZMI5-0)
+<img src="src/assets/img/readme/screenshots/mockup-mobile.png" alt="MockUp Mobile" height="300" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/screenshots/mockup-desktop.png" alt="MockUp Desktop" height="300" style="margin: 0 7.5px"/>
+
+- Encuentra todos los MockUps en Figma:
+
+<a href="https://www.figma.com/design/QdrT1X1tpDvgPlli9pRl2J/Pet-Paws?node-id=0-1&node-type=canvas&t=wXHANSG2u6jNZMI5-0">
+  <img src="src/assets/img/readme/images/icons/design/figma.png" alt="Figma Icon" width="60" style="margin: 0 30px"/>
+</a>
+
+### Iconos, Ilustraciones y Animaciones
+Para la creación de los elementos visuales y animaciones utilizados en la plataforma, se han empleado las siguientes herramientas:
+
+<img src="src/assets/img/readme/images/icons/design/paint.png" alt="Paint Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/design/figma.png" alt="Figma Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/design/adobeillustrator.png" alt="Adobe IllustratorIcon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/design/adobeanimate.png" alt="Adobe Animate Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/design/svgator.png" alt="SVGator Icon" width="60" style="margin: 0 7.5px, border-radius: 50px"/>
+<img src="src/assets/img/readme/images/icons/design/lottiefiles.png" alt="LottieFiles Icon" width="60" style="margin: 0 7.5px"/>
+<img src="src/assets/img/readme/images/icons/design/createjs.png" alt="CreateJS Icon" width="55" style="margin: 0 7.5px"/>
 
 ## Características Principales
 
@@ -40,6 +125,11 @@ La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para 
 - **Internacionalización**: Soporte multilingüe utilizando `react-i18next`.
 - **Interfaz de Usuario Moderna**: Estilizada con Tailwind CSS para una apariencia limpia y moderna.
 - **Desarrollo Rápido**: Configurado con Vite para un entorno de desarrollo rápido y eficiente.
+
+Pueden encontrar más información en: 
+
+<a href="https://legard2911.atlassian.net/jira/software/projects/MIRPG/boards/1">
+  <img src="src/assets/img/readme/images/icons/others/jira.png" alt="Jira Icon" width="60"/></a>
 
 ## Configuración y Scripts
 
@@ -133,6 +223,12 @@ A largo plazo:
 
 Con **Pet Paws**, estamos construyendo una comunidad segura y rápida para ayudar a las personas a reencontrarse con sus mascotas perdidas o encontrar hogares para animales en situación de abandono.
 
+Puedes encontrar más información respecto al proyecto en:
+
+<a href="https://drive.google.com/drive/folders/1uL-igDqA1zyCBIwnc70UI95ipyvCxQeI?usp=drive_link">
+  <img src="src/assets/img/readme/images/icons/others/drive.png" alt="Drive Icon" width="60" style="margin: 10px"/>
+</a>
+
 ## Autores
 
 - GitHub - [Noelia Garcia Pacara](https://github.com/NoeliaGAP)
@@ -148,6 +244,12 @@ Con **Pet Paws**, estamos construyendo una comunidad segura y rápida para ayuda
 3. Realiza tus cambios y confirma tus commits: `git commit -m 'Añadida nueva-feature'`.
 4. Envía tus cambios: `git push origin feature/nueva-feature`.
 5. Abre un Pull Request.
+
+Puedes encontrar la comunidad de **Discord** para aquellos que deseen contribuir:
+
+<a href="https://discord.gg/nmFkjq57">
+  <img src="src/assets/img/readme/images/icon-svg/discord.svg" alt="Discord Icon" width="60" style="margin: 10px"/>
+</a>
 
 > [!NOTE]
 > Nuestro proyecto busca mejorar la calidad de vida de otras especies. Invitamos a todos a colaborar de forma altruista para alcanzar este objetivo.
