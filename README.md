@@ -25,9 +25,13 @@ Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modern
 ### Frontend
 <div>
 <img src="src/assets/img/readme/images/icons/typescript.png" alt="Typescript Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/tailwind.png" alt="Tailwind Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/mapbox.png" alt="MapBox Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/reactjs.png" alt="Reactjs Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/vue.png" alt="Vue Icon" width="60" style="margin: 0 7.5px"/>
 </div>
 
@@ -35,6 +39,7 @@ Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modern
 
 <div>
 <img src="src/assets/img/readme/images/icons/nodejs.png" alt="Node Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/socketio.png" alt="Socket.IO Icon" width="60" style="margin: 0 7.5px"/>
 </div>
 
@@ -46,7 +51,9 @@ Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modern
 
 <div>
 <img src="src/assets/img/readme/images/icons/vercel.svg" alt="Vercel Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/netlify.svg" alt="Netlify Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/heroku.png" alt="Heroku Icon" width="40" style="margin: 0 7.5px"/>
 </div>
 
@@ -75,13 +82,21 @@ El esquema de colores se basa en un contraste por brillo que garantiza tanto acc
 
 <div>
 <img src="src/assets/img/readme/images/colors/FFFFFF.png" alt="FFFFFF Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FFE4E2.png" alt="FFE4E2 Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FFB0A9.png" alt="FFB0A9 Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FF797D.png" alt="FF797D Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FF585D.png" alt="FF585D Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FF353A.png" alt="FF353A Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/FF252F.png" alt="FF252F Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/D9534F.png" alt="D9534F Color" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/colors/C9302C.png" alt="C9302C Color" width="60" style="margin: 0 7.5px"/>
 </div>
 
@@ -100,6 +115,7 @@ Se utilizo programas como **Paint** y **SketchBook** para la realización de los
 
 <div>
 <img src="src/assets/img/readme/screenshots/wireframe-mobile.png" alt="ScreenShot WireFrame Mobile" height="300" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/screenshots/wireframe-desktop.png" alt="ScreenShot WireFrame Desktop" height="300" style="margin: 0 7.5px"/>
 </div>
 
@@ -109,6 +125,7 @@ La aplicación se basa en los siguiente MockUps realizados en Figma, tanto para 
 
 <div>
 <img src="src/assets/img/readme/screenshots/mockup-mobile.png" alt="MockUp Mobile" height="300" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/screenshots/mockup-desktop.png" alt="MockUp Desktop" height="300" style="margin: 0 7.5px"/>
 </div>
 
@@ -123,11 +140,17 @@ Para la creación de los elementos visuales y animaciones utilizados en la plata
 
 <div>
 <img src="src/assets/img/readme/images/icons/design/paint.png" alt="Paint Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/figma.png" alt="Figma Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/adobeillustrator.png" alt="Adobe IllustratorIcon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/adobeanimate.png" alt="Adobe Animate Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/svgator.png" alt="SVGator Icon" width="60" style="margin: 0 7.5px, border-radius: 50px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/lottiefiles.png" alt="LottieFiles Icon" width="60" style="margin: 0 7.5px"/>
+  &nbsp;
 <img src="src/assets/img/readme/images/icons/design/createjs.png" alt="CreateJS Icon" width="55" style="margin: 0 7.5px"/>
 </div>
 
