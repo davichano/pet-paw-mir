@@ -1,4 +1,4 @@
-# <div align="center"><img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> Pet Paw <img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> </div>
+# <div align="center"><img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> Pet Paws <img src="src/assets/img/readme/images/gifs/paws1.gif" alt="Paws Gif" width="100" /> </div>
 
 <img src="src/assets/img/readme/images/banner/bannerl.png" alt="Pet Paws Banner">
 
