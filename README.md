@@ -19,6 +19,8 @@
 </a>
 </div>
 
+<br>
+
 > [!NOTE]
 > Nuestro proyecto busca mejorar la calidad de vida de otras especies. Invitamos a todos a colaborar de forma altruista para alcanzar este objetivo.
 
@@ -156,10 +158,12 @@ Para la creación de los elementos visuales y animaciones utilizados en la plata
   &nbsp;
 <img src="src/assets/img/readme/images/icons/design/createjs.png" alt="CreateJS Icon" width="55" style="margin: 0 7.5px"/>
 </div>
+<br>
 
 > [!CAUTION]
-> Toda la iconografia, ilustraciones, animación y cualquier diseño dentro del proyecto como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [Noelia Garcia]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para fines no comerciales.
+> Toda la iconografia, ilustraciones, animación y cualquier diseño dentro del proyecto como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [**Noelia Garcia Pacara**]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para fines no comerciales.
 
+<br>
 ## Características Principales
 
 - **Gestión de Usuarios**: Registro y autenticación de usuarios con validación de códigos.
@@ -293,6 +297,6 @@ Puedes encontrar la comunidad de **Discord** para aquellos que deseen contribuir
 <a href="https://discord.gg/nmFkjq57">
   <img src="src/assets/img/readme/images/icon-svg/discord.svg" alt="Discord Icon" width="60" style="margin: 10px"/>
 </a>
-
+<br>
 > [!IMPORTANT]
 >Si eres desarrollador y compartes nuestra pasión por los animales y la tecnología, ¡te invitamos a colaborar! Tu código puede ayudar a mejorar la experiencia de usuario y a expandir nuestro alcance. A cambio, tu nombre se incluirá en la lista de contribuidores del proyecto.
