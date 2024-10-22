@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080/";
+import BASE_URL from '../config';
 
 export async function fetchCommentsByPost(postId) {
   const response = await fetch(`${BASE_URL}comments?post_id=${postId}`);

@@ -1,17 +1,17 @@
-const BASE_URL = "http://localhost:3000";
+import BASE_URL from '../config';
 
 export async function fetchUsers() {
-  const response = await fetch(`${BASE_URL}/api/users/`);
+  const response = await fetch(`${BASE_URL}api/users/`);
   return response.json();
 }
 
 export async function fetchUser(id) {
-  const response = await fetch(`${BASE_URL}/api/users/${id}`);
+  const response = await fetch(`${BASE_URL}api/users/${id}`);
   return response.json();
 }
 
 export async function updateUser(id, updatedUser) {
-  const response = await fetch(`${BASE_URL}/api/users/${id}`, {
+  const response = await fetch(`${BASE_URL}api/users/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export async function updateUser(id, updatedUser) {
 }
 
 export async function patchUser(id, updatedFields) {
-  const response = await fetch(`${BASE_URL}/api/users/${id}`, {
+  const response = await fetch(`${BASE_URL}api/users/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export async function patchUser(id, updatedFields) {
 }
 
 export async function loginUser(username, password) {
-  const url = `${BASE_URL}/auth/local/login`;
+  const url = `${BASE_URL}auth/local/login`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -60,7 +60,7 @@ export async function loginUser(username, password) {
 }
 
 export async function createUser(user) {
-  const response = await fetch(`${BASE_URL}/api/users`, {
+  const response = await fetch(`${BASE_URL}api/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export async function createUser(user) {
 }
 
 export async function getUserByEmail(email) {
-  const url = new URL(`${BASE_URL}/api/users`);
+  const url = new URL(`${BASE_URL}api/users`);
 
   const response = await fetch(url);
 
@@ -100,7 +100,7 @@ export async function getUserByEmail(email) {
 
 export const activateAccount = async (token) => {
   try {
-    const response = await fetch(`${BASE_URL}/auth/local/activate/${token}`, {
+    const response = await fetch(`${BASE_URL}auth/local/activate/${token}`, {
       method: "GET",
     });
 

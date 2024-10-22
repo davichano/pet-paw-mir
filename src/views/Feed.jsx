@@ -1,30 +1,26 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import { Link } from 'react-router-dom';
-// import { useNavigate } from "react-router-dom";
+import {Link, useParams} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
 
 const Feed = () => {
+  const { filter } = useParams();
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
-  const { t } = useTranslation();
-  const [showFilters, setShowFilters] = useState(false);
+  const {t} = useTranslation();
+  const showFilters = filter === "true"
   const [searchParams, setSearchParams] = useState({
     name: '',
     pet_type: '',
     pet_gender: ''
   });
 
-  const [selectedPost, setSelectedPost] = useState(null); // Para manejar el post seleccionado
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const toggleModal = () => setModalOpen(!isModalOpen);
-  // const navigate = useNavigate();
-
-  // const handleRedirect = () => {
-  //   navigate("/post");
-  // }
 
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
@@ -47,41 +43,34 @@ const Feed = () => {
     loadPosts(searchParams);
   }, [searchParams]);
 
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
 
-  const handleEditClick = (post) => {
-    setSelectedPost(post); // Selecciona el post para editar
-    setModalOpen(true); // Abre el modal
-  };
+  // const handleEditClick = (post) => {
+  //   setSelectedPost(post);
+  //   setModalOpen(true);
+  // };
 
   return (
     <>
-      <div className="flex justify-center items-center h-20 space-x-2 px-5">
+      <div className="flex justify-center items-center h-20 space-x-2 px-5 border-b-2 border-custom-200">
         <div className="w-1/2">
           <button
-            onClick={toggleFilters}
-            className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
+            className="bg-transparent text-custom-250 px-4 py-2 w-full h-full text-2xl border-b-2 border-custom-200"
           >
-            {showFilters ? 'Hide Filters' : 'Show Filters'}
+            { 'Para ti' }
           </button>
         </div>
         <div className="w-1/2">
           <button
-            className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
-            onClick={() => {
-              setSelectedPost(null);
-              setModalOpen(true);
-            }}
+            className="bg-transparent text-custom-250 px-4 py-2 w-full h-full text-2xl"
           >
-            Crear Post
+            { 'Siguiendo' }
           </button>
         </div>
       </div>
+
       <div className="mx-10">
         {showFilters && (
-          <div className="mb-4">
+          <div className="mb-4 mt-8">
             <input
               type="text"
               className="border p-2 w-full mb-4"
@@ -119,18 +108,29 @@ const Feed = () => {
                 description={post.pet_description}
                 imageUrl={post.pictures?.[0]?.url}
                 handleModalToggle={toggleModal}
-                t={t}/>
+                t={t}
+              />
             </Link>
 
-            <button
-              className="absolute top-2 right-2 bg-custom-250 text-white px-4 py-1 rounded"
-              onClick={() => handleEditClick(post)}
-            >
-              Editar
-            </button>
+            {/*<button*/}
+            {/*  className="absolute top-2 right-2 bg-custom-250 text-white px-4 py-1 rounded"*/}
+            {/*  onClick={() => handleEditClick(post)}*/}
+            {/*>*/}
+            {/*  Editar*/}
+            {/*</button>*/}
           </div>
         ))}
       </div>
+
+      <button
+        className="fixed w-[74px] h-[74px] bottom-[100px] right-4 bg-custom-250 text-white p-3 rounded-full shadow-lg hover:bg-custom-300 focus:outline-none"
+        onClick={() => {
+          setSelectedPost(null);
+          setModalOpen(true);
+        }}
+      >
+        <img src={pawPlusSVG} className="w-full mx-auto"/>
+      </button>
 
       {isModalOpen && (
         <ModalFormulario
@@ -146,6 +146,4 @@ const Feed = () => {
   );
 };
 
-
 export default Feed;
-

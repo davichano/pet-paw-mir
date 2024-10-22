@@ -1,5 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import Home from "../views/Home";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Feed from "../views/Feed";
 import DetailsPublication from "../views/DetailsPublication";
 import UserProfile from "../views/users/Profile";
@@ -27,14 +26,18 @@ export const MainRouter = () => {
     "/passwordrecovery",
     "/landingpage",
   ];
+
   return (
     <>
       <Toaster richColors expand={true} />
       {!hideHeaderRoutes.includes(location.pathname) && <Header />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/feed" element={<Feed />} />
+        <Route
+          path="/:filter?"
+          element={<Feed />}
+        />
+        <Route path="/" element={<Navigate to="/false" />} />
         <Route path="/pet/:id" element={<DetailsPublication />} />
         <Route path="/user/:id" element={<UserProfile />} />
         <Route path="/user/edit/:id" element={<UserEditProfile />} />
@@ -84,6 +87,7 @@ export const MainRouter = () => {
           }
         />
       </Routes>
+
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
     </>
   );
