@@ -161,7 +161,7 @@ Para la creación de los elementos visuales y animaciones utilizados en la plata
 <br>
 
 > [!CAUTION]
-> Toda la iconografia, ilustraciones, animación y cualquier diseño dentro del proyecto como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [**Noelia Garcia Pacara**]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para fines no comerciales.
+> Toda la iconografia (menos la que **NO** es de color `#FF797D` dentro del Readme), ilustraciones, animación y cualquier diseño dentro del proyecto como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [**Noelia Garcia Pacara**]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para **fines NO comerciales**.
 
 <br>
 
