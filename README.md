@@ -263,6 +263,7 @@ A corto plazo:
 - **Verificación de Usuarios Real**: Implementaremos la validación completa de usuarios utilizando correos electrónicos y códigos SMS reales.
 - **Gestión de Perfiles de Mascotas**: Ampliaremos las opciones para que los usuarios gestionen más detalles sobre sus mascotas.
 - **Notificaciones en Tiempo Real**: Las notificaciones sobre avistamientos y mensajes de otros usuarios serán parte de una actualización futura.
+   **Mejora de pantalla "Settings"**: Colocar **eliminar cuenta** dentro de edición de perfil.
 
 A largo plazo:
 
