@@ -161,7 +161,7 @@ Para la creación de los elementos visuales y animaciones utilizados en la plata
 <br>
 
 > [!CAUTION]
-> Toda la iconografia, ilustraciones, animación y cualquier diseño dentro del proyecto como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [**Noelia Garcia Pacara**]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para fines no comerciales.
+> Toda la iconografia, ilustraciones, animación y cualquier diseño dentro del proyecto (menos la que **NO** es de color `#FF797D` dentro del Readme) como los enlaces añadidos, tienen derecho de autor; si piensas usarlos contactarse primero con [**Noelia Garcia Pacara**]([https://github.com/NoeliaGAP](https://www.linkedin.com/in/noelia-gap/)) y preguntar si pueden usarlos colocando **créditos al autor**, pero solo sí son trabajos para **fines NO comerciales**.
 
 <br>
 
@@ -263,6 +263,7 @@ A corto plazo:
 - **Verificación de Usuarios Real**: Implementaremos la validación completa de usuarios utilizando correos electrónicos y códigos SMS reales.
 - **Gestión de Perfiles de Mascotas**: Ampliaremos las opciones para que los usuarios gestionen más detalles sobre sus mascotas.
 - **Notificaciones en Tiempo Real**: Las notificaciones sobre avistamientos y mensajes de otros usuarios serán parte de una actualización futura.
+- **Mejora de pantalla "Settings"**: Colocar **eliminar cuenta** dentro de edición de perfil.
 
 A largo plazo:
 
