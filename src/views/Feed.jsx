@@ -5,9 +5,10 @@ import {Link, useParams} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
+import SavePost from "../components/PostPet/SavePost.jsx";
 
 const Feed = () => {
-  const { filter } = useParams();
+  const {filter} = useParams();
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
   const {t} = useTranslation();
@@ -43,12 +44,6 @@ const Feed = () => {
     loadPosts(searchParams);
   }, [searchParams]);
 
-
-  // const handleEditClick = (post) => {
-  //   setSelectedPost(post);
-  //   setModalOpen(true);
-  // };
-
   return (
     <>
       <div className="flex justify-center items-center h-20 space-x-2 px-5 border-b-2 border-custom-200">
@@ -56,14 +51,14 @@ const Feed = () => {
           <button
             className="bg-transparent text-custom-250 px-4 py-2 w-full h-full text-2xl border-b-2 border-custom-200"
           >
-            { 'Para ti' }
+            {'Para ti'}
           </button>
         </div>
         <div className="w-1/2">
           <button
             className="bg-transparent text-custom-250 px-4 py-2 w-full h-full text-2xl"
           >
-            { 'Siguiendo' }
+            {'Siguiendo'}
           </button>
         </div>
       </div>
@@ -111,13 +106,7 @@ const Feed = () => {
                 t={t}
               />
             </Link>
-
-            {/*<button*/}
-            {/*  className="absolute top-2 right-2 bg-custom-250 text-white px-4 py-1 rounded"*/}
-            {/*  onClick={() => handleEditClick(post)}*/}
-            {/*>*/}
-            {/*  Editar*/}
-            {/*</button>*/}
+            <SavePost post={post} pos_x={90} pos_y={40}/>
           </div>
         ))}
       </div>
