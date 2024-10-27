@@ -8,9 +8,25 @@ import i18n from "./i18n.jsx";
 
 import { useCurrentUser } from "./hooks/useCurrentUser.jsx";
 import { BrowserRouter } from "react-router-dom";
+import i18n from './i18n.jsx';
+import { useCurrentUser } from './hooks/useCurrentUser.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import { useSavedPosts } from "./hooks/useSavedPosts.jsx";
+import { useState, useEffect } from 'react';
 
 function App() {
   const current_user = useCurrentUser();
+  const { savedPosts, loading } = useSavedPosts({ userId: current_user?.id });
+
+  const [saved_posts, setSavedPosts] = useState([]);
+
+  useEffect(() => {
+    if (!loading) {
+      setSavedPosts(savedPosts);
+    }
+  }, [savedPosts, loading]);
+
+  if (loading) return <div>Cargando...</div>;
 
   return (
     <>
@@ -18,7 +34,7 @@ function App() {
         <I18nextProvider i18n={i18n}>
             <UserProvider>
               <ConfigProvider>
-                <PetContext.Provider value={{ current_user }}>
+                <PetContext.Provider value={{ current_user, saved_posts, setSavedPosts  }}>
                   <div>
                     <BrowserRouter>
                       <MainRouter />

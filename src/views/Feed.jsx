@@ -3,9 +3,12 @@ import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
 import {Link} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
+import SavePost from "../components/PostPet/SavePost.jsx";
 
 const Feed = () => {
+  const {filter} = useParams();
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
@@ -46,15 +49,6 @@ const Feed = () => {
     loadPosts(searchParams);
   }, [searchParams]);
 
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
-
-  const handleEditClick = (post) => {
-    setSelectedPost(post); // Selecciona el post para editar
-    setModalOpen(true); // Abre el modal
-  };
-
   return (
     <>
       <div className="flex justify-center items-center h-20 space-x-2 px-5">
@@ -63,18 +57,14 @@ const Feed = () => {
             onClick={toggleFilters}
             className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
           >
-            {showFilters ? 'Hide Filters' : 'Show Filters'}
+            {'Para ti'}
           </button>
         </div>
         <div className="w-1/2">
           <button
-            className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
-            onClick={() => {
-              setSelectedPost(null);
-              setModalOpen(true);
-            }}
+            className="bg-transparent text-custom-250 px-4 py-2 w-full h-full text-2xl"
           >
-            Crear Post
+            {'Siguiendo'}
           </button>
         </div>
       </div>
@@ -120,13 +110,7 @@ const Feed = () => {
                 handleModalToggle={toggleModal}
                 t={t}/>
             </Link>
-
-            <button
-              className="absolute top-2 right-2 bg-custom-250 text-white px-4 py-1 rounded"
-              onClick={() => handleEditClick(post)}
-            >
-              Editar
-            </button>
+            <SavePost post={post} pos_x={90} pos_y={40}/>
           </div>
         ))}
       </div>
