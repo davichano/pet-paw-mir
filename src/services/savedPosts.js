@@ -1,11 +1,16 @@
 import BASE_URL from '../config';
 
-export async function fetchSavedPosts(userId) {
-  const res = await fetch(`${BASE_URL}saved_posts?user_id=${userId}`);
-  if (!res.ok) {
-    throw new Error(`Error fetching saved posts: ${res.statusText}`);
+export async function fetchSavedPosts() {
+  try {
+    const res = await fetch(`${BASE_URL}api/saved_posts`);
+    if (!res.ok) {
+      throw new Error(`Error fetching saved posts: ${res.statusText}`);
+    }
+    return await res.data();
+  } catch (e) {
+    console.error('Error fetching saved posts:', e);
+    return [];
   }
-  return await res.json();
 }
 
 export async function savePost(userId, postId) {
