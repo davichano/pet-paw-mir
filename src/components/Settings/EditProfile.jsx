@@ -9,6 +9,7 @@ import FormField from "./ui/FormField";
 import Button from "./ui/Button";
 import { toast } from "sonner";
 import { patchUser } from "../../services/users";
+import { useTranslation } from "react-i18next";
 
 const schema = yup.object().shape({
   description: yup.string().required("La descripción es obligatoria"),
@@ -16,6 +17,8 @@ const schema = yup.object().shape({
 });
 
 const EditProfile = () => {
+
+  const { t } = useTranslation();
   const { updateUser, data } = useUser();
 
   const {
@@ -44,10 +47,10 @@ const EditProfile = () => {
       await patchUser(data.userId, {
         gender: formData.gender
       });
-      toast.success("Perfil actualizado");
+      toast.success(t("updatedCorrectly"));
     } catch (error) {
-      console.error("Error updating profile", error);
-      toast.error("Error al actualizar el perfil");
+      console.error(t("errorUpdating"), error);
+      toast.error(t("errorUpdating"));
     }
   };
 
@@ -70,7 +73,7 @@ const EditProfile = () => {
                 onClick={() => setIsModalOpen(true)}
                 className="font-light"
               >
-                Cambiar foto
+                {t("settings.user.changePhoto")}
               </button>
             </div>
           </div>
@@ -79,19 +82,19 @@ const EditProfile = () => {
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <div className="flex flex-col bg-custom-200 text-white rounded-2xl space-y-1">
             <div className="border-b border-white pb-2 text-center">
-              Cambiar foto de perfil
+            {t("settings.user.changePhoto")}
             </div>
             <button className="bg-custom-200 text-custom-50 font-semibold py-2 px-4  m-0 border-b-white border-b">
-              Subir foto
+            {t("settings.user.uploadPhoto")}
             </button>
             <button className="bg-custom-200 hover:bg-red-700 text-custom-400 font-semibold py-2 px-4 hover:text-custom-50  border-b-white border-b">
-              Remover foto
+            {t("settings.user.deletePhoto")}
             </button>
             <button
               onClick={() => setIsModalOpen(false)}
               className="bg-custom-200  text-custom-50 font-semibold py-2 px-4 rounded-b-2xl "
             >
-              Cancelar
+              {t("cancel")}
             </button>
           </div>
         </Modal>
@@ -105,17 +108,17 @@ const EditProfile = () => {
 
         <div className="mt-4">
           <label htmlFor="gender" className="block mb-1 text-custom-250">
-            Género
+          {t("gender")}
           </label>
           <select
             id="gender" // Cambié 'category' por 'gender' para evitar confusión
             {...register("gender")}
             className="p-2 w-full border-custom-200 text-custom-200 rounded-lg"
           >
-            <option value="">Selecciona género</option>
-            <option value="Male">Masculino</option>
-            <option value="Female">Femenino</option>
-            <option value="Other">Otro</option>
+            <option value="">{t("gender.choose")}</option>
+            <option value="Male">{t("gender.male")}</option>
+            <option value="Female">{t("gender.female")}</option>
+            <option value="Other">{t("gender.other")}</option>
           </select>
           {errors.gender && (
             <p className="text-custom-200">{errors.gender.message}</p>

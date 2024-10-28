@@ -118,6 +118,10 @@
   "change": "Cambiar",
   "description": "Descripción",
   "gender": "Género",
+  "gender.male": "Hombre",
+  "gender.female": "Mujer",
+  "gender.other": "Otro",
+  "gender.choose": "Selecciona un género",
   "personalInformation": "Información personal",
   "picture": "Foto",
   "save": "Guardar",
@@ -154,6 +158,9 @@
   "landing.subtitle": "Adopta o encuentra a tu amigo perdido.",
   "settings.title": "Configuraciones",
   "settings.user.title": "Usuario",
+  "settings.user.changePhoto": "Cambiar foto",
+  "settings.user.uploadPhoto": "Subir foto",
+  "settings.user.deletePhoto": "eliminar foto",
   "settings.user.edit": "Editar perfil",
   "settings.user.password": "Cambiar contraseña",
   "settings.user.details": "Detalles del usuario",
@@ -168,5 +175,8 @@
   "settings.support.faqs": "Preguntas frecuentes",
   "settings.manage.title": "Administrar",
   "settings.manage.logout": "Cerrar sesión",
-  "settings.manage.deleteAccount": "Eliminar cuenta"
+  "settings.manage.deleteAccount": "Eliminar cuenta",
+  "updatedCorrectly": "Actualizado correctamente",
+  "errorUpdating": "Error al actualizar",
+  "cancel": "Cancelar"
 }

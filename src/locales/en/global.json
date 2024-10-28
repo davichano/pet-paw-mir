@@ -118,6 +118,10 @@
   "change": "Change",
   "description": "Description",
   "gender": "Gender",
+  "gender.male": "Man",
+  "gender.female" : "Female",
+  "gender.other": "Other",
+  "gender.choose": "Choose a gender",
   "personalInformation": "Personal Information",
   "picture": "Picture",
   "save": "Save",
@@ -154,6 +158,9 @@
   "landing.subtitle": "Find your pet or help find someone else's",
   "settings.title": "Settings",
   "settings.user.title": "User",
+  "settings.user.changePhoto": "Change photo",
+  "settings.user.uploadPhoto": "Upload photo",
+  "settings.user.deletePhoto": "Delete photo",
   "settings.user.edit": "Edit profile",
   "settings.user.password": "Change password",
   "settings.user.details": "User details",
@@ -168,5 +175,8 @@
   "settings.support.faqs": "FAQs",
   "settings.manage.title": "Manage",
   "settings.manage.logout": "Logout",
-  "settings.manage.deleteAccount": "Delete account"
+  "settings.manage.deleteAccount": "Delete account",
+  "updatedCorrectly": "Updated correctly",
+  "errorUpdating": "Error updating",
+  "cancel": "Cancel"
 }
