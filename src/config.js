@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://localhost:3000/'
-  : 'http://localhost:8080/';
+  ? 'https://pet-paw-mir-backend-production.up.railway.app/'
+  : 'http://localhost:3000/';
 
 export default BASE_URL;

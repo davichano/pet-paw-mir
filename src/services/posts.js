@@ -1,60 +1,60 @@
 import BASE_URL from '../config';
-import {formatPostData} from '../helpers/formatPostData';
+import { formatPostData } from '../helpers/formatPostData';
+
+const getAuthHeaders = () => ({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${localStorage.getItem('token')}`
+});
 
 export const fetchPosts = async (searchParams = {}) => {
   const filteredParams = Object.fromEntries(
     Object.entries(searchParams).filter(([, value]) => value !== "")
   );
   const query = new URLSearchParams(filteredParams).toString();
-  const response = await fetch(`${BASE_URL}posts?${query}`);
-  return await response.json();
+  const response = await fetch(`${BASE_URL}api/posts?${query}`, {
+    headers: getAuthHeaders(),
+  });
+  const result = await response.json();
+  return result.data;
 };
 
 export async function fetchPost(id) {
-  const response = await fetch(`${BASE_URL}posts/${id}`);
-  return response.json();
+  const response = await fetch(`${BASE_URL}api/posts/${id}`, {
+    headers: getAuthHeaders(),
+  });
+  const result = await response.json();
+  return result.data;
 }
 
 export async function fetchPostsByUser() {
-  const response = await fetch(`${BASE_URL}myposts`, {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-    },
+  const response = await fetch(`${BASE_URL}api/myposts`, {
+    headers: getAuthHeaders(),
   });
-  return response.json();
-
+  const result = await response.json();
+  return result.data;
 }
 
-
 export async function createPost(postData) {
-
-  console.log('postDataFormatted:', formatPostData(postData));
-
   const postDataFormatted = formatPostData(postData);
-
-  const response = await fetch(`${BASE_URL}posts`, {
+  const response = await fetch(`${BASE_URL}api/posts`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify(postDataFormatted),
   });
 
   if (!response.ok) {
-    console.log('Error al crear el post');
+    console.error('Error al crear el post');
     throw new Error('Error al crear el post');
   }
 
-  return response.json(); // Retornar la respuesta del servidor
+  const result = await response.json();
+  return result.data;
 }
 
 export async function updatePost(id, postData, method = "PATCH") {
-  const response = await fetch(`${BASE_URL}posts/${id}`, {
+  const response = await fetch(`${BASE_URL}api/posts/${id}`, {
     method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify(postData),
   });
 
@@ -62,5 +62,6 @@ export async function updatePost(id, postData, method = "PATCH") {
     throw new Error('Error al actualizar el post');
   }
 
-  return response.json();
+  const result = await response.json();
+  return result.data;
 }

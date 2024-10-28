@@ -95,13 +95,13 @@ const Feed = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-        {posts.map((post) => (
+        {posts.length > 0 && posts.map((post) => (
           <div key={post.id} className="relative">
             <Link to={`/pet/${post.id}`}>
               <CardPostPet
-                name={post.name}
-                description={post.pet_description}
-                imageUrl={post.picture}
+                name={post.Pet.name}
+                description={post.Pet.description}
+                imageUrl={post.Pet.imageUrl}
                 handleModalToggle={toggleModal}
                 t={t}
               />

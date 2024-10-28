@@ -1,4 +1,5 @@
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+// MainRouter.jsx
+import {Routes, Route, useLocation} from "react-router-dom";
 import Feed from "../views/Feed";
 import DetailsPublication from "../views/DetailsPublication";
 import UserProfile from "../views/users/Profile";
@@ -8,14 +9,15 @@ import Footer from "../components/template/Footer.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
-import { Toaster } from "sonner";
+import {Toaster} from "sonner";
 import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
 import NewPostTag from "../views/NewPostTag.jsx";
 import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 import NewPostMap from "../views/NewPostMap.jsx";
-import { PetProvider } from "../contexts/post/PetProvider";
+import {PetProvider} from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -29,66 +31,109 @@ export const MainRouter = () => {
 
   return (
     <>
-      <Toaster richColors expand={true} />
-      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
+      <Toaster richColors expand={true}/>
+      {!hideHeaderRoutes.includes(location.pathname) && <Header/>}
 
       <Routes>
-        <Route
-          path="/:filter?"
-          element={<Feed />}
-        />
-        <Route path="/" element={<Navigate to="/false" />} />
-        <Route path="/pet/:id" element={<DetailsPublication />} />
-        <Route path="/user/:id" element={<UserProfile />} />
-        <Route path="/user/edit/:id" element={<UserEditProfile />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/landingpage" element={<LandingPage />} />
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/passwordrecovery" element={<PasswordRecovery/>}/>
+        <Route path="/" element={<LandingPage/>}/>
 
-        <Route path="/passwordrecovery" element={<PasswordRecovery />} />
+        <Route
+          path="/feed"
+          element={
+            <ProtectedRoute>
+              <Feed/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/feed/:filter"
+          element={
+            <ProtectedRoute>
+              <Feed/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/pet/:id"
+          element={
+            <ProtectedRoute>
+              <DetailsPublication/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/:id"
+          element={
+            <ProtectedRoute>
+              <UserProfile/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user/edit/:id"
+          element={
+            <ProtectedRoute>
+              <UserEditProfile/>
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/post"
           element={
-            <PetProvider>
-              <NewPostPet />
-            </PetProvider>
+            <ProtectedRoute>
+              <PetProvider>
+                <NewPostPet/>
+              </PetProvider>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/post/state"
           element={
-            <PetProvider>
-              <NewPostState />
-            </PetProvider>
+            <ProtectedRoute>
+              <PetProvider>
+                <NewPostState/>
+              </PetProvider>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/post/tag"
           element={
-            <PetProvider>
-              <NewPostTag />
-            </PetProvider>
+            <ProtectedRoute>
+              <PetProvider>
+                <NewPostTag/>
+              </PetProvider>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/post/info"
           element={
-            <PetProvider>
-              <NewPostAddInfo />
-            </PetProvider>
+            <ProtectedRoute>
+              <PetProvider>
+                <NewPostAddInfo/>
+              </PetProvider>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/post/map"
           element={
-            <PetProvider>
-              <NewPostMap />
-            </PetProvider>
+            <ProtectedRoute>
+              <PetProvider>
+                <NewPostMap/>
+              </PetProvider>
+            </ProtectedRoute>
           }
         />
       </Routes>
 
-      {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
+      {!hideHeaderRoutes.includes(location.pathname) && <Footer/>}
     </>
   );
 };
