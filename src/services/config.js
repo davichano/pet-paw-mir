@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = `${import.meta.env.VITE_BASE_URL}/api`;
 
 export const getConfig = async (id) => {
   const response = await axios.get(`${BASE_URL}/setting/${id}`);
