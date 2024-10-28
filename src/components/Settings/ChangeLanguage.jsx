@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../../hooks/useLanguage";
 import { updateConfig } from "../../services/config"
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const EditLanguage = () => {
+
+  const { t } = useTranslation();
   const { updateUser, data } = useUser();
   const { setLanguage } = useLanguage();
 
@@ -23,24 +26,24 @@ const EditLanguage = () => {
     }
   }, [data]);
 
-  const handleChange = (code) => {
+  const handleChange =async (code) => {
     setSelectedLanguage(code);
     updateUser({ language: code.toUpperCase() });
     updateUser({ idioma: code.toUpperCase() });
     setLanguage(code);
     try {
-      updateConfig(data.id, { language: code.toUpperCase() });
-      toast.success("Idioma actualizado correctamente");
+      await updateConfig(data.id, { language: code.toUpperCase() });
+      toast.success(t("updatedCorrectly"));
     }
     catch (error) {
       console.error(error);
-      toast.error("Error al actualizar el idioma");
+      toast.error(t("errorUpdating"));
     }
   };
 
   return (
     <div className="p-6 text-custom-350 w-2/4 space-y-6 min-w-64 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col">
-      <h2 className="text-xl font-bold mb-4 text-custom-250">Cambiar Idioma</h2>
+      <h2 className="text-xl font-bold mb-4 text-custom-250">{t("set.pre.lan.title")}</h2>
       <ul className="space-y-4">
         {languages.map(({ code, label }) => (
           <li key={code}>

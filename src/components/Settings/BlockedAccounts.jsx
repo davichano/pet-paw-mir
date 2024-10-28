@@ -1,8 +1,10 @@
 import  { useState, useEffect } from 'react';
 import Title from './ui/Title';
+import { useTranslation } from 'react-i18next';
 
 const BlockedAccounts = () => {
   const [cuentas, setCuentas] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Lógica para obtener la lista de cuentas bloqueadas desde la API
@@ -16,9 +18,9 @@ const BlockedAccounts = () => {
 
   return (
     <div className='text-custom-200 mt-10'>
-      <Title text="Cuentas bloqueadas"/>
+      <Title text={t("settings.security.blockedAccounts")}/>
       {cuentas.length === 0 ? (
-        <p>No tienes cuentas bloqueadas.</p>
+        <p>{t("set.sec.bloAcc.noBlocked")}</p>
       ) : (
         <ul className="space-y-4">
           {cuentas.map((cuenta) => (

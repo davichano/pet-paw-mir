@@ -8,6 +8,7 @@ import Button from "./ui/Button";
 import Title from "./ui/Title";
 import { patchUser } from "../../services/users";
 import {toast} from 'sonner';
+import { useTranslation } from "react-i18next";
 
 const formatDateForInput = (isoString) => {
   const date = new Date(isoString);
@@ -28,6 +29,7 @@ const schema = yup.object().shape({
 });
 
 const EditDetails = () => {
+  const { t } = useTranslation();
   const {updateUser, data} = useUser();
   const {
     register,
@@ -75,13 +77,13 @@ const EditDetails = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6 min-w-64 w-2/4 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col"
     >
-      <Title text="Detalles Personales" />
-      <FormField id="name" type="text" label="Nombre(s)" register={register} errors={errors} />
-      <FormField id="lastName" type="text" label="Apellido(s)" register={register} errors={errors} />
-      <FormField id="account" type="text" label="Usuario" register={register} errors={errors} />
+      <Title text={t("settings.user.details")} />
+      <FormField id="name" type="text" label={t("name")} register={register} errors={errors} />
+      <FormField id="lastName" type="text" label= {t("lastName")} register={register} errors={errors} />
+      <FormField id="account" type="text" label={t("username")} register={register} errors={errors} />
       {/*<FormField id="email" type="email" label="Correo Electrónico" register={register} errors={errors} />*/}
-      <FormField id="birthDate" type="date" label="Fecha de Nacimiento" register={register} errors={errors} />
-      <Button type="submit" >Guardar Cambios</Button>
+      <FormField id="birthDate" type="date" label={t("birthdate")} register={register} errors={errors} />
+      <Button type="submit" >{t("save")}</Button>
     </form>
   );
 };

@@ -11,14 +11,16 @@ import { toast } from "sonner";
 import { patchUser } from "../../services/users";
 import { useTranslation } from "react-i18next";
 
-const schema = yup.object().shape({
-  description: yup.string().required("La descripción es obligatoria"),
-  gender: yup.string().required("El género es obligatorio"),
-});
+
 
 const EditProfile = () => {
-
   const { t } = useTranslation();
+  const schema = yup.object().shape({
+    description: yup.string().required(t("descriptionRequired")),
+    gender: yup.string().required(t("genderRequired")),
+  });
+
+
   const { updateUser, data } = useUser();
 
   const {
@@ -100,7 +102,7 @@ const EditProfile = () => {
           </div>
         </Modal>
         <FormField
-          label="Descripción"
+          label={t("description")}
           type="textarea"
           id="description"
           register={register}
@@ -122,11 +124,11 @@ const EditProfile = () => {
             <option value="Other">{t("gender.other")}</option>
           </select>
           {errors.gender && (
-            <p className="text-custom-200">{errors.gender.message}</p>
+            <p className="text-custom-250">{errors.gender.message}</p>
           )}
         </div>
 
-        <Button type="submit">Guardar</Button>
+        <Button type="submit">{t("save")}</Button>
       </form>
     </>
   );
