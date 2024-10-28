@@ -14,9 +14,11 @@ import ReportProblem from '../components/Settings/ReportProblem';
 import Faq from '../components/Settings/Faq';
 import Logout from '../components/Settings/Logout';
 import DeleteAccount from '../components/Settings/DeleteAccount';
+import useWindowSize from '../hooks/useWindowsSize';
 
 const Settings = () => {
   const  {selectedSection}  = useContext(ConfigContext);
+  const { width } = useWindowSize();
 
   const { t } = useTranslation();
 
@@ -60,7 +62,7 @@ const Settings = () => {
 
   return (
     <div>
-      <Header title={t("settings.title")}/>
+      <Header title={width>768? t("settings.title"): t(selectedSection)}/>
       <div className="flex flex-1  ">
         <Menu />
         <main className="flex flex-1 p-4 bg-white justify-center">{renderContent()}</main>
