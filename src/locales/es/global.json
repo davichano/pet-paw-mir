@@ -151,5 +151,22 @@
   "verificationCodeSent": "Código de verificación enviado",
   "userNotExists": "El usuario no existe",
   "landing.title": "¡Ayuda a cambiar vidas!",
-  "landing.subtitle": "Adopta o encuentra a tu amigo perdido."
+  "landing.subtitle": "Adopta o encuentra a tu amigo perdido.",
+  "settings.title": "Configuraciones",
+  "settings.user.title": "Usuario",
+  "settings.user.edit": "Editar perfil",
+  "settings.user.password": "Cambiar contraseña",
+  "settings.user.details": "Detalles del usuario",
+  "settings.security.title": "Seguridad",
+  "settings.security.privacy": "Privacidad",
+  "settings.security.blockedAccounts": "Cuentas bloqueadas",
+  "settings.preferences.title": "Preferencias",
+  "settings.preferences.theme": "Tema",
+  "settings.preferences.language": "Idioma",
+  "settings.support.title": "Soporte",
+  "settings.support.reportProblem": "Reportar un problema",
+  "settings.support.faqs": "Preguntas frecuentes",
+  "settings.manage.title": "Administrar",
+  "settings.manage.logout": "Cerrar sesión",
+  "settings.manage.deleteAccount": "Eliminar cuenta"
 }

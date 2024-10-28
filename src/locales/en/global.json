@@ -151,5 +151,22 @@
   "verificationCodeSent": "Verification code sent",
   "userNotExists": "User does not exist",
   "landing.title": "Help change lives!",
-  "landing.subtitle": "Find your pet or help find someone else's"
+  "landing.subtitle": "Find your pet or help find someone else's",
+  "settings.title": "Settings",
+  "settings.user.title": "User",
+  "settings.user.edit": "Edit profile",
+  "settings.user.password": "Change password",
+  "settings.user.details": "User details",
+  "settings.security.title": "Security",
+  "settings.security.privacy": "Privacy",
+  "settings.security.blockedAccounts": "Blocked accounts",
+  "settings.preferences.title": "Preferences",
+  "settings.preferences.theme": "Tema",
+  "settings.preferences.language": "Language",
+  "settings.support.title"  : "Support",
+  "settings.support.reportProblem": "Report a problem",
+  "settings.support.faqs": "FAQs",
+  "settings.manage.title": "Manage",
+  "settings.manage.logout": "Logout",
+  "settings.manage.deleteAccount": "Delete account"
 }
