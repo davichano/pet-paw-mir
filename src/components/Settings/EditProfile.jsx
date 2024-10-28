@@ -42,10 +42,11 @@ const EditProfile = () => {
   }, [data, setValue]);
 
   const onSubmit =async (formData) => {
-    updateUser({ gender: formData.gender });
+    updateUser({ gender: formData.gender, description: formData.description });
     try {
       await patchUser(data.userId, {
-        gender: formData.gender
+        gender: formData.gender,
+        description: formData.description
       });
       toast.success(t("updatedCorrectly"));
     } catch (error) {
