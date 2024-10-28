@@ -10,6 +10,11 @@ export async function fetchUser(id) {
   return response.json();
 }
 
+export async function fetchUserByEmail(email) {
+  const response = await fetch(`${BASE_URL}api/users/email/${email}`);
+  return response.json();
+}
+
 export async function updateUser(id, updatedUser) {
   const response = await fetch(`${BASE_URL}api/users/${id}`, {
     method: "PUT",
@@ -75,28 +80,68 @@ export async function createUser(user) {
   return response.json();
 }
 
-export async function getUserByEmail(email) {
-  const url = new URL(`${BASE_URL}api/users`);
+  export async function getUserByEmail(email) {
+    const url = new URL(`${BASE_URL}api/users`);
 
-  const response = await fetch(url);
+    const response = await fetch(url);
 
-  if (!response.ok) {
-    throw new Error(`Network response was not ok: ${response.statusText}`);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+
+    const users = await response.json();
+
+    if (!Array.isArray(users)) {
+      throw new Error("Invalid response format");
+    }
+
+    // Filtrar los usuarios que coincidan con el email proporcionado
+    const matchingUsers = users.filter(
+      (user) => user.email && user.email.toLowerCase() === email.toLowerCase()
+    );
+
+    return matchingUsers;
   }
 
-  const users = await response.json();
+  export async function recoverPassword(email) {
+    const url = new URL(`${BASE_URL}auth/local/recover-password`);
 
-  if (!Array.isArray(users)) {
-    throw new Error("Invalid response format");
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Network response was not ok: ${errorData.message}`);
+    }
+
+    const result = await response.json();
+    return result;
   }
 
-  // Filtrar los usuarios que coincidan con el email proporcionado
-  const matchingUsers = users.filter(
-    (user) => user.email && user.email.toLowerCase() === email.toLowerCase()
-  );
+  export async function resetPassword(token, newPassword) {
+    const url = new URL(`${BASE_URL}auth/local/reset-password`);
 
-  return matchingUsers;
-}
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token, newPassword }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Network response was not ok: ${errorData.message}`);
+    }
+
+    return await response.json();
+  }
+
 
 export const activateAccount = async (token) => {
   try {
