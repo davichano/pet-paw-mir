@@ -9,7 +9,6 @@ import i18n from "./i18n.jsx";
 
 import { useCurrentUser } from "./hooks/useCurrentUser.jsx";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./contexts/AuthContext.jsx";
 
 function App() {
   const current_user = useCurrentUser();
@@ -18,7 +17,6 @@ function App() {
     <>
       <div className="App bg-white min-h-screen pb-[70px]">
         <I18nextProvider i18n={i18n}>
-          <AuthProvider>
             <UserProvider>
               <ConfigProvider>
                 <PetContext.Provider value={{ current_user }}>
@@ -30,7 +28,6 @@ function App() {
                 </PetContext.Provider>
               </ConfigProvider>
             </UserProvider>
-          </AuthProvider>
         </I18nextProvider>
       </div>
     </>

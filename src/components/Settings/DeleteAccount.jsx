@@ -1,20 +1,21 @@
-import { useAuth } from "../../contexts/AuthContext";
 import { useState } from "react";
 import Button from "./ui/Button";
 import Description from "./ui/Description";
+import {useUser} from '../../hooks/useUser';
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 const DeleteAccount = () => {
-  const { setUser } = useAuth();
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
 
+  const { logout } = useUser();
+
   const eliminarCuenta = () => {
     if (isConfirmed) {
-      setUser(null);
       toast.success("Tu cuenta ha sido eliminada.");
+      logout();
       navigate("/login");
     } else {
       setShowError(true);
