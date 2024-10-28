@@ -7,6 +7,8 @@ import Modal from "./Modal";
 import { useEffect } from "react";
 import FormField from "./ui/FormField";
 import Button from "./ui/Button";
+import { toast } from "sonner";
+import { patchUser } from "../../services/users";
 
 const schema = yup.object().shape({
   description: yup.string().required("La descripción es obligatoria"),
@@ -15,6 +17,7 @@ const schema = yup.object().shape({
 
 const EditProfile = () => {
   const { updateUser, data } = useUser();
+
   const {
     register,
     handleSubmit,
@@ -25,7 +28,6 @@ const EditProfile = () => {
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(data.gender);
 
   useEffect(() => {
     if (data && data.description) {
@@ -36,9 +38,17 @@ const EditProfile = () => {
     }
   }, [data, setValue]);
 
-  const onSubmit = (data) => {
-    updateUser(data);
-    console.log("Datos actualizados:", data);
+  const onSubmit =async (formData) => {
+    updateUser({ gender: formData.gender });
+    try {
+      await patchUser(data.userId, {
+        gender: formData.gender
+      });
+      toast.success("Perfil actualizado");
+    } catch (error) {
+      console.error("Error updating profile", error);
+      toast.error("Error al actualizar el perfil");
+    }
   };
 
   return (

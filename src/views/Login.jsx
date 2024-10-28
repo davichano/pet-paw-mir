@@ -8,7 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 import LanguageSwitcher from "../components/ui/LanguageSwitcher";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { fetchUser, loginUser } from "../services/users";
+import { loginUser, fetchUserByEmail } from "../services/users";
 import { getConfig } from "../services/config";
 import { toast } from "sonner";
 import Header from "../components/ui/Header";
@@ -49,7 +49,7 @@ const Login = () => {
 
         localStorage.setItem("user", JSON.stringify(profile));
 
-        const data = await fetchUser(profile.id);
+        const data = await fetchUserByEmail(profile.email);
         const config = await getConfig(profile.id);
 
         setData({...data, ...config.data});

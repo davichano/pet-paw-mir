@@ -19,6 +19,7 @@ const EditPrivacity = () => {
   }, [data]);
 
   const togglePrivacidad = () => {
+    console.log(data)
     const newPrivacity = !privacity;
     setPrivacity(newPrivacity);
     updateUser({ privacity: newPrivacity });

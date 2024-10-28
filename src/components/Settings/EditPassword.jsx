@@ -13,8 +13,11 @@ const schema = yup.object().shape({
   contrasenaActual: yup.string().required("La contraseña actual es obligatoria"),
   nuevaContrasena: yup
     .string()
-    .min(8, "La nueva contraseña debe tener al menos 8 caracteres")
-    .required("La nueva contraseña es obligatoria"),
+    .required('passwordRequired')
+          .min(8, 'passwordLengthError')
+          .matches(/[a-zA-Z]/, 'passwordLetterError')
+          .matches(/\d/, 'passwordNumberError')
+          .matches(/[!@#$%^&*(),.?":{}|<>]/, 'passwordSymbolError'),
   repetirContrasena: yup
     .string()
     .oneOf(

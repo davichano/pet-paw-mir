@@ -4,19 +4,29 @@ import Description from "./ui/Description";
 import {useUser} from '../../hooks/useUser';
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { patchUser } from "../../services/users";
 
 const DeleteAccount = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
 
-  const { logout } = useUser();
+  const { logout, data } = useUser();
 
-  const eliminarCuenta = () => {
+  const handleClick = () => {
     if (isConfirmed) {
-      toast.success("Tu cuenta ha sido eliminada.");
-      logout();
-      navigate("/login");
+
+      try {
+        patchUser(data.userId, { isActive: false });
+        toast.success("Tu cuenta ha sido eliminada.");
+        logout();
+        navigate("/login");
+      }
+      catch (error) {
+        console.error("Error deleting account", error);
+        toast.error("Error al eliminar la cuenta.");
+      }
+
     } else {
       setShowError(true);
     }
@@ -35,7 +45,7 @@ const DeleteAccount = () => {
         <span className="text-custom-350">Confirmo que quiero eliminar mi cuenta</span>
       </label>
       {!isConfirmed && showError && <p className="text-custom-350">Debes confirmar la eliminación.</p>}
-      <Button onClick={eliminarCuenta}>Eliminar Cuenta</Button>
+      <Button onClick={handleClick}>Eliminar Cuenta</Button>
 
     </div>
   );

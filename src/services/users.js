@@ -10,6 +10,11 @@ export async function fetchUser(id) {
   return response.json();
 }
 
+export async function fetchUserByEmail(email) {
+  const response = await fetch(`${BASE_URL}/api/users/email/${email}`);
+  return response.json();
+}
+
 export async function updateUser(id, updatedUser) {
   const response = await fetch(`${BASE_URL}/api/users/${id}`, {
     method: "PUT",
@@ -18,6 +23,9 @@ export async function updateUser(id, updatedUser) {
     },
     body: JSON.stringify(updatedUser),
   });
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
   return response.json();
 }
 
@@ -26,6 +34,7 @@ export async function patchUser(id, updatedFields) {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(updatedFields),
   });
@@ -54,6 +63,8 @@ export async function loginUser(username, password) {
 
   // Guardar el token JWT en localStorage
   localStorage.setItem("token", data.token);
+
+  console.log("data", data);
 
   // Retornar el perfil del usuario
   return data.profile;

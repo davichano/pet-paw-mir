@@ -6,10 +6,17 @@ import { useEffect } from "react";
 import FormField from "./ui/FormField";
 import Button from "./ui/Button";
 import Title from "./ui/Title";
+import { patchUser } from "../../services/users";
+import {toast} from 'sonner';
 
 const formatDateForInput = (isoString) => {
   const date = new Date(isoString);
   return date.toISOString().substring(0, 10);
+};
+
+const formatDateForApi = (dateString) => {
+  const date = new Date(dateString).toISOString()
+  return date;
 };
 
 const schema = yup.object().shape({
@@ -50,10 +57,17 @@ const EditDetails = () => {
     }
   }, [data, setValue]);
 
-  const onSubmit = (data) => {
-    console.log("Datos actualizados:", data);
-    updateUser(data);
-    alert("Detalles personales actualizados exitosamente");
+  const onSubmit =async (formData) => {
+    const formatted = {...formData, birthDate: formatDateForApi(formData.birthDate)}
+    try{
+      updateUser(formatted  );
+      await patchUser(data.userId, formatted);
+      toast.success("Detalles actualizados");
+    }
+    catch (error) {
+      console.error("Error updating details", error);
+      toast.error("Error al actualizar los detalles");
+    }
   };
 
   return (
