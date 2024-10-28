@@ -101,26 +101,21 @@ const Feed = () => {
               <CardPostPet
                 name={post.name}
                 description={post.pet_description}
-                imageUrl={post.pictures?.[0]?.url}
+                imageUrl={post.picture}
                 handleModalToggle={toggleModal}
                 t={t}
               />
             </Link>
-            <SavePost post={post} pos_x={90} pos_y={40}/>
+            <SavePost post={post} pos_x={90} pos_y={50}/>
           </div>
         ))}
       </div>
-
-      <button
-        className="fixed w-[74px] h-[74px] bottom-[100px] right-4 bg-custom-250 text-white p-3 rounded-full shadow-lg hover:bg-custom-300 focus:outline-none"
-        onClick={() => {
-          setSelectedPost(null);
-          setModalOpen(true);
-        }}
-      >
-        <img src={pawPlusSVG} className="w-full mx-auto"/>
-      </button>
-
+      <Link to={`/post`}>
+        <button
+          className="fixed w-[74px] h-[74px] bottom-[100px] right-4 bg-custom-250 text-white p-3 rounded-full shadow-lg hover:bg-custom-300 focus:outline-none">
+          <img src={pawPlusSVG} className="w-full mx-auto"/>
+        </button>
+      </Link>
       {isModalOpen && (
         <ModalFormulario
           post={selectedPost}

@@ -33,11 +33,17 @@ const SavePost = ({post, pos_x, pos_y}) => {
     }
   };
 
-  const classes = `absolute bottom-[${pos_x}px] right-[${pos_y}px] bg-transparent z-10 w-[35px] hover:cursor-pointer`;
+  const inlineStyles = {
+    bottom: `${pos_x}px`,
+    right: `${pos_y}px`,
+  };
+
+  const classes = `absolute bg-transparent z-10 w-[35px] hover:cursor-pointer`;
 
   return (
     <div
       className={classes}
+      style={inlineStyles}
       onClick={handleSavePostClick}
     >
       <svg className="text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
