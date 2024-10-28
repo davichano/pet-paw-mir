@@ -4,7 +4,6 @@ import { MainRouter } from "./routers/MainRouter";
 import { I18nextProvider } from "react-i18next";
 import { ConfigProvider } from "./contexts/config/ConfigContext.jsx";
 import { UserProvider } from "./contexts/UserContext.jsx";
-//import { UserContext } from "./contexts/UserContext.jsx";
 import i18n from "./i18n.jsx";
 
 import { useCurrentUser } from "./hooks/useCurrentUser.jsx";
