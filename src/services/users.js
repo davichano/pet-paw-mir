@@ -109,6 +109,48 @@ export async function getUserByEmail(email) {
   return matchingUsers;
 }
 
+export async function recoverPassword(email) {
+  const url = new URL(`${BASE_URL}/auth/local/recover-password`);
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Network response was not ok: ${errorData.message}`);
+  }
+
+  const result = await response.json();
+  return result;
+}
+
+export async function resetPassword(token, newPassword) {
+  const url = new URL(`${BASE_URL}/auth/local/reset-password`);
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token, newPassword }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Network response was not ok: ${errorData.message}`);
+  }
+
+  return await response.json();
+}
+
+
+
+
 export const activateAccount = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/auth/local/activate/${token}`, {
