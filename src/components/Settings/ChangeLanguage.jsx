@@ -39,7 +39,7 @@ const EditLanguage = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 text-custom-350 w-2/4 space-y-6 min-w-64 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col">
       <h2 className="text-xl font-bold mb-4 text-custom-250">Cambiar Idioma</h2>
       <ul className="space-y-4">
         {languages.map(({ code, label }) => (
@@ -54,7 +54,7 @@ const EditLanguage = () => {
                 className="sr-only peer"
               />
               <div className="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:ring-4 peer-focus:ring-custom-250 dark:peer-focus:ring-custom-350 dark:bg-gray-700 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform peer-checked:after:translate-x-5 peer-checked:bg-custom-350"></div>
-              <span className="ml-3 text-sm font-medium dark:text-gray-300 text-custom-250">
+              <span className="ml-3 text-sm dark:text-gray-300 text-custom-250">
                 {label}
               </span>
             </label>

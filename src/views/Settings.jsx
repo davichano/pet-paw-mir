@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ConfigContext } from '../contexts/config/ConfigContext';
 import { useTranslation } from 'react-i18next';
 import  Header  from '../components/Settings/Header'
@@ -19,8 +19,12 @@ import useWindowSize from '../hooks/useWindowsSize';
 const Settings = () => {
   const  {selectedSection}  = useContext(ConfigContext);
   const { width } = useWindowSize();
-
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const { t } = useTranslation();
+
+  const toggleMenu = () => {
+    setIsOpenMenu(!isOpenMenu);
+  }
 
 
   const renderContent = () => {
@@ -62,9 +66,9 @@ const Settings = () => {
 
   return (
     <div>
-      <Header title={width>768? t("settings.title"): t(selectedSection)}/>
-      <div className="flex flex-1  ">
-        <Menu />
+      <Header title={width>768? t("settings.title"): t(selectedSection)} isOpenMenu={isOpenMenu} toggleMenu={toggleMenu}/>
+      <div className="flex flex-1 ">
+        <Menu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu}/>
         <main className="flex flex-1 p-4 bg-white justify-center">{renderContent()}</main>
       </div>
     </div>

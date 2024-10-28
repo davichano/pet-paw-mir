@@ -57,7 +57,7 @@ const EditProfile = () => {
         onSubmit={
           handleSubmit(onSubmit) // Agregar handleSubmit al evento onSubmit del formulario
         }
-        className="space-y-4 flex flex-col w-2/4 mt-10"
+        className="space-y-6 min-w-64 w-2/4 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col"
       >
         <div className="text-center flex justify-center">
           <div className="flex items-center gap-4 justify-left w-full p-4 bg-custom-100 rounded-lg">

@@ -73,7 +73,7 @@ const EditDetails = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 w-2/4 mx-auto mt-10 bg-white shadow rounded flex flex-col"
+      className="space-y-6 min-w-64 w-2/4 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col"
     >
       <Title text="Detalles Personales" />
       <FormField id="name" type="text" label="Nombre(s)" register={register} errors={errors} />

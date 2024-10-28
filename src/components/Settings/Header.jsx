@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowsSize";
 
-const Header = ({ title }) => {
+const Header = ({ title, toggleMenu }) => {
   const navigate = useNavigate();
   const { width } = useWindowSize();
   const backSVG = (
@@ -55,7 +55,7 @@ const Header = ({ title }) => {
   );
   return (
     <header className="bg-custom-50 text-custom-350 p-4 flex justify-between items-center border-b-custom-200 border-b-2">
-      <button className="text-custom-50" onClick={() => navigate("/feed")}>
+      <button className="text-custom-50" onClick={() => width>768? navigate("/feed") : toggleMenu()}>
         {/* Ícono de menú para móvil */}
         {width > 768 ? backSVG : menuSVG}
       </button>
@@ -70,6 +70,7 @@ const Header = ({ title }) => {
 
 Header.propTypes = {
   title: PropTypes.string,
+  toggleMenu: PropTypes.func,
 };
 
 export default Header;

@@ -46,7 +46,7 @@ const EditPassword = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 flex flex-col w-2/4 mx-auto mt-10"
+      className="space-y-6 min-w-64 w-2/4 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col"
     >
       <Title text="Cambiar Contraseña" />
       <Description text="Ingresa tu contraseña actual y la nueva contraseña que deseas utilizar." />

@@ -35,7 +35,7 @@ const EditPrivacity = () => {
   };
 
   return (
-    <div className="p-6 text-custom-350 w-2/4">
+    <div className="p-6 text-custom-350 w-2/4 space-y-6 min-w-64 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col">
       <h2 className="text-xl font-bold mb-4">Privacidad de la Cuenta</h2>
       <p className="mb-4 text-justify">
         {privacity
