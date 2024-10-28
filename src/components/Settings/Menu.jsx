@@ -47,7 +47,7 @@ const Menu = ({ isOpenMenu, toggleMenu }) => {
   };
 
   const nav = (
-    <nav className="fixed md:block md:static w-full md:w-64 m-auto border-r-custom-200 md:border-r-2 h-[calc(100vh+70px)] bg-custom-50">
+    <nav className="fixed md:block md:static w-full md:w-64 m-auto border-r-custom-200 md:border-r-2 h-[calc(100vh+70px)] bg-custom-50 z-50">
       {sections.map((section) => (
         <div key={section.name}>
           <h3 className="text-lg ml-4 mr-4 font-semibold mb-2 text-custom-250">
