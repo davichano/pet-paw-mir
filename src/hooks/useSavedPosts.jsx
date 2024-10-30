@@ -1,21 +1,8 @@
 // useSavedPosts.jsx
-import { useEffect, useState } from "react";
-import { fetchSavedPosts } from "../services/savedPosts.js";
 
-export const useSavedPosts = ({ userId }) => {
-  const [savedPosts, setSavedPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+import {useContext} from "react";
+import SavedPostsContext from "../contexts/SavedPostsContext.jsx";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (userId !== undefined) {
-        const posts = await fetchSavedPosts(userId);
-        setSavedPosts(posts);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [userId]);
+const useSavedPosts = () => useContext(SavedPostsContext);
 
-  return { savedPosts, loading };
-};
+export default useSavedPosts;

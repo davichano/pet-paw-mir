@@ -104,9 +104,9 @@ const Feed = () => {
           <div key={post.id} className="relative">
             <Link to={`/pet/${post.id}`}>
               <CardPostPet
-                name={post.Pet.name}
-                description={post.Pet.description}
-                imageUrl={post.Pet.imageUrl}
+                name={post.pet.name}
+                description={post.pet.description}
+                imageUrl={post.pet.imageUrl}
                 handleModalToggle={toggleModal}
                 t={t}/>
             </Link>
@@ -117,7 +117,7 @@ const Feed = () => {
       <Link to={`/post`}>
         <button
           className="fixed w-[74px] h-[74px] bottom-[100px] right-4 bg-custom-250 text-white p-3 rounded-full shadow-lg hover:bg-custom-300 focus:outline-none">
-          <img src={pawPlusSVG} className="w-full mx-auto"/>
+          <img src={pawPlusSVG} className="w-full mx-auto" alt="Foto"/>
         </button>
       </Link>
       {isModalOpen && (
