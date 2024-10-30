@@ -4,9 +4,11 @@ import {PetContext} from "../../contexts/PetContext.js";
 import {useSaveInterestPost} from "../../hooks/useSaveInterestPost.jsx";
 import {useRemoveInterestPost} from "../../hooks/useRemoveInterestPost.jsx";
 import PropTypes from "prop-types";
+import useSavedPosts from "../../hooks/useSavedPosts.jsx";
 
 const SavePost = ({post, pos_x, pos_y}) => {
-  const {saved_posts, current_user} = useContext(PetContext);
+  const {current_user} = useContext(PetContext);
+  const {saved_posts} = useSavedPosts();
   const [isSaved, setIsSaved] = useState(false);
   const saveInterestPost = useSaveInterestPost();
   const removeInterestPost = useRemoveInterestPost();
@@ -14,7 +16,7 @@ const SavePost = ({post, pos_x, pos_y}) => {
   useEffect(() => {
     if (Array.isArray(saved_posts)) {
       const isAlreadySaved = saved_posts.some(
-        (savedPost) => savedPost.post_id === post.id
+        (savedPost) => Number(savedPost.postId) === Number(post.id)
       );
       setIsSaved(isAlreadySaved);
     }
@@ -23,10 +25,10 @@ const SavePost = ({post, pos_x, pos_y}) => {
   const handleSavePostClick = () => {
     if (current_user && post.id) {
       if (isSaved) {
-        let postsToDelete = saved_posts.filter((savedPost) => savedPost.post_id === post.id);
+        let postsToDelete = saved_posts.filter((savedPost) => savedPost.postId === post.id);
         removeInterestPost(postsToDelete);
       } else {
-        saveInterestPost(post.id, current_user.id);
+        saveInterestPost(post.id);
       }
     } else {
       console.error("Usuario o ID de post no disponibles.");

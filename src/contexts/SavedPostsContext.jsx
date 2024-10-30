@@ -1,5 +1,5 @@
 // contexts/SavedPostsContext.jsx
-import {createContext, useContext, useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import {fetchSavedPosts} from "../services/savedPosts.js";
 import {useCurrentUser} from "../hooks/useCurrentUser.jsx";
 import PropTypes from 'prop-types';
@@ -33,4 +33,4 @@ SavedPostsProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const useSavedPosts = () => useContext(SavedPostsContext);
+export default SavedPostsContext;

@@ -1,45 +1,43 @@
 import BASE_URL from '../config';
 
+const getAuthHeaders = () => ({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${localStorage.getItem('token')}`
+});
+
 export async function fetchSavedPosts() {
   try {
-    const res = await fetch(`${BASE_URL}api/saved_posts`);
-    if (!res.ok) {
-      throw new Error(`Error fetching saved posts: ${res.statusText}`);
-    }
-    return await res.data();
+    const response = await fetch(`${BASE_URL}api/favorites`, {
+      headers: getAuthHeaders(),
+    });
+    return await response.json();
   } catch (e) {
     console.error('Error fetching saved posts:', e);
     return [];
   }
 }
 
-export async function savePost(userId, postId) {
-  const dataToSend = {
-    user_id: userId,
-    post_id: postId,
-    created_at: new Date().toISOString()
-  };
-  const res = await fetch(`${BASE_URL}saved_posts`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(dataToSend),
-  });
-  if (!res.ok) {
-    const errorText = await res.text();
-    console.error('Error al guardar el post:', errorText);
-    throw new Error('Error al guardar el post');
+export async function savePost(postId) {
+  try {
+    const dataToSend = {
+      postId: postId,
+    };
+    const response = await fetch(`${BASE_URL}api/favorites`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(dataToSend),
+    });
+    return await response.json();
+  } catch (e) {
+    console.error('Error saving post:', e);
+    return false;
   }
-  return await res.json();
 }
 
 export async function deletePost(id) {
-  const res = await fetch(`${BASE_URL}saved_posts/${id}`, {
+  const res = await fetch(`${BASE_URL}api/favorites/${id}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: getAuthHeaders(),
   });
   return await res.json();
 }

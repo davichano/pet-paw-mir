@@ -6,9 +6,9 @@ import {savePost} from "../services/savedPosts";
 export const useSaveInterestPost = () => {
   const {setSavedPosts} = useContext(PetContext);
 
-  return async (postId, userId) => {
+  return async (postId) => {
     try {
-      const newSavedPost = await savePost(userId, postId);
+      const newSavedPost = await savePost(postId);
 
       setSavedPosts((prevPosts) => [...prevPosts, newSavedPost]);
     } catch (error) {
