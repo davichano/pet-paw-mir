@@ -1,26 +1,28 @@
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { useUser } from "../../hooks/useUser";
 import * as yup from "yup";
+import { useUser } from "../../hooks/useUser";
 import Modal from "./Modal";
-import { useEffect, useRef } from "react";
 import FormField from "./ui/FormField";
 import Button from "./ui/Button";
 import { toast } from "sonner";
 import { patchUser } from "../../services/users";
 import { useTranslation } from "react-i18next";
+import { uploadImageToCloudinary } from "../../services/cloudinary";
 
 const EditProfile = () => {
-  const [previewImage, setPreviewImage] = useState("/img/users/default.jpg");
+  const DEFAULT_IMAGE = "/img/users/default.jpg";
+  const [previewImage, setPreviewImage] = useState(DEFAULT_IMAGE);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const fileInputRef = useRef(null);
   const { t } = useTranslation();
+  const { updateUser, data } = useUser();
+
   const schema = yup.object().shape({
     description: yup.string().required(t("descriptionRequired")),
     gender: yup.string().required(t("genderRequired")),
   });
-
-  const { updateUser, data } = useUser();
 
   const {
     register,
@@ -31,24 +33,22 @@ const EditProfile = () => {
     resolver: yupResolver(schema),
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
-    if (data && data.description) {
-      setValue("description", data.description);
-    }
-    if (data && data.gender) {
-      setValue("gender", data.gender);
+    if (data) {
+      setValue("description", data.description || "");
+      setValue("gender", data.gender || "");
+      setPreviewImage(data.avatar || DEFAULT_IMAGE);
     }
   }, [data, setValue]);
 
   const onSubmit = async (formData) => {
-    updateUser({ gender: formData.gender, description: formData.description });
     try {
       await patchUser(data.userId, {
         gender: formData.gender,
         description: formData.description,
+        avatar: data.avatar,
       });
+      updateUser({ gender: formData.gender, description: formData.description });
       toast.success(t("updatedCorrectly"));
     } catch (error) {
       console.error(t("errorUpdating"), error);
@@ -57,9 +57,11 @@ const EditProfile = () => {
   };
 
   const handleDeletePhoto = async () => {
-    updateUser({ avatar: null });
     try {
-      //await patchUser(data.userId, { avatar: "" });
+      await patchUser(data.userId, { avatar: null });
+      updateUser({ avatar: null });
+      setPreviewImage(DEFAULT_IMAGE);
+      setIsModalOpen(false);
       toast.success(t("photoDeleted"));
     } catch (error) {
       console.error(t("errorDeletingPhoto"), error);
@@ -67,45 +69,45 @@ const EditProfile = () => {
     }
   };
 
-  const handleButtonUploadClick = () => {
-    fileInputRef.current.click(); // Simula el clic en el input oculto
-  };
-
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader(); // Crear instancia de FileReader
-      reader.onloadend = () => {
-        setPreviewImage(reader.result); // Asignar la URL al estado
-      };
-      reader.readAsDataURL(file);
       setIsModalOpen(false);
-      console.log("Archivo seleccionado:", file); // Muestra el archivo en la consola
+      setPreviewImage(URL.createObjectURL(file));
+
+      try {
+        const cloudinaryImageUrl = await uploadImageToCloudinary(file);
+        if (cloudinaryImageUrl) {
+          //await patchUser(data.userId, { avatar: cloudinaryImageUrl });
+          updateUser({ avatar: cloudinaryImageUrl });
+          toast.success(t("photoUpdated"));
+        }
+      } catch (error) {
+        console.error(t("errorUpdatingPhoto"), error);
+        toast.error(t("errorUpdatingPhoto"));
+      }
     }
   };
 
   return (
     <>
       <form
-        onSubmit={
-          handleSubmit(onSubmit) // Agregar handleSubmit al evento onSubmit del formulario
-        }
+        onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 min-w-64 w-2/4 md:w-96 mx-auto mt-10 bg-white shadow rounded flex flex-col"
       >
         <div className="text-center flex justify-center">
-          <div className="flex items-center gap-4 justify-left w-full p-4 bg-custom-100 rounded-lg">
+          <div className="flex items-center gap-4 w-full p-4 bg-custom-100 rounded-lg">
             <img
               className="w-14 h-14 rounded-full"
-              src={
-                data.avatar !== null ? data.avatar : previewImage
-              }
+              src={previewImage}
               alt=""
             />
-            <div className="font-medium dark:text-white text-custom-250">
-              <div className="pl-3 ml-0">
-                {data.name + " " + data.lastName.split(" ")[0]}
+            <div className="font-medium text-custom-250">
+              <div className="pl-3">
+                {data.name} {data.lastName.split(" ")[0]}
               </div>
               <button
+                type="button"
                 onClick={() => setIsModalOpen(true)}
                 className="font-light"
               >
@@ -116,21 +118,18 @@ const EditProfile = () => {
         </div>
 
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <div className="flex flex-col bg-custom-200 text-white rounded-2xl space-y-1">
+          <div className="flex flex-col bg-custom-200 text-white rounded-2xl">
             <div className="border-b border-white pb-2 text-center">
-              { t("settings.user.changePhoto")}
+              {t("settings.user.changePhoto")}
             </div>
-            <div className="overflow-hidden relative w-full">
-
+            <div className="relative w-full">
               <button
                 type="button"
-                className="bg-custom-200 w-full text-custom-50 font-semibold py-2 px-4  m-0 border-b-white border-b"
-                onClick={handleButtonUploadClick} // Al hacer clic, dispara el input file
+                className="bg-custom-200 w-full text-custom-50 font-semibold py-2 px-4 border-b border-white"
+                onClick={() => fileInputRef.current.click()}
               >
-                <span className="ml-2">{ t("settings.user.uploadPhoto")}</span>
+                {t("settings.user.uploadPhoto")}
               </button>
-
-
               <input
                 type="file"
                 accept="image/*"
@@ -141,7 +140,7 @@ const EditProfile = () => {
             </div>
             <button
               type="button"
-              className="bg-custom-200 hover:bg-red-700 text-custom-400 font-semibold py-2 px-4 hover:text-custom-50  border-b-white border-b"
+              className="bg-custom-200 hover:bg-red-700 text-custom-400 font-semibold py-2 px-4 hover:text-custom-50 border-b border-white"
               onClick={(e) => {
                 e.stopPropagation();
                 handleDeletePhoto();
@@ -151,12 +150,13 @@ const EditProfile = () => {
             </button>
             <button
               onClick={() => setIsModalOpen(false)}
-              className="bg-custom-200  text-custom-50 font-semibold py-2 px-4 rounded-b-2xl "
+              className="bg-custom-200 text-custom-50 font-semibold py-2 px-4 rounded-b-2xl"
             >
               {t("cancel")}
             </button>
           </div>
         </Modal>
+
         <FormField
           label={t("description")}
           type="textarea"
@@ -170,7 +170,7 @@ const EditProfile = () => {
             {t("gender")}
           </label>
           <select
-            id="gender" // Cambié 'category' por 'gender' para evitar confusión
+            id="gender"
             {...register("gender")}
             className="p-2 w-full border-custom-200 text-custom-200 rounded-lg"
           >

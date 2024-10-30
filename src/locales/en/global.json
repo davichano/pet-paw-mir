@@ -197,5 +197,9 @@
   "updatedCorrectly": "Updated correctly",
   "errorUpdating": "Error updating",
   "cancel": "Cancel",
-  "descriptionRequired": "Description is required"
+  "descriptionRequired": "Description is required",
+  "photoDeleted": "Photo deleted",
+  "errorDeletingPhoto": "Error deleting photo",
+  "photoUpdated": "Photo updated",
+  "errorUpdatingPhoto": "Error updating photo"
 }
