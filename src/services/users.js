@@ -148,9 +148,6 @@ export async function resetPassword(token, newPassword) {
   return await response.json();
 }
 
-
-
-
 export const activateAccount = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/auth/local/activate/${token}`, {

@@ -12,3 +12,13 @@ export const updateConfig = async (id, config) => {
   const response = await axios.patch(`${BASE_URL}/setting/${id}`, config);
   return response.data;
 };
+
+export const updatePassword = async (body) => {
+  const response = await axios.patch(`${BASE_URL}/setting/change/password`, body, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+};
+

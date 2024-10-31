@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { updatePassword } from "../../services/config";
+import { useState} from "react";
 import * as yup from "yup";
 import Modal from "./Modal";
 import FormField from "./ui/FormField";
@@ -39,9 +40,17 @@ const EditPassword = () => {
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const  { email }  = JSON.parse(localStorage.getItem("user"));
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const bodyPassword = {
+    email: email,
+    password: data.contrasenaActual,
+    newPassword: data.nuevaContrasena,
+    }
+
+    const rsp = await updatePassword(bodyPassword);
+    console.log(rsp)
     toast.success(t("updatedCorrectly"));
     reset();
   };
@@ -75,7 +84,6 @@ const EditPassword = () => {
         errors={errors}
       />
       <Button>{t("settings.user.password")}</Button>
-
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <h2 className="text-xl font-bold">Contraseña Actualizada</h2>
         <p>Tu contraseña ha sido cambiada exitosamente.</p>
