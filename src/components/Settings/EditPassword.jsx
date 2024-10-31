@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updatePassword } from "../../services/config";
-import { useState} from "react";
 import * as yup from "yup";
-import Modal from "./Modal";
 import FormField from "./ui/FormField";
 import Button from "./ui/Button";
 import Title from "./ui/Title";
@@ -12,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 // Esquema de validación con Yup
-
 const EditPassword = () => {
   const { t } = useTranslation();
   const schema = yup.object().shape({
@@ -39,7 +36,6 @@ const EditPassword = () => {
     resolver: yupResolver(schema),
   });
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const  { email }  = JSON.parse(localStorage.getItem("user"));
 
   const onSubmit = async (data) => {
@@ -50,9 +46,13 @@ const EditPassword = () => {
     }
 
     const rsp = await updatePassword(bodyPassword);
-    console.log(rsp)
-    toast.success(t("updatedCorrectly"));
-    reset();
+    if (rsp == null){
+      toast.warning(t("updatedIncorrectly"));
+    } else {
+      toast.success(t("updatedCorrectly"));
+      reset();
+    }
+
   };
 
   return (
@@ -84,16 +84,7 @@ const EditPassword = () => {
         errors={errors}
       />
       <Button>{t("settings.user.password")}</Button>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2 className="text-xl font-bold">Contraseña Actualizada</h2>
-        <p>Tu contraseña ha sido cambiada exitosamente.</p>
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="bg-blue-500 text-white p-2 rounded mt-4"
-        >
-          Cerrar
-        </button>
-      </Modal>
+
     </form>
   );
 };

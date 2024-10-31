@@ -208,5 +208,6 @@
   "photoDeleted": "Photo deleted",
   "errorDeletingPhoto": "Error deleting photo",
   "photoUpdated": "Photo updated",
-  "errorUpdatingPhoto": "Error updating photo"
+  "errorUpdatingPhoto": "Error updating photo",
+  "updatedIncorrectly": "Error, the password is not correct"
 }
