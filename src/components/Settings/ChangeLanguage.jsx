@@ -16,13 +16,17 @@ const EditLanguage = () => {
     { code: "es", label: "Español" },
   ];
 
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    data?.language.toLowerCase() ?? "es"
-  );
+  const [selectedLanguage, setSelectedLanguage] = useState(() =>{
+    const savedLanguage = localStorage.getItem('language');
+    return savedLanguage ? savedLanguage : data?.language.toLowerCase() ?? "en";
+});
 
   useEffect(() => {
     if (data && data.language) {
-      setSelectedLanguage(data.language.toLowerCase());
+      const languageFromLocalStorage = localStorage.getItem('language');
+      if (!languageFromLocalStorage) {
+        setSelectedLanguage(data.language.toLowerCase());
+      }
     }
   }, [data]);
 
