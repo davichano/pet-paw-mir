@@ -2,7 +2,7 @@ import { useEffect, useRef, useContext, useState } from "react";
 import mapboxgl from 'mapbox-gl';
 import PlacesProvider from "../contexts/places/PlacesProvider";
 import PlacesContext from "../contexts/places/PlacesContext";
-import { usePetData } from '../contexts/post/PetProvider';
+import { usePetData } from '../hooks/usePetData';
 import { useNavigate } from 'react-router-dom';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FicmllbDI5LXMiLCJhIjoiY20yMnZvYnExMDJwNzJqcTV3d3J3cmUxdSJ9.fA3z9inzGxKvS2GC_rH20g';

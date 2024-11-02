@@ -1,5 +1,5 @@
 const BASE_URL = import.meta.env.VITE_BASE_URL;
-const userUrl= `${BASE_URL}api/users/`;
+const userUrl= `${BASE_URL}/api/users/`;
 
 export async function fetchUsers() {
   const response = await fetch(`${userUrl}`);

@@ -48,3 +48,31 @@ export function formatPostData(postData) {
 
   return formattedData;
 }
+
+export const formatData = (user) => {
+
+  let data = {
+    title: 'Prueba de mi primer post',
+    description: '',
+    tags: 'Mi primer tags',
+    location: 'Mi casa',
+    state: 'LOST',
+    userId: user.id,
+    petData: {
+      name: ' ',
+      petType: '',
+      gender: '',
+      age: '',
+      size: '',
+      state: '',
+      imageUrl: '',
+      validated: true
+    },
+
+    sightingData: {
+        latitude: 0,
+        longitude: 0
+    }
+  }
+  return data;
+};

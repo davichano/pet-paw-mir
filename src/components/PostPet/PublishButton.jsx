@@ -1,4 +1,4 @@
-import { usePetData } from '../../contexts/post/PetProvider';
+import { usePetData } from '../../hooks/usePetData';
 import { createPost } from '../../services/posts';
 import { toast } from "sonner";
 

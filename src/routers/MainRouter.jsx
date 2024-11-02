@@ -31,6 +31,7 @@ export const MainRouter = () => {
   ];
   return (
     <>
+    <PetProvider>
       <Toaster richColors expand={true}/>
       {!hideHeaderRoutes.includes(location.pathname) && <Header/>}
 
@@ -81,33 +82,28 @@ export const MainRouter = () => {
           }
         />
 
-        <Route
-          path="/post"
-          element={
-            <ProtectedRoute>
-              <PetProvider>
-                <NewPostPet/>
-              </PetProvider>
-            </ProtectedRoute>
+
+          <Route
+            path="/post"
+            element={
+              <ProtectedRoute>
+                  <NewPostPet/>
+              </ProtectedRoute>
           }
-        />
-        <Route
-          path="/post/state"
-          element={
-            <ProtectedRoute>
-              <PetProvider>
-                <NewPostState/>
-              </PetProvider>
-            </ProtectedRoute>
+          />
+          <Route
+            path="/post/state"
+            element={
+              <ProtectedRoute>
+                  <NewPostState/>
+              </ProtectedRoute>
           }
         />
         <Route
           path="/post/tag"
           element={
             <ProtectedRoute>
-              <PetProvider>
                 <NewPostTag/>
-              </PetProvider>
             </ProtectedRoute>
           }
         />
@@ -115,9 +111,7 @@ export const MainRouter = () => {
           path="/post/info"
           element={
             <ProtectedRoute>
-              <PetProvider>
                 <NewPostAddInfo/>
-              </PetProvider>
             </ProtectedRoute>
           }
         />
@@ -125,9 +119,7 @@ export const MainRouter = () => {
           path="/post/map"
           element={
             <ProtectedRoute>
-              <PetProvider>
                 <NewPostMap/>
-              </PetProvider>
             </ProtectedRoute>
           }
         />
@@ -135,8 +127,10 @@ export const MainRouter = () => {
           <ProtectedRoute><Settings/></ProtectedRoute>
           } />
       </Routes>
+
       {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
-      {!hideHeaderRoutes.includes(location.pathname) && <Footer/>}
+      </PetProvider>
+
     </>
   );
 };

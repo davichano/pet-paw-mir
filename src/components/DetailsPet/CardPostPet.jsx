@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
 
-const CardPostPet = ({ name, description, imageUrl, t, handleModalToggle }) => {
+const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle }) => {
   return (
     <>
         {/* Primera Columna: Avatar, Descripción, Imagen, Botones */}
@@ -11,7 +11,7 @@ const CardPostPet = ({ name, description, imageUrl, t, handleModalToggle }) => {
             {/* Avatar */}
             <div className="w-12 h-12 bg-[#ffa4a4] rounded-full flex items-center justify-center mr-2">
               <img
-                src="/src/assets/img/Icons/avatar_placeholder.svg"
+                src={imageUser || "/src/assets/img/Icons/avatar_placeholder.svg" }
                 alt="avatar"
                 className="w-8 h-8"
               />
@@ -20,7 +20,7 @@ const CardPostPet = ({ name, description, imageUrl, t, handleModalToggle }) => {
               {/* Nombre y opciones */}
               <div className="flex flex-wrap justify-between items-center">
                 <div className="flex items-center">
-                  <h2 className="text-lg font-bold mr-2">{name}</h2>
+                  <h2 className="text-lg font-bold text-pink-400 mr-2">{name}</h2>
                   <button className="text-pink-500 font-semibold">
                     {t("followLabel")}
                   </button>
@@ -104,6 +104,7 @@ CardPostPet.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
   handleModalToggle: PropTypes.func.isRequired,
+  imageUser: PropTypes.string,
 };
 
 export default CardPostPet;

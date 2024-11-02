@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { usePetData } from '../../contexts/post/PetProvider';
+import { usePetData } from '../../hooks/usePetData';
 
 const ImageUploader = () => {
   const { petData, setPetData } = usePetData();

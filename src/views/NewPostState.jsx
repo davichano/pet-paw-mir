@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePetData } from '../contexts/post/PetProvider';
+import { usePetData } from '../hooks/usePetData';
 import StateOption from '../components/PostPet/StatePet/StateOption';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
@@ -32,7 +32,6 @@ const NewPostState = () => {
       },
     };
     setPetData(updatedPetData);
-    localStorage.setItem('petData', JSON.stringify(updatedPetData));
   };
 
   return (

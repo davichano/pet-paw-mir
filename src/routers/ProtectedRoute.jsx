@@ -6,7 +6,6 @@ const ProtectedRoute = ({ children }) => {
 
 
   const token = localStorage.getItem("token");
-  console.log(!!token);
   const isAuthenticated = !!token;
 
   if (!isAuthenticated) {
