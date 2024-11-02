@@ -1,5 +1,6 @@
-import BASE_URL from '../config';
 import { formatPostData } from '../helpers/formatPostData';
+
+const BASE_URL = `${import.meta.env.VITE_BASE_URL}/`;
 
 const getAuthHeaders = () => ({
   'Content-Type': 'application/json',

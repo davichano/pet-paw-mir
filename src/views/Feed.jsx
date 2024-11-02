@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
@@ -11,22 +11,18 @@ const Feed = () => {
   const {filter} = useParams();
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [showFilters, setShowFilters] = useState(false);
+  const {t} = useTranslation();
+  const showFilters = filter === "true"
   const [searchParams, setSearchParams] = useState({
     name: '',
     pet_type: '',
     pet_gender: ''
   });
-  const { t } = useTranslation();
 
-  const [selectedPost, setSelectedPost] = useState(null); // Para manejar el post seleccionado
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const toggleModal = () => setModalOpen(!isModalOpen);
-  const navigate = useNavigate(); // Inicializar useNavigate
 
-  const handleRedirect = () => {
-    navigate("/post");
-  }
 
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
@@ -51,10 +47,9 @@ const Feed = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-20 space-x-2 px-5">
+      <div className="flex justify-center items-center h-20 space-x-2 px-5 border-b-2 border-custom-200">
         <div className="w-1/2">
           <button
-            onClick={toggleFilters}
             className="bg-custom-250 text-white px-4 py-2 rounded-xl w-full h-full"
           >
             {'Para ti'}

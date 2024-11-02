@@ -8,7 +8,8 @@ const Footer = () => {
   const { logout } = useUser();
 
   const handleLogout = () => {
-    console.log('Logout clicked');
+    //console.log('Logout clicked');
+    localStorage.clear();
     logout();
     navigate('/login');
 
