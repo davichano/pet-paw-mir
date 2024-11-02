@@ -23,7 +23,7 @@ const NewPostMap = () => {
       mapRef.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: petData.location ? [petData.location.lng, petData.location.lat] : userLocation,
+        center: petData.sightingData ? [petData.sightingData.longitude, petData.sightingData.latitude] : userLocation,
         zoom: 14,
       });
 
@@ -31,7 +31,7 @@ const NewPostMap = () => {
       const marker = new mapboxgl.Marker({
         draggable: true,
       })
-        .setLngLat(petData.location || userLocation)
+        .setLngLat(petData.sightingData ? [petData.sightingData.longitude, petData.sightingData.latitude] : userLocation)
         .setPopup(new mapboxgl.Popup().setText("Ubicación de la mascota"))
         .addTo(mapRef.current);
 
@@ -42,15 +42,19 @@ const NewPostMap = () => {
       });
     }
 
-  }, [userLocation, isLoading, petData.location]);
+  }, [userLocation, isLoading, petData.sightingData]);
 
   // Función para confirmar y guardar la ubicación en petData
   const handleSaveLocation = () => {
     setPetData({
       ...petData,
-      location: { lng: markerLocation[0], lat: markerLocation[1] },
+      sightingData: {
+        ...petData.sightingData,
+        longitude: markerLocation[0],
+        latitude: markerLocation[1],
+      },
     });
-    alert("Ubicación guardada correctamente"+ petData.location.lng);
+    alert("Ubicación guardada correctamente"+ markerLocation[0] + ", " + markerLocation[1]);
     navigate('/post');
   };
 

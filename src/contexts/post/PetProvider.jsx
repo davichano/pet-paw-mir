@@ -8,19 +8,29 @@ const PetContext = createContext();
 export const PetProvider = ({ children }) => {
   const [petData, setPetData] = useState(() => {
     const savedData = localStorage.getItem('petData');
+    const user = JSON.parse(localStorage.getItem('user'));
     return savedData ?
     JSON.parse(savedData) : {
-      id: '',
-      name: 'anonimo',
-      pet_type: '',
-      pet_gender: '',
-      pet_description: '',
-      pet_size: '',
-      pet_age: '',
-      date_lost: '',
-      reward: '60',
-      user_id: 1,
-      pictures: []
+      title: 'Prueba de mi primer post',
+      description: '',
+      tags: 'Mi primer tags',
+      location: 'Mi casa',
+      state: 'LOST',
+      userId: user.id,
+      petData: {
+        name: ' ',
+        petType: '',
+        gender: '',
+        age: '',
+        size: '',
+        state: '',
+        imageUrl: '',
+        validated: true
+      },
+      sightingData: {
+        latitude: 0,
+        longitude: 0
+      }
     };
 
   });

@@ -4,30 +4,36 @@ import { toast } from "sonner";
 
 const PublishButton = () => {
   const { petData, setPetData } = usePetData(); // Obtener los datos desde el contexto
-
+  const user = JSON.parse(localStorage.getItem('user'));
   const handlePublish = async () => {
     try {
       const response = await createPost(petData); // Enviar los datos al servidor
       console.log('PetData:', petData);
       console.log('Post creado:', response);
       localStorage.removeItem('petData');
-
       toast.success('Publicación creada con éxito');
-
       setPetData({
-        id: null,
-        name: 'Anonimo',
-        pet_type: '',
-        pet_gender: '',
-        pet_description: '',
-        pet_size: '',
-        pet_age: '',
-        date_lost: '',
-        reward: '70',
-        user_id: 1,
-        pictures: []
+        title: 'Prueba de mi primer post',
+        description: '',
+        tags: 'Mi primer tags',
+        location: 'Mi casa',
+        state: 'LOST',
+        userId: user.id,
+        petData: {
+          name: ' ',
+          petType: '',
+          gender: '',
+          age: '',
+          size: '',
+          state: '',
+          imageUrl: '',
+          validated: true
+        },
+        sightingData: {
+          latitude: 0,
+          longitude: 0
+        }
       });
-
     } catch (error) {
       console.error('Error al crear el post:', error);
       toast.error('Error al crear la publicación');

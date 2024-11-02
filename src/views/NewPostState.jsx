@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { usePetData } from '../contexts/post/PetProvider';
 import StateOption from '../components/PostPet/StatePet/StateOption';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
+
+
 const NewPostState = () => {
+  const { petData, setPetData } = usePetData();
   const [selectedState, setSelectedState] = useState('Perdido');
 
   const handleOptionChange = (state) => {
@@ -10,7 +14,25 @@ const NewPostState = () => {
 
   const handleContinue = () => {
     console.log("Estado seleccionado:", selectedState);
+    const stateMap = {
+      'Perdido': 'LOST',
+      'Encontrado': 'FOUND',
+      'En Adopción': 'FOR_ADOPTION',
+      'Adoptado': 'ADOPTED',
+    };
 
+    const updatedState = stateMap[selectedState];
+
+    // Actualizar el estado en el contexto `petData`
+    const updatedPetData = {
+      ...petData,
+      petData: {
+        ...petData.petData,
+        state: updatedState,
+      },
+    };
+    setPetData(updatedPetData);
+    localStorage.setItem('petData', JSON.stringify(updatedPetData));
   };
 
   return (
