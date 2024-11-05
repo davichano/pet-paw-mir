@@ -14,7 +14,7 @@ const PetInfo = ({ name, size, age, location, dateLost, gender, imageUrl }) => {
     <>
     {/* Botón con el ícono de "info" para abrir el modal */}
     <button onClick={handleModalToggle} className="bg-transparent text-pink-500">
-        <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-8 h-8" />
+        <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-12 h-12" />
     </button>
 
     <Modal show={isModalOpen} onClose={handleModalToggle}>

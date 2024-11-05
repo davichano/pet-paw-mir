@@ -20,19 +20,19 @@ const DetailsPublication = () => {
   }
 
   return (
-    <div className="flex place-content-evenly items-center">
-      <div className="w-full max-w-4xl h-full relative text-white">
-        <PetDescription
-          id={id}
-          description={post.description}
-          name={post.pet.name || "Desconocido"}
-          imageUrl={post.pet.imageUrl}
-          imageUser={user.avatar}
-        />
-        <SavePost post={post} pos_x={300} pos_y={50}/>
-        <SectionCommets postId={id} />
+      <div className=" flex justify-center flex w-full h-[4/3] ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+          <PetDescription
+            id={id}
+            description={post.description}
+            name={post.pet.name || "Desconocido"}
+            imageUrl={post.pet.imageUrl}
+            imageUser={user.avatar}  className="flex-grow"
+          />
+          <SavePost post={post} pos_x={300} pos_y={50}/>
+          <SectionCommets postId={id} />
+        </div>
       </div>
-    </div>
   );
 }
 

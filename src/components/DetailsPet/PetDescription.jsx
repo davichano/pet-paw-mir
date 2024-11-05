@@ -17,7 +17,6 @@ const PetDescription = ({name, description, imageUrl, imageUser}) => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 relative">
           <CardPostPet
             name={name}
             description={description}
@@ -26,7 +25,6 @@ const PetDescription = ({name, description, imageUrl, imageUser}) => {
             t={t}
             handleModalToggle={handleModalToggle}
           />
-        </div>
       </div>
 
       <Modal show={isModalOpen} onClose={handleModalToggle}>

@@ -13,7 +13,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src={imageUser || "/src/assets/img/Icons/avatar_placeholder.svg" }
                 alt="avatar"
-                className="w-8 h-8"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div className="flex-1">
@@ -39,13 +39,13 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               </div>
 
               {/* Descripción */}
-              <p className="text-gray-700 text-sm mt-2">{description}</p>
+              <p className="text-gray-700 text-m mt-4">{description}</p>
             </div>
           </div>
 
           {/* Contenedor de la imagen */}
           <div className="w-full flex items-center justify-center my-10">
-            <div className="w-full max-w-[90%] md:max-w-auto h-auto flex items-center justify-center bg-[#ffaca4]">
+            <div className="w-full max-w-[90%] h-auto flex items-center justify-center bg-[#ffaca4] rounded-lg mx-4">
               <img
                 src={imageUrl}
                 alt="Pet"
@@ -60,7 +60,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/comment.svg"
                 alt="comment"
-                className="w-8 h-8 mr-2"
+                className="w-12 h-12"
               />
             </button>
             <PetInfo
@@ -76,7 +76,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/location_pink.svg"
                 alt="location"
-                className="w-8 h-8 mr-2"
+                className="w-12 h-12"
               />
             </button>
             <button
@@ -86,7 +86,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/share.svg"
                 alt="share"
-                className="w-8 h-8 mr-2"
+                className="w-12 h-12"
               />
             </button>
           </div>
