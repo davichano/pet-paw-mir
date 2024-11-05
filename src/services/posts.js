@@ -1,4 +1,4 @@
-import { formatPostData } from '../helpers/formatPostData';
+//import { formatData } from '../helpers/formatPostData';
 
 const BASE_URL = `${import.meta.env.VITE_BASE_URL}/`;
 
@@ -36,7 +36,7 @@ export async function fetchPostsByUser() {
 }
 
 export async function createPost(postData) {
-  const postDataFormatted = formatPostData(postData);
+  const postDataFormatted = postData;
   const response = await fetch(`${BASE_URL}api/posts`, {
     method: 'POST',
     headers: getAuthHeaders(),

@@ -11,7 +11,6 @@ export const PetProvider = ({ children }) => {
   const [petData, setPetData] = useState(
     formatData(user)
   );
-
   return (
     <PetContext.Provider value={{ petData, setPetData }}>
       {children}

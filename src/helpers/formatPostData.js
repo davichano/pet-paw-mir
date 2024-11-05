@@ -27,19 +27,19 @@ const petGender = {
 
 // Función para transformar los datos del frontend al formato de Prisma
 export function formatPostData(postData) {
-  delete postData.id; // Eliminar el id del post
-  delete postData.user_id; // Eliminar el id del usuario
-  delete postData.reward; // Eliminar el resto de propiedades
+  delete postData.id;
+  delete postData.user_id;
+  //delete postData.reward;
 
-  const { location, pictures, ...rest } = postData;
+  const { location, ...rest } = postData;
 
   const formattedData = {
     ...rest,
     latitude: location?.lat ?? null,
     longitude: location?.lng ?? null,
-    picture: pictures?.[0]?.url ?? null,
+    //picture: pictures?.[0]?.url ?? null,
     pet_gender: petGender[postData.pet_gender] ?? null,
-    pet_state: 'LOST', // Valor por defecto para pet_status
+    pet_state: 'LOST',
     pet_type: petTypeMap[postData.pet_type] || 'OTHER', // Asignar 'OTHER' como predeterminado
     pet_age: petAgeMap[postData.pet_age] || 'ADULT', // Valor por defecto ADULT
     pet_size: petSizeMap[postData.pet_size] || 'MEDIUM', // Valor por defecto MEDIUM
@@ -51,13 +51,15 @@ export function formatPostData(postData) {
 
 export const formatData = (user) => {
 
+  let id = user ? user.id : 0;
+
   let data = {
     title: 'Prueba de mi primer post',
     description: '',
     tags: 'Mi primer tags',
     location: 'Mi casa',
     state: 'LOST',
-    userId: user.id,
+    userId: id,
     petData: {
       name: ' ',
       petType: '',
@@ -68,7 +70,6 @@ export const formatData = (user) => {
       imageUrl: '',
       validated: true
     },
-
     sightingData: {
         latitude: 0,
         longitude: 0

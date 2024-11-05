@@ -168,7 +168,7 @@ export const activateAccount = async (token) => {
 
 export const fetchLoggedUser= async () => {
   try {
-    const response = await fetch(`${BASE_URL}auth/me`, {
+    const response = await fetch(`${BASE_URL}/auth/me`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

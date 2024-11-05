@@ -12,8 +12,9 @@ export const useCurrentUser = () => {
         setUser(JSON.parse(savedUser));
       } else {
         try {
-          const user = await fetchLoggedUser();
-          if (user) {
+          const token = localStorage.getItem("token");
+          if (token) {
+            const user = await fetchLoggedUser();
             setUser(user);
           } else {
             setUser(false);

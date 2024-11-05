@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { createComment } from "../../services/comment";
 import PropTypes from "prop-types";
+import socket from "../../services/socket";
 
-
-const InputWithIcon = ({ postId, setComentarios }) => {
+const InputWithIcon = ({ postId }) => {
   const [texto, setTexto] = useState("");
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -12,19 +11,14 @@ const InputWithIcon = ({ postId, setComentarios }) => {
 
     // Crear el nuevo comentario
     const nuevoComentario = {
-      post_id: postId,
-      user_id: user.id,
-      text: texto,
+      postId: Number(postId)  ,
+      userId: user.id,
+      content: texto,
       timestamp: new Date().toISOString(),
     };
 
-    createComment(nuevoComentario)
-      .then((data) => {
-
-        setComentarios((prevComentarios) => [...prevComentarios, data]);
-        setTexto("");
-      })
-      .catch((error) => console.error("Error al agregar comentario:", error));
+    socket.emit('newComment', nuevoComentario);
+    setTexto("");
   };
   return (
     <div className="flex items-center p-3 bg-red-100 rounded-9 w-full">

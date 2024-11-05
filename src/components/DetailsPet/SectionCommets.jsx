@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+
 import Comentario from "./Comentario";
 import InputWithIcon from "./InputWithIcon";
 import { fetchCommentsByPost } from "../../services/comment";
 import PropTypes from "prop-types";
 import { fetchUsers } from "../../services/users";
-
+import socket from "../../services/socket";
 
 
 const SectionCommets = ({ postId }) => {
@@ -13,7 +14,6 @@ const SectionCommets = ({ postId }) => {
 
   useEffect(() => {
     const loadCommentsAndUsers = async () => {
-
       try {
         // Carga comentarios
         const commentsData = await fetchCommentsByPost(postId);
@@ -25,16 +25,24 @@ const SectionCommets = ({ postId }) => {
 
         // Carga usuarios
         const usersData = await fetchUsers();
-        const usuariosMap = {};
-        usersData.forEach(usuario => {
-          usuariosMap[usuario.id] = usuario; // Mapea los usuarios por su ID
-        });
+        const usuariosMap = usersData.reduce((map, user) => {
+          map[user.id] = user;
+          return map;
+        }, {});
+
         setUsuarios(usuariosMap);
       } catch (error) {
         console.error("Error al cargar comentarios o usuarios:", error);
       }
     }
       loadCommentsAndUsers();
+      socket.on('commentAdded', (newComment) => {
+        setComentarios((prevComentarios) => [newComment, ...prevComentarios]);
+      });
+
+      return () => {
+        socket.off('commentAdded');
+      };
     }, [postId]);
 
 
@@ -45,9 +53,9 @@ const SectionCommets = ({ postId }) => {
           <Comentario
             key={comentario.id}
             avatar="/src/assets/img/Icons/avatar_placeholder.svg"
-            nombre={usuarios[comentario.user_id] ? usuarios[comentario.user_id].username : `Usuario ${comentario.user_id}`}
-            tiempo={new Date(comentario.timestamp).toLocaleString()}
-            texto={comentario.text}
+            nombre={usuarios[comentario.userId] ? usuarios[comentario.userId].name : `Usuario ${comentario.userId}`}
+            tiempo={new Date(comentario.createdAt).toLocaleString()}
+            texto={comentario.content}
           />
         ))
       ):(
@@ -56,7 +64,7 @@ const SectionCommets = ({ postId }) => {
      }
       <hr className="border-solid border-1 border-[#FF797D]" />
       <br />
-      <InputWithIcon postId={postId} setComentarios={setComentarios} />
+      <InputWithIcon postId={postId} />
     </div>
   );
 };
