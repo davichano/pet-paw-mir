@@ -5,30 +5,23 @@ import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
 
 const NewPostState = () => {
+
   const { petData, setPetData } = usePetData();
-  const [selectedState, setSelectedState] = useState('Perdido');
+  const petState = petData.petData.state ;
+  const [selectedState, setSelectedState] = useState(petState || 'Perdido');
+  
 
   const handleOptionChange = (state) => {
     setSelectedState(state);
   };
 
   const handleContinue = () => {
-    console.log("Estado seleccionado:", selectedState);
-    const stateMap = {
-      'Perdido': 'LOST',
-      'Encontrado': 'FOUND',
-      'En Adopción': 'FOR_ADOPTION',
-      'Adoptado': 'ADOPTED',
-    };
-
-    const updatedState = stateMap[selectedState];
-
-    // Actualizar el estado en el contexto `petData`
+    //console.log("Estado seleccionado:", selectedState);
     const updatedPetData = {
       ...petData,
       petData: {
         ...petData.petData,
-        state: updatedState,
+        state: selectedState,
       },
     };
     setPetData(updatedPetData);

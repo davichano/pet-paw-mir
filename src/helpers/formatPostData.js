@@ -7,6 +7,15 @@ const petTypeMap = {
   'Otro': 'OTHER',
 };
 
+const stateMap = {
+  'Perdido': 'LOST',
+  'Encontrado': 'FOUND',
+  'En Adopción': 'ADOPTION',
+  'Adoptado': 'ADOPTED',
+};
+
+
+
 /*
 const petAgeMap = {
   'Cachorro': 'PUPPY',
@@ -36,14 +45,17 @@ export function formatPostData(postData) {
   delete postData.user_id;
 
   const { state, tags, petData, sightingData, ...rest } = postData;
+  const updatedState = stateMap[petData.state];
 
   // Generamos el título en base al estado y tipo de publicación
-  const title = state === 'LOST'
+  const title = updatedState === 'LOST'
     ? `Se busca ${petData.name} mi ${getPetTypeKeyByValue(petData.type)}`
-    : state === 'FOR_ADOPTION'
-    ? `Se adopta ${petData.pet_name} mi ${getPetTypeKeyByValue(petData.pet_type)}`
+    : state === 'ADOPTION'
+    ? `Se adopta ${petData.pet_name} mi ${getPetTypeKeyByValue(petData.type)}`
     : '';
     const formattedTags = Array.isArray(tags) ? tags.join(', ') : '';
+
+    console.log(updatedState);
     return {
       ...rest,
       title,
@@ -52,6 +64,7 @@ export function formatPostData(postData) {
       userId: postData.userId,
       petData: {
         ...petData,
+        state: updatedState,
       },
       sightingData: {
         ...sightingData, // Preservamos los valores de `sightingData` como están
