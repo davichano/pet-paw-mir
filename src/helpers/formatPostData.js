@@ -56,7 +56,7 @@ export const formatData = (user) => {
   let data = {
     title: 'Prueba de mi primer post',
     description: '',
-    tags: 'Mi primer tags',
+    tags: '',
     location: 'Mi casa',
     state: 'LOST',
     userId: id,
