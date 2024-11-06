@@ -7,6 +7,7 @@ const petTypeMap = {
   'Otro': 'OTHER',
 };
 
+/*
 const petAgeMap = {
   'Cachorro': 'PUPPY',
   'Joven': 'YOUNG',
@@ -23,30 +24,41 @@ const petSizeMap = {
 const petGender = {
   'Macho' : 'MALE',
   'Hembra' : 'FEMALE'
+}*/
+
+function getPetTypeKeyByValue(value) {
+  return Object.keys(petTypeMap).find(key => petTypeMap[key] === value) || 'mascota';
 }
 
 // Función para transformar los datos del frontend al formato de Prisma
 export function formatPostData(postData) {
   delete postData.id;
   delete postData.user_id;
-  //delete postData.reward;
 
-  const { location, ...rest } = postData;
+  const { state, tags, petData, sightingData, ...rest } = postData;
 
-  const formattedData = {
-    ...rest,
-    latitude: location?.lat ?? null,
-    longitude: location?.lng ?? null,
-    //picture: pictures?.[0]?.url ?? null,
-    pet_gender: petGender[postData.pet_gender] ?? null,
-    pet_state: 'LOST',
-    pet_type: petTypeMap[postData.pet_type] || 'OTHER', // Asignar 'OTHER' como predeterminado
-    pet_age: petAgeMap[postData.pet_age] || 'ADULT', // Valor por defecto ADULT
-    pet_size: petSizeMap[postData.pet_size] || 'MEDIUM', // Valor por defecto MEDIUM
-    //date_lost: new Date(date_lost).toISOString(), // Fecha actual
-  };
-
-  return formattedData;
+  // Generamos el título en base al estado y tipo de publicación
+  const title = state === 'LOST'
+    ? `Se busca ${petData.name} mi ${getPetTypeKeyByValue(petData.type)}`
+    : state === 'FOR_ADOPTION'
+    ? `Se adopta ${petData.pet_name} mi ${getPetTypeKeyByValue(petData.pet_type)}`
+    : '';
+    const formattedTags = Array.isArray(tags) ? tags.join(', ') : '';
+    return {
+      ...rest,
+      title,
+      tags: formattedTags,
+      state,
+      userId: postData.userId,
+      petData: {
+        ...petData,
+      },
+      sightingData: {
+        ...sightingData, // Preservamos los valores de `sightingData` como están
+        latitude: location?.lat ?? 0,
+        longitude: location?.lng ?? 0,
+      }
+    };
 }
 
 export const formatData = (user) => {
