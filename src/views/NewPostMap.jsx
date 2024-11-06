@@ -16,32 +16,30 @@ const NewPostMap = () => {
   const [markerLocation, setMarkerLocation] = useState(userLocation); // Almacena la ubicación actual del marcador
 
   useEffect(() => {
-    if (!userLocation || isLoading) return;
 
-    // Solo inicializamos el mapa si aún no existe
-    if (!mapRef.current) {
-      mapRef.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
-        center: petData.sightingData ? [petData.sightingData.longitude, petData.sightingData.latitude] : userLocation,
-        zoom: 14,
-      });
+    if (!userLocation || isLoading || mapRef.current) return;
 
-      // Crear un marcador arrastrable
-      const marker = new mapboxgl.Marker({
-        draggable: true,
-      })
-        .setLngLat(petData.sightingData ? [petData.sightingData.longitude, petData.sightingData.latitude] : userLocation)
-        .setPopup(new mapboxgl.Popup().setText("Ubicación de la mascota"))
-        .addTo(mapRef.current);
+    console.log(petData.sightingData);
 
-      // Actualizar la ubicación del marcador cuando se arrastre
-      marker.on('dragend', () => {
-        const { lng, lat } = marker.getLngLat();
-        setMarkerLocation([lng, lat]); // Actualizar el estado temporal con la nueva ubicación
-      });
-    }
+    mapRef.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: petData.sightingData.latitude != 0 ? [petData.sightingData.longitude, petData.sightingData.latitude] : [userLocation[0],userLocation[1]],
+      zoom: 14,
+    });
 
+    const marker = new mapboxgl.Marker({
+      draggable: true,
+    })
+      .setLngLat(petData.sightingData.latitude != 0  ? [petData.sightingData.longitude, petData.sightingData.latitude] : userLocation)
+      .setPopup(new mapboxgl.Popup().setText("Ubicación de la mascota"))
+      .addTo(mapRef.current);
+
+    // Actualiza la ubicación del marcador cuando se arrastra
+    marker.on('dragend', () => {
+      const { lng, lat } = marker.getLngLat();
+      setMarkerLocation([lng, lat]);
+    });
   }, [userLocation, isLoading, petData.sightingData]);
 
   // Función para confirmar y guardar la ubicación en petData
@@ -54,13 +52,17 @@ const NewPostMap = () => {
         latitude: markerLocation[1],
       },
     });
-    alert("Ubicación guardada correctamente"+ markerLocation[0] + ", " + markerLocation[1]);
+    alert("Ubicación guardada correctamente");
     navigate('/post');
   };
 
   return (
     <div>
+      {isLoading ? (
+      <p>Cargando mapa...</p> 
+    ) : (
       <div ref={mapContainer} className="w-full h-screen" />
+    )}
       {markerLocation && (
         <div className="absolute bottom-20 left-10 bg-white p-2 rounded">
           <p>Latitud: {markerLocation[1]}</p>
