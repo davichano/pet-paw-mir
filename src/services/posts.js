@@ -28,11 +28,12 @@ export async function fetchPost(id) {
 }
 
 export async function fetchPostsByUser() {
-  const response = await fetch(`${BASE_URL}api/myposts`, {
+  const response = await fetch(`${BASE_URL}api/posts/myposts`, {
+    method: 'GET',
     headers: getAuthHeaders(),
   });
   const result = await response.json();
-  return result.data;
+  return result;
 }
 
 export async function createPost(postData) {

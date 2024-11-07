@@ -14,6 +14,8 @@ const Footer = () => {
 
   };
 
+  const user = JSON.parse(localStorage.getItem('user'))
+
   return (
     <footer className="fixed bottom-0 left-0 w-full bg-custom-250 flex px-5 sm:px-10 min-h-[70px]">
       <div className="container mx-auto">
@@ -38,7 +40,7 @@ const Footer = () => {
           </Link>
 
           {/* Link a User Profile */}
-          <Link to="/user/1" className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
+          <Link to= {`/user/${user.id}`}  className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
             <svg className="h-[30px]" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                  stroke="currentColor"
             >

@@ -6,11 +6,13 @@ import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
 import SavePost from "../components/PostPet/SavePost.jsx";
+import { fetchUsers } from '../services/users.js';
 
 const Feed = () => {
   const {filter} = useParams();
   const [isModalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
   const {t} = useTranslation();
   const showFilters = filter === "true"
   const [searchParams, setSearchParams] = useState({
@@ -20,8 +22,8 @@ const Feed = () => {
   });
 
   const [selectedPost, setSelectedPost] = useState(null);
-
   const toggleModal = () => setModalOpen(!isModalOpen);
+
 
 
   const loadPosts = async (params = {}) => {
@@ -29,8 +31,14 @@ const Feed = () => {
     setPosts(postsData);
   };
 
+  const loadUsers = async () => {
+    const usersData = await fetchUsers();
+    setUsers(usersData);
+  }
+
   useEffect(() => {
     loadPosts();
+    loadUsers();
   }, []);
 
   const handleSearch = (e) => {
@@ -95,19 +103,27 @@ const Feed = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-        {posts.length > 0 && posts.map((post) => (
-          <div key={post.id} className="relative">
-            <Link to={`/pet/${post.id}`}>
-              <CardPostPet
-                name={post.pet.name}
-                description={post.pet.description}
-                imageUrl={post.pet.imageUrl}
-                handleModalToggle={toggleModal}
-                t={t}/>
-            </Link>
-            <SavePost post={post} pos_x={90} pos_y={50}/>
-          </div>
-        ))}
+        {posts.length > 0 && posts.map((post) => {
+          // Buscar el usuario correspondiente por userId
+          const user = users.find(u => u.id === post.userId);
+          const userAvatar = user ? user.avatar : null;
+          return (
+            <div key={post.id} className="relative">
+              <Link to={`/pet/${post.id}`}>
+                <CardPostPet
+                  name={post.pet.name}
+                  description={post.description}
+                  imageUrl={post.pet.imageUrl}
+                  imageUser={userAvatar}
+                  handleModalToggle={toggleModal}
+                  t={t}
+                  post={post}
+                />
+              </Link>
+              <SavePost post={post} pos_x={90} pos_y={50}/>
+            </div>
+          );
+        })}
       </div>
       <Link to={`/post`}>
         <button

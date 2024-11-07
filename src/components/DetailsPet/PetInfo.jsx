@@ -29,7 +29,7 @@ const PetInfo = ({ name, size, age, location, dateLost, gender, imageUrl }) => {
 
       <div className="flex items-center mb-2">
         <img src="/src/assets/img/Icons/calendar.svg" alt="calendario" className="w-10 h-10 mr-2"></img>
-        <p>{t("agePet")}: {age} {t("longTime")}</p>
+        <p>{t("agePet")}: {age} </p>
       </div>
 
 

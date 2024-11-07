@@ -14,13 +14,12 @@ const DetailsPublication = () => {
   if (loading) {
     return <div>Cargando...</div>;
   }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   return (
-      <div className=" flex justify-center flex w-full h-[4/3] ">
+      <div className=" flex justify-center flex w-full h-3/4 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
           <PetDescription
             id={id}
@@ -28,6 +27,7 @@ const DetailsPublication = () => {
             name={post.pet.name || "Desconocido"}
             imageUrl={post.pet.imageUrl}
             imageUser={user.avatar}  className="flex-grow"
+            postData ={post}
           />
           <SavePost post={post} pos_x={300} pos_y={50}/>
           <SectionCommets postId={id} />

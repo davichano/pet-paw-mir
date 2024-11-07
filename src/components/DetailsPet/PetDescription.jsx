@@ -3,17 +3,15 @@ import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import PropTypes from 'prop-types';
 import {Modal} from 'flowbite-react';
-
-
 import CardPostPet from './CardPostPet';
 
-const PetDescription = ({name, description, imageUrl, imageUser}) => {
+const PetDescription = ({name, description, imageUrl, imageUser, postData}) => {
   const {t} = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
-
+  
   return (
     <>
       <div className="container mx-auto">
@@ -24,6 +22,7 @@ const PetDescription = ({name, description, imageUrl, imageUser}) => {
             imageUser={imageUser}
             t={t}
             handleModalToggle={handleModalToggle}
+            post={postData}
           />
       </div>
 
@@ -44,10 +43,7 @@ const PetDescription = ({name, description, imageUrl, imageUser}) => {
         </Modal.Body>
 
       </Modal>
-
     </>
-
-
   );
 };
 
@@ -57,6 +53,7 @@ PetDescription.propTypes = {
   name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string,
   imageUser: PropTypes.string,
+  postData: PropTypes.object,
 };
 
 export default PetDescription;

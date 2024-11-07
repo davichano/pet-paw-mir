@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
 
-const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle }) => {
+const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
+  
   return (
     <>
         {/* Primera Columna: Avatar, Descripción, Imagen, Botones */}
@@ -13,7 +14,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src={imageUser || "/src/assets/img/Icons/avatar_placeholder.svg" }
                 alt="avatar"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full rounded-full"
               />
             </div>
             <div className="flex-1">
@@ -49,7 +50,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src={imageUrl}
                 alt="Pet"
-                className="max-w-full h-auto object-cover rounded-lg mx-4"
+                className="max-w-full h-full object-cover rounded-lg mx-4"
               />
             </div>
           </div>
@@ -65,11 +66,16 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
             </button>
             <PetInfo
               name={name}
-              size="Mediano"
-              age="2"
-              location="Madrid"
-              dateLost="01/09/2024"
-              gender="Macho"
+              size= {post.pet.size}
+              age= {post.pet.age}
+              location= "Madrid"
+              dateLost={new Date(post.pet.createdAt).toLocaleDateString('es-ES', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+              gender= {post.pet.gender}
               imageUrl={imageUrl}
             />
             <button className="flex items-center bg-transparent text-pink-500">
@@ -93,7 +99,6 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
           <br />
           <hr className="border-solid border-1 border-[#FF797D]" />
         </div>
-
     </>
   );
 };
@@ -105,6 +110,7 @@ CardPostPet.propTypes = {
   t: PropTypes.func.isRequired,
   handleModalToggle: PropTypes.func.isRequired,
   imageUser: PropTypes.string,
+  post: PropTypes.object.isRequired
 };
 
 export default CardPostPet;

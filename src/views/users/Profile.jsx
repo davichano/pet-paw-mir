@@ -9,8 +9,7 @@ function Profile() {
   const { t } = useTranslation();
   const { id } = useParams();
   const { user } = useGetUser(id);
-  const { posts } = useGetUserPosts(id);
-
+  const { posts } = useGetUserPosts();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -19,7 +18,7 @@ function Profile() {
 
   return (
     <>
-      {user === undefined ? (
+      {posts == [] ? (
         <h2>{t('loading')}</h2>
       ) : (
         <section className='profile-page flex flex-wrap align-top content-around w-auto px-0 mx-0 lg:justify-center'>
@@ -27,7 +26,7 @@ function Profile() {
             <div className='my-2 w-1/4 px-0 flex flex-col items-center'>
               <img
                 className='h-auto w-20 rounded-full m-auto shadow shadow-pink-300'
-                src={'/img/users/' + user.picture}
+                src={user.avatar}
                 alt={user.name}
               />
               <button
@@ -50,9 +49,9 @@ function Profile() {
               <div className='flex w-full text-left pl-5 mb-3'>
                 <div className='w-10/12'>
                   <h2 className='text-xl font-bold text-custom-350'>
-                    {user.name} {user.lastname}
+                    {user.name} {user.lastName}
                   </h2>
-                  <h5 className='text-sm text-custom-250'>@{user.username}</h5>
+                  <h5 className='text-sm text-custom-250'>@{user.account}</h5>
                 </div>
                 <div className='w-2/12'>
                   <button
@@ -117,9 +116,8 @@ function Profile() {
               <div key={post.id} className='aspect-square'>
                 <img
                   className='object-cover h-full w-full rounded-2xl'
-                  src={post.picture}
-                  //src={post.pictures?.[0]?.url || 'default.jpg'}
-                  alt={post.name}
+                  src={post.pet.imageUrl}
+                  alt={post.title}
                 />
               </div>
             ))}
