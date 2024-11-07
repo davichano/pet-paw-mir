@@ -41,9 +41,6 @@ function getPetTypeKeyByValue(value) {
 
 // Función para transformar los datos del frontend al formato de Prisma
 export function formatPostData(postData) {
-  delete postData.id;
-  delete postData.user_id;
-
   const { state, tags, petData, sightingData, ...rest } = postData;
   const updatedState = stateMap[petData.state];
 
