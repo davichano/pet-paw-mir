@@ -5,7 +5,7 @@ import {Link, useParams} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
-import SavePost from "../components/PostPet/SavePost.jsx";
+
 import { fetchUsers } from '../services/users.js';
 
 const Feed = () => {
@@ -107,6 +107,7 @@ const Feed = () => {
           // Buscar el usuario correspondiente por userId
           const user = users.find(u => u.id === post.userId);
           const userAvatar = user ? user.avatar : null;
+
           return (
             <div key={post.id} className="relative">
               <Link to={`/pet/${post.id}`}>
@@ -120,7 +121,7 @@ const Feed = () => {
                   post={post}
                 />
               </Link>
-              <SavePost post={post} pos_x={90} pos_y={50}/>
+
             </div>
           );
         })}

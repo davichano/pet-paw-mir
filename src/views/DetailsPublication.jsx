@@ -3,7 +3,6 @@ import {useParams} from "react-router-dom";
 import PetDescription from "../components/DetailsPet/PetDescription";
 import {useGetPost} from "../hooks/useGetPosts";
 import {useGetUser} from "../hooks/useGetUser";
-import SavePost from "../components/PostPet/SavePost.jsx";
 import SectionCommets from "../components/DetailsPet/SectionCommets.jsx";
 
 
@@ -29,7 +28,7 @@ const DetailsPublication = () => {
             imageUser={user.avatar}  className="flex-grow"
             postData ={post}
           />
-          <SavePost post={post} pos_x={300} pos_y={50}/>
+          {/*<SavePost post={post} pos_x={300} pos_y={50}/>*/}
           <SectionCommets postId={id} />
         </div>
       </div>

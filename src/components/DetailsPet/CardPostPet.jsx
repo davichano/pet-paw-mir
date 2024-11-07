@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
+import SavePost from "../PostPet/SavePost"
 
 const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
-  
+
   return (
     <>
         {/* Primera Columna: Avatar, Descripción, Imagen, Botones */}
@@ -28,7 +29,11 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
                 </div>
                 {/* Contenido momentáneo, la hora de publicación */}
                 <div className="flex items-center mt-2 md:mt-0">
-                  <span className="text-gray-500 text-sm">50 min</span>
+                  <span className="text-gray-500 text-sm">{new Date(post.pet.createdAt).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                  })} </span>
                   <button className="ml-2 text-gray-500">
                     <img
                       src="/src/assets/img/Icons/more_options.svg"
@@ -46,14 +51,17 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
 
           {/* Contenedor de la imagen */}
           <div className="w-full flex items-center justify-center my-10">
-            <div className="w-full max-w-[90%] h-auto flex items-center justify-center bg-[#ffaca4] rounded-lg mx-4">
+            <div className="w-full max-w-[90%] h-auto flex items-center justify-center rounded-lg mx-4 relative">
               <img
                 src={imageUrl}
                 alt="Pet"
-                className="max-w-full h-full object-cover rounded-lg mx-4"
+                className="w-full h-auto object-cover rounded-lg mx-4"
               />
+              <SavePost post={post} pos_x={30} pos_y={20}/>
             </div>
+
           </div>
+
 
           {/* Botones debajo de la imagen */}
           <div className="flex justify-around mt-2">
