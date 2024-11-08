@@ -13,12 +13,10 @@ const Logout = () => {
     navigate('/login');
   };
 
-
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">{t('logout')}</h2>
-      <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded"
-      >
+      <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
         {t('logout')}
       </button>
     </div>

@@ -67,7 +67,6 @@ const Login = () => {
         navigate("/feed");
 
       } else {
-
         toast.error(t("loginError"));
       }
     } catch (error) {

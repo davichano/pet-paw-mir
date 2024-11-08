@@ -38,7 +38,7 @@ const Footer = () => {
           </Link>
 
           {/* Link a User Profile */}
-          <Link to= {`/user/${user.id}`}  className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
+          <Link to= {user ? `/user/${user.id}` : '/login'}  className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
             <svg className="h-[30px]" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                  stroke="currentColor"
             >

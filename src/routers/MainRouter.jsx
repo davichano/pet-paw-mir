@@ -38,8 +38,7 @@ export const MainRouter = () => {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/passwordrecovery" element={<PasswordRecovery/>}/>
-       <Route path="/" element={ <ProtectedRoute> <LandingPage/>
-        </ProtectedRoute>}/>
+       <Route path="/" element={<LandingPage/>}/>
 
         <Route
           path="/feed"
