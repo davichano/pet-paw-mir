@@ -6,15 +6,13 @@ const Footer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { logout } = useUser();
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleLogout = () => {
     localStorage.clear();
     logout();
     navigate('/login');
-
   };
-
-  const user = JSON.parse(localStorage.getItem('user'))
 
   return (
     <footer className="fixed bottom-0 left-0 w-full bg-custom-250 flex px-5 sm:px-10 min-h-[70px]">
