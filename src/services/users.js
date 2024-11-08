@@ -56,6 +56,9 @@ export async function loginUser(username, password) {
     }),
   });
 
+  if(response.status == "400" ){
+    return null;
+  }
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
