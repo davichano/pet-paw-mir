@@ -64,7 +64,14 @@ const Login = () => {
         setPetData(updatedData);
 
         toast.success(t("loginSuccess"));
-        navigate("/feed");
+        console.log(profile.role);
+        if(profile.role === "ADMINISTRATOR") {
+          console.log("redirect to admin")
+          navigate("/admin");
+        }
+        else{
+          navigate("/feed");
+        }
 
       } else {
 

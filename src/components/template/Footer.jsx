@@ -40,7 +40,8 @@ const Footer = () => {
           </Link>
 
           {/* Link a User Profile */}
-          <Link to= {`/user/${user.id}`}  className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
+          {user && user.id && (
+            <Link to= {`/user/${user.id}`}  className="flex flex-col items-center"> {/* Cambia el "1" por el id de usuario dinámico */}
             <svg className="h-[30px]" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                  stroke="currentColor"
             >
@@ -50,6 +51,8 @@ const Footer = () => {
             </svg>
             <span>{t('profile')}</span>
           </Link>
+          ) }
+
 
           {/* Botón para Logout */}
           <button onClick={handleLogout} className="flex flex-col items-center">

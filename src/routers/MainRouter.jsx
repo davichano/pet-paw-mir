@@ -19,6 +19,9 @@ import {PetProvider} from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
 import Settings from "../views/Settings.jsx";
 import ProtectedRoute from "./ProtectedRoute";
+import PrivateRoute from "../components/PrivateRoute.jsx";
+import AdminPage from "../views/AdminPage.jsx";
+import AccessDenied from "../views/AccessDenied.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -28,6 +31,8 @@ export const MainRouter = () => {
     "/login",
     "/passwordrecovery",
     "/landingpage",
+    "/admin",
+    "/settings"
   ];
   return (
     <>
@@ -40,6 +45,10 @@ export const MainRouter = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/passwordrecovery" element={<PasswordRecovery/>}/>
         <Route path="/" element={<LandingPage/>}/>
+        <Route path="/access-denied" element={<AccessDenied/>}/>
+        <Route element={<PrivateRoute allowedRoles={["ADMINISTRATOR"]}/>}>
+          <Route path="/admin" element={<AdminPage/>}/>
+        </Route>
 
         <Route
           path="/feed"
