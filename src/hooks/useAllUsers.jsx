@@ -21,12 +21,13 @@ const useAllUsers = () => {
     };
 
     fetchAllUsers();
-  }, [users]);
+  }, []);
 
   const updateUser = async (id, data) => {
     setUpdateLoading(true);
     try {
       await patchUser(id, data);
+      console.log(data);
       setUsers(users.map((user) => (user.id === id ? { ...user, ...data } : user)));
       console.log('updateUser');
       console.log(id, data);

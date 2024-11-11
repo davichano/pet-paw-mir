@@ -1,8 +1,7 @@
 import { PropTypes } from "prop-types";
 import { useForm } from "react-hook-form";
-import useAllUsers from "../../hooks/useAllUsers";
 
-const EditUser = ({ user, onClose }) => {
+const EditUser = ({ user, onClose, handleEditClick }) => {
   const {
     register,
     handleSubmit,
@@ -16,11 +15,10 @@ const EditUser = ({ user, onClose }) => {
       isActive: user.isActive ? "true" : "false",
     },
   });
-  const { updateUser, updateLoading } = useAllUsers();
 
   const onSubmit =async  (data) => {
     data.isActive = data.isActive === "true";
-    await updateUser(user.id, data);
+    await handleEditClick(user.id, data);
     onClose()
   };
 
@@ -112,7 +110,7 @@ const EditUser = ({ user, onClose }) => {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
-          {updateLoading ? "Actualizando..." : "Actualizar"}
+          Actualizar
         </button>
       </form>
     </div>
@@ -122,6 +120,7 @@ const EditUser = ({ user, onClose }) => {
 EditUser.propTypes = {
   user: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
+  handleEditClick: PropTypes.func.isRequired,
 };
 
 export default EditUser;

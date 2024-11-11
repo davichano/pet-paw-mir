@@ -5,7 +5,7 @@ import Modal from "./ui/Modal";
 import EditUser from "./EditUser";
 
 const Users = () => {
-  const { users, loading, error } = useAllUsers();
+  const { users, loading, error, updateUser } = useAllUsers();
   const [editUser, setEditUser] = useState(null);
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -78,7 +78,7 @@ const Users = () => {
       </table>
       <Modal isOpen={isOpen} onClose={closeModal} title="Editar usuario">
         {" "}
-        {editUser && <EditUser user={editUser} onClose={closeModal} />}{" "}
+        {editUser && <EditUser user={editUser} onClose={closeModal} handleEditClick={updateUser} />}{" "}
       </Modal>
     </div>
   );
