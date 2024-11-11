@@ -58,7 +58,7 @@ const SectionCommets = ({ postId }) => {
                 key={comentario.id || `temp-${index}`}
                 avatar={ usuarios[comentario.userId] ? usuarios[comentario.userId].avatar : "/src/assets/img/Icons/avatar_placeholder.svg"}
                 nombre={usuarios[comentario.userId] ? usuarios[comentario.userId].name : `Usuario ${comentario.userId}`}
-                tiempo={new Date(comentario.createdAt).toLocaleString() || new Date().toLocaleDateString}
+                tiempo={comentario.createdAt ? new Date(comentario.createdAt).toLocaleString() : new Date().toLocaleString()}
                 texto={comentario.content}
               />
             ))
