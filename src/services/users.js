@@ -56,16 +56,16 @@ export async function loginUser(username, password) {
     }),
   });
 
+  if(response.status == "400" ){
+    return null;
+  }
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
-
   const data = await response.json();
-
   // Guardar el token JWT en localStorage
   localStorage.setItem("token", data.token);
-
-  console.log("data", data);
+  //console.log("data", data);
 
   // Retornar el perfil del usuario
   return data.profile;

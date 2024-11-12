@@ -1,3 +1,4 @@
+import { formatData } from '../../helpers/formatPostData';
 import { usePetData } from '../../hooks/usePetData';
 import { createPost } from '../../services/posts';
 import { toast } from "sonner";
@@ -7,33 +8,14 @@ const PublishButton = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const handlePublish = async () => {
     try {
-      const response = await createPost(petData); // Enviar los datos al servidor
-      console.log('PetData:', petData);
+      const response = await createPost(petData);
+      //console.log('PetData:', petData);
       console.log('Post creado:', response);
-      localStorage.removeItem('petData');
       toast.success('Publicación creada con éxito');
-      setPetData({
-        title: 'Prueba de mi primer post',
-        description: '',
-        tags: 'Mi primer tags',
-        location: 'Mi casa',
-        state: 'LOST',
-        userId: user.id,
-        petData: {
-          name: ' ',
-          petType: '',
-          gender: '',
-          age: '',
-          size: '',
-          state: '',
-          imageUrl: '',
-          validated: true
-        },
-        sightingData: {
-          latitude: 0,
-          longitude: 0
-        }
-      });
+      //Limpia el context Pet
+      setPetData({});
+      //Se inserta la plantilla del context 
+      setPetData(formatData(user || '1'));
     } catch (error) {
       console.error('Error al crear el post:', error);
       toast.error('Error al crear la publicación');

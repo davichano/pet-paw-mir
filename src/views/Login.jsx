@@ -72,11 +72,9 @@ const Login = () => {
         }
 
       } else {
-
-        toast.error(t("loginError"));
+        toast.error(t("incorrectLogin"));
       }
     } catch (error) {
-
       console.error(error);
       toast.error(t("loginError"));
     }

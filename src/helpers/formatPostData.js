@@ -64,7 +64,7 @@ export function formatPostData(postData) {
         state: updatedState,
       },
       sightingData: {
-        ...sightingData, // Preservamos los valores de `sightingData` como están
+        ...sightingData, 
         latitude: location?.lat ?? 0,
         longitude: location?.lng ?? 0,
       }
@@ -72,11 +72,9 @@ export function formatPostData(postData) {
 }
 
 export const formatData = (user) => {
-
   let id = user ? user.id : 0;
-
   let data = {
-    title: 'Prueba de mi primer post',
+    title: '',
     description: '',
     tags: '',
     location: 'Mi casa',
