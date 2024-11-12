@@ -18,7 +18,7 @@ import NewPostMap from "../views/NewPostMap.jsx";
 import { PetProvider } from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
 import Settings from "../views/Settings.jsx";
-import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import AdminPage from "../views/AdminPage.jsx";
 import AccessDenied from "../views/AccessDenied.jsx";
 
@@ -46,11 +46,11 @@ export const MainRouter = () => {
           <Route path="/passwordrecovery" element={<PasswordRecovery />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/access-denied" element={<AccessDenied />} />
-          <Route element={<PrivateRoute allowedRoles={["ADMINISTRATOR"]} />}>
+          <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
             <Route path="/admin" element={<AdminPage />} />
           </Route>
 
-          <Route element={<PrivateRoute allowedRoles={["USER"]} />}>
+          <Route element={<ProtectedRoute allowedRoles={["USER"]} />}>
             <Route path="/feed" element={<Feed />} />
             <Route path="/feed/:filter" element={<Feed />} />
             <Route path="/pet/:id" element={<DetailsPublication />} />
