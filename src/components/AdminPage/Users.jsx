@@ -18,7 +18,7 @@ const Users = () => {
   };
 
   return (
-    <div>
+    <div className="p-10">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 min-w-80">
         <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
           <tr>
@@ -38,7 +38,7 @@ const Users = () => {
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
               >
                 <td>{index + 1}</td>
-                <td>{user.name}</td>
+                <td>{user.name + " " + user.lastName}</td>
                 <td>{user.email}</td>
                 <td className={
                   user.role === "USER"
