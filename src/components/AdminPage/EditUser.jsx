@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 import { useForm } from "react-hook-form";
 
-const EditUser = ({ user, onClose, handleEditClick }) => {
+const EditUser = ({ user, onClose, handleSaveClick }) => {
   const {
     register,
     handleSubmit,
@@ -18,7 +18,7 @@ const EditUser = ({ user, onClose, handleEditClick }) => {
 
   const onSubmit =async  (data) => {
     data.isActive = data.isActive === "true";
-    await handleEditClick(user.id, data);
+    await handleSaveClick(user.id, data);
     onClose()
   };
 
@@ -120,7 +120,7 @@ const EditUser = ({ user, onClose, handleEditClick }) => {
 EditUser.propTypes = {
   user: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  handleEditClick: PropTypes.func.isRequired,
+  handleSaveClick: PropTypes.func.isRequired,
 };
 
 export default EditUser;

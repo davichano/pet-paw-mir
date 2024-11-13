@@ -3,10 +3,9 @@ import useModal from "../../hooks/useModal";
 import { useState } from "react";
 import Modal from "./ui/Modal";
 import EditPost from "./EditPost";
-import { updatePost } from "../../services/posts";
 
 const Posts = () => {
-  const { posts, loading, error } = useAllPosts();
+  const { posts, loading, error, updatePost } = useAllPosts();
   const { isOpen, openModal, closeModal } = useModal();
   const [editPost, setEditPost] = useState(null);
 
@@ -17,6 +16,7 @@ const Posts = () => {
     setEditPost(post);
     openModal();
   };
+
 
   return (
     <div className="p-10">
@@ -75,7 +75,7 @@ const Posts = () => {
       </table>
       <Modal isOpen={isOpen} onClose={closeModal} title="Editar post">
         {" "}
-        {editPost && <EditPost post={editPost} onClose={closeModal} handleEditClick={updatePost}/>} {""}
+        {editPost && <EditPost post={editPost} onClose={closeModal} handleSaveClick={updatePost}/>} {""}
       </Modal>
     </div>
   );

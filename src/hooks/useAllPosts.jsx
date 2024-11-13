@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPosts } from "../services/posts";
+import { fetchPosts, updatePost as patchPost } from "../services/posts";
 import { fetchUser } from "../services/users";
 
 const useAllPosts = () => {
@@ -17,6 +17,7 @@ const useAllPosts = () => {
           data.map(async (post) => {
             post.user = await fetchUser(post.userId);
             post.createdAt = new Date(post.createdAt).toLocaleString();
+            post.updatedAt = new Date(post.updatedAt).toLocaleString();
             return post;
           })
         );
@@ -37,10 +38,11 @@ const useAllPosts = () => {
   const updatePost = async (id, data) => {
     setUpdateLoading(true);
     try {
-      // await patchPost(id, data);
+      await patchPost(id, data);
       setPosts(
         posts.map((post) => (post.id === id ? { ...post, ...data } : post))
       );
+      console.log("Post updated");
     } catch (err) {
       setError(err.message);
       console.error(err);
