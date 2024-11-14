@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import { fetchUser } from "../../services/users";
 
 const ChatMessage = ({ userId, time }) => {
-  const [userName, setUserName] = useState("Usuario desconocido");
+  const [user, setUser] = useState("Usuario desconocido");
 
   useEffect(() => {
-    
     const getUserData = async () => {
       try {
-        const user = await fetchUser(userId);
-        setUserName(user.name || "Usuario desconocido");
+        const userData = await fetchUser(userId);
+        setUser(userData || "Usuario desconocido");
       } catch (error) {
         console.error("Error al obtener el usuario:", error);
       }
@@ -24,9 +23,9 @@ const ChatMessage = ({ userId, time }) => {
 
   return (
     <div className="flex items-center gap-3 p-3 hover:bg-pink-50">
-      <AvatarChat />
+      <AvatarChat image = {user.avatar} />
       <div className="flex flex-col">
-        <span className="text-custom-350">{userName}</span>
+        <span className="text-custom-350">{user.name} {user.lastName}</span>
         <span className="text-sm text-custom-200">{time}</span>
       </div>
     </div>
