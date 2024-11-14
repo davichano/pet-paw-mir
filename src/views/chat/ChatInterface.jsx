@@ -1,14 +1,20 @@
+import { HiChevronLeft, HiDotsVertical, HiPaperAirplane, HiEmojiHappy } from 'react-icons/hi';
+import { useEffect, useState, useRef } from "react";
 import AvatarChat from "../../components/Chat/AvatarChat";
 import MessageBubble from "../../components/Chat/MessageBubble";
 import ChatMessage from "../../components/Chat/ChatMessage";
-import { HiChevronLeft, HiDotsVertical, HiPaperAirplane, HiEmojiHappy } from 'react-icons/hi';
-import { useEffect, useState, useRef } from "react";
-
 import socket from "../../services/socket";
+
+const API_URL = "http://localhost:3000";
+const HEADERS = (token) => ({
+  "Content-Type": "application/json",
+  "Authorization": `Bearer ${token}`,
+});
 
 const ChatInterface = () => {
   const [activeUsers, setActiveUsers] = useState([]);
   const [chats, setChats] = useState([]);
+  const [imageChat, setImageChat] = useState(null);
   const [selectedChat, setSelectedChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -19,91 +25,95 @@ const ChatInterface = () => {
 
   useEffect(() => {
     socket.emit("register", user?.id);
-    socket.on("activeSessions", (users) => {
-      setActiveUsers(users);
-    });
+    socket.on("activeSessions", (users) => setActiveUsers(users));
 
-    socket.on("sendMessage", (message) => {
-      if (message.chat_id === selectedChat?._id) {
-        setMessages((prev) => [...prev, message]);
-        scrollToBottom();
-      }
+    socket.on("receiveMessage", (message) => {
+      setMessages((prevMessages) => {
+        if (!prevMessages.some((msg) => msg.id === message.id)) {
+          return [...prevMessages, message];
+        }
+        return prevMessages;
+      });
+      scrollToBottom();
     });
 
     return () => {
+      socket.off("receiveMessage");
       socket.off("activeSessions");
-      socket.off("sendMessage");
     };
-  }, [selectedChat]);
+  }, [user?.id]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/chat/user/${user?.id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setChats(data))
-      .catch((err) => console.error("Error al cargar los chats:", err));
+    fetchChats();
   }, [user?.id, token]);
+
+  const fetchChats = async () => {
+    try {
+      const response = await fetch(`${API_URL}/chat/user/${user?.id}`, { headers: HEADERS(token) });
+      const data = await response.json();
+      setChats(data);
+    } catch (err) {
+      console.error("Error al cargar los chats:", err);
+    }
+  };
+
+  const fetchMessages = async (chatId) => {
+    try {
+      const response = await fetch(`${API_URL}/menssage/${chatId}`, { headers: HEADERS(token) });
+      const data = await response.json();
+      setMessages(data);
+      scrollToBottom();
+    } catch (err) {
+      console.error("Error al cargar mensajes:", err);
+    }
+  };
+
+
 
   const handleSelectChat = (chat) => {
     setSelectedChat(chat);
-    fetch(`http://localhost:3000/menssage/${chat.id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setMessages(data);
-        scrollToBottom();
-      })
-      .catch((err) => console.error("Error al cargar mensajes:", err));
+    const otherMember = chat.members.find((member) => member.id !== user.id);
+    setImageChat(otherMember?.avatar);
+    fetchMessages(chat.id);
   };
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    if (!newMessage.trim() || !selectedChat) return;
 
-    if (newMessage.trim() && selectedChat) {
-      const messageData = {
-        chat_id: selectedChat.id,
-        sender_id: user.id,
-        receiver_id: selectedChat.members.find((id) => id !== user.id).id,
-        content: newMessage,
-      };
-      try {
-        const response = await fetch("http://localhost:3000/menssage/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-           },
-          body: JSON.stringify(messageData),
-        });
+    const receiverId = selectedChat.members.find((member) => member.id !== user.id)?.id;
+    const messageData = {
+      chat_id: selectedChat.id,
+      sender_id: user.id,
+      receiver_id: receiverId,
+      content: newMessage,
+    };
 
-        const savedMessage = await response.json();
+    try {
+      const response = await fetch(`${API_URL}/menssage/`, {
+        method: "POST",
+        headers: HEADERS(token),
+        body: JSON.stringify(messageData),
+      });
 
-        socket.emit("sendMessagesPrivate", {
-          message: savedMessage,
-          recipientUserId: messageData.receiver_id,
-        });
+      const savedMessage = await response.json();
+      socket.emit("sendMessagesPrivate", {
+        message: { ...savedMessage, chatId: selectedChat.id },
+        recipientUserId: receiverId,
+      });
 
-        setMessages((prev) => [...prev, savedMessage]);
-        setNewMessage("");
-        scrollToBottom();
-      } catch (error) {
-        console.error("Error al enviar el mensaje:", error);
-      }
+      setMessages((prev) => [...prev, { ...savedMessage, chatId: selectedChat.id }]);
+      setNewMessage("");
+      scrollToBottom();
+    } catch (error) {
+      console.error("Error al enviar el mensaje:", error);
     }
   };
 
   const scrollToBottom = () => {
-    if (conversationRef.current) {
-      conversationRef.current.scrollTop = conversationRef.current.scrollHeight;
-    }
+    setTimeout(() => {
+      conversationRef.current?.scrollTo(0, conversationRef.current.scrollHeight);
+    }, 0);
   };
 
   return (
@@ -119,16 +129,10 @@ const ChatInterface = () => {
         </div>
         <div className="flex-1 overflow-y-auto">
           {chats.map((chat) => {
-            const friend = chat.members.find((member) => member.id !== user.id) || null;
-
-            console.log(chat.members);
-            console.log(friend);
+            const friend = chat.members.find((member) => member.id !== user.id);
             return (
               <div key={chat.id} onClick={() => handleSelectChat(chat)}>
-                <ChatMessage
-                  userId={friend.id}
-                  lastMessage={chat.lastMessage}
-                />
+                <ChatMessage userId={friend?.id} lastMessage={chat.lastMessage} />
               </div>
             );
           })}
@@ -145,25 +149,17 @@ const ChatInterface = () => {
             </button>
             <span className="text-custom-350 text-lg">Mensajes</span>
           </div>
-          <button>
-            <HiDotsVertical className="w-6 h-6 text-pink-500" />
-          </button>
+          <HiDotsVertical className="w-6 h-6 text-pink-500" />
         </div>
 
         {/* Perfil del usuario activo */}
-
         {selectedChat && (
           <div className="border-b p-6 flex flex-col items-center">
-            <AvatarChat size="lg" image={selectedChat.members.find((id) => id !== user.id).avatar} />
-            <h2 className="text-custom-350 mt-2">
-              {selectedChat.members.find((id) => id !== user.id).name || "Nombre"}
-            </h2>
-            <span className="text-custom-200">@{selectedChat.members.find((id) => id !== user.id).email || "Usuario"}</span>
-            {/* Mostrar estado en línea/desconectado */}
+            <AvatarChat size="lg" image={imageChat} />
+            <h2 className="text-custom-350 mt-2">{selectedChat.members.find((m) => m.id !== user.id)?.name}</h2>
+            <span className="text-custom-200">@{selectedChat.members.find((m) => m.id !== user.id)?.email}</span>
             <span className="text-sm mt-1">
-              {activeUsers.includes(selectedChat.members.find((id) => id !== user.id).id)
-                ? "En línea"
-                : "Desconectado"}
+              {activeUsers.some((u) => u.id === selectedChat.members.find((m) => m.id !== user.id)?.id) ? "En línea" : "Desconectado"}
             </span>
             <button className="mt-2 px-4 py-1 bg-custom-75 text-custom-200 rounded-full text-sm">
               Ver perfil
@@ -173,12 +169,13 @@ const ChatInterface = () => {
 
         {/* Área de mensajes */}
         <div className="flex-1 overflow-y-auto px-4 py-2" ref={conversationRef}>
-          {messages.map((msg) => (
+          {messages.map((msg, index) => (
             <MessageBubble
-              key={msg.id}
+            key={`${msg.id}-${index}`}
               text={msg.content}
               isSender={msg.senderId === user.id}
               timestamp={msg.sentAt}
+              image={imageChat}
             />
           ))}
         </div>
@@ -186,9 +183,7 @@ const ChatInterface = () => {
         {/* Input area */}
         <div className="p-4 border-t">
           <div className="bg-custom-75 rounded-lg flex items-center p-2">
-            <button className="p-2">
-              <HiEmojiHappy className="w-6 h-6 text-custom-200" />
-            </button>
+            <HiEmojiHappy className="w-6 h-6 text-custom-200" />
             <input
               type="text"
               placeholder="Escribe un mensaje..."
@@ -196,7 +191,7 @@ const ChatInterface = () => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
             />
-            <button onClick={(e) => handleSendMessage(e)} type="button" className="p-2">
+            <button onClick={handleSendMessage} className="p-2">
               <HiPaperAirplane className="w-6 h-6 text-custom-200" />
             </button>
           </div>
