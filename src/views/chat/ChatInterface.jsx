@@ -4,12 +4,9 @@ import AvatarChat from "../../components/Chat/AvatarChat";
 import MessageBubble from "../../components/Chat/MessageBubble";
 import ChatMessage from "../../components/Chat/ChatMessage";
 import socket from "../../services/socket";
+import { Link } from 'react-router-dom';
+import { fetchChatsByUserId, fetchMessagesByChatId, sendMessage } from '../../services/chat';
 
-const API_URL = "http://localhost:3000";
-const HEADERS = (token) => ({
-  "Content-Type": "application/json",
-  "Authorization": `Bearer ${token}`,
-});
 
 const ChatInterface = () => {
   const [activeUsers, setActiveUsers] = useState([]);
@@ -49,8 +46,7 @@ const ChatInterface = () => {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch(`${API_URL}/chat/user/${user?.id}`, { headers: HEADERS(token) });
-      const data = await response.json();
+      const data = await fetchChatsByUserId(user.id);
       setChats(data);
     } catch (err) {
       console.error("Error al cargar los chats:", err);
@@ -59,8 +55,7 @@ const ChatInterface = () => {
 
   const fetchMessages = async (chatId) => {
     try {
-      const response = await fetch(`${API_URL}/menssage/${chatId}`, { headers: HEADERS(token) });
-      const data = await response.json();
+      const data = await fetchMessagesByChatId(chatId);
       setMessages(data);
       scrollToBottom();
     } catch (err) {
@@ -90,13 +85,8 @@ const ChatInterface = () => {
     };
 
     try {
-      const response = await fetch(`${API_URL}/menssage/`, {
-        method: "POST",
-        headers: HEADERS(token),
-        body: JSON.stringify(messageData),
-      });
 
-      const savedMessage = await response.json();
+      const savedMessage = await sendMessage(messageData);
       socket.emit("sendMessagesPrivate", {
         message: { ...savedMessage, chatId: selectedChat.id },
         recipientUserId: receiverId,
@@ -153,17 +143,28 @@ const ChatInterface = () => {
         </div>
 
         {/* Perfil del usuario activo */}
-        {selectedChat && (
+        {selectedChat ? (
           <div className="border-b p-6 flex flex-col items-center">
             <AvatarChat size="lg" image={imageChat} />
-            <h2 className="text-custom-350 mt-2">{selectedChat.members.find((m) => m.id !== user.id)?.name}</h2>
-            <span className="text-custom-200">@{selectedChat.members.find((m) => m.id !== user.id)?.email}</span>
+            <h2 className="text-custom-350 mt-2">
+              {selectedChat.members.find((m) => m.id !== user.id)?.name}
+            </h2>
+            <span className="text-custom-200">
+              @{selectedChat.members.find((m) => m.id !== user.id)?.email}
+            </span>
             <span className="text-sm mt-1">
               {activeUsers.some((u) => u.id === selectedChat.members.find((m) => m.id !== user.id)?.id) ? "En línea" : "Desconectado"}
             </span>
-            <button className="mt-2 px-4 py-1 bg-custom-75 text-custom-200 rounded-full text-sm">
-              Ver perfil
-            </button>
+
+            <Link to={`/user/${selectedChat.members.find((m) => m.id !== user.id).id}`}>
+              <button className="mt-2 px-4 py-1 bg-custom-75 text-custom-200 rounded-full text-sm">
+                Ver perfil
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center h-full text-custom-350 text-6xl">
+            Seleccione un chat
           </div>
         )}
 
@@ -180,22 +181,23 @@ const ChatInterface = () => {
           ))}
         </div>
 
-        {/* Input area */}
-        <div className="p-4 border-t">
-          <div className="bg-custom-75 rounded-lg flex items-center p-2">
-            <HiEmojiHappy className="w-6 h-6 text-custom-200" />
-            <input
-              type="text"
-              placeholder="Escribe un mensaje..."
-              className="flex-1 bg-transparent outline-none px-3"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-            />
-            <button onClick={handleSendMessage} className="p-2">
-              <HiPaperAirplane className="w-6 h-6 text-custom-200" />
-            </button>
+        {selectedChat && (
+          <div className="p-4 border-t">
+            <div className="bg-custom-75 rounded-lg flex items-center p-2">
+              <HiEmojiHappy className="w-6 h-6 text-custom-200" />
+              <input
+                type="text"
+                placeholder="Escribe un mensaje..."
+                className="flex-1 bg-transparent outline-none px-3"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+              />
+              <button onClick={handleSendMessage} className="p-2">
+                <HiPaperAirplane className="w-6 h-6 text-custom-200" />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
