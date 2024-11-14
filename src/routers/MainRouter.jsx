@@ -21,6 +21,7 @@ import Settings from "../views/Settings.jsx";
 import ProtectedRoute from "./ProtectedRoute";
 import ChatInterface from "../views/chat/ChatInterface.jsx";
 
+
 export const MainRouter = () => {
   const location = useLocation();
   const hideHeaderRoutes = [
@@ -41,6 +42,7 @@ export const MainRouter = () => {
         <Route path="/passwordrecovery" element={<PasswordRecovery/>}/>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/chats" element={<ChatInterface/>}/>
+
 
         <Route
           path="/feed"

@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
 import SavePost from "../PostPet/SavePost"
+
 import { Link } from "react-router-dom";
 
 const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
+
   return (
     <>
         {/* Primera Columna: Avatar, Descripción, Imagen, Botones */}
