@@ -7,8 +7,5 @@ socket.on("connect", () => {
   console.log("Connected to server");
 });
 
-socket.on("connect_error", (err) => {
-  console.log("Connection failed", err);
-});
 
 export default socket;

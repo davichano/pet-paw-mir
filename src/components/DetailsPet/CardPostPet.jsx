@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
 import SavePost from "../PostPet/SavePost"
 
+import { Link } from "react-router-dom";
+
 const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
 
   return (
@@ -12,12 +14,14 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
           <div className="flex flex-wrap p-3 bg-white rounded-lg">
             {/* Avatar */}
             <div className="w-12 h-12 bg-[#ffa4a4] rounded-full flex items-center justify-center mr-2">
-              <img
-                src={imageUser || "/src/assets/img/Icons/avatar_placeholder.svg" }
-                alt="avatar"
-                className="w-full h-full rounded-full"
-              />
-            </div>
+              <Link to={`/user/${post.userId}`}>
+                  <img
+                    src={imageUser || "/src/assets/img/Icons/avatar_placeholder.svg" }
+                    alt="avatar"
+                    className="w-full h-full rounded-full"
+                  />
+              </Link>
+              </div>
             <div className="flex-1">
               {/* Nombre y opciones */}
               <div className="flex flex-wrap justify-between items-center">

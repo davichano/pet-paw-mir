@@ -9,18 +9,20 @@ import Footer from "../components/template/Footer.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
-import { Toaster } from "sonner";
+import {Toaster} from "sonner";
 import NewPostPet from "../views/NewPostPet.jsx";
 import NewPostState from "../views/NewPostState.jsx";
 import NewPostTag from "../views/NewPostTag.jsx";
 import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 import NewPostMap from "../views/NewPostMap.jsx";
-import { PetProvider } from "../contexts/post/PetProvider";
+import {PetProvider} from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
 import Settings from "../views/Settings.jsx";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminPage from "../views/AdminPage.jsx";
 import AccessDenied from "../views/AccessDenied.jsx";
+import ChatInterface from "../views/chat/ChatInterface.jsx";
+
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -45,6 +47,7 @@ export const MainRouter = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/passwordrecovery" element={<PasswordRecovery />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/chats" element={<ChatInterface/>}/>
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
             <Route path="/admin" element={<AdminPage />} />

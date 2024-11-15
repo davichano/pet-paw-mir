@@ -27,11 +27,14 @@ export async function fetchPost(id) {
   return result.data;
 }
 
-export async function fetchPostsByUser() {
-  const response = await fetch(`${BASE_URL}api/posts/myposts`, {
+
+export async function fetchPostsByUser(userId) {
+  const response = await fetch(`${BASE_URL}api/posts/user/${userId}`, {
     method: 'GET',
     headers: getAuthHeaders(),
   });
+
+
   const result = await response.json();
   return result;
 }
