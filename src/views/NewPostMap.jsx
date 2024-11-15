@@ -6,7 +6,6 @@ import { usePetData } from '../hooks/usePetData';
 import { useNavigate } from 'react-router-dom';
 
 const mapToken = import.meta.env.VITE_MAPBOXGL_TOKEN;
-
 mapboxgl.accessToken = mapToken;
 
 const NewPostMap = () => {
@@ -21,9 +20,6 @@ const NewPostMap = () => {
   useEffect(() => {
 
     if (!userLocation || isLoading || mapRef.current) return;
-
-    console.log(petData.sightingData);
-
     mapRef.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',

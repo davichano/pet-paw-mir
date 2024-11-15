@@ -64,9 +64,7 @@ export function formatPostData(postData) {
         state: updatedState,
       },
       sightingData: {
-        ...sightingData, 
-        latitude: location?.lat ?? 0,
-        longitude: location?.lng ?? 0,
+        ...sightingData,
       }
     };
 }
@@ -78,7 +76,7 @@ export const formatData = (user) => {
     description: '',
     tags: '',
     location: 'Mi casa',
-    state: 'LOST',
+    state: '  ',
     userId: id,
     petData: {
       name: ' ',

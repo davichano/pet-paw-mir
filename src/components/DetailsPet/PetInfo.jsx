@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 const PetInfo = ({ name, size, age, location, dateLost, gender, imageUrl }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
   return (
     <>
-    {/* Botón con el ícono de "info" para abrir el modal */}
+
     <button onClick={handleModalToggle} className="bg-transparent text-pink-500">
         <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-12 h-12" />
     </button>
