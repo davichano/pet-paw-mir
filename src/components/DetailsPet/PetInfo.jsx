@@ -71,7 +71,7 @@ PetInfo.propTypes = {
   name: PropTypes.string.isRequired,
   age: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.string,
   dateLost: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
   imageUrl: PropTypes.string,
