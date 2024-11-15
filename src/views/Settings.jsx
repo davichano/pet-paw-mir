@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { ConfigContext } from '../contexts/config/ConfigContext';
 import { useTranslation } from 'react-i18next';
-import  Header  from '../components/Settings/Header'
+import  AlternateHeader  from '../components/Settings/Header'
 import  Menu  from '../components/Settings/Menu';
 import EditProfile from '../components/Settings/EditProfile';
 import EditPassword from '../components/Settings/EditPassword';
@@ -66,7 +66,7 @@ const Settings = () => {
 
   return (
     <div>
-      <Header title={width>768? t("settings.title"): t(selectedSection)} isOpenMenu={isOpenMenu} toggleMenu={toggleMenu}/>
+      <AlternateHeader title={width>768? t("settings.title"): t(selectedSection)} toggleMenu={toggleMenu}/>
       <div className="flex flex-1 ">
         <Menu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu}/>
         <main className="flex flex-1 p-4 bg-white justify-center">{renderContent()}</main>

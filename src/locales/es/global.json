@@ -157,7 +157,6 @@
   "landing.title": "¡Ayuda a cambiar vidas!",
   "landing.subtitle": "Adopta o encuentra a tu amigo perdido.",
   "titleFormEdit": "Editar tu publicación",
-  "landing.subtitle": "Adopta o encuentra a tu amigo perdido.",
   "settings.title": "Configuraciones",
   "settings.user.title": "Usuario",
   "settings.user.changePhoto": "Cambiar foto",
@@ -213,5 +212,6 @@
   "errorUpdatingPhoto": "Error al actualizar la foto",
   "updatedIncorrectly": "Error, la contraseña no es correcta",
   "myMessage": "Mis mensajes",
-  "sharedMessage": "Enviar mensaje"
+  "sharedMessage": "Enviar mensaje",
+  "titleDefault": "Titulo Predeterminado"
 }

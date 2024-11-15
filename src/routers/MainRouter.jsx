@@ -15,6 +15,7 @@ import NewPostState from "../views/NewPostState.jsx";
 import NewPostTag from "../views/NewPostTag.jsx";
 import NewPostAddInfo from "../views/NewPostAddInfo.jsx";
 import NewPostMap from "../views/NewPostMap.jsx";
+import AlternateHeader from "../components/Settings/Header.jsx";
 import {PetProvider} from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
 import Settings from "../views/Settings.jsx";
@@ -24,17 +25,28 @@ import ChatInterface from "../views/chat/ChatInterface.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
+  
   const hideHeaderRoutes = [
     "/register",
     "/signup",
     "/login",
     "/passwordrecovery",
+    "/settings"
   ];
+
+  const alternateHeaderRoutes = ["/chats", "/post/map", "/settings"]
   return (
     <>
     <PetProvider>
       <Toaster richColors expand={true}/>
-      {!hideHeaderRoutes.includes(location.pathname) && <Header/>}
+      {/* Header dinámico */}
+      {!hideHeaderRoutes.includes(location.pathname) &&
+          (alternateHeaderRoutes.includes(location.pathname) ? (
+            <AlternateHeader title={location.pathname} />
+          ) : (
+            <Header />
+          ))
+        }
 
       <Routes>
         <Route path="/signup" element={<SignUp/>}/>

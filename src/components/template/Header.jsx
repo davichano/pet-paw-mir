@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const Header=()=>{
     return (
-    <header className='flex border-b py-4 px-4 mb-3 sm:px-10 bg-custom-200 font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
+    <header className='flex border-b py-4 px-4  sm:px-10 bg-custom-200 font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
       <div className="container mx-auto">
         <div className='flex flex-wrap items-center gap-5 w-full'>
           <Link to="/" className="flex items-center">
@@ -18,5 +18,4 @@ const Header=()=>{
     </header>
     );
 }
-
 export default Header;
