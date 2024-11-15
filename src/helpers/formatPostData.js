@@ -55,18 +55,17 @@ export function formatPostData(postData) {
     console.log(updatedState);
     return {
       ...rest,
-      title,
+      title: title,
       tags: formattedTags,
-      state,
+      state: updatedState,
       userId: postData.userId,
       petData: {
         ...petData,
         state: updatedState,
       },
       sightingData: {
-        ...sightingData, 
-        latitude: location?.lat ?? 0,
-        longitude: location?.lng ?? 0,
+        ...sightingData,
+
       }
     };
 }

@@ -21,7 +21,7 @@ const NewPostMap = () => {
 
     if (!userLocation || isLoading || mapRef.current) return;
 
-    console.log(petData.sightingData);
+    
 
     mapRef.current = new mapboxgl.Map({
       container: mapContainer.current,

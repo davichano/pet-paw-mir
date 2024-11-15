@@ -1,15 +1,56 @@
-const PetMap = () => {
+import { useEffect, useState } from "react";
+import mapboxgl from 'mapbox-gl';
+import { Modal } from 'flowbite-react';
+import PropTypes from 'prop-types';
+const mapToken = import.meta.env.VITE_MAPBOXGL_TOKEN;
+mapboxgl.accessToken = mapToken;
+const PetMap = (latitude, longitude) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+  useEffect(() => {
+    if (isModalOpen) {
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [parseFloat(longitude), parseFloat(latitude)],
+        zoom: 14,
+      });
+      // Agregar un marcador en la ubicación especificada
+      new mapboxgl.Marker()
+        .setLngLat([parseFloat(longitude), parseFloat(latitude)])
+        .addTo(map);
+      // Limpieza al desmontar el modal
+      return () => map.remove();
+    }
+  }, [isModalOpen, latitude, longitude]);
   return (
-    <div className="w-full h-48">
-      <iframe
-        className="w-full h-full rounded-lg"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.641937056803!2d-77.01972472524027!3d-12.089292258187192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105ce5688d350a3%3A0x10987b1dbba72e80!2sSurquillo%2C%20Lima%2015047%2C%20Per%C3%BA!5e0!3m2!1ses-419!2sus!4v1632028993878!5m2!1ses-419!2sus"
-        allowFullScreen=""
-        loading="lazy"
-        title="map"
-      ></iframe>
-    </div>
-  );
+    <>
+    <button onClick={handleModalToggle} className="bg-transparent text-pink-500">
+        <img src="/src/assets/img/Icons/location.svg" alt="location icon" className="w-12 h-12" />
+      </button>
+      <Modal show={isModalOpen} onClose={handleModalToggle}>
+        <Modal.Header className="bg-[#ff797d]">
+          <p className="text-white">Ubicación del perrito</p>
+        </Modal.Header>
+        <Modal.Body className="bg-[#ff797d] text-white">
+          <div
+            id="map"
+            style={{
+              width: '100%',
+              height: '400px',
+              borderRadius: '10px',
+            }}
+          ></div>
+        </Modal.Body>
+      </Modal>
+    </>
+  )
 };
 
+PetMap.PropTypes = {
+  latitude: PropTypes.string.isRequired,
+  longitude: PropTypes.string.isRequired,
+}
 export default PetMap;
