@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const PetInfo = ({ name, size, age, location, dateLost, gender, imageUrl }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
 
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
@@ -15,7 +15,7 @@ const PetInfo = ({ name, size, age, location, dateLost, gender, imageUrl }) => {
     <>
 
     <button onClick={handleModalToggle} className="bg-transparent text-pink-500">
-        <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-12 h-12" />
+        <img src="/src/assets/img/Icons/info.svg" alt="info" className="w-10 h-10" />
     </button>
 
     <Modal show={isModalOpen} onClose={handleModalToggle}>

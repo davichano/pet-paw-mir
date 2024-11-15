@@ -16,9 +16,9 @@ const PetMap = ({ latitude, longitude }) => {
     <>
       <button onClick={handleModalToggle} className="bg-transparent text-pink-500">
         <img
-          src="/src/assets/img/Icons/location.svg"
+          src="/src/assets/img/Icons/location_pink.svg"
           alt="location icon"
-          className="w-12 h-12"
+          className="w-10 h-10"
         />
       </button>
 
@@ -48,8 +48,8 @@ const PetMap = ({ latitude, longitude }) => {
 };
 
 PetMap.propTypes = {
-  latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired,
+  latitude: PropTypes.number,
+  longitude: PropTypes.number,
 };
 
 export default PetMap;

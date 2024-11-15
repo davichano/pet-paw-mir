@@ -74,7 +74,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/comment.svg"
                 alt="comment"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </button>
             <PetInfo
@@ -92,7 +92,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               imageUrl={imageUrl}
             />
             <PetMap
-              longitude={post.pet.sightings.longitude}
+              longitude={post.pet.sightings.longitude }
               latitude={post.pet.sightings.latitude}/>
             <button
               className="flex items-center bg-transparent text-pink-500"
@@ -101,7 +101,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/share.svg"
                 alt="share"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </button>
           </div>
