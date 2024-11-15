@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useGetUser } from '../../hooks/useGetUser';
-import { useGetUserPosts } from '../../hooks/useGetUserPosts';
-import { Link, useParams } from 'react-router-dom';
-import { Modal } from 'flowbite-react';
+import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {useGetUser} from '../../hooks/useGetUser';
+import {useGetUserPosts} from '../../hooks/useGetUserPosts';
+import {Link, useParams} from 'react-router-dom';
+import {Modal} from 'flowbite-react';
 
 function Profile() {
-  const { t } = useTranslation();
-  const { id } = useParams();
-  const { user } = useGetUser(id);
-  const { posts } = useGetUserPosts();
+  const {t} = useTranslation();
+  const {id} = useParams();
+  const {user} = useGetUser(id);
+  const {posts} = useGetUserPosts();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -113,90 +113,92 @@ function Profile() {
           </section>
           <section className='w-full mx-0 grid grid-cols-3 gap-4 p-5'>
             {posts.map((post) => (
-              <div key={post.id} className='aspect-square'>
-                <img
-                  className='object-cover h-full w-full rounded-2xl'
-                  src={post.pet.imageUrl}
-                  alt={post.title}
-                />
-              </div>
+              <Link key={post.id} to={`/pet/${post.id}`}>
+                <div className='aspect-square'>
+                  <img
+                    className='object-cover h-full w-full rounded-2xl'
+                    src={post.pet.imageUrl}
+                    alt={post.title}
+                  />
+                </div>
+              </Link>
             ))}
           </section>
-            <Modal show={isModalOpen} onClose={closeModal} dismissible position="center">
-              <Modal.Body className="bg-custom-250 rounded-xl">
-                <div className="relative w-full flex justify-end">
-                  <button
-                    type="button"
-                    onClick={closeModal}
-                    className="absolute top-0 right-0 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          <Modal show={isModalOpen} onClose={closeModal} dismissible position="center">
+            <Modal.Body className="bg-custom-250 rounded-xl">
+              <div className="relative w-full flex justify-end">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="absolute top-0 right-0 text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  <svg
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
                   >
-                    <svg
-                      className="w-3 h-3"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 14"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                      />
-                    </svg>
-                    <span className="sr-only">Close modal</span>
-                  </button>
-                </div>
-                <ul className='w-full'>
-                  <li className='w-full py-2 border-b border-b-white flex items-center justify-center'>
-                    <Link
-                      to={`/settings`}
-                      onClick={closeModal}
-                      className='flex items-center justify-center w-full text-white'
-                    >
-                      <svg className="w-[20px] h-[20px] mr-2 text-white" xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 24 24">
-                        <title>account-cancel</title>
-                        <path fill="currentColor"
-                              d="M17,3H14V5H17V21H7V5H10V3H7A2,2 0 0,0 5,5V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V5A2,2 0 0,0 17,3M12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7M16,15H8V14C8,12.67 10.67,12 12,12C13.33,12 16,12.67 16,14V15M16,18H8V17H16V18M12,20H8V19H12V20M13,5H11V1H13V5Z"/>
-                      </svg>
-                      <span>{t("edit")}</span>
-                    </Link>
-                  </li>
-                  <li className='w-full text-white py-2 border-b border-b-white flex items-center justify-center'>
-                    <svg
-                      className='w-[20px] h-[20px] mr-2 text-white'
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
-                    >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
+              </div>
+              <ul className='w-full'>
+                <li className='w-full py-2 border-b border-b-white flex items-center justify-center'>
+                  <Link
+                    to={`/settings`}
+                    onClick={closeModal}
+                    className='flex items-center justify-center w-full text-white'
+                  >
+                    <svg className="w-[20px] h-[20px] mr-2 text-white" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24">
                       <title>account-cancel</title>
-                      <path
-                        fill='currentColor'
-                        d='M10 4A4 4 0 0 0 6 8A4 4 0 0 0 10 12A4 4 0 0 0 14 8A4 4 0 0 0 10 4M17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13M10 14C5.58 14 2 15.79 2 18V20H11.5A6.5 6.5 0 0 1 11 17.5A6.5 6.5 0 0 1 11.95 14.14C11.32 14.06 10.68 14 10 14M17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5M14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z'
-                      />
+                      <path fill="currentColor"
+                            d="M17,3H14V5H17V21H7V5H10V3H7A2,2 0 0,0 5,5V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V5A2,2 0 0,0 17,3M12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7M16,15H8V14C8,12.67 10.67,12 12,12C13.33,12 16,12.67 16,14V15M16,18H8V17H16V18M12,20H8V19H12V20M13,5H11V1H13V5Z"/>
                     </svg>
-                    <span>{t('report')}</span>
-                  </li>
-                  <li className='w-full text-white py-2 flex items-center justify-center'>
-                    <svg
-                      className='w-[20px] h-[20px] mr-2 text-white'
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
-                    >
-                      <title>account-cancel</title>
-                      <path
-                        fill='currentColor'
-                        d='M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C10.1 4 8.4 4.6 7.1 5.7L18.3 16.9C19.3 15.5 20 13.8 20 12C20 7.6 16.4 4 12 4M16.9 18.3L5.7 7.1C4.6 8.4 4 10.1 4 12C4 16.4 7.6 20 12 20C13.9 20 15.6 19.4 16.9 18.3Z'
-                      />
-                    </svg>
-                    <span>{t('block')}</span>
-                  </li>
-                </ul>
-              </Modal.Body>
-            </Modal>
+                    <span>{t("edit")}</span>
+                  </Link>
+                </li>
+                <li className='w-full text-white py-2 border-b border-b-white flex items-center justify-center'>
+                  <svg
+                    className='w-[20px] h-[20px] mr-2 text-white'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <title>account-cancel</title>
+                    <path
+                      fill='currentColor'
+                      d='M10 4A4 4 0 0 0 6 8A4 4 0 0 0 10 12A4 4 0 0 0 14 8A4 4 0 0 0 10 4M17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13M10 14C5.58 14 2 15.79 2 18V20H11.5A6.5 6.5 0 0 1 11 17.5A6.5 6.5 0 0 1 11.95 14.14C11.32 14.06 10.68 14 10 14M17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5M14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z'
+                    />
+                  </svg>
+                  <span>{t('report')}</span>
+                </li>
+                <li className='w-full text-white py-2 flex items-center justify-center'>
+                  <svg
+                    className='w-[20px] h-[20px] mr-2 text-white'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <title>account-cancel</title>
+                    <path
+                      fill='currentColor'
+                      d='M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C10.1 4 8.4 4.6 7.1 5.7L18.3 16.9C19.3 15.5 20 13.8 20 12C20 7.6 16.4 4 12 4M16.9 18.3L5.7 7.1C4.6 8.4 4 10.1 4 12C4 16.4 7.6 20 12 20C13.9 20 15.6 19.4 16.9 18.3Z'
+                    />
+                  </svg>
+                  <span>{t('block')}</span>
+                </li>
+              </ul>
+            </Modal.Body>
+          </Modal>
         </section>
-        )}
+      )}
     </>
   );
 }

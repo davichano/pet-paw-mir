@@ -15,7 +15,6 @@ const stateMap = {
 };
 
 
-
 /*
 const petAgeMap = {
   'Cachorro': 'PUPPY',
@@ -41,39 +40,67 @@ function getPetTypeKeyByValue(value) {
 
 // Función para transformar los datos del frontend al formato de Prisma
 export function formatPostData(postData) {
-  const { state, tags, petData, sightingData, ...rest } = postData;
+  const {state, tags, petData, sightingData, ...rest} = postData;
   const updatedState = stateMap[petData.state];
 
   // Generamos el título en base al estado y tipo de publicación
   const title = updatedState === 'LOST'
     ? `Se busca ${petData.name} mi ${getPetTypeKeyByValue(petData.type)}`
     : state === 'ADOPTION'
-    ? `Se adopta ${petData.pet_name} mi ${getPetTypeKeyByValue(petData.type)}`
-    : '';
-    const formattedTags = Array.isArray(tags) ? tags.join(', ') : '';
+      ? `Se adopta ${petData.pet_name} mi ${getPetTypeKeyByValue(petData.type)}`
+      : '';
+  const formattedTags = Array.isArray(tags) ? tags.join(', ') : '';
 
-    console.log(updatedState);
-    return {
-      ...rest,
-      title,
-      tags: formattedTags,
-      state,
-      userId: postData.userId,
-      petData: {
-        ...petData,
-        state: updatedState,
-      },
-      sightingData: {
-        ...sightingData, 
-        latitude: location?.lat ?? 0,
-        longitude: location?.lng ?? 0,
-      }
-    };
+  console.log(updatedState);
+  return {
+    ...rest,
+    title,
+    tags: formattedTags,
+    state,
+    userId: postData.userId,
+    petData: {
+      ...petData,
+      state: updatedState,
+    },
+    sightingData: {
+      ...sightingData,
+      latitude: location?.lat ?? 0,
+      longitude: location?.lng ?? 0,
+    }
+  };
 }
 
-export const formatData = (user) => {
+export const formatData = (user, existingData = null) => {
   let id = user ? user.id : 0;
-  let data = {
+  if (existingData) {
+    console.log("Existing data:", existingData);
+    // Ajustar los datos de la respuesta de la API al formato del frontend
+    return {
+      id: existingData.id || null,
+      title: existingData.title || '',
+      description: existingData.description || '',
+      tags: existingData.tags || '',
+      location: existingData.location || '',
+      state: existingData.state || 'LOST',
+      userId: id,
+      petData: {
+        name: existingData.pet?.name || '',
+        petType: existingData.pet?.petType || '',
+        gender: existingData.pet?.gender || '',
+        age: existingData.pet?.age || '',
+        size: existingData.pet?.size || '',
+        state: existingData.pet?.state || 'LOST',
+        imageUrl: existingData.pet?.imageUrl || '',
+        validated: existingData.pet?.validated || true,
+      },
+      sightingData: {
+        latitude: existingData.sightingData?.latitude || 0,
+        longitude: existingData.sightingData?.longitude || 0,
+      }
+    };
+  }
+
+  return {
     title: '',
     description: '',
     tags: '',
@@ -91,9 +118,8 @@ export const formatData = (user) => {
       validated: true
     },
     sightingData: {
-        latitude: 0,
-        longitude: 0
+      latitude: 0,
+      longitude: 0
     }
-  }
-  return data;
+  };
 };

@@ -1,24 +1,29 @@
 import ContinueButton from "../components/PostPet/StatePet/ContinueButton";
 import InputWithRow from "../components/PostPet/StatePet/InputWithRow";
 import { usePetData } from "../hooks/usePetData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NewPostTag = () => {
   const { petData, setPetData } = usePetData();
-  const [tags, setTags] = useState(petData.tags || []); // Estado de tags global
+  const [tags, setTags] = useState([]); // Estado inicial vacío
+
+  useEffect(() => {
+    setTags(Array.isArray(petData.tags) ? petData.tags : []);
+  }, [petData.tags]);
 
   const handleTagsChange = (newTag) => {
     if (newTag && !tags.includes(newTag)) {
-      setTags((prevTags) => [...prevTags, newTag]); // Actualiza el array de tags
+      setTags((prevTags) => [...prevTags, newTag]); // Agrega una nueva etiqueta
     }
   };
 
   const handleContinue = () => {
-    setPetData({
+    const updatedPetData = {
       ...petData,
-      tags, // Guarda las etiquetas en el petData
-    });
-    console.log("petData con tags actualizado:", petData);
+      tags,
+    };
+    setPetData(updatedPetData);
+    console.log("petData con tags actualizado:", updatedPetData);
   };
 
   const handleRemoveTag = (indexToRemove) => {
@@ -29,13 +34,15 @@ const NewPostTag = () => {
     <div className="max-w-[375px] mx-auto p-4">
       <InputWithRow
         placeholderText="Coloca aquí tus etiquetas"
-        onTagsChange={handleTagsChange} // Pasamos la función para actualizar los tags
+        onTagsChange={handleTagsChange}
       />
 
-      {/* Lista de etiquetas */}
       <div className="mt-4 flex flex-wrap gap-2">
         {tags.map((tag, index) => (
-          <div key={index} className="bg-red-100 text-red-500 px-2 py-1 rounded-full flex items-center">
+          <div
+            key={index}
+            className="bg-red-100 text-red-500 px-2 py-1 rounded-full flex items-center"
+          >
             <span>{tag}</span>
             <button
               onClick={() => handleRemoveTag(index)}
@@ -47,7 +54,10 @@ const NewPostTag = () => {
         ))}
       </div>
 
-      <ContinueButton onClick={handleContinue} />
+      <ContinueButton
+        onClick={handleContinue}
+        redirectPath={petData.id ? `/post/edit/${petData.id}` : '/post'}
+      />
     </div>
   );
 };

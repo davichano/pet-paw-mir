@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-const ContinueButton = ({ onClick }) => {
-
+const ContinueButton = ({onClick, redirectPath = '/post'}) => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     if (onClick) {
-      onClick(); // Ejecuta cualquier otra lógica que venga de la función onClick
+      onClick();
     }
-    navigate('/post'); // Redirige a la página /post
+    navigate(redirectPath);
   };
 
   return (
@@ -23,6 +23,7 @@ const ContinueButton = ({ onClick }) => {
 
 ContinueButton.propTypes = {
   onClick: PropTypes.func.isRequired,
+  redirectPath: PropTypes.string,
 };
 
 export default ContinueButton;

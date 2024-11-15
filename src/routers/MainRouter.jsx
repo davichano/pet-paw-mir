@@ -91,6 +91,14 @@ export const MainRouter = () => {
           }
           />
           <Route
+            path="/post/edit/:id"
+            element={
+              <ProtectedRoute>
+                  <NewPostPet/>
+              </ProtectedRoute>
+          }
+          />
+          <Route
             path="/post/state"
             element={
               <ProtectedRoute>

@@ -1,27 +1,42 @@
-import { useState } from 'react';
-import { usePetData } from '../hooks/usePetData';
+import {useState, useEffect} from 'react';
+import {usePetData} from '../hooks/usePetData';
 import StateOption from '../components/PostPet/StatePet/StateOption';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
-
 const NewPostState = () => {
+  const {petData, setPetData} = usePetData();
 
-  const { petData, setPetData } = usePetData();
-  const petState = petData.petData.state ;
-  const [selectedState, setSelectedState] = useState(petState || 'Perdido');
-  
+  const stateMap = {
+    LOST: 'Perdido',
+    FOUND: 'Encontrado',
+    ADOPTION: 'En Adopción',
+    ADOPTED: 'Adoptado',
+    Perdido: 'LOST',
+    Encontrado: 'FOUND',
+    'En Adopción': 'ADOPTION',
+    Adoptado: 'ADOPTED',
+  };
+
+  const [selectedState, setSelectedState] = useState(
+    stateMap[petData.petData.state] || 'Perdido'
+  );
+
+  useEffect(() => {
+    if (petData.petData.state) {
+      setSelectedState(stateMap[petData.petData.state]);
+    }
+  }, [petData.petData.state, stateMap]);
 
   const handleOptionChange = (state) => {
     setSelectedState(state);
   };
 
   const handleContinue = () => {
-    //console.log("Estado seleccionado:", selectedState);
     const updatedPetData = {
       ...petData,
       petData: {
         ...petData.petData,
-        state: selectedState,
+        state: stateMap[selectedState],
       },
     };
     setPetData(updatedPetData);
@@ -52,7 +67,10 @@ const NewPostState = () => {
         onChange={() => handleOptionChange('Adoptado')}
       />
 
-      <ContinueButton onClick={handleContinue} />
+      <ContinueButton
+        onClick={handleContinue}
+        redirectPath={petData.id ? `/post/edit/${petData.id}` : '/post'}
+      />
     </div>
   );
 };

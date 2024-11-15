@@ -1,12 +1,35 @@
-import { usePetData } from '../hooks/usePetData';
+import {useState, useEffect} from 'react';
+import {usePetData} from '../hooks/usePetData';
 import FormSelect from '../components/PostPet/AddInfo/FormSelect';
 import FormField from '../components/FormField';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 
-
 const NewPostAddInfo = () => {
+  const {petData, setPetData} = usePetData();
 
-  const { petData, setPetData } = usePetData();
+  const [formData, setFormData] = useState({
+    name: '',
+    petType: '',
+    gender: '',
+    age: '',
+    size: '',
+    date_lost: ''
+  });
+
+  // Sincroniza formData con petData solo si petData está completamente cargado
+  useEffect(() => {
+    if (petData && petData.petData) {
+      console.log("petData useEffect:", petData);
+      setFormData({
+        name: petData.petData.name || '',
+        petType: petData.petData.petType || '',
+        gender: petData.petData.gender || '',
+        age: petData.petData.age || '',
+        size: petData.petData.size || '',
+        date_lost: petData.date_lost || ''
+      });
+    }
+  }, [petData]);
 
   const languageMap = {
     petType: {
@@ -52,18 +75,27 @@ const NewPostAddInfo = () => {
   };
 
   const handleSubmit = () => {
-    console.log(petData);
+    const updatedPetData = {
+      ...petData,
+      petData: {
+        ...petData.petData,
+        name: formData.name,
+        petType: formData.petType,
+        gender: formData.gender,
+        age: formData.age,
+        size: formData.size,
+      },
+      date_lost: formData.date_lost,
+    };
+    setPetData("updatedPetData", updatedPetData);
+    console.log(updatedPetData);
   };
 
   const handleChange = (section, key, value) => {
-    const updatedData = {
-      ...petData,
-      [section]: {
-        ...petData[section],
-        [key]: value.toUpperCase(),
-      },
-    };
-    setPetData(updatedData);
+    setFormData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   return (
@@ -72,75 +104,42 @@ const NewPostAddInfo = () => {
         <FormField
           label="Nombre"
           type="text"
-          value={petData.petData.name} // Usamos el valor del contexto
+          value={formData.name}
           onChange={(e) => handleChange('petData', 'name', e.target.value)}
-          placeholder='Nombre de la mascota'
+          placeholder="Nombre de la mascota"
         />
         <FormSelect
           label="Especie"
-          value={getDisplayValue('petType', petData.petData.petType)} // Usamos el valor del contexto
-          onChange={(e) => {
-            const valueMap = {
-              'Perro': 'DOG',
-              'Gato': 'CAT',
-              'Pájaro': 'BIRD',
-              'Conejo': 'RABBIT',
-              'Otro': 'OTHER',
-            };
-            handleChange('petData', 'petType', valueMap[e.target.value]);
-          }}
+          value={getDisplayValue('petType', formData.petType)}
+          onChange={(e) => handleChange('petData', 'petType', languageMap.petType[e.target.value])}
           options={['Perro', 'Gato', 'Pájaro', 'Conejo', 'Otro']}
         />
-
         <FormSelect
           label="Sexo"
-          value={getDisplayValue('gender',petData.petData.gender)} // Usamos el valor del contexto
-          onChange={(e) => {
-            const valueMap = {
-              'Macho': 'MALE',
-              'Hembra': 'FEMALE',
-            };
-            handleChange('petData', 'gender', valueMap[e.target.value]);
-          }}
+          value={getDisplayValue('gender', formData.gender)}
+          onChange={(e) => handleChange('petData', 'gender', languageMap.gender[e.target.value])}
           options={['Macho', 'Hembra']}
         />
-
         <FormSelect
           label="Edad aproximada"
-          value={getDisplayValue('age',petData.petData.age)} // Usamos el valor del contexto
-          onChange={(e) => {
-            const valueMap = {
-              'Cachorro': 'PUPPY',
-              'Joven': 'YOUNG',
-              'Adulto': 'ADULT',
-              'Anciano': 'SENIOR',
-            };
-            handleChange('petData', 'age', valueMap[e.target.value]);
-          }}
+          value={getDisplayValue('age', formData.age)}
+          onChange={(e) => handleChange('petData', 'age', languageMap.age[e.target.value])}
           options={['Cachorro', 'Joven', 'Adulto', 'Anciano']}
         />
-
         <FormSelect
           label="Tamaño"
-          value={getDisplayValue('size',petData.petData.size)} // Usamos el valor del contexto
-          onChange={(e) => {
-            const valueMap = {
-              'Pequeño': 'SMALL',
-              'Mediano': 'MEDIUM',
-              'Grande': 'LARGE',
-            };
-            handleChange('petData', 'size', valueMap[e.target.value]);
-          }}
+          value={getDisplayValue('size', formData.size)}
+          onChange={(e) => handleChange('petData', 'size', languageMap.size[e.target.value])}
           options={['Pequeño', 'Mediano', 'Grande']}
         />
-
         <FormField
-              label="Fecha aproximada de desaparición o aparición"
-              type="datetime-local"
-              value={petData.date_lost}
-              onChange={(e) => handleChange('', 'date_lost', e.target.value)}
+          label="Fecha aproximada de desaparición o aparición"
+          type="datetime-local"
+          value={formData.date_lost}
+          onChange={(e) => handleChange('', 'date_lost', e.target.value)}
         />
-        <ContinueButton text="Continuar" onClick={handleSubmit} />
+        {petData.id && <ContinueButton onClick={handleSubmit} redirectPath={`/post/edit/${petData.id}`}/>}
+        {!petData.id && <ContinueButton onClick={handleSubmit} redirectPath='/post'/>}
       </form>
     </div>
   );
