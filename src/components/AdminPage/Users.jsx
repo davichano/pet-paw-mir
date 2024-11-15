@@ -78,7 +78,7 @@ const Users = () => {
       </table>
       <Modal isOpen={isOpen} onClose={closeModal} title="Editar usuario">
         {" "}
-        {editUser && <EditUser user={editUser} onClose={closeModal} handleEditClick={updateUser} />}{" "}
+        {editUser && <EditUser user={editUser} onClose={closeModal} handleSaveClick={updateUser} />}{" "}
       </Modal>
     </div>
   );
