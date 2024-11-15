@@ -213,5 +213,6 @@
   "updatedIncorrectly": "Error, the password is not correct",
   "myMessage": "My messages",
   "sharedMessage": "Send message",
-  "titleDefault": "Default Title"
+  "titleDefault": "Default Title",
+  "selectChat": "Select a chat"
 }

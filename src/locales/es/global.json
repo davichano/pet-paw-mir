@@ -213,5 +213,6 @@
   "updatedIncorrectly": "Error, la contraseña no es correcta",
   "myMessage": "Mis mensajes",
   "sharedMessage": "Enviar mensaje",
-  "titleDefault": "Titulo Predeterminado"
+  "titleDefault": "Titulo Predeterminado",
+  "selectChat": "Seleccione un chat"
 }

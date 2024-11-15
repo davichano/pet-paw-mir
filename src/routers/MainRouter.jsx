@@ -25,13 +25,14 @@ import ChatInterface from "../views/chat/ChatInterface.jsx";
 
 export const MainRouter = () => {
   const location = useLocation();
-  
+
   const hideHeaderRoutes = [
     "/register",
     "/signup",
     "/login",
     "/passwordrecovery",
-    "/settings"
+    "/settings",
+    
   ];
 
   const alternateHeaderRoutes = ["/chats", "/post/map", "/settings"]
