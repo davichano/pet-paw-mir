@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
 import SavePost from "../PostPet/SavePost"
+import PetMap from "./PetMap";
 
 import { Link } from "react-router-dom";
 
@@ -73,7 +74,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/comment.svg"
                 alt="comment"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </button>
             <PetInfo
@@ -90,13 +91,9 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               gender= {post.pet.gender}
               imageUrl={imageUrl}
             />
-            <button className="flex items-center bg-transparent text-pink-500">
-              <img
-                src="/src/assets/img/Icons/location_pink.svg"
-                alt="location"
-                className="w-12 h-12"
-              />
-            </button>
+             <PetMap
+              longitude={post.pet.sightings.longitude }
+              latitude={post.pet.sightings.latitude}/>
             <button
               className="flex items-center bg-transparent text-pink-500"
               onClick={handleModalToggle}
@@ -104,7 +101,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               <img
                 src="/src/assets/img/Icons/share.svg"
                 alt="share"
-                className="w-12 h-12"
+                className="w-10 h-10"
               />
             </button>
           </div>
