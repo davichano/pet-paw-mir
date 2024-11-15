@@ -213,5 +213,6 @@
   "errorUpdatingPhoto": "Error al actualizar la foto",
   "updatedIncorrectly": "Error, la contraseña no es correcta",
   "myMessage": "Mis mensajes",
-  "sharedMessage": "Enviar mensaje"
+  "sharedMessage": "Enviar mensaje",
+  "titleDefault": "Titulo Predeterminado"
 }

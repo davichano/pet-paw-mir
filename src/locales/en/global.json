@@ -212,5 +212,6 @@
   "errorUpdatingPhoto": "Error updating photo",
   "updatedIncorrectly": "Error, the password is not correct",
   "myMessage": "My messages",
-  "sharedMessage": "Send message"
+  "sharedMessage": "Send message",
+  "titleDefault": "Default Title"
 }
