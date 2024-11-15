@@ -47,7 +47,6 @@ export const MainRouter = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/passwordrecovery" element={<PasswordRecovery />} />
           <Route path="/" element={<LandingPage />} />
-          <Route path="/chats" element={<ChatInterface/>}/>
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
             <Route path="/admin" element={<AdminPage />} />
@@ -65,6 +64,7 @@ export const MainRouter = () => {
             <Route path="/post/info" element={<NewPostAddInfo />} />
             <Route path="/post/map" element={<NewPostMap />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/chats" element={<ChatInterface/>}/>
           </Route>
         </Routes>
 
