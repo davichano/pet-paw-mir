@@ -1,7 +1,7 @@
 //Login.jsx
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useUser } from '../hooks/useUser';
+import { useUser } from "../hooks/useUser";
 import { usePetData } from "../hooks/usePetData";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
@@ -14,6 +14,7 @@ import { loginUser, fetchUserByEmail } from "../services/users";
 import { getConfig } from "../services/config";
 import { toast } from "sonner";
 import Header from "../components/ui/Header";
+import hearthPaw from "../assets/img/Icons/svg/1heartpaw.svg";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
   const [isMediumScreen, setIsMediumScreen] = useState(false);
-  const { login, setData} = useUser();
+  const { login, setData } = useUser();
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,32 +46,28 @@ const Login = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-
       const profile = await loginUser(data.username, data.password);
 
       if (profile) {
-
         localStorage.setItem("user", JSON.stringify(profile));
 
         const data = await fetchUserByEmail(profile.email);
         const config = await getConfig(profile.id);
 
-        setData({...data, ...config.data});
+        setData({ ...data, ...config.data });
         login(data);
         const updatedData = {
-        ...petData,
-        id: profile.id
-        }
+          ...petData,
+          id: profile.id,
+        };
         setPetData(updatedData);
 
         toast.success(t("loginSuccess"));
-        if(profile.role === "ADMINISTRATOR") {
+        if (profile.role === "ADMINISTRATOR") {
           navigate("/admin");
-        }
-        else{
+        } else {
           navigate("/feed");
         }
-
       } else {
         toast.error(t("incorrectLogin"));
       }
@@ -88,9 +85,9 @@ const Login = () => {
       >
         <div className="w-full h-full max-w-4xl p-6 flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Nueva columna izquierda */}
-          <div className="hidden md:flex flex-1 h-full bg-gray-100 items-center justify-center">
-            <div className="text-custom-300 font-bold text-2xl w-full h-8 text-center">
-              Aquí ira una imagen
+          <div className="hidden md:flex flex-1 h-full items-center justify-center">
+            <div className="text-custom-300 font-bold text-2xl w-full h-8 flex items-center justify-center">
+              <img src={hearthPaw} alt="hearth paw" />
             </div>
           </div>
 

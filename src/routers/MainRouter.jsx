@@ -35,6 +35,7 @@ export const MainRouter = () => {
     "/admin",
     "/settings",
     "/access-denied",
+    "/"
   ];
   return (
     <>
