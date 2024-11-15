@@ -1,4 +1,4 @@
-import { HiChevronLeft, HiDotsVertical, HiPaperAirplane, HiEmojiHappy } from 'react-icons/hi';
+import { HiPaperAirplane, HiEmojiHappy } from 'react-icons/hi';
 import { useEffect, useState, useRef } from "react";
 import AvatarChat from "../../components/Chat/AvatarChat";
 import MessageBubble from "../../components/Chat/MessageBubble";
@@ -6,6 +6,7 @@ import ChatMessage from "../../components/Chat/ChatMessage";
 import socket from "../../services/socket";
 import { Link } from 'react-router-dom';
 import { fetchChatsByUserId, fetchMessagesByChatId, sendMessage } from '../../services/chat';
+import { useTranslation } from 'react-i18next';
 
 
 const ChatInterface = () => {
@@ -16,6 +17,7 @@ const ChatInterface = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const conversationRef = useRef(null);
+  const { t } = useTranslation();
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
@@ -131,16 +133,6 @@ const ChatInterface = () => {
 
       {/* Panel derecho */}
       <div className="flex-1 flex flex-col bg-white">
-        {/* Header */}
-        <div className="bg-white px-4 py-3 flex justify-between items-center border-b">
-          <div className="flex items-center gap-4">
-            <button className="lg:hidden">
-              <HiChevronLeft className="w-6 h-6 text-custom-350" />
-            </button>
-            <span className="text-custom-350 text-lg">Mensajes</span>
-          </div>
-          <HiDotsVertical className="w-6 h-6 text-pink-500" />
-        </div>
 
         {/* Perfil del usuario activo */}
         {selectedChat ? (
@@ -164,7 +156,7 @@ const ChatInterface = () => {
           </div>
         ) : (
           <div className="flex items-center justify-center h-full text-custom-350 text-6xl">
-            Seleccione un chat
+            {t("selectChat")}
           </div>
         )}
 
