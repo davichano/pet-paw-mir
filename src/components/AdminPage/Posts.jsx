@@ -17,7 +17,50 @@ const Posts = () => {
     openModal();
   };
 
+  const petTypeToText = (petType) => {
+    switch (petType) {
+      case "DOG":
+        return "Perro";
+      case "CAT":
+        return "Gato";
+      case "BIRD":
+        return "Ave";
+      case "RABBIT":
+        return "Conejo";
+      default:
+        return "Otro";
+    }
+  }
 
+  const stateToText = (state) => {
+    switch(state){
+      case "LOST":
+        return "Perdido";
+      case "FOUND":
+        return "Encontrado";
+      case "ADOPTION":
+        return "Adopción";
+      case "ADOPTED":
+        return "Adoptado";
+      default:
+        return "Otro";
+    }
+  }
+
+  const stateClass = (state) => {
+    switch(state){
+      case "LOST":
+        return "text-red-500";
+      case "FOUND":
+        return "text-green-500";
+      case "ADOPTION":
+        return "text-yellow-500";
+      case "ADOPTED":
+        return "text-blue-500";
+      default:
+        return "text-gray-500";
+    }
+  }
   return (
     <div className="p-10">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 min-w-80">
@@ -25,7 +68,7 @@ const Posts = () => {
           <tr>
             <th className="w-8">#</th>
             <th>Titulo</th>
-            <th>Author</th>
+            <th>Autor</th>
             <th>Nombre de mascota</th>
             <th>tipo</th>
             <th>Estado</th>
@@ -44,8 +87,8 @@ const Posts = () => {
                 <td>{post.title}</td>
                 <td>{post.user?.email || "No email"}</td>
                 <td>{post.pet.name}</td>
-                <td>{post.pet.petType}</td>
-                <td>{post.state}</td>
+                <td>{petTypeToText(post.pet.petType)}</td>
+                <td className={stateClass(post.state)}>{stateToText(post.state)}</td>
                 <td>{post.createdAt}</td>
                 <td>
                   <button

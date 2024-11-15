@@ -25,8 +25,8 @@ const Users = () => {
             <th className="w-8">#</th>
             <th>Nombres y apellidos</th>
             <th>Email</th>
-            <th className="hidden md:table-cell">Role</th>
-            <th>Active</th>
+            <th className="hidden md:table-cell">Rol</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -40,11 +40,7 @@ const Users = () => {
                 <td>{index + 1}</td>
                 <td>{user.name + " " + user.lastName}</td>
                 <td>{user.email}</td>
-                <td className={
-                  user.role === "USER"
-                    ? "text-red-500"
-                    : "text-green-500"
-                }>{user.role}</td>
+                <td >{user.role === "USER" ? "USUARIO" : "ADMINISTRADOR"}</td>
                 <td className={
                   user.isActive
                     ? "text-green-500"

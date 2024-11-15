@@ -27,10 +27,8 @@ const useAllUsers = () => {
     setUpdateLoading(true);
     try {
       await patchUser(id, data);
-      console.log(data);
       setUsers(users.map((user) => (user.id === id ? { ...user, ...data } : user)));
-      console.log('updateUser');
-      console.log(id, data);
+
     } catch (err) {
       setError(err.message);
       console.error(err);

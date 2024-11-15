@@ -30,7 +30,6 @@ const EditPost = ({ post, onClose, handleSaveClick}) => {
       state: data.state
     }
 
-    console.log(postData);
     await handleSaveClick(post.id, {postData});
     onClose();
   };

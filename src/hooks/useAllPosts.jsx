@@ -39,10 +39,10 @@ const useAllPosts = () => {
     setUpdateLoading(true);
     try {
       await patchPost(id, data);
+      const {postData} = data
       setPosts(
-        posts.map((post) => (post.id === id ? { ...post, ...data } : post))
-      );
-      console.log("Post updated");
+        posts.map((post) => (post.id === id ? { ...post, ...postData } : post))
+      )
     } catch (err) {
       setError(err.message);
       console.error(err);
