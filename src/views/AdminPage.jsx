@@ -1,4 +1,4 @@
-import Navbar from '../components/AdminPage/NavBar';
+import Navbar from '../components/AdminPage/Navbar';
 import Users from '../components/AdminPage/Users';
 import Posts from '../components/AdminPage/Posts';
 import { useState } from 'react';
