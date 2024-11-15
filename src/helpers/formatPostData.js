@@ -55,9 +55,9 @@ export function formatPostData(postData) {
     console.log(updatedState);
     return {
       ...rest,
-      title,
+      title: title,
       tags: formattedTags,
-      state,
+      state: updatedState,
       userId: postData.userId,
       petData: {
         ...petData,
@@ -76,7 +76,7 @@ export const formatData = (user) => {
     description: '',
     tags: '',
     location: 'Mi casa',
-    state: '  ',
+    state: '',
     userId: id,
     petData: {
       name: ' ',

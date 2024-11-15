@@ -3,6 +3,7 @@ import PetInfo from "./PetInfo";
 import SavePost from "../PostPet/SavePost"
 
 import { Link } from "react-router-dom";
+import PetMap from "./PetMap";
 
 const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
 
@@ -90,13 +91,9 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               gender= {post.pet.gender}
               imageUrl={imageUrl}
             />
-            <button className="flex items-center bg-transparent text-pink-500">
-              <img
-                src="/src/assets/img/Icons/location_pink.svg"
-                alt="location"
-                className="w-12 h-12"
-              />
-            </button>
+            <PetMap
+              longitude={post.pet.sightings.longitude}
+              latitude={post.pet.sightings.latitude}/>
             <button
               className="flex items-center bg-transparent text-pink-500"
               onClick={handleModalToggle}
