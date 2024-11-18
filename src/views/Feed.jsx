@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import {Link, useParams} from 'react-router-dom';
+import {useNavigate, useParams, Link} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
@@ -21,11 +21,9 @@ const Feed = () => {
     pet_gender: ''
   });
 
+  const navigate = useNavigate();
   const [selectedPost, setSelectedPost] = useState(null);
   const toggleModal = () => setModalOpen(!isModalOpen);
-
-
-
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
     setPosts(postsData);
@@ -109,8 +107,8 @@ const Feed = () => {
           const userAvatar = user ? user.avatar : null;
 
           return (
-            <div key={post.id} className="relative">
-              <Link to={`/pet/${post.id}`}>
+            <div key={post.id} className="relative" onClick={() => navigate(`/pet/${post.id}`)}>
+
                 <CardPostPet
                   name={post.pet.name}
                   description={post.description}
@@ -120,7 +118,7 @@ const Feed = () => {
                   t={t}
                   post={post}
                 />
-              </Link>
+
 
             </div>
           );

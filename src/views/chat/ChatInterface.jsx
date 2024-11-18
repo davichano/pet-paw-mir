@@ -153,16 +153,18 @@ const ChatInterface = () => {
       <div className="flex-1 flex flex-col bg-white">
         {selectedChat ? (
           <>
-            <div className="border-b p-4 flex items-center justify-between gap-4">
+            <div className="border-b p-4 flex items-center gap-4">
               <AvatarChat size="lg" image={imageChat} />
               <div>
                 <h2 className="text-custom-350">{selectedChat.members.find((m) => m.id !== user.id)?.name}</h2>
                 <span className="text-sm">
                   @{selectedChat.members.find((m) => m.id !== user.id)?.email}
                 </span>
+                <br></br>
                 <span className="text-sm mt-1">
                 {activeUsers.some((u) => u.id === selectedChat.members.find((m) => m.id !== user.id)?.id) ? "En línea" : "Desconectado"}
                </span>
+               <br></br>
               <Link to={`/user/${selectedChat.members.find((m) => m.id !== user.id).id}`}>
                   <button className="mt-2 px-4 py-1 bg-custom-75 text-custom-200 rounded-full text-sm">
                     Ver perfil

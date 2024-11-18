@@ -81,7 +81,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               name={name}
               size= {post.pet.size}
               age= {post.pet.age}
-              location= "Madrid"
+              location= {post.location}
               dateLost={new Date(post.pet.createdAt).toLocaleDateString('es-ES', {
                 weekday: 'long',
                 year: 'numeric',

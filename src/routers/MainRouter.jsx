@@ -59,7 +59,7 @@ export const MainRouter = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
-            <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["USER"]} />}>
