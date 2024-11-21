@@ -2,7 +2,6 @@ const BASE_SERVER = import.meta.env.VITE_BASE_URL;
 const BASE_URL = `${BASE_SERVER}/`;
 
 
-// Headers personalizados para la autenticación
 function getHeaders() {
   const token = localStorage.getItem("token");
   return {

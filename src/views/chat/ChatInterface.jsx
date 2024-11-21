@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom';
 import { fetchChatsByUserId, fetchMessagesByChatId, sendMessage } from '../../services/chat';
 import useWindowSize from '../../hooks/useWindowsSize';
 
-
-
-
 const ChatInterface = () => {
   const [activeUsers, setActiveUsers] = useState([]);
   const [chats, setChats] = useState([]);
@@ -141,9 +138,6 @@ const ChatInterface = () => {
           </div>
         </div>
       )}
-
-
-
       <div className="flex-1 flex flex-col bg-white">
         {selectedChat ? (
           <>
