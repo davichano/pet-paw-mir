@@ -5,6 +5,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
     extend: {
+      height: {
+        'screen-minus-100': 'calc(100vh - 150px)',
+      },
+      minHeight: {
+        'screen-minus-100': 'calc(100vh - 150px)',
+      },
       colors: {
         custom: {
 

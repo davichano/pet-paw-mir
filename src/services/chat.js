@@ -1,7 +1,6 @@
 const BASE_SERVER = import.meta.env.VITE_BASE_URL;
 const BASE_URL = `${BASE_SERVER}/`;
 
-const token = localStorage.getItem('token');
 
 // Headers personalizados para la autenticación
 function getHeaders() {
@@ -14,7 +13,7 @@ function getHeaders() {
 
 export async function fetchChatsByUserId(userId) {
   try {
-    console.log(token)
+
     const response = await fetch(`${BASE_URL}chat/user/${userId}`, {
       method: "GET",
       headers: getHeaders(),
