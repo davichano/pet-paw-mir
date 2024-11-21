@@ -1,5 +1,5 @@
 import { HiPaperAirplane, HiEmojiHappy } from 'react-icons/hi';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import AvatarChat from "../../components/Chat/AvatarChat";
 import MessageBubble from "../../components/Chat/MessageBubble";
 import ChatMessage from "../../components/Chat/ChatMessage";
@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { fetchChatsByUserId, fetchMessagesByChatId, sendMessage } from '../../services/chat';
 import useWindowSize from '../../hooks/useWindowsSize';
 import { HiArrowLeft } from 'react-icons/hi';
+
+
 
 const ChatInterface = () => {
   const [activeUsers, setActiveUsers] = useState([]);
@@ -23,7 +25,15 @@ const ChatInterface = () => {
   const [isChatListVisible, setIsChatListVisible] = useState(true);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
+
+  const fetchChats = useCallback (async () => {
+    try {
+      const data = await fetchChatsByUserId(user.id);
+      setChats(data);
+    } catch (err) {
+      console.error("Error al cargar los chats:", err);
+    }
+  }, [user?.id]);
 
   useEffect(() => {
     socket.emit("register", user?.id);
@@ -47,16 +57,11 @@ const ChatInterface = () => {
 
   useEffect(() => {
     fetchChats();
-  }, [user?.id, token]);
+  }, [fetchChats]);
 
-  const fetchChats = async () => {
-    try {
-      const data = await fetchChatsByUserId(user.id);
-      setChats(data);
-    } catch (err) {
-      console.error("Error al cargar los chats:", err);
-    }
-  };
+
+
+
 
   const fetchMessages = async (chatId) => {
     try {
