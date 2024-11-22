@@ -102,13 +102,12 @@ const Feed = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {posts.length > 0 && posts.map((post) => {
-          // Buscar el usuario correspondiente por userId
+
           const user = users.find(u => u.id === post.userId);
-          const userAvatar = user ? user.avatar : null;
+          const userAvatar = user ? user.avatar : "/public/img/users/default.jpg";
 
           return (
             <div key={post.id} className="relative" onClick={() => navigate(`/pet/${post.id}`)}>
-
                 <CardPostPet
                   name={post.pet.name}
                   description={post.description}
@@ -118,8 +117,6 @@ const Feed = () => {
                   t={t}
                   post={post}
                 />
-
-
             </div>
           );
         })}
