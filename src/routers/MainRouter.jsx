@@ -36,6 +36,7 @@ export const MainRouter = () => {
     "/admin",
     "/settings",
     "/access-denied",
+    "/"
   ];
 
   const alternateHeaderRoutes = ["/chats", "/post/map", "/settings"]

@@ -1,13 +1,14 @@
 import Button from "../components/ui/Button";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/ui/Header";
 
 const LandingPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <div>
-
+      <Header/>
       <div className="h-screen md:h-full bg-custom-50 flex items-center justify-center">
         <div className="hidden w-full h-full max-w-md md:flex flex-col items-center justify-center m-12 md:max-w-md">
           <div className="w-full max-h-lg aspect-square h-auto bg-white items-center justify-center">
