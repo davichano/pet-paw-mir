@@ -23,8 +23,6 @@ const ChatInterface = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-
-
   const fetchChats = useCallback (async () => {
     try {
       const data = await fetchChatsByUserId(user.id);
