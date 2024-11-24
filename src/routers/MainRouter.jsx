@@ -39,7 +39,7 @@ export const MainRouter = () => {
     "/"
   ];
 
-  const alternateHeaderRoutes = ["/chats", "/post/map", "/settings"]
+  const alternateHeaderRoutes = ["/chats", "/post/map", "/settings", "/post/info", "/post", "/post/tag", "/post/state"]
 
 
   return (

@@ -4,24 +4,26 @@ import PlacesProvider from "../contexts/places/PlacesProvider";
 import PlacesContext from "../contexts/places/PlacesContext";
 import { usePetData } from '../hooks/usePetData';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
+
 
 
 const mapToken = import.meta.env.VITE_MAPBOXGL_TOKEN;
 mapboxgl.accessToken = mapToken;
 
 const NewPostMap = () => {
+  const { t } = useTranslation();
   const { userLocation, isLoading } = useContext(PlacesContext);
   const { petData, setPetData } = usePetData();
   const mapContainer = useRef(null);
   const mapRef = useRef(null);
   const navigate = useNavigate();
-  const [markerLocation, setMarkerLocation] = useState(userLocation); // Almacena la ubicación actual del marcador
+  const [markerLocation, setMarkerLocation] = useState(userLocation);
+  // Almacena la ubicación actual del marcador
 
   useEffect(() => {
 
     if (!userLocation || isLoading || mapRef.current) return;
-
-    
 
     mapRef.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -56,8 +58,8 @@ const NewPostMap = () => {
           /*const street = feature.text;
           const district = feature.context.find(c => c.id.includes("place")).text; //
           const region = feature.context.find(c => c.id.includes("region")).text; //
-*/
-          console.log(feature.place_name);
+          */
+          //console.log(feature.place_name);
           setPetData({
             ...petData,
             location: feature.place_name, // Formato personalizado
@@ -67,7 +69,7 @@ const NewPostMap = () => {
               latitude: markerLocation[1],
             },
           });
-          alert("Ubicación guardada correctamente");
+          alert(t("saveLocation"));
           navigate('/post');
         } else {
           console.log("No se encontró una dirección exacta para estas coordenadas.");
@@ -83,19 +85,19 @@ const NewPostMap = () => {
   return (
     <div>
       {isLoading ? (
-      <p>Cargando mapa...</p>
+      <p>{t("loadingText")}</p>
     ) : (
       <div ref={mapContainer} className="w-full h-screen" />
     )}
       {markerLocation && (
         <div className="absolute bottom-20 left-10 bg-white p-2 rounded">
-          <p>Latitud: {markerLocation[1]}</p>
-          <p>Longitud: {markerLocation[0]}</p>
+          <p>{t("registeLocation")}</p>
+
           <button
             onClick={handleSaveLocation}
-            className="mt-2 bg-blue-500 text-white p-2 rounded"
+            className="mt-2 bg-custom-250 text-white p-2 rounded"
           >
-            Guardar Ubicación
+            {t("saveLocation")}
           </button>
         </div>
       )}

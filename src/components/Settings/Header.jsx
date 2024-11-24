@@ -62,12 +62,12 @@ const AlternateHeader = ({ title, toggleMenu }) => {
   );
   return (
     <header className="bg-custom-50 text-custom-350 p-4 flex justify-between items-center border-b-custom-200 border-b-2">
-      <button className="text-custom-50" onClick={() => width>768? navigate("/feed") : toggleMenu()}>
+      <button className="text-custom-50" onClick={() => width>768? handleBack() : toggleMenu()}>
         {/* Ícono de menú para móvil */}
         {width > 768 ? backSVG : menuSVG}
       </button>
       <h1 className="text-xl m-auto">{t(contentTitle)}</h1>
-      <button className="text-custom-50" onClick={() => width > 768? handleBack() : toggleMenu()}>
+      <button className="text-custom-50" onClick={() => width > 768? handleBack() : handleBack()}>
         {/* Ícono de menú para móvil */}
         {width > 768 ? null : cancelSVG}
       </button>

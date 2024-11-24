@@ -215,5 +215,24 @@
   "sharedMessage": "Enviar mensaje",
   "titleDefault": "Titulo Predeterminado",
   "selectChat": "Seleccione un chat",
-  "seeProfile": "Ver perfil"
+  "seeProfile": "Ver perfil",
+  "addInfoPet": "Agregar información",
+  "createPostPet": "Crear Publicación",
+  "addStatePet": "Agregar estado",
+  "addLocationPet": "Agregar ubicación",
+  "addTagPet": "Agregar etiquetas",
+  "namePet": "Nombre",
+  "speciesPet": "Especie",
+  "approximateAgePet": "Edad aproximada",
+  "approximateDate": "Fecha aproximada de desaparición o aparición",
+  "registeLocation": "Registrar ubicación marcada",
+  "saveLocation": "Guardar ubicación",
+  "loadingText": "Cargando",
+  "lostPet": "Perdido",
+  "foundPet": "Encontrado",
+  "adoptionPet": "En adopción",
+  "adoptedPet": "Adoptado",
+  "questionForState": "¿Cuál es el estado actual?",
+  "insertTagsLabel": "Coloca aquí tus etiquetas"
+
 }
