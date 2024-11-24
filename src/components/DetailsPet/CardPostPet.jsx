@@ -51,12 +51,12 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
         </div>
 
         {/* Imagen */}
-        <div className="flex items-center justify-center my-10">
+        <div className="flex items-center justify-center my-10 relative z-0">
           <div className="w-full h-auto max-w-screen-md rounded-lg mx-4 relative">
             <img
               src={imageUrl}
               alt="Pet"
-              className="w-screen h-96 object-cover rounded-lg"
+              className="w-full h-96 object-cover rounded-lg"
             />
             <SavePost post={post} pos_x={30} pos_y={20} />
           </div>
