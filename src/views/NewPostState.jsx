@@ -6,6 +6,7 @@ import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
 const NewPostState = () => {
   const {petData, setPetData} = usePetData();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const stateMap = {
     LOST: 'Perdido',
     FOUND: 'Encontrado',
@@ -69,7 +70,7 @@ const NewPostState = () => {
 
       <ContinueButton
         onClick={handleContinue}
-        redirectPath={petData.id ? `/post/edit/${petData.id}` : '/post'}
+        redirectPath={petData.id ? `/post/edit/${petData.id}/true` : '/post'}
       />
     </div>
   );

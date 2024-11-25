@@ -2,20 +2,22 @@ import ImageUploader from "../components/PostPet/ImageUploader";
 import DescriptionBox from "../components/PostPet/DescriptionBox";
 import ActionButton from "../components/PostPet/ActionButton";
 import PublishButton from "../components/PostPet/PublishButton";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { fetchPost } from "../services/posts.js";
-import { usePetData } from "../hooks/usePetData";
-import { formatData } from "../helpers/formatPostData.js";
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {fetchPost} from "../services/posts.js";
+import {usePetData} from "../hooks/usePetData";
+import {formatData} from "../helpers/formatPostData.js";
 
 const NewPostPet = () => {
-  const { id } = useParams();
-  const { petData, setPetData } = usePetData(); // Usa el contexto del PetProvider existente
+  const {id} = useParams();
+  const {state} = useParams();
+  const {petData, setPetData} = usePetData(); // Usa el contexto del PetProvider existente
   const [existingData, setExistingData] = useState(null);
 
   useEffect(() => {
     const getPostData = async () => {
-      if (id) {
+      const esEditingForm = state === "true"
+      if (id && !esEditingForm) {
         const postData = await fetchPost(id);
         const formattedData = formatData(JSON.parse(localStorage.getItem("user")), postData);
         setExistingData(formattedData);
@@ -24,7 +26,7 @@ const NewPostPet = () => {
     };
 
     getPostData();
-  }, [id, setPetData]);
+  }, [id, setPetData, state]);
 
   if (id && !existingData) {
     return <div>Cargando...</div>;
@@ -37,9 +39,9 @@ const NewPostPet = () => {
       <div className="flex flex-col md:flex-row ">
         <div className="md:w-1/2 p-8 flex flex-col ">
           <div className="w-50 h-50 relative overflow-hidden rounded-lg">
-            <ImageUploader imageUrl={imageUrl} />
+            <ImageUploader imageUrl={imageUrl}/>
           </div>
-          <DescriptionBox description={petData?.description} />
+          <DescriptionBox description={petData?.description}/>
         </div>
 
         <div className="md:w-1/2 p-8 space-y-6 flex flex-col">
@@ -66,7 +68,7 @@ const NewPostPet = () => {
             icon={"/src/assets/img/Icons/Tags.svg"}
             redirectTo="/post/tag"
           />
-          <PublishButton />
+          <PublishButton/>
         </div>
       </div>
     </div>

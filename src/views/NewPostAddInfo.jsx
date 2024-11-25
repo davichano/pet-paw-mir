@@ -138,7 +138,7 @@ const NewPostAddInfo = () => {
           value={formData.date_lost}
           onChange={(e) => handleChange('', 'date_lost', e.target.value)}
         />
-        {petData.id && <ContinueButton onClick={handleSubmit} redirectPath={`/post/edit/${petData.id}`}/>}
+        {petData.id && <ContinueButton onClick={handleSubmit} redirectPath={`/post/edit/${petData.id}/true`}/>}
         {!petData.id && <ContinueButton onClick={handleSubmit} redirectPath='/post'/>}
       </form>
     </div>

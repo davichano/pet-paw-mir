@@ -56,7 +56,7 @@ const NewPostTag = () => {
 
       <ContinueButton
         onClick={handleContinue}
-        redirectPath={petData.id ? `/post/edit/${petData.id}` : '/post'}
+        redirectPath={petData.id ? `/post/edit/${petData.id}/true` : '/post'}
       />
     </div>
   );
