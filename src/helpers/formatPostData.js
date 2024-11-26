@@ -14,7 +14,6 @@ const stateMap = {
   'Adoptado': 'ADOPTED',
 };
 
-
 /*
 const petAgeMap = {
   'Cachorro': 'PUPPY',

@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import {Link, useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
-
-import { fetchUsers } from '../services/users.js';
+import {fetchUsers} from '../services/users.js';
 
 const Feed = () => {
   const {filter} = useParams();
@@ -14,7 +13,7 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const {t} = useTranslation();
-  const showFilters = filter === "true"
+  const showFilters = filter === "true";
   const [searchParams, setSearchParams] = useState({
     name: '',
     pet_type: '',
@@ -23,8 +22,6 @@ const Feed = () => {
 
   const [selectedPost, setSelectedPost] = useState(null);
   const toggleModal = () => setModalOpen(!isModalOpen);
-
-
 
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
@@ -121,7 +118,6 @@ const Feed = () => {
                   post={post}
                 />
               </Link>
-
             </div>
           );
         })}
@@ -146,6 +142,4 @@ const Feed = () => {
   );
 };
 
-
 export default Feed;
-

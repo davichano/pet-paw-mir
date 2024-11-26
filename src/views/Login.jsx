@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMediumScreen(window.innerWidth >= 768); // 'md' breakpoint de Tailwind
+      setIsMediumScreen(window.innerWidth >= 768);
     };
 
     handleResize(); // Ejecutar al montar el componente
@@ -64,8 +64,11 @@ const Login = () => {
         setPetData(updatedData);
 
         toast.success(t("loginSuccess"));
-        navigate("/feed");
-
+        if(profile.role === "ADMINISTRATOR") {
+          navigate("/admin");
+        }
+        else{navigate("/feed");
+}
       } else {
         toast.error(t("incorrectLogin"));
       }
@@ -83,9 +86,9 @@ const Login = () => {
       >
         <div className="w-full h-full max-w-4xl p-6 flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Nueva columna izquierda */}
-          <div className="hidden md:flex flex-1 h-full bg-gray-100 items-center justify-center">
+          <div className="hidden md:flex flex-1 h-full bg-white-100 start justify-center">
             <div className="text-custom-300 font-bold text-2xl w-full h-8 text-center">
-              Aquí ira una imagen
+             <img src="/src/assets/img/foto_principal.png" className="p-1 my-20"></img>
             </div>
           </div>
 

@@ -1,14 +1,12 @@
 import io from "socket.io-client";
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
-const socket = io("http://localhost:3000/", {transports: ['websocket'],});
+const socket = io(BASE_URL, {transports: ['websocket'],});
 
 
 socket.on("connect", () => {
   console.log("Connected to server");
 });
 
-socket.on("connect_error", (err) => {
-  console.log("Connection failed", err);
-});
 
 export default socket;

@@ -2,9 +2,11 @@ import {useState, useEffect} from 'react';
 import {usePetData} from '../hooks/usePetData';
 import StateOption from '../components/PostPet/StatePet/StateOption';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
+import {useTranslation} from "react-i18next";
 
 const NewPostState = () => {
   const {petData, setPetData} = usePetData();
+  const {t} = useTranslation();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const stateMap = {
@@ -18,9 +20,8 @@ const NewPostState = () => {
     Adoptado: 'ADOPTED',
   };
 
-  const [selectedState, setSelectedState] = useState(
-    stateMap[petData.petData.state] || 'Perdido'
-  );
+  const petState = petData.petData.state;
+  const [selectedState, setSelectedState] = useState(petState || 'Perdido');
 
   useEffect(() => {
     if (petData.petData.state) {
@@ -37,7 +38,7 @@ const NewPostState = () => {
       ...petData,
       petData: {
         ...petData.petData,
-        state: stateMap[selectedState],
+        state: selectedState,
       },
     };
     setPetData(updatedPetData);
@@ -45,25 +46,25 @@ const NewPostState = () => {
 
   return (
     <div className="max-w-[375px] mx-auto p-4">
-      <p className="text- text-[#FF797D] mb-4">¿Cuál es el estado actual?</p>
+      <p className="text- text-[#FF797D] mb-4">{t("questionForState")}</p>
 
       <StateOption
-        label="Perdido"
+        label={t("lostPet")}
         checked={selectedState === 'Perdido'}
         onChange={() => handleOptionChange('Perdido')}
       />
       <StateOption
-        label="Encontrado"
+        label={t("foundPet")}
         checked={selectedState === 'Encontrado'}
         onChange={() => handleOptionChange('Encontrado')}
       />
       <StateOption
-        label="En Adopción"
+        label={t("adoptionPet")}
         checked={selectedState === 'En Adopción'}
         onChange={() => handleOptionChange('En Adopción')}
       />
       <StateOption
-        label="Adoptado"
+        label={t("adoptedPet")}
         checked={selectedState === 'Adoptado'}
         onChange={() => handleOptionChange('Adoptado')}
       />

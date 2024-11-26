@@ -47,10 +47,7 @@ const ImageUploader = () => {
       if (cloudinaryImageUrl) {
         const updatedPetData = {
           ...petData,
-          petData: {
-            ...petData.petData,
-            imageUrl: cloudinaryImageUrl,
-          }
+          pictures: [...petData.pictures, { id: petData.pictures.length + 1, url: cloudinaryImageUrl }]
         };
         setPetData(updatedPetData);
         localStorage.setItem('petData', JSON.stringify(updatedPetData));

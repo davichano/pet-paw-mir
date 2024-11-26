@@ -1,18 +1,29 @@
-// ProtectedRoute.jsx
-import { Navigate } from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
+import {useUser} from "../hooks/useUser";
 import PropTypes from "prop-types";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({allowedRoles, children}) => {
+  const {data} = useUser();
   const token = localStorage.getItem("token");
   const isAuthenticated = !!token;
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace/>;
   }
-  return children;
+
+  if (!data || !data.role) {
+    return <Navigate to="/login" replace/>;
+  }
+
+  if (!allowedRoles.includes(data.role)) {
+    return <Navigate to="/access-denied" replace/>;
+  }
+
+  return children ? children : <Outlet/>;
 };
 
 ProtectedRoute.propTypes = {
+  allowedRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
   children: PropTypes.node.isRequired,
 };
 

@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const login = (user) => {
-    console.log(user);
+    console.log("login: ", user.name);
   }
 
   const logout = () => {

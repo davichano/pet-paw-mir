@@ -48,7 +48,6 @@ const Footer = () => {
             </svg>
             <span>{t('profile')}</span>
           </Link>
-
           {/* Botón para Logout */}
           <button onClick={handleLogout} className="flex flex-col items-center">
             <svg

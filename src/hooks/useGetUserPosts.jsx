@@ -12,4 +12,4 @@ export const useGetUserPosts = () => {
     fetchData();
   }, []);
   return { posts };
-}
+};

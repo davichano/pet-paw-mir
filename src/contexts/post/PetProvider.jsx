@@ -2,6 +2,7 @@ import {createContext, useState} from 'react';
 import PropTypes from 'prop-types';
 import {formatData} from '../../helpers/formatPostData';
 
+// Crear el contexto
 // eslint-disable-next-line react-refresh/only-export-components
 export const PetContext = createContext();
 
@@ -20,4 +21,3 @@ PetProvider.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   initialData: PropTypes.object,
 };
-

@@ -3,8 +3,10 @@ import {usePetData} from '../hooks/usePetData';
 import FormSelect from '../components/PostPet/AddInfo/FormSelect';
 import FormField from '../components/FormField';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
+import {useTranslation} from "react-i18next";
 
 const NewPostAddInfo = () => {
+  const {t} = useTranslation();
   const {petData, setPetData} = usePetData();
 
   const [formData, setFormData] = useState({
@@ -16,7 +18,6 @@ const NewPostAddInfo = () => {
     date_lost: ''
   });
 
-  // Sincroniza formData con petData solo si petData está completamente cargado
   useEffect(() => {
     if (petData && petData.petData) {
       console.log("petData useEffect:", petData);
@@ -74,6 +75,23 @@ const NewPostAddInfo = () => {
     return languageMap[section][value] || value;
   };
 
+  const handleChange = (section, key, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [section]: {
+        ...petData[section],
+        [key]: value.toUpperCase(),
+      },
+    }));
+    setPetData((prev) => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [key]: value.toUpperCase(),
+      },
+    }));
+  };
+
   const handleSubmit = () => {
     const updatedPetData = {
       ...petData,
@@ -91,49 +109,73 @@ const NewPostAddInfo = () => {
     console.log(updatedPetData);
   };
 
-  const handleChange = (section, key, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
   return (
     <div className="min-h-screen flex items-start justify-center">
       <form className="bg-white p-6 w-full max-w-md" onSubmit={handleSubmit}>
         <FormField
-          label="Nombre"
+          label={t("namePet")}
           type="text"
           value={formData.name}
           onChange={(e) => handleChange('petData', 'name', e.target.value)}
           placeholder="Nombre de la mascota"
         />
+        <br/>
         <FormSelect
-          label="Especie"
-          value={getDisplayValue('petType', formData.petType)}
-          onChange={(e) => handleChange('petData', 'petType', languageMap.petType[e.target.value])}
+          label={t("speciesPet")}
+          value={getDisplayValue('petType', petData.petData.petType)}
+          onChange={(e) => {
+            const valueMap = {
+              'Perro': 'DOG',
+              'Gato': 'CAT',
+              'Pájaro': 'BIRD',
+              'Conejo': 'RABBIT',
+              'Otro': 'OTHER',
+            };
+            handleChange('petData', 'petType', valueMap[e.target.value]);
+          }}
           options={['Perro', 'Gato', 'Pájaro', 'Conejo', 'Otro']}
         />
         <FormSelect
-          label="Sexo"
-          value={getDisplayValue('gender', formData.gender)}
-          onChange={(e) => handleChange('petData', 'gender', languageMap.gender[e.target.value])}
+          label={t("genderLabel")}
+          value={getDisplayValue('gender', petData.petData.gender)}
+          onChange={(e) => {
+            const valueMap = {
+              'Macho': 'MALE',
+              'Hembra': 'FEMALE',
+            };
+            handleChange('petData', 'gender', valueMap[e.target.value]);
+          }}
           options={['Macho', 'Hembra']}
         />
         <FormSelect
-          label="Edad aproximada"
-          value={getDisplayValue('age', formData.age)}
-          onChange={(e) => handleChange('petData', 'age', languageMap.age[e.target.value])}
+          label={t("approximateAgePet")}
+          value={getDisplayValue('age', petData.petData.age)}
+          onChange={(e) => {
+            const valueMap = {
+              'Cachorro': 'PUPPY',
+              'Joven': 'YOUNG',
+              'Adulto': 'ADULT',
+              'Anciano': 'SENIOR',
+            };
+            handleChange('petData', 'age', valueMap[e.target.value]);
+          }}
           options={['Cachorro', 'Joven', 'Adulto', 'Anciano']}
         />
         <FormSelect
-          label="Tamaño"
-          value={getDisplayValue('size', formData.size)}
-          onChange={(e) => handleChange('petData', 'size', languageMap.size[e.target.value])}
+          label={t("sizeLabel")}
+          value={getDisplayValue('size', petData.petData.size)}
+          onChange={(e) => {
+            const valueMap = {
+              'Pequeño': 'SMALL',
+              'Mediano': 'MEDIUM',
+              'Grande': 'LARGE',
+            };
+            handleChange('petData', 'size', valueMap[e.target.value]);
+          }}
           options={['Pequeño', 'Mediano', 'Grande']}
         />
         <FormField
-          label="Fecha aproximada de desaparición o aparición"
+          label={t("approximateDate")}
           type="datetime-local"
           value={formData.date_lost}
           onChange={(e) => handleChange('', 'date_lost', e.target.value)}
