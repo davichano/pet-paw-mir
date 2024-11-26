@@ -1,6 +1,6 @@
 // SignUp.jsx
 import { useForm, FormProvider } from "react-hook-form";
-import { StepProvider } from "../components/PasswordRecovery/StepContext";
+import { StepProvider } from "../components/PasswordRecovery/StepProvider";
 import { useContext } from "react";
 import { steps } from "../components/PasswordRecovery/stepsConfig";
 import { StepContext } from "../components/PasswordRecovery/StepContext";
