@@ -1,8 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import pluginCypress from 'eslint-plugin-cypress/flat';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   { ignores: ['dist'] },
@@ -22,6 +23,7 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      cypress: pluginCypress,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -35,4 +37,22 @@ export default [
       ],
     },
   },
-]
+  {
+    files: ['cypress/**/*.cy.{js,jsx,ts,tsx}'], // Limitar solo a archivos Cypress
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.browser,
+        ...globals.mocha, // Para funciones como `describe`, `it`, `beforeEach`
+        cy: 'readonly', // Declarar explícitamente `cy` como global
+      },
+    },
+    plugins: {
+      cypress: pluginCypress,
+    },
+    rules: {
+      'no-unused-vars': 'off', // Opcional: Desactivar reglas que interfieran en pruebas
+      'no-undef': 'off', // Opcional: Ignorar advertencias sobre funciones no definidas
+    },
+  },
+];

@@ -118,7 +118,7 @@ const Login = () => {
               {errors.password && (
                 <span className="text-red-500">{errors.password.message}</span>
               )}
-              <Button type="submit">{t("login")}</Button>
+              <Button type="submit" aria-label={t("login")}>{t("login")}</Button>
             </form>
             <div className="register__footer flex text-custom-50 mb-3">
               <p>
