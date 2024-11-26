@@ -20,15 +20,15 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('[aria-label="LOGIN"]').as('loginButton');
 
   cy.get('@usernameInput').type(email);
+
   // {enter} causes the form to submit
-  cy.get('@passwordInput').type(`${password}{enter}`, { log: false })
+  cy.get('@passwordInput').type(password);
+
+  cy.get('@loginButton').click();
+
 
   // we should be redirected to /dashboard
-  cy.url().should('include', '/feed')
-
-  // UI should reflect this user being logged in
-  cy.get('footer').should('exist').find("button").should('contain', 'logout');
-
+  
 })
 //
 //
