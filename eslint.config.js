@@ -38,13 +38,32 @@ export default [
     },
   },
   {
-    files: ['cypress/**/*.cy.{js,jsx,ts,tsx}'], // Limitar solo a archivos Cypress
+    files: ['cypress/**/*.cy.{js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: {
         ...globals.browser,
-        ...globals.mocha, // Para funciones como `describe`, `it`, `beforeEach`
-        cy: 'readonly', // Declarar explícitamente `cy` como global
+        ...globals.mocha,
+        cy: 'readonly',
+      },
+    },
+    plugins: {
+      cypress: pluginCypress,
+    },
+    rules: {
+      'no-unused-vars': 'off', // Opcional: Desactivar reglas que interfieran en pruebas
+      'no-undef': 'off', // Opcional: Ignorar advertencias sobre funciones no definidas
+    },
+  },
+
+  {
+    files: ['cypress/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+        cy: 'readonly',
       },
     },
     plugins: {

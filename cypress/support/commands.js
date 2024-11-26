@@ -10,7 +10,26 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (email, password) => {
+
+  cy.visit('/login')
+
+  // Alias para elementos comunes
+  cy.get('input[placeholder="User or email"]').as('usernameInput');
+  cy.get('input[placeholder="Password"]').as('passwordInput');
+  cy.get('[aria-label="LOGIN"]').as('loginButton');
+
+  cy.get('@usernameInput').type(email);
+  // {enter} causes the form to submit
+  cy.get('@passwordInput').type(`${password}{enter}`, { log: false })
+
+  // we should be redirected to /dashboard
+  cy.url().should('include', '/feed')
+
+  // UI should reflect this user being logged in
+  cy.get('footer').should('exist').find("button").should('contain', 'logout');
+
+})
 //
 //
 // -- This is a child command --

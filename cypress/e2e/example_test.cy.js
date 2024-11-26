@@ -23,20 +23,21 @@ describe('Login Page', () => {
     cy.get('@usernameInput').type('gmachicaoq@unsa.edu.pe');
     cy.get('@passwordInput').type('LEG@RD29pros');
     cy.get('@loginButton').click();
-
     // Verifica la redirección y el contenido del feed
     cy.url().should('include', '/feed');
+  
+    cy.get("footer").should("exist").find("button").contains("logout").click();
 
   });
 
-  /*it('should display an error message for invalid credentials', () => {
+  it('should display an error message for invalid credentials', () => {
     // Ingresa credenciales incorrectas
     cy.get('@usernameInput').type('invaliduser@example.com');
     cy.get('@passwordInput').type('InvalidPassword123');
     cy.get('@loginButton').click();
 
     // Verifica el mensaje de error
-    cy.get('ion-toast').should('exist').shadow().contains('.toast-message','Invalid username or password.');
+    cy.get('[data-sonner-toast]').should('exist');
 
-  });*/
+  });
 });
