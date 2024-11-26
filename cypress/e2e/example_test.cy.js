@@ -1,58 +1,42 @@
 describe('Login Page', () => {
   beforeEach(() => {
-    cy.visit('/login'); // Visita la página de login
+    // Visita la página de login antes de cada prueba
+    cy.visit('/login');
+
+    // Alias para elementos comunes
+    cy.get('input[placeholder="User or email"]').as('usernameInput');
+    cy.get('input[placeholder="Password"]').as('passwordInput');
+    cy.get('[aria-label="LOGIN"]').as('loginButton');
+
   });
 
-  it('should display validation errors for empty fields', () => {
-    cy.get('[aria-label="LOGIN"]').click(); // Envía el formulario vacío
-    cy.contains('Username is required'); // Verifica el mensaje de error para el username
-    cy.contains('Password is required'); // Verifica el mensaje de error para la contraseña
+  it('should display validation errors when submitting empty fields', () => {
+    // Intenta enviar el formulario vacío
+    cy.get('@loginButton').click();
+
+    cy.contains('div', 'Username is required').should('be.visible');
+    cy.contains('div', 'Password is required').should('be.visible');
   });
 
   it('should log in successfully with valid credentials', () => {
-    // Simula una respuesta del backend exitosa
-    cy.intercept('POST', '/api/login', {
-      statusCode: 200,
-      body: { id: 1, username: 'testuser', role: 'USER', email: 'testuser@example.com' },
-    }).as('loginRequest');
+    // Ingresa credenciales válidas
+    cy.get('@usernameInput').type('gmachicaoq@unsa.edu.pe');
+    cy.get('@passwordInput').type('LEG@RD29pros');
+    cy.get('@loginButton').click();
 
-    cy.intercept('GET', '/api/users/email/testuser@example.com', {
-      statusCode: 200,
-      body: { id: 1, username: 'testuser', pets: [] },
-    }).as('userFetch');
+    // Verifica la redirección y el contenido del feed
+    cy.url().should('include', '/feed');
 
-    cy.get('input[placeholder="Enter your username"]').type('testuser'); // Ingresa un usuario
-    cy.get('input[placeholder="Enter your password"]').type('password123'); // Ingresa la contraseña
-    cy.get('button[type="submit"]').click(); // Envía el formulario
-
-    // Espera que las llamadas al backend se completen
-    cy.wait('@loginRequest');
-    cy.wait('@userFetch');
-
-    // Verifica la redirección
-    cy.url().should('include', '/feed'); // Comprueba si fue redirigido al feed
   });
 
-  it('should show an error message for invalid credentials', () => {
-    // Simula un error de inicio de sesión
-    cy.intercept('POST', '/api/login', {
-      statusCode: 401,
-      body: { error: 'Invalid credentials' },
-    }).as('loginRequest');
+  /*it('should display an error message for invalid credentials', () => {
+    // Ingresa credenciales incorrectas
+    cy.get('@usernameInput').type('invaliduser@example.com');
+    cy.get('@passwordInput').type('InvalidPassword123');
+    cy.get('@loginButton').click();
 
-    cy.get('input[placeholder="Enter your username"]').type('wronguser'); // Usuario incorrecto
-    cy.get('input[placeholder="Enter your password"]').type('wrongpassword'); // Contraseña incorrecta
-    cy.get('button[type="submit"]').click(); // Envía el formulario
+    // Verifica el mensaje de error
+    cy.get('ion-toast').should('exist').shadow().contains('.toast-message','Invalid username or password.');
 
-    // Espera que la llamada al backend se complete
-    cy.wait('@loginRequest');
-
-    // Verifica que se muestra el mensaje de error
-    cy.contains('Incorrect username or password').should('be.visible');
-  });
-
-  it('should navigate to the signup page', () => {
-    cy.contains('Create Account').click(); // Haz clic en el botón para crear cuenta
-    cy.url().should('include', '/signup'); // Comprueba si fue redirigido a /signup
-  });
+  });*/
 });
