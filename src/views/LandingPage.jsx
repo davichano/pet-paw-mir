@@ -1,7 +1,7 @@
 import Button from "../components/ui/Button";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/ui/Header";
+import Header from "../components/ui/Header.jsx";
 
 const LandingPage = () => {
   const { t } = useTranslation();

@@ -41,6 +41,7 @@ const PetDescription = ({name, description, imageUrl, imageUser, postData}) => {
 
           </div>
         </Modal.Body>
+
       </Modal>
     </>
   );

@@ -1,13 +1,36 @@
-import { usePetData } from '../hooks/usePetData';
+import {useState, useEffect} from 'react';
+import {usePetData} from '../hooks/usePetData';
 import FormSelect from '../components/PostPet/AddInfo/FormSelect';
 import FormField from '../components/FormField';
 import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
-import { useTranslation } from "react-i18next";
-
+import {useTranslation} from "react-i18next";
 
 const NewPostAddInfo = () => {
-  const { t } = useTranslation();
-  const { petData, setPetData } = usePetData();
+  const {t} = useTranslation();
+  const {petData, setPetData} = usePetData();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    petType: '',
+    gender: '',
+    age: '',
+    size: '',
+    date_lost: ''
+  });
+
+  useEffect(() => {
+    if (petData && petData.petData) {
+      console.log("petData useEffect:", petData);
+      setFormData({
+        name: petData.petData.name || '',
+        petType: petData.petData.petType || '',
+        gender: petData.petData.gender || '',
+        age: petData.petData.age || '',
+        size: petData.petData.size || '',
+        date_lost: petData.date_lost || ''
+      });
+    }
+  }, [petData]);
 
   const languageMap = {
     petType: {
@@ -52,19 +75,38 @@ const NewPostAddInfo = () => {
     return languageMap[section][value] || value;
   };
 
-  const handleSubmit = () => {
-    console.log(petData);
-  };
-
   const handleChange = (section, key, value) => {
-    const updatedData = {
-      ...petData,
+    setFormData((prev) => ({
+      ...prev,
       [section]: {
         ...petData[section],
         [key]: value.toUpperCase(),
       },
+    }));
+    setPetData((prev) => ({
+      ...prev,
+      [section]: {
+        ...prev[section],
+        [key]: value.toUpperCase(),
+      },
+    }));
+  };
+
+  const handleSubmit = () => {
+    const updatedPetData = {
+      ...petData,
+      petData: {
+        ...petData.petData,
+        name: formData.name,
+        petType: formData.petType,
+        gender: formData.gender,
+        age: formData.age,
+        size: formData.size,
+      },
+      date_lost: formData.date_lost,
     };
-    setPetData(updatedData);
+    setPetData("updatedPetData", updatedPetData);
+    console.log(updatedPetData);
   };
 
   return (
@@ -73,14 +115,14 @@ const NewPostAddInfo = () => {
         <FormField
           label={t("namePet")}
           type="text"
-          value={petData.petData.name} // Usamos el valor del contexto
+          value={formData.name}
           onChange={(e) => handleChange('petData', 'name', e.target.value)}
-          placeholder='Nombre de la mascota'
+          placeholder="Nombre de la mascota"
         />
         <br/>
         <FormSelect
           label={t("speciesPet")}
-          value={getDisplayValue('petType', petData.petData.petType)} // Usamos el valor del contexto
+          value={getDisplayValue('petType', petData.petData.petType)}
           onChange={(e) => {
             const valueMap = {
               'Perro': 'DOG',
@@ -93,10 +135,9 @@ const NewPostAddInfo = () => {
           }}
           options={['Perro', 'Gato', 'Pájaro', 'Conejo', 'Otro']}
         />
-
         <FormSelect
           label={t("genderLabel")}
-          value={getDisplayValue('gender',petData.petData.gender)} // Usamos el valor del contexto
+          value={getDisplayValue('gender', petData.petData.gender)}
           onChange={(e) => {
             const valueMap = {
               'Macho': 'MALE',
@@ -106,10 +147,9 @@ const NewPostAddInfo = () => {
           }}
           options={['Macho', 'Hembra']}
         />
-
         <FormSelect
           label={t("approximateAgePet")}
-          value={getDisplayValue('age',petData.petData.age)} // Usamos el valor del contexto
+          value={getDisplayValue('age', petData.petData.age)}
           onChange={(e) => {
             const valueMap = {
               'Cachorro': 'PUPPY',
@@ -121,10 +161,9 @@ const NewPostAddInfo = () => {
           }}
           options={['Cachorro', 'Joven', 'Adulto', 'Anciano']}
         />
-
         <FormSelect
           label={t("sizeLabel")}
-          value={getDisplayValue('size',petData.petData.size)} // Usamos el valor del contexto
+          value={getDisplayValue('size', petData.petData.size)}
           onChange={(e) => {
             const valueMap = {
               'Pequeño': 'SMALL',
@@ -135,14 +174,14 @@ const NewPostAddInfo = () => {
           }}
           options={['Pequeño', 'Mediano', 'Grande']}
         />
-
         <FormField
-              label={t("approximateDate")}
-              type="datetime-local"
-              value={petData.date_lost}
-              onChange={(e) => handleChange('', 'date_lost', e.target.value)}
+          label={t("approximateDate")}
+          type="datetime-local"
+          value={formData.date_lost}
+          onChange={(e) => handleChange('', 'date_lost', e.target.value)}
         />
-        <ContinueButton text="Continuar" onClick={handleSubmit} />
+        {petData.id && <ContinueButton onClick={handleSubmit} redirectPath={`/post/edit/${petData.id}/true`}/>}
+        {!petData.id && <ContinueButton onClick={handleSubmit} redirectPath='/post'/>}
       </form>
     </div>
   );

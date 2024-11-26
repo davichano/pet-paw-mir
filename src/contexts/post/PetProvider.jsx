@@ -1,29 +1,23 @@
-import { createContext, useState } from 'react';
+import {createContext, useState} from 'react';
 import PropTypes from 'prop-types';
-import { formatData } from '../../helpers/formatPostData';
+import {formatData} from '../../helpers/formatPostData';
 
 // Crear el contexto
+// eslint-disable-next-line react-refresh/only-export-components
 export const PetContext = createContext();
 
-// Proveedor del contexto
-export const PetProvider = ({ children }) => {
+export const PetProvider = ({children, initialData = null}) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const [petData, setPetData] = useState(
-    formatData(user)
-  );
+  const [petData, setPetData] = useState(initialData ? initialData : formatData(user));
+
   return (
-    <PetContext.Provider value={{ petData, setPetData }}>
+    <PetContext.Provider value={{petData, setPetData}}>
       {children}
     </PetContext.Provider>
   );
-
 };
 
 PetProvider.propTypes = {
-  children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  initialData: PropTypes.object,
 };
-
-

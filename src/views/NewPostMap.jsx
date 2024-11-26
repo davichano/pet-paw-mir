@@ -25,6 +25,8 @@ const NewPostMap = () => {
 
     if (!userLocation || isLoading || mapRef.current) return;
 
+    if (!userLocation || isLoading || mapRef.current) return;
+
     mapRef.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',

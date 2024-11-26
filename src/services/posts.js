@@ -1,7 +1,6 @@
-import { formatPostData } from '../helpers/formatPostData';
+import {formatPostData} from '../helpers/formatPostData';
 
-const BASE_SERVER = import.meta.env.VITE_BASE_URL;
-const BASE_URL = `${BASE_SERVER}/`;
+const BASE_URL = `${import.meta.env.VITE_BASE_URL}/`;
 
 const getAuthHeaders = () => ({
   'Content-Type': 'application/json',
@@ -28,16 +27,12 @@ export async function fetchPost(id) {
   return result.data;
 }
 
-
-export async function fetchPostsByUser(userId) {
-  const response = await fetch(`${BASE_URL}api/posts/user/${userId}`, {
+export async function fetchPostsByUser() {
+  const response = await fetch(`${BASE_URL}api/posts/myposts`, {
     method: 'GET',
     headers: getAuthHeaders(),
   });
-
-
-  const result = await response.json();
-  return result;
+  return await response.json();
 }
 
 export async function createPost(postData) {
@@ -61,7 +56,7 @@ export async function updatePost(id, postData, method = "PATCH") {
   const response = await fetch(`${BASE_URL}api/posts/${id}`, {
     method: method,
     headers: getAuthHeaders(),
-    body: JSON.stringify(postData),
+    body: JSON.stringify({postData: postData}),
   });
 
   if (!response.ok) {

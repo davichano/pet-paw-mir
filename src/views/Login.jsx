@@ -67,10 +67,8 @@ const Login = () => {
         if(profile.role === "ADMINISTRATOR") {
           navigate("/admin");
         }
-        else{
-          navigate("/feed");
-        }
-
+        else{navigate("/feed");
+}
       } else {
         toast.error(t("incorrectLogin"));
       }

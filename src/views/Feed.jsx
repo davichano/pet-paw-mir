@@ -1,12 +1,11 @@
 import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
-import {useNavigate, useParams, Link} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
-
-import { fetchUsers } from '../services/users.js';
+import {fetchUsers} from '../services/users.js';
 
 const Feed = () => {
   const {filter} = useParams();
@@ -14,16 +13,16 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const {t} = useTranslation();
-  const showFilters = filter === "true"
+  const showFilters = filter === "true";
   const [searchParams, setSearchParams] = useState({
     name: '',
     pet_type: '',
     pet_gender: ''
   });
 
-  const navigate = useNavigate();
   const [selectedPost, setSelectedPost] = useState(null);
   const toggleModal = () => setModalOpen(!isModalOpen);
+
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
     setPosts(postsData);
@@ -102,12 +101,13 @@ const Feed = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {posts.length > 0 && posts.map((post) => {
-
+          // Buscar el usuario correspondiente por userId
           const user = users.find(u => u.id === post.userId);
-          const userAvatar = user ? user.avatar : "/public/img/users/default.jpg";
+          const userAvatar = user ? user.avatar : null;
 
           return (
-            <div key={post.id} className="relative" onClick={() => navigate(`/pet/${post.id}`)}>
+            <div key={post.id} className="relative">
+              <Link to={`/pet/${post.id}`}>
                 <CardPostPet
                   name={post.pet.name}
                   description={post.description}
@@ -117,6 +117,7 @@ const Feed = () => {
                   t={t}
                   post={post}
                 />
+              </Link>
             </div>
           );
         })}
@@ -141,6 +142,4 @@ const Feed = () => {
   );
 };
 
-
 export default Feed;
-
