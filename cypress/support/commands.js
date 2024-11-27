@@ -28,7 +28,7 @@ Cypress.Commands.add('login', (email, password) => {
 
 
   // we should be redirected to /dashboard
-  
+
 })
 //
 //

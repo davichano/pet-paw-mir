@@ -20,12 +20,12 @@ describe('Login Page', () => {
 
   it('should log in successfully with valid credentials', () => {
     // Ingresa credenciales válidas
-    cy.get('@usernameInput').type('gmachicaoq@unsa.edu.pe');
-    cy.get('@passwordInput').type('LEG@RD29pros');
+    cy.get('@usernameInput').type('usuario@usuario.com');
+    cy.get('@passwordInput').type('usuario');
     cy.get('@loginButton').click();
     // Verifica la redirección y el contenido del feed
     cy.url().should('include', '/feed');
-  
+
     cy.get("footer").should("exist").find("button").contains("logout").click();
 
   });
