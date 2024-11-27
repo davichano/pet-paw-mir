@@ -31,7 +31,7 @@ const LandingPage = () => {
           </div>
           <div className="max-w-44 max-h-44 aspect-square h-auto bto bg-custom-200 items-center justify-center md:hidden">
             <div className="text-custom-50 font-bold text-2xl text-center">
-              Aquí ira una imagen
+            <img src="/src/assets/img/foto_principal.png" className="w-screen p-1 my-20"></img>
             </div>
           </div>
           <h1 className="font-semibold text-4xl text-center text-custom-200">
