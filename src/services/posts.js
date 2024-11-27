@@ -42,6 +42,11 @@ export async function fetchPostsByUser(userId) {
 
 export async function createPost(postData) {
   const postDataFormatted = formatPostData(postData);
+
+  if (!postDataFormatted) {
+    return false;
+  }
+
   const response = await fetch(`${BASE_URL}api/posts`, {
     method: 'POST',
     headers: getAuthHeaders(),

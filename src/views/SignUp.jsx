@@ -8,7 +8,6 @@ import { getValidationSchema } from "../components/SignUp/validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormStep from "../components/SignUp/FormStep";
 import { useNavigate } from "react-router-dom";
-//import { useTranslation } from "react-i18next";
 import { createUser, activateAccount } from "../services/users";
 import { toast } from "sonner";
 
@@ -25,7 +24,6 @@ const validateCode = (value, token) => {
 };
 
 const SignUpForm = () => {
-  //const { t } = useTranslation();
 
   const { step, nextStep } = useContext(StepContext);
   const navigate = useNavigate();
@@ -45,7 +43,7 @@ const SignUpForm = () => {
 
         const userData = { ...data };
         delete userData.gender;
-        delete userData.code; // Eliminar código antes de crear el usuario
+        delete userData.code; 
 
         const createdUser = await createUser(userData);
 

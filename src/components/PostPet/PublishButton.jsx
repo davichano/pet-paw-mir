@@ -15,8 +15,15 @@ const PublishButton = () => {
     try {
       const response = await createPost(petData);
       //console.log('PetData:', petData);
+
+      if(!response) {
+        toast.warning('Complete todos los datos');
+        return;
+      }
+
       console.log('Post creado:', response);
       toast.success('Publicación creada con éxito');
+
       //Limpia el context Pet
       setPetData({});
       //Se inserta la plantilla del context

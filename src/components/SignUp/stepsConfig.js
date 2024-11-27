@@ -93,10 +93,6 @@ export const steps = [
           .required('emailRequired'),
       },
     ],
-    alternative: {
-      nextStep: 6,
-      buttonTextKey: 'signupWithNumber',
-    },
   },
   {
     id: 6,

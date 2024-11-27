@@ -63,6 +63,7 @@ export async function loginUser(username, password) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
   const data = await response.json();
+
   // Guardar el token JWT en localStorage
   localStorage.setItem("token", data.token);
   //console.log("data", data);
