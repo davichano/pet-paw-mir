@@ -1,5 +1,6 @@
 describe("User settings page", () => {
-  it("should log in and navigate to the settings page", () => {
+  beforeEach(() => {
+    // Realiza el login y navega a la página de configuración antes de cada prueba
     cy.login("usuario@usuario.com", "usuario");
 
     cy.url().should("include", "/feed");
@@ -10,6 +11,61 @@ describe("User settings page", () => {
     cy.get("#user-info")
       .find("button")
       .click();
-    cy.contains('a', 'Edit').click();
+    cy.contains("a", "Edit").click();
+
+    cy.url().should("include", "/settings");
   });
+
+  it("should update description and gender, then verify the toast", () => {
+    // Asegúrate de estar en la página de edición
+    cy.url().should("include", "/settings");
+
+    // Actualiza los campos del formulario
+    cy.get('textarea[name="description"]')
+      .clear()
+      .type("This is my updated description.");
+    cy.get('select[name="gender"]').select("Female");
+
+    // Envía el formulario
+    cy.get('button[type="submit"]').click();
+
+    // Verifica el toast de Sonner
+    cy.get("[data-sonner-toast]").should("contain", "Updated correctly");
+  });
+
+  it("should update name, last name, and birthdate, then verify the toast", () => {
+    // Asegúrate de estar en la página de edición
+    cy.url().should("include", "/settings");
+
+    cy.contains('li', 'User details').click();
+
+    // Actualiza los campos del formulario
+    cy.get('input[name="name"]')
+      .clear()
+      .type("John"); // Modifica el campo de nombre
+    cy.get('input[name="lastName"]')
+      .clear()
+      .type("Doe"); // Modifica el campo de apellido
+    cy.get('input[name="birthDate"]')
+      .clear()
+      .type("1990-01-01"); // Modifica el campo de fecha de nacimiento
+
+    // Envía el formulario
+    cy.get('button[type="submit"]').click();
+
+    // Verifica el toast de Sonner
+    cy.get("[data-sonner-toast]").should("contain", "Updated correctly");
+  });
+
+  it("should log out and navigate to the login page", () => {
+    // Asegúrate de estar en la página de configuración
+    cy.url().should("include", "/settings");
+
+    // Haz clic en el elemento <li> que contiene "Logout"
+    cy.contains('li', 'Logout').click();
+
+    // Verifica que redirige a /login
+    cy.url().should("include", "/login");
+  });
+
 });
