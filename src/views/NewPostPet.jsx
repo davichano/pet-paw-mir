@@ -10,28 +10,38 @@ import {formatData} from "../helpers/formatPostData.js";
 import {useTranslation} from "react-i18next";
 
 const NewPostPet = () => {
-  const {id} = useParams();
-  const {state} = useParams();
-  const {setPetData} = usePetData(); // Usa el contexto del PetProvider existente
-  const [existingData, setExistingData] = useState(null);
+  const {id} = useParams(); // Obtiene el id de la URL
+  const {state} = useParams(); // Determina si es un formulario de edición
+  const {petData, setPetData} = usePetData(); // Accede al contexto
+  const [isEditing, setIsEditing] = useState(false);
   const {t} = useTranslation();
 
   useEffect(() => {
     const getPostData = async () => {
-      const esEditingForm = state === "true"
-      if (id && !esEditingForm) {
+      const esEditingForm = state === "true";
+      setIsEditing(esEditingForm);
+
+      // Si estamos editando, no hagas un nuevo fetch si ya hay datos en el contexto
+      if (esEditingForm && petData?.id === Number(id)) {
+        console.log("Usando datos existentes del contexto");
+        return; // Usa los datos actuales del contexto
+      }
+
+      // Si no estamos editando o no hay datos, hace un fetch
+      if (id) {
+        console.log("Haciendo fetch de los datos del post...");
         const postData = await fetchPost(id);
         const formattedData = formatData(JSON.parse(localStorage.getItem("user")), postData);
-        setExistingData(formattedData);
-        setPetData(formattedData); // Actualiza petData en el contexto si es modo edición
+        setPetData(formattedData); // Actualiza los datos en el contexto
       }
     };
+    console.log("**Post data:", petData);
 
     getPostData();
-  }, [id, setPetData, state]);
+  }, [id, setPetData, state, petData]);
 
-  if (id && !existingData) {
-    return <div>Cargando...</div>;
+  if (id && isEditing && !petData?.id) {
+    return <div>Cargando datos para edición...</div>;
   }
 
   return (

@@ -1,5 +1,5 @@
 // MainRouter.jsx
-import { Routes, Route, useLocation } from "react-router-dom";
+import {Routes, Route, useLocation} from "react-router-dom";
 import Feed from "../views/Feed";
 import DetailsPublication from "../views/DetailsPublication";
 import UserProfile from "../views/users/Profile";
@@ -45,41 +45,53 @@ export const MainRouter = () => {
   return (
     <>
       <PetProvider>
-        <Toaster richColors expand={true} />
+        <Toaster richColors expand={true}/>
         {!hideHeaderRoutes.includes(location.pathname) &&
           (alternateHeaderRoutes.includes(location.pathname) ? (
-            <AlternateHeader title={location.pathname} />
+            <AlternateHeader title={location.pathname}/>
           ) : (
-            <Header />
+            <Header/>
           ))
         }
         <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/passwordrecovery" element={<PasswordRecovery />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/access-denied" element={<AccessDenied />} />
-          <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/passwordrecovery" element={<PasswordRecovery/>}/>
+          <Route path="/" element={<LandingPage/>}/>
+          <Route path="/access-denied" element={<AccessDenied/>}/>
+          <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]}/>}>
+            <Route path="/admin" element={<AdminPage/>}/>
           </Route>
 
-          <Route element={<ProtectedRoute allowedRoles={["USER"]} />}>
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/feed/:filter" element={<Feed />} />
-            <Route path="/pet/:id" element={<DetailsPublication />} />
-            <Route path="/user/:id" element={<UserProfile />} />
-            <Route path="/user/edit/:id" element={<UserEditProfile />} />
-            <Route path="/post" element={<NewPostPet />} />
-            <Route path="/post/state" element={<NewPostState />} />
-            <Route path="/post/tag" element={<NewPostTag />} />
-            <Route path="/post/info" element={<NewPostAddInfo />} />
-            <Route path="/post/map" element={<NewPostMap />} />
-            <Route path="/settings" element={<Settings />} />
+          <Route element={<ProtectedRoute allowedRoles={["USER"]}/>}>
+            <Route path="/feed" element={<Feed/>}/>
+            <Route path="/feed/:filter" element={<Feed/>}/>
+            <Route path="/pet/:id" element={<DetailsPublication/>}/>
+            <Route path="/user/:id" element={<UserProfile/>}/>
+            <Route path="/user/edit/:id" element={<UserEditProfile/>}/>
+            <Route path="/post" element={<NewPostPet/>}/>
+            <Route
+              path="/post/edit/:id"
+              element={
+                <NewPostPet/>
+              }
+            />
+            <Route
+              path="/post/edit/:id/:state"
+              element={
+                <NewPostPet/>
+              }
+            />
+            <Route path="/post/state" element={<NewPostState/>}/>
+            <Route path="/post/tag" element={<NewPostTag/>}/>
+            <Route path="/post/info" element={<NewPostAddInfo/>}/>
+            <Route path="/post/map" element={<NewPostMap/>}/>
+            <Route path="/settings" element={<Settings/>}/>
             <Route path="/chats" element={<ChatInterface/>}/>
           </Route>
         </Routes>
 
-        {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
+        {!hideHeaderRoutes.includes(location.pathname) && <Footer/>}
       </PetProvider>
     </>
   );

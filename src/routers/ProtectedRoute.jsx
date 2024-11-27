@@ -1,8 +1,9 @@
 import {Navigate, Outlet} from "react-router-dom";
 import {useUser} from "../hooks/useUser";
-import PropTypes from "prop-types";
+import {PropTypes} from 'prop-types';
 
-const ProtectedRoute = ({allowedRoles, children}) => {
+const ProtectedRoute = ({allowedRoles}) => {
+  //const { isAuthenticated, role } = useAuth();
   const {data} = useUser();
   const token = localStorage.getItem("token");
   const isAuthenticated = !!token;
@@ -19,12 +20,11 @@ const ProtectedRoute = ({allowedRoles, children}) => {
     return <Navigate to="/access-denied" replace/>;
   }
 
-  return children ? children : <Outlet/>;
-};
+  return <Outlet/>;
+}
 
 ProtectedRoute.propTypes = {
-  allowedRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  children: PropTypes.node.isRequired,
-};
+  allowedRoles: PropTypes.arrayOf(PropTypes.string).isRequired
+}
 
 export default ProtectedRoute;

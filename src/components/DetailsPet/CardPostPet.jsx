@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
 import PetInfo from "./PetInfo";
-import SavePost from "../PostPet/SavePost";
+import SavePost from "../PostPet/SavePost"
+import {useContext} from "react";
+import {PetContext} from "../../contexts/PetContext.js";
+import {Link} from "react-router-dom";
 import PetMap from "./PetMap";
 
-import { Link } from "react-router-dom";
+const CardPostPet = ({name, description, imageUrl, imageUser, t, handleModalToggle, post}) => {
+  const {current_user} = useContext(PetContext);
 
-const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalToggle, post }) => {
   return (
     <>
       {/* Contenedor principal */}
@@ -24,20 +27,36 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
           </div>
           {/* Información del usuario y descripción */}
           <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-pink-400">{name}</h2>
-                <button className="text-pink-500 font-semibold">{t("followLabel")}</button>
+            {/* Nombre y opciones */}
+            <div className="flex flex-wrap justify-between items-center">
+              <div className="flex items-center">
+                <h2 className="text-lg font-bold text-pink-400 mr-2">{name}</h2>
+                {
+                  current_user.id === post.userId && (
+                    <Link className="text-pink-500 font-semibold" to={`/post/edit/${post.id}`}>
+                      {t("edit")}
+                    </Link>
+                  )
+
+                }
+                {
+                  current_user.id !== post.userId && (
+                    <button className="text-pink-500 font-semibold">
+                      {t("followLabel")}
+                    </button>
+                  )
+
+                }
+
               </div>
-              <div className="flex items-center text-gray-500 text-sm">
-                <span>
-                  {new Date(post.pet.createdAt).toLocaleDateString("es-ES", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
-                </span>
-                <button className="ml-2">
+              {/* Contenido momentáneo, la hora de publicación */}
+              <div className="flex items-center mt-2 md:mt-0">
+                  <span className="text-gray-500 text-sm">{new Date(post.pet.createdAt).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                  })} </span>
+                <button className="ml-2 text-gray-500">
                   <img
                     src="/src/assets/img/Icons/more_options.svg"
                     alt="more"
@@ -58,7 +77,7 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
               alt="Pet"
               className="w-full h-96 object-cover rounded-lg"
             />
-            <SavePost post={post} pos_x={30} pos_y={20} />
+            <SavePost post={post} pos_x={30} pos_y={20}/>
           </div>
         </div>
 
@@ -96,11 +115,11 @@ const CardPostPet = ({ name, description, imageUrl, imageUser, t, handleModalTog
             <img
               src="/src/assets/img/Icons/share.svg"
               alt="share"
-              className="w-10 h-10"
+              className="w-12 h-12"
             />
           </button>
         </div>
-        <hr className="border-t border-pink-400 mt-4" />
+        <hr className="border-t border-pink-400 mt-4"/>
       </div>
     </>
   );
@@ -113,7 +132,7 @@ CardPostPet.propTypes = {
   t: PropTypes.func.isRequired,
   handleModalToggle: PropTypes.func.isRequired,
   imageUser: PropTypes.string,
-  post: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 export default CardPostPet;
