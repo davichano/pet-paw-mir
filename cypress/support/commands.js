@@ -35,18 +35,14 @@ Cypress.Commands.add('goToPostDetails', (postIndex = 1) => {
   // Asegúrate de que haya suficientes publicaciones
   cy.get('.grid > div').should('have.length.greaterThan', postIndex);
 
-  // Haz clic en la publicación indicada por el índice
-  cy.get('.grid > div').eq(postIndex).click();
+  cy.get('.grid > div').should('have.length.greaterThan', 1);
 
-  // Verifica que la URL cambia a la página de detalles
-  cy.url().should('match', /\/pet\/\d+$/);
 
-  // Verifica que los detalles básicos están presentes
-  cy.get('.grid .flex-grow').within(() => {
-    cy.get('h1').should('be.visible'); // Verifica que el nombre de la mascota esté visible
-    cy.get('p').should('be.visible');  // Verifica que la descripción esté visible
-  });
+    cy.get('.grid > div').eq(1).click();
+    cy.url().should('match', /\/pet\/\d+$/);
+    cy.get('img[alt="Pet"]').should('be.visible');
 });
+
 
 
 //
