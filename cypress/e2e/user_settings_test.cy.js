@@ -1,6 +1,8 @@
 describe("User settings page", () => {
   beforeEach(() => {
-    // Realiza el login y navega a la página de configuración antes de cada prueba
+
+    cy.viewport(1024, 768);
+
     cy.login("usuario@usuario.com", "usuario");
 
     cy.url().should("include", "/feed");
@@ -17,7 +19,7 @@ describe("User settings page", () => {
   });
 
   it("should update description and gender, then verify the toast", () => {
-    // Asegúrate de estar en la página de edición
+
     cy.url().should("include", "/settings");
 
     // Actualiza los campos del formulario
@@ -34,7 +36,7 @@ describe("User settings page", () => {
   });
 
   it("should update name, last name, and birthdate, then verify the toast", () => {
-    // Asegúrate de estar en la página de edición
+
     cy.url().should("include", "/settings");
 
     cy.contains('li', 'User details').click();
@@ -58,7 +60,7 @@ describe("User settings page", () => {
   });
 
   it("should log out and navigate to the login page", () => {
-    // Asegúrate de estar en la página de configuración
+
     cy.url().should("include", "/settings");
 
     // Haz clic en el elemento <li> que contiene "Logout"
