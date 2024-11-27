@@ -10,7 +10,6 @@
 //
 //
 // -- This is a parent command --
-
 Cypress.Commands.add('login', (email, password) => {
 
   cy.visit('/login')
@@ -58,5 +57,4 @@ Cypress.Commands.add('goToPostDetails', (postIndex = 1) => {
 //
 //
 // -- This will overwrite an existing command --
-
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })

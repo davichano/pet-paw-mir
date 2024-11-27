@@ -64,7 +64,7 @@ const EditDetails = () => {
     try{
       updateUser(formatted  );
       await patchUser(data.userId, formatted);
-      toast.success("Detalles actualizados");
+      toast.success(t("updatedCorrectly"));
     }
     catch (error) {
       console.error("Error updating details", error);

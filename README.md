@@ -70,6 +70,18 @@ Este proyecto ha sido desarrollado utilizando un conjunto de tecnologías modern
 
 <img src="src/assets/img/readme/images/icons/cypress.png" alt="Cloudinary Icon" width="60" style="margin: 0 7.5px"/>
 
+### Cuadro de Tecnologías Utilizadas
+
+| Categoría         | Tecnologías                                                                                                                                                        |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Frontend**       | React, React DOM, React Router DOM, @headlessui/react, Flowbite React, Tailwind CSS, @tremor/react, React Hook Form, Yup, Mapbox GL, Axios, Sonner, i18next, etc.   |
+| **Backend**        | JSON Server (simulado), Socket.io-client                                                                                                                           |
+| **Base de Datos**  | JSON Server (archivo JSON como fuente de datos)                                                                                                                    |
+| **Estilo**         | Tailwind CSS, Autoprefixer, PostCSS                                                                                                                                |
+| **Testing**        | Cypress, eslint-plugin-cypress                                                                                                                                    |
+| **Herramientas de Desarrollo** | Vite, ESLint, Prettier, Husky, Lint-staged, Commitlint                                                                                                             |
+
+
 ## UI Design
 
 ### Definición de colores y fuentes
