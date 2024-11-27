@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { usePetData } from '../hooks/usePetData';
-import StateOption from '../components/PostPet/StatePet/StateOption';
-import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
+import { usePetData } from '../../hooks/usePetData';
+import StateOption from '../../components/PostPet/StatePet/StateOption';
+import ContinueButton from '../../components/PostPet/StatePet/ContinueButton';
 import { useTranslation } from "react-i18next";
 
 

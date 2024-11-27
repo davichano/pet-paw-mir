@@ -11,7 +11,7 @@ const FormSelect = ({ label, value, onChange, options }) => {
         className="w-full p-2 border-2 border-[#FFB0A9] rounded-md text-[#FF797D]"
         required
       >
-        <option className="text-[#FF797D]" value="" > {`Agregar ${label.toLowerCase()}`} </option>
+        <option className="text-[#FF797D]" value="" > {`${label.toLowerCase()}`} </option>
         {options.map((option) => (
           <option className="text-[#FF4146] bg-[#FFEBEA]" key={option} value={option}>
             {option}

@@ -1,7 +1,7 @@
-import { usePetData } from '../hooks/usePetData';
-import FormSelect from '../components/PostPet/AddInfo/FormSelect';
-import FormField from '../components/FormField';
-import ContinueButton from '../components/PostPet/StatePet/ContinueButton';
+import { usePetData } from '../../hooks/usePetData';
+import FormSelect from '../../components/PostPet/AddInfo/FormSelect';
+import FormField from '../../components/FormField';
+import ContinueButton from '../../components/PostPet/StatePet/ContinueButton';
 import { useTranslation } from "react-i18next";
 
 
@@ -75,7 +75,6 @@ const NewPostAddInfo = () => {
           type="text"
           value={petData.petData.name} // Usamos el valor del contexto
           onChange={(e) => handleChange('petData', 'name', e.target.value)}
-          placeholder='Nombre de la mascota'
         />
         <br/>
         <FormSelect

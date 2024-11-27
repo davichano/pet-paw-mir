@@ -1,7 +1,7 @@
-import ImageUploader from "../components/PostPet/ImageUploader";
-import DescriptionBox from "../components/PostPet/DescriptionBox";
-import ActionButton from "../components/PostPet/ActionButton";
-import PublishButton from "../components/PostPet/PublishButton";
+import ImageUploader from "../../components/PostPet/ImageUploader";
+import DescriptionBox from "../../components/PostPet/DescriptionBox";
+import ActionButton from "../../components/PostPet/ActionButton";
+import PublishButton from "../../components/PostPet/PublishButton";
 import { useTranslation } from "react-i18next";
 
 const NewPostPet = () => {

@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 import {fetchPosts} from '../services/posts';
 import CardPostPet from '../components/DetailsPet/CardPostPet';
 import {useNavigate, useParams, Link} from 'react-router-dom';
-import ModalFormulario from '../components/PublicForm';
 import {useTranslation} from 'react-i18next';
 import pawPlusSVG from "../assets/img/Icons/SVG/3pawplus.svg";
 
@@ -22,7 +21,6 @@ const Feed = () => {
   });
 
   const navigate = useNavigate();
-  const [selectedPost, setSelectedPost] = useState(null);
   const toggleModal = () => setModalOpen(!isModalOpen);
   const loadPosts = async (params = {}) => {
     const postsData = await fetchPosts(params);
@@ -127,20 +125,9 @@ const Feed = () => {
           <img src={pawPlusSVG} className="w-full mx-auto" alt="Foto"/>
         </button>
       </Link>
-      {isModalOpen && (
-        <ModalFormulario
-          post={selectedPost}
-          onClose={() => {
-            setModalOpen(false);
-            setSelectedPost(null);
-            loadPosts();
-          }}
-        />
-      )}
     </>
   );
 };
-
 
 export default Feed;
 

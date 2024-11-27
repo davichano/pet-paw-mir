@@ -1,6 +1,6 @@
-import ContinueButton from "../components/PostPet/StatePet/ContinueButton";
-import InputWithRow from "../components/PostPet/StatePet/InputWithRow";
-import { usePetData } from "../hooks/usePetData";
+import ContinueButton from "../../components/PostPet/StatePet/ContinueButton";
+import InputWithRow from "../../components/PostPet/StatePet/InputWithRow";
+import { usePetData } from "../../hooks/usePetData";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
