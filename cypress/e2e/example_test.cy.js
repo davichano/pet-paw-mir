@@ -28,8 +28,6 @@ describe('Login Page', () => {
 
     cy.get("footer").should("exist").find("button").contains("logout").click();
 
-    cy.get("footer").should("exist").find("button").contains("logout").click();
-
   });
 
   it('should display an error message for invalid credentials', () => {
