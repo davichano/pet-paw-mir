@@ -3,7 +3,7 @@ describe("User settings page", () => {
 
     cy.viewport(1024, 768);
 
-    cy.login("usuario@usuario.com", "usuario");
+    cy.login("gmachicaoq@unsa.edu.pe", "LEG@RD29pros");
 
     cy.url().should("include", "/feed");
     cy.get("[data-sonner-toast]").should("contain", "Login successful");
