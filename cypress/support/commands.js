@@ -15,7 +15,7 @@ Cypress.Commands.add('login', (email, password) => {
   cy.visit('/login')
 
   // Alias para elementos comunes
-  cy.get('input[placeholder="User or email"]').as('usernameInput');
+  cy.get('input[placeholder="Email"]').as('usernameInput');
   cy.get('input[placeholder="Password"]').as('passwordInput');
   cy.get('[aria-label="LOGIN"]').as('loginButton');
 

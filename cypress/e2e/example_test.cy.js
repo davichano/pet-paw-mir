@@ -4,7 +4,7 @@ describe('Login Page', () => {
     cy.visit('/login');
 
     // Alias para elementos comunes
-    cy.get('input[placeholder="User or email"]').as('usernameInput');
+    cy.get('input[placeholder="Email"]').as('usernameInput');
     cy.get('input[placeholder="Password"]').as('passwordInput');
     cy.get('[aria-label="LOGIN"]').as('loginButton');
 
@@ -25,7 +25,7 @@ describe('Login Page', () => {
     cy.get('@loginButton').click();
     // Verifica la redirección y el contenido del feed
     cy.url().should('include', '/feed');
-  
+
     cy.get("footer").should("exist").find("button").contains("logout").click();
 
     cy.get("footer").should("exist").find("button").contains("logout").click();

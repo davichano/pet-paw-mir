@@ -73,7 +73,7 @@
   "petUser": "Pet's Owner",
   "petId": "Pet ID",
   "petIdUser": "Pet Owner ID",
-  "loginAccount": "User or email",
+  "loginAccount": "Email",
   "loginTitle": "Sign in",
   "login": "LOGIN",
   "forgotPassword": "Forgot your password?",
