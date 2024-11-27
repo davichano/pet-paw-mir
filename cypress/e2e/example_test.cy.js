@@ -18,13 +18,15 @@ describe('Login Page', () => {
     cy.contains('div', 'Password is required').should('be.visible');
   });
 
-  it('should log in successfully with valid credentials', () => {
+ it('should log in successfully with valid credentials', () => {
     // Ingresa credenciales válidas
     cy.get('@usernameInput').type('usuario@usuario.com');
     cy.get('@passwordInput').type('usuario');
     cy.get('@loginButton').click();
     // Verifica la redirección y el contenido del feed
     cy.url().should('include', '/feed');
+  
+    cy.get("footer").should("exist").find("button").contains("logout").click();
 
     cy.get("footer").should("exist").find("button").contains("logout").click();
 

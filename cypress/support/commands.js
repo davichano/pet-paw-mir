@@ -26,10 +26,26 @@ Cypress.Commands.add('login', (email, password) => {
 
   cy.get('@loginButton').click();
 
-
-  // we should be redirected to /dashboard
-
 })
+
+Cypress.Commands.add('goToPostDetails', (postIndex = 1) => {
+  // Verifica que estamos en la página de Feed
+  cy.url().should('include', '/feed');
+
+  // Asegúrate de que haya suficientes publicaciones
+  cy.get('.grid > div').should('have.length.greaterThan', postIndex);
+
+  cy.get('.grid > div').should('have.length.greaterThan', 1);
+
+
+    cy.get('.grid > div').eq(1).click();
+    cy.url().should('match', /\/pet\/\d+$/);
+    cy.get('img[alt="Pet"]').should('be.visible');
+});
+
+
+
+
 //
 //
 // -- This is a child command --

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useContext, useState } from "react";
 import mapboxgl from 'mapbox-gl';
-import PlacesProvider from "../contexts/places/PlacesProvider";
-import PlacesContext from "../contexts/places/PlacesContext";
-import { usePetData } from '../hooks/usePetData';
+import PlacesProvider from "../../contexts/places/PlacesProvider";
+import PlacesContext from "../../contexts/places/PlacesContext";
+import { usePetData } from '../../hooks/usePetData';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
