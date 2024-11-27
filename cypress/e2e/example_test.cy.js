@@ -18,7 +18,7 @@ describe('Login Page', () => {
     cy.contains('div', 'Password is required').should('be.visible');
   });
 
-  it('should log in successfully with valid credentials', () => {
+ it('should log in successfully with valid credentials', () => {
     // Ingresa credenciales válidas
     cy.get('@usernameInput').type('gmachicaoq@unsa.edu.pe');
     cy.get('@passwordInput').type('LEG@RD29pros');

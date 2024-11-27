@@ -1,6 +1,6 @@
 // SignUp.jsx
 import { useForm, FormProvider } from "react-hook-form";
-import { StepProvider } from "../components/SignUp/StepContext";
+import { StepProvider } from "../components/SignUp/StepProvider";
 import { useContext } from "react";
 import { steps } from "../components/SignUp/stepsConfig";
 import { StepContext } from "../components/SignUp/StepContext";
