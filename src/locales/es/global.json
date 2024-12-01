@@ -233,6 +233,7 @@
   "adoptionPet": "En adopción",
   "adoptedPet": "Adoptado",
   "questionForState": "¿Cuál es el estado actual?",
-  "insertTagsLabel": "Coloca aquí tus etiquetas"
-
+  "insertTagsLabel": "Coloca aquí tus etiquetas",
+  "typeMessage": "Escribe un mensaje...",
+  "logout": "Cerrar sesión"
 }

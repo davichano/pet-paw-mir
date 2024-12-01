@@ -232,6 +232,7 @@
   "adoptionPet": "In Adoption",
   "adoptedPet": "Adopted",
   "questionForState": "What is the current status?",
-  "insertTagsLabel": "Place your labels here"
-
+  "insertTagsLabel": "Place your labels here",
+  "typeMessage:": "Type a message...",
+  "logout": "Logout"
 }
