@@ -9,13 +9,13 @@ import Footer from "../components/template/Footer.jsx";
 import SignUp from "../views/SignUp.jsx";
 import Login from "../views/Login.jsx";
 import PasswordRecovery from "../views/PasswordRecovery.jsx";
-import {Toaster} from "sonner";
+import { Toaster } from "sonner";
 import NewPostPet from "../views/createPost/NewPostPet.jsx";
 import NewPostState from "../views/createPost/NewPostState.jsx";
 import NewPostTag from "../views/createPost/NewPostTag.jsx";
 import NewPostAddInfo from "../views/createPost/NewPostAddInfo.jsx";
 import NewPostMap from "../views/createPost/NewPostMap.jsx";
-import {PetProvider} from "../contexts/post/PetProvider";
+import { PetProvider } from "../contexts/post/PetProvider";
 import LandingPage from "../views/LandingPage.jsx";
 import Settings from "../views/Settings.jsx";
 import ProtectedRoute from "./ProtectedRoute";
@@ -23,7 +23,6 @@ import AdminPage from "../views/AdminPage.jsx";
 import AccessDenied from "../views/AccessDenied.jsx";
 import ChatInterface from "../views/chat/ChatInterface.jsx";
 import AlternateHeader from "../components/Settings/Header.jsx";
-
 
 export const MainRouter = () => {
   const location = useLocation();
@@ -36,11 +35,31 @@ export const MainRouter = () => {
     "/admin",
     "/settings",
     "/access-denied",
-    "/"
+    "/feed",
+    "/",
   ];
 
-  const alternateHeaderRoutes = ["/chats", "/post/map", "/settings", "/post/info", "/post", "/post/tag", "/post/state"]
+  const hideFooterRoutes = [
+    "/register",
+    "/signup",
+    "/login",
+    "/passwordrecovery",
+    "/landingpage",
+    "/admin",
+    "/settings",
+    "/access-denied",
+    "/",
+  ];
 
+  const alternateHeaderRoutes = [
+    "/chats",
+    "/post/map",
+    "/settings",
+    "/post/info",
+    "/post",
+    "/post/tag",
+    "/post/state",
+  ];
 
   return (
     <>
@@ -51,8 +70,7 @@ export const MainRouter = () => {
             <AlternateHeader title={location.pathname} />
           ) : (
             <Header />
-          ))
-        }
+          ))}
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
@@ -60,7 +78,7 @@ export const MainRouter = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/access-denied" element={<AccessDenied />} />
           <Route element={<ProtectedRoute allowedRoles={["ADMINISTRATOR"]} />}>
-          <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["USER"]} />}>
@@ -75,11 +93,11 @@ export const MainRouter = () => {
             <Route path="/post/info" element={<NewPostAddInfo />} />
             <Route path="/post/map" element={<NewPostMap />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/chats" element={<ChatInterface/>}/>
+            <Route path="/chats" element={<ChatInterface />} />
           </Route>
         </Routes>
 
-        {!hideHeaderRoutes.includes(location.pathname) && <Footer />}
+        {!hideFooterRoutes.includes(location.pathname) && <Footer />}
       </PetProvider>
     </>
   );
