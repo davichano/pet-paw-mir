@@ -312,7 +312,7 @@ Puedes encontrar más información respecto al proyecto en:
 - GitHub - [Noelia Garcia Pacara](https://github.com/NoeliaGAP)
 - GitHub - [William Lupaca Ticona](https://github.com/PunoBootcamper)
 - Github - [Gabriel Steven Machicao Quispe](https://github.com/gabriel7529)
-- GitHub - [David Paredes Abanto](https://github.com/davidchano)
+- GitHub - [David Paredes Abanto](https://github.com/davichano)
 
 
 ## Contribuciones
